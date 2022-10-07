@@ -1,12 +1,16 @@
-
+h1 {
+    color: teal;
+    font-family: "Courier";
+    font-size: 60px;
+     height: 5vh;
+}
 
 body {
     background-color: blanchedalmond;
     height: 10vh;
 }
-h3{
-    background-color: blanchedalmond;
-    color: green;
+h2{
+    color: green
 }
 .clase {
     color: green;
