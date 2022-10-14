@@ -17,6 +17,8 @@ JOSE MORENO BARBERO
     <script src="src/main.js"></script> 
     <!--Carga la libreria de phaser-->
     <script src="./lib/phaser.js"></script>
+    <!--Carga el script que cambia de pestaña-->
+    <script  src="js/Pestana.js"></script>
 </head>
 <body>
      <!-- Titulo del juego-->
@@ -24,10 +26,21 @@ JOSE MORENO BARBERO
     <div>
         <!-- segundo título y cosas por hacer-->
         <h2 class=clase>Mañana lo hago</h2>
-            <div>
-                <button >Botton 1</button>
-                <button>Botton 2 </button>
-            </div>
+        <div id="pestanas">
+            <ul id=lista>
+                <li id="pestana1"><a href='javascript:Pestana(pestanas,pestana1);'>REDESSOCIALES</a></li>
+                <li id="pestana2"><a href='javascript:Pestana(pestanas,pestana2);'>ESTUDIO</a></li>
+            </ul>
+        </div>
+        <body onload="javascript:pestanas(pestanas,pestana1);">
+
+            <div id="contenidopestanas">
+                <div id="cpestana1">
+                    
+                </div>
+                <div id="cpestana2">
+                    
+                </div>
             <div>
                 <button onclick="alert(devuelveTextoDeAlerta())">Pulse para indicar el número del grupo</button>
             </div>
