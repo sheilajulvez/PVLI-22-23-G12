@@ -22,12 +22,28 @@ JOSE MORENO BARBERO
      <!-- Titulo del juego-->
     <h1>Plobo</h1>
     <div>
-        <!-- segundo título y cosas por hacer-->
-        <h2 class=clase>Mañana lo hago</h2>
-            <div>
-                <button >Botton 1</button>
-                <button>Botton 2 </button>
-            </div>
+ 
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'RedSoc')">Redes Sociales</button>
+            <button class="tablinks" onclick="openCity(event, 'Estudio')">Estudio</button>
+            <button class="tablinks" onclick="openCity(event, 'Juego')">Juego</button>
+          </div>
+          
+          <!-- Tab content -->
+          <div id="RedSoc" class="tabcontent">
+            <h3>RedesSociales</h3>
+            <p>Estas son nuestras redes sociales:</p>
+          </div>
+          
+          <div id="Estudio" class="tabcontent">
+            <h3>Estudio</h3>
+            <p>Kulenga Studios</p>
+          </div>
+          
+          <div id="Juego" class="tabcontent">
+            <h3>Juego</h3>
+            <p>Lo hago mañana </p>
+          </div>
             <div>
                 <button onclick="alert(devuelveTextoDeAlerta())">Pulse para indicar el número del grupo</button>
             </div>
