@@ -13,7 +13,7 @@
 		// Recorre la lista ocultando todas las pestañas y restaurando el fondo 
 		// y el padding de las pestañas.
 		while (typeof listacPestannas.getElementsByTagName('div')[i] != 'undefined'){
-			$(document).ready(function(){
+			this.ready(function(){
 				$(listacPestannas.getElementsByTagName('div')[i]).css('display','none');
 				$(listaPestannas.getElementsByTagName('li')[i]).css('background','');
 				$(listaPestannas.getElementsByTagName('li')[i]).css('padding-bottom','');
@@ -21,7 +21,7 @@
 			i += 1;
 		}
 	
-		$(document).ready(function(){
+		ready(function(){
 			// Muestra el contenido de la pestaña pasada como parametro a la funcion,
 			// cambia el color de la pestaña y aumenta el padding para que tape el  
 			// borde superior del contenido que esta juesto debajo y se vea de este 

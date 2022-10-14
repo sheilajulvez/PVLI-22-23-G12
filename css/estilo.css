@@ -54,11 +54,11 @@ h2{
     float: left;
     text-align: center;
     margin: 0px 2px -2px -0px;
-    background: darkgrey;
+    background: rgb(65, 183, 155);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 2px solid bisque;
-    border-bottom: rgb(113, 95, 95);
+    border-bottom: rgb(176, 112, 112);
     padding: 0px 20px 0px 20px;
 }
 
@@ -68,7 +68,7 @@ h2{
 }
 #contenidopestanas{
     clear: both;  
-    background: dimgray;
+    background: rgb(180, 208, 138);
     padding: 20px 0px 20px 20px;
     border-radius: 5px;
     border-top-left-radius: 0px;
