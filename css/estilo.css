@@ -31,6 +31,9 @@ p{
   font-size: 20px;
 
 }
+a{
+  cursor: url("../assets/cursor2.png"), auto;
+}
 
 body {
   overflow: visible;
