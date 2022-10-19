@@ -14,16 +14,32 @@ h3{
 }
 
 p{
+   /*tamaño de ancho*/
+   width: 1080px;
+   /*margen*/
+   margin: auto;
+   background: rgb(199, 214, 158);
+   /*barra*/
+   padding: 20px 15px 50px 50px;
+   /*borde redondeado*/
+   border-radius: 10px;
+   /*sombra*/
+   box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.8);
   margin-left: 50px;
   color: rgb(0, 0, 0);
   font-family: "Courier";
   font-size: 20px;
-  height: 5vh;
 
 }
 
 body {
-    background-color: rgb(247, 240, 230);
+  overflow: visible;
+  cursor: url("../assets/cursor.png"), auto;
+  background-image: url('../assets/Captura\ de\ pantalla\ 2022-10-19\ 100035.png');
+	background-repeat: repeat;
+	background-size: 20%;
+	margin: 0px;
+	font-family: Silkscreen;
     height: 10vh;
 }
 /* Style de el  cuadrado de fondo*/
@@ -43,6 +59,7 @@ body {
   
   /* Style de las pestañas */
   .tab button {
+    cursor: url("../assets/cursor.png"), auto;
     background-color: inherit;
     padding: 20px 10px 20px 20px;
     border-radius: 5px;
