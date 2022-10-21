@@ -24,6 +24,7 @@ let config= {
     version: "1.0.0"   
   
 };
-new Phaser.Game(config);
+var game=new Phaser.Game(config);
+
 
 
