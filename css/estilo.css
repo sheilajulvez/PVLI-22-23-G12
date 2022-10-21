@@ -6,6 +6,17 @@ h1 {
     height: 5vh;
 }
 h3{
+    /*tamaño de ancho*/
+    width: 1080px;
+    /*margen*/
+    margin: auto;
+    background: rgb(199, 214, 158);
+    /*barra*/
+    padding: 20px 15px 50px 50px;
+    /*borde redondeado*/
+    border-radius: 10px;
+    /*sombra*/
+    box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.8);
   margin-left: 50px;
   color: teal;
   font-family: "Courier";
