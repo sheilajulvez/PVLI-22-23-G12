@@ -1,11 +1,11 @@
 /*import la escena inicial*/
-let config {
-  type: Phaser.AUTO;
+let config= {
+  type: Phaser.AUTO,
   parent:'Juego',  //crea el canvas dentro del index
   //ancho y alto de pantalla como window, ya se ira viendo
   width: window.innerWidth,
   height: window.innerHeight,
-  PixelArt=true;
+  PixelArt:true,
   scale:{ //para escalar el canvas en la pantalle con minimo y maximo
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY, 
     mode: Phaser.Scale.FIT,
@@ -19,7 +19,7 @@ let config {
         },
     zoom: 1
   },
-    scene: //[nombre de la escena],
+    //scene: //[nombre de la escena],
     title: "Titulo",
     version: "1.0.0"   
   
