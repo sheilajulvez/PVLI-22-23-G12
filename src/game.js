@@ -1,4 +1,5 @@
-/*import la escena inicial*/
+import Macarrones from './scenes/macarrones.js'
+
 let config= {
   type: Phaser.AUTO,
   parent:'Juego',  //crea el canvas dentro del index
@@ -19,12 +20,12 @@ let config= {
         },
     zoom: 1
   },
-    //scene: //[nombre de la escena],
-    title: "Titulo",
+    scene:[Macarrones],
+    title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
   
 };
-var game=new Phaser.Game(config);
+new Phaser.Game(config);
 
 
 
