@@ -1,3 +1,4 @@
+	// funcion para la creación de la tabla en la página web
 	function newtab(evt, opcion) {
 		// Declare all variables
 		var i, tabcontent, tablinks;

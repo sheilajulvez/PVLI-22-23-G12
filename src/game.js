@@ -1,13 +1,13 @@
-import Macarrones from './scenes/macarrones.js'
+import Macarrones from './scenes/macarrones.js'  //importamos la escena macarrones que vamos a usar
 
-let config= {
+let config= { //configuramos canvas
   type: Phaser.AUTO,
   parent:'Juego',  //crea el canvas dentro del index
   //ancho y alto de pantalla como window, ya se ira viendo
   width: window.innerWidth,
   height: window.innerHeight,
   PixelArt:true,
-  scale:{ //para escalar el canvas en la pantalle con minimo y maximo
+  scale:{ //para escalar el canvas en la pantalla con minimo y maximo
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY, 
     mode: Phaser.Scale.FIT,
     min: {
