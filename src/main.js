@@ -6,7 +6,7 @@
 		// oculta todos los elementos
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
-		  tabcontent[i].style.display = "none";
+		  tabcontent[i].style.display = "none"; //los desactiva
 		}
 	  
 		// coge todas los botones y los desactiva
@@ -16,7 +16,7 @@
 		}
 	  
 		// coge el elemento con el id de la opcion querida y activa su contenido
-		document.getElementById(opcion).style.display = "block";
+		document.getElementById(opcion).style.display = "block"; //block hace que el elemento se represente como un bloque
 		evt.currentTarget.className += " active";
 	  }
 
