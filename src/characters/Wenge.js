@@ -31,11 +31,11 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		//movimiento de WENGE
         if(this.d.isDown)
         {
-            this.x+=(4*dt)/100;
+            this.x+=(50*dt)/100;
         }
 		if(this.a.isDown)
         {
-            this.x-=(4*dt)/100;
+            this.x-=(50*dt)/100;
         }
         
 	}
