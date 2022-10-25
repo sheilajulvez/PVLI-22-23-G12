@@ -12,8 +12,7 @@ export default class StartButton{
 	}
 
 	create(){
-		this.startButton= this.relatedScene.add.sprite(500,200,'start_button');
-
+		this.startButton= this.relatedScene.add.sprite(500,200,'start_button').setInteractive();
 		/*this.startButton.on('pointerover',() => {
 			this.startButton.setFrame(1);
 		});
@@ -23,7 +22,7 @@ export default class StartButton{
 		
 		});*/
 
-		this.startButton.on('click',() => {
+		this.startButton.on('pointerdown',() => {
 
 			this.relatedScene.scene.start('tomatico');
 		});
