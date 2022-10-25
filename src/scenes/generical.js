@@ -10,8 +10,9 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 
 	preload(){
 		// Cargamos el Spritesheet					
-		this.load.image("fondo","assets/Road.png");
+		this.load.image("fondo","assets/Road.jpg");
         this.load.spritesheet('Wenge', 'assets/wengeSprite.png', {frameWidth: 633, frameHeight:394});
+	
 		
 	}
 

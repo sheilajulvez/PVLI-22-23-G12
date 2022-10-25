@@ -1,4 +1,4 @@
-
+//import Hause from '../characters/Hause.js'; //importamos las distintas casas del fondo
 import Car from '../characters/Car.js';//importamos a los Coches
 import Generical from '../scenes/generical.js';
 
