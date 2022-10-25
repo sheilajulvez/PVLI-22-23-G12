@@ -36,7 +36,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		//movimiento de los coches
             this.y+=(40*dt)/100;
 
-			if(this.y>700)
+			if(this.y>800)
 			{
 				this.y=0;
 				var pos=random(0,6);
