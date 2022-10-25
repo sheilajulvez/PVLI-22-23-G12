@@ -39,67 +39,35 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 			if(this.y>700)
 			{
 				this.y=0;
-				var pos=random(0,9);
+				var pos=random(0,6);
 				//this.x= random(100, 1200);
 				switch(pos)
-				{
-					case 1:
-						this.x=100;
-						break;
-					case 2:
-						this.x=200;
-						break;
-					case 3:
-						this.x=300;
-						break;
-					case 4:
-						this.x=400;
-						break;
-					case 5:
-						this.x=500;
-						break;
-					case 6:
-						this.x=600;
-						break;
-					case 7:
-						this.x=700;
-						break;
-					case 8:
-						this.x=800;
-						break;
-					case 9:
-						this.x=900;
-						break;
+				 {
 
-				// 		switch(pos)
-				// {
-
-				// 	 case 0:
-				// 	 	this.x=130;
-				// 	 	break;
-				// 	 case 1:
-				// 	 	this.x=300;
-				// 	 	break;
-				// 	 case 2:
-				// 	 	this.x=465;
-				// 	 	break;
-				// 	 case 3:
-				// 	 	this.x=630;
-				// 	 	break;
-				// 	 case 4:
-				// 	 	this.x=790;
-				// 	 	break;
-				// 	 case 5:
-				// 	 	this.x=910;
-				// 	 	break;
-				// 	 case 6:
-				// 	 	this.x=960;
-				// 	 	break;
+				 	 case 0:
+				 	 	this.x=130;
+				 	 	break;
+				 	 case 1:
+				 	 	this.x=300;
+				 	 	break;
+				 	 case 2:
+					 	this.x=465;
+					 	break;
+				 	 case 3:
+				 	 	this.x=630;
+				 	 	break;
+				 	 case 4:
+					 	this.x=790;
+				 	 	break;
+				 	 case 5:
+				 	 	this.x=910;
+				 	 	break;
+				 	 case 6:
+				 	 	this.x=960;
+				 	 	break;
 
 
 
-
-				// }
 
 				}
 			}
