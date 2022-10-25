@@ -1,7 +1,7 @@
-export default class Hause extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
+export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y) {
-		super(scene, x, y, 'Hause');
+		super(scene, x, y, 'FondoMove');
 		this.scene.add.existing(this);
 		this.setScale(1,1);
 	}
