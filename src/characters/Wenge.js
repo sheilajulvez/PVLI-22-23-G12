@@ -19,7 +19,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		
 		this.play('idle_Wenge'); //activa la animavcion
 
-		this.setScale(1,1);
+		this.setScale(0.35,0.35);
 		this.d = this.scene.input.keyboard.addKey('D'); // registramos la tecla D como input
 		this.a = this.scene.input.keyboard.addKey('A'); // registramos la tecla A como input
 	}
@@ -29,7 +29,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		super.preUpdate(t, dt);
 
 		//movimiento de WENGE
-		if(this.x<1200 && this.x>0)
+		if(this.x<900 && this.x>0)
 		{
 			if(this.d.isDown)
 			{
@@ -47,7 +47,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 				this.x+=(50*dt)/100;
 			}
 		}
-		else if(this.x>=1200)
+		else if(this.x>=900)
 		{
 			if(this.a.isDown)
 			{
