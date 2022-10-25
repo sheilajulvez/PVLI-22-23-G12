@@ -14,6 +14,7 @@ export default class Macarrones extends Phaser.Scene { //creamos la escena expor
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		// Cargamos el Atlas (el atlas está compuesto por un archivo de imagen y un JSON que describe lo que contiene)
 		//this.load.atlas('seaAnimals', 'assets/Sea/seacreatures.png', 'assets/Sea/seacreatures.json')
+		this.physics.add.collider(this.Wenge,this.Car);
 	}
 
 	create(){
