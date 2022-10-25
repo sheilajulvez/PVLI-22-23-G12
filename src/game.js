@@ -1,4 +1,6 @@
-import Macarrones from './scenes/macarrones.js'  //importamos la escena macarrones que vamos a usar
+import Inicio from './scenes/inicio.js';
+import Macarrones from './scenes/macarrones.js'
+ //importamos la escena macarrones que vamos a usar
 
 let config= { //configuramos canvas
   type: Phaser.AUTO,
@@ -20,7 +22,7 @@ let config= { //configuramos canvas
         },
     zoom: 1
   },
-    scene:[Macarrones],
+    scene:[Inicio,Macarrones],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
   
