@@ -30,7 +30,7 @@ export default class Macarrones extends Phaser.Scene { //creamos la escena expor
 		this.add.image(500,350,'fondo');
 		new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
 		new Car(this, 600, 100); //creamos a nuestro personaje, nuestra Car
-		this.lifetext=this.add.text (900,650,'LIFE: 0', {
+		this.lifetext=this.add.text (900,650,'LIFE: 3', {
 			fontsize: '20px',
 			fill:'#fff',
 			fontFamily:'verdana,arial, sans-serif'
