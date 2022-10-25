@@ -12,7 +12,7 @@ export default class StartButton{
 	}
 
 	create(){
-		this.startButton= this.relatedScene.add.sprite(500,200,'start_button').setInteractive();
+		this.startButton= this.relatedScene.add.image(500,200,'start_button').setInteractive();
 		/*this.startButton.on('pointerover',() => {
 			this.startButton.setFrame(1);
 		});
