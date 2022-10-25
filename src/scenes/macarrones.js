@@ -18,7 +18,7 @@ export default class Macarrones extends Phaser.Scene { //creamos la escena expor
 
 	create(){
 		var s=this.add.sprite(0, 0, 'fondo').setOrigin(0,0);
-		s.setScale(9.32,3.55);
+		s.setScale(4.3,3.1);
 		new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
 		new Car(this, 600, 100); //creamos a nuestro personaje, nuestra Car
 		//new SeaAnimals(this, 200, 200);
