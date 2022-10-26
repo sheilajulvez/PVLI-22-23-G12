@@ -10,12 +10,13 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	preload(){
 		super.preload();
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
-		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	256 , frameHeight:	240	});
-		
+		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});
 	}
 
 	create(){
 		super.create();
 		new Car(this, 600, 100); //creamos a nuestro personaje, nuestra Car
+		//creamos los arboles del fondo y ponemos su posición en pantalla
+		new FondoMove(this, 1000,100);
 	}
 }
