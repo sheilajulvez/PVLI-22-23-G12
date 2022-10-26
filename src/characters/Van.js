@@ -2,8 +2,8 @@
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
-var dir='r';
 
+var dir='r';
 export default class Van extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
      
 	constructor(scene, x, y) {
