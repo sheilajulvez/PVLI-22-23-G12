@@ -24,7 +24,7 @@ export default class StartButton{
 
 		this.startButton.on('pointerdown',() => {
 
-			this.relatedScene.scene.start('tomatico');
+			this.relatedScene.scene.start('menu');
 		});
 
 	}

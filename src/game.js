@@ -1,6 +1,7 @@
 import Inicio from './scenes/inicio.js';
+import Menu from './scenes/menu.js';
+import Macarrones from './scenes/macarrones.js';
 
-import Macarrones from './scenes/macarrones.js'
  //importamos la escena macarrones que vamos a usar
 
 let config= { //configuramos canvas
@@ -23,7 +24,7 @@ let config= { //configuramos canvas
         },
     zoom: 1
   },
-    scene:[Inicio,Macarrones],
+    scene:[Inicio,Menu, Macarrones],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
   
