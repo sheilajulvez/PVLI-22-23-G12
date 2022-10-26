@@ -2,7 +2,7 @@
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
-
+var dir='r';
 
 export default class Van extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
      
@@ -32,19 +32,20 @@ export default class Van extends Phaser.GameObjects.Sprite { //exportamos la cla
 
 	preUpdate(t, dt){
         super.preUpdate(t,dt);
-
 		//movimiento de los coches
             this.y+=(10*dt)/100;
 
-            if(this.x>800)
+			
+            if(this.x>900)
             {
-                this.x-=(400*dt)/100;
+                dir='l';
             }
-            else if(this.x<100)
+            else if(this.x<200)
             {
-                this
+                dir='r';
             }
-
+			if(dir==='r')this.x+=(40*dt)/100;
+			if(dir==='l')this.x-=(40*dt)/100;
 
 
 
