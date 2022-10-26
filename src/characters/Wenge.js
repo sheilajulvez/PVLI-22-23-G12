@@ -29,7 +29,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		super.preUpdate(t, dt);
 
 		//movimiento de WENGE
-		if(this.x<900 && this.x>0)
+		if(this.x<800 && this.x>100)
 		{
 			if(this.d.isDown)
 			{
@@ -40,14 +40,14 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 				this.x-=(50*dt)/100;
 			}
 		}
-		else if(this.x<=0)
+		else if(this.x<=100)
 		{
 			if(this.d.isDown)
 			{
 				this.x+=(50*dt)/100;
 			}
 		}
-		else if(this.x>=900)
+		else if(this.x>=800)
 		{
 			if(this.a.isDown)
 			{
