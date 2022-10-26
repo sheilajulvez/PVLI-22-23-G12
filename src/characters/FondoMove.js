@@ -1,12 +1,9 @@
-function random(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-}
+
 export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
-	constructor(scene, x, y) {
+	constructor(scene, x, y, arb) {
 		super(scene, x, y, 'FondoMove');
-		var arb=random(0,7);
-		var cont =1;
+	
 		this.scene.add.existing(this);
 		this.scene.anims.create({ //animación
 			key: 'idle_FondoMove', //identificador de la animación
@@ -35,10 +32,7 @@ export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos 
 		
 		if(this.y>800)
 		{
-			this.y=0;
-			//implementdo por si useremos añadir más de una casa, por ahora se queda comentado.
-			
-			
+			this.y=0;		
 		}
          
 	}
