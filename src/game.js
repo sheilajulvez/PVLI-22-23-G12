@@ -1,4 +1,5 @@
 import Inicio from './scenes/inicio.js';
+
 import Macarrones from './scenes/macarrones.js'
  //importamos la escena macarrones que vamos a usar
 

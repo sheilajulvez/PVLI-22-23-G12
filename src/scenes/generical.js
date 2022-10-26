@@ -1,7 +1,7 @@
 import Wenge from '../characters/Wenge.js'; //importamos al caracter de Wenge
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
-	constructor(){
-		super({key: 'generic'}) 
+	constructor(nameScene){
+		super({key: nameScene}); 
 	}
 
 	init(){ // inicializar, se ejecuta cada vez que reiniciamos o iniciamos por primera vez
@@ -10,10 +10,10 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 
 	preload(){
 		// Cargamos el Spritesheet					
-		this.load.image("fondo","assets/Road.jpg");
+		this.load.image('fondo','assets/Road.jpg');
         this.load.spritesheet('Wenge', 'assets/wengeSprite.png', {frameWidth: 633, frameHeight:394});
 	
-		
+	
 	}
 
 	create(){
