@@ -1,1 +1,3 @@
-<image src="/UML.png" alt="Diagrama UML con la relación entre clases">
+<image src="/images/UML.png">
+
+Diagrama UML con la relación entre clases
