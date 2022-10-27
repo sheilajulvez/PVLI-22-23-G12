@@ -15,8 +15,15 @@ FALTA CAP DEL JUEGO Y ENLACE A PAGINA WEB
 
 <image src="/images/inicio.png">
   
-Menú inicial del juego
+  
+  
+  
+  
+  
+  
+  
+  
+
 
 <image src="/images/partidaPrototipo.png">
  
-Distribución en pantalla de partida típica
