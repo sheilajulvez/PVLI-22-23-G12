@@ -24,12 +24,13 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		new Van(this,500,100);
 		//creamos los arboles del fondo y ponemos su posición en pantalla
 		let arb=Phaser.Math.Between(0, 7);
-		new FondoMove(this, 1000,0, arb );
-		 arb=Phaser.Math.Between(0, 7);
-		new FondoMove(this, 1000,200, arb);
-		 arb=random(0,7);
-		new FondoMove(this, 1000,400, arb);
-		 arb=random(0,7);
-		new FondoMove(this, 1000,600, arb);
+		new FondoMove(this, 950,0, arb );
+		new FondoMove(this, 950,200, arb); 
+		new FondoMove(this, 950,400, arb);
+		new FondoMove(this, 950,600, arb);
+		new FondoMove(this, 60,-100, arb );
+		new FondoMove(this, 60,100, arb); 
+		new FondoMove(this, 60,300, arb);
+		new FondoMove(this, 60,500, arb);
 	}
 }
