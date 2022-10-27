@@ -4,6 +4,7 @@ no lo utilizaremos para otros fines que no sean
 la búsqueda de una buena nota en la asignatura de PVLI
 
 Redes Sociales:
+
 -Twitter: Kulenga_Studios.
 
 -Tik Tok: kulengastudios.
