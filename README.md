@@ -11,3 +11,12 @@ Es un videojuego sobre una chica que trabaja en Plovo, una cadena de reparto de 
 Cuenta con 5 niveles distintos, cada uno de ellos se supera tras cumplir con una misión específica.
 
 FALTA CAP DEL JUEGO Y ENLACE A PAGINA WEB
+
+
+<image src="/images/inicio.png">
+  
+Menú inicial del juego
+
+<image src="/images/partidaPrototipo.png">
+ 
+Distribución en pantalla de partida típica
