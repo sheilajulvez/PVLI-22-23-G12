@@ -1,4 +1,5 @@
 import Wenge from '../characters/Wenge.js'; //importamos al caracter de Wenge
+import FondoMove from '../characters/FondoMove.js'; //importamos las distintas casas del fondo
 
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
@@ -13,7 +14,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		// Cargamos el Spritesheet					
 		this.load.image('fondo','assets/Road.jpg');
         this.load.spritesheet('Wenge', 'assets/wengeSprite.png', {frameWidth: 633, frameHeight:394});
-	
+		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});
 	
 	}
 
@@ -25,6 +26,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 			fontFamily:'verdana,arial, sans-serif'
 		});
         new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
-		
+		new FondoMove(this, 950,200, 1); 
 	}
 }

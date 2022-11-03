@@ -2,8 +2,8 @@
 export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y, arb) {
+		console.log("d");
 		super(scene, x, y, 'FondoMove');
-	
 		this.scene.add.existing(this);
 		this.scene.anims.create({ //animación
 			key: 'idle_FondoMove', //identificador de la animación
@@ -22,7 +22,6 @@ export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos 
 		//tamaño en el juego
 		this.setScale(1,1);
 	}
-
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
 
@@ -37,3 +36,12 @@ export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos 
          
 	}
 }
+/*
+new FondoMove(this, 950,0, arb );
+		new FondoMove(this, 950,200, arb); 
+		new FondoMove(this, 950,400, arb);
+		new FondoMove(this, 950,600, arb);
+		new FondoMove(this, 60,-100, arb);
+		new FondoMove(this, 60,100, arb); 
+		new FondoMove(this, 60,300, arb);
+		new FondoMove(this, 60,500, arb);*/
