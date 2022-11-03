@@ -8,7 +8,14 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 
 	init(){ // inicializar, se ejecuta cada vez que reiniciamos o iniciamos por primera vez
 		this.life=0;
-	}
+	}	  
+	 update(time, delta) {    
+		  let x = Math.random() * this.game.config.width 
+		  let y = 0
+		  this.pool.spawn(x, y);
+	  }
+
+
 
 	preload(){
 		// Cargamos el Spritesheet					
@@ -25,6 +32,11 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 			fill:'#fff',
 			fontFamily:'verdana,arial, sans-serif'
 		});
+		let arbol = [];
+		for (let i = 0; i < 100; i++) {
+		arbol.push(new FondoMove(this, 0,0));
+		}
+		this.FOndoMove.pool = new Pool(this, arbol);
         new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
 		new FondoMove(this, 950,200, 1); 
 	}

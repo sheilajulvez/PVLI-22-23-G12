@@ -1,5 +1,5 @@
 //clase pool
-class Pool {
+export default class Pool {
 	//constructor de la clase 
     constructor (scene, entities) {
        this._group = scene.add.group();
