@@ -1,7 +1,7 @@
 import pool from '../characters/Pool.js'; //importamosla pool
 export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
-	constructor(scene, x, y,pool) {
+	constructor(scene, x, y) {
 		console.log("d");
 		super(scene, x, y, 'FondoMove');
 		this.scene.add.existing(this);
@@ -26,15 +26,13 @@ export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos 
 		super.preUpdate(t, dt);
 
 		//movimiento de las casas
-		/*this.y+=(20*dt)/100;		
+		this.y+=(20*dt)/100;		
 		if(this.y>800)
 		{
 			this.y=0;		
-		}*/
+		}
 		this.y += 2;
-        if (this.y > this.scene.game.config.height) {
-          this.scene.pool.release(this);
-        }
+
          
 	}
 }

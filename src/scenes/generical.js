@@ -12,7 +12,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	 update(time, delta) {    
 		  let x = Math.random() * this.game.config.width 
 		  let y = 0
-		  this.pool.spawn(x, y);
 	  }
 
 
@@ -33,11 +32,15 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 			fontFamily:'verdana,arial, sans-serif'
 		});
 		let arbol = [];
-		for (let i = 0; i < 100; i++) {
-		arbol.push(new FondoMove(this, 0,0));
+		
+		//grupo de tipo fondoMove
+		this.Arboles=this.add.group();
+		for (let i = 0; i < 4; i++) {
+		this.Arboles.add (new FondoMove(this, 20,200*i));
 		}
-		 new Pool(this, FondoMove);
+		for (let i = 0; i < 4; i++) {
+			this.Arboles.add (new FondoMove(this, 950,200*i));
+			}
         new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
-		new FondoMove(this, 950,200, 1); 
 	}
 }
