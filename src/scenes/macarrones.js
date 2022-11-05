@@ -3,10 +3,7 @@ import Car from '../characters/Car.js';//importamos a los Coches
 import Generical from '../scenes/generical.js';
 import Van from '../characters/Van.js';
 
-function random(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-	
-}
+
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 		super('tomatico') 
@@ -20,9 +17,14 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 
 	create(){
 		super.create();
-		new Car(this, 600, 100); //creamos a nuestro personaje, nuestra Car
-		new Van(this,500,100);
-		//creamos los arboles del fondo y ponemos su posición en pantalla
-		let arb=Phaser.Math.Between(0, 7);
+		let vehicles=this.add.group();
+
+		let car=new Car(this, 600, 100); //creamos a nuestro personaje, nuestra Car
+		vehicles.add(car);
+		
+
+		let van=new Van(this,500,100);
+		vehicles.add(van);
+		
 	}
 }

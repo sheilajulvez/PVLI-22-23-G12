@@ -25,6 +25,15 @@ let config= { //configuramos canvas
         },
     zoom: 1
   },
+    physics:
+    {
+      default:'arcade',
+      arcade:
+      {
+        gravity:{y:0},
+        debug:false
+      }
+    },
     scene:[Inicio,Menu,Shop, Macarrones],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
