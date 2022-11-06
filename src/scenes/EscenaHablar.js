@@ -16,7 +16,8 @@
 	 * En este caso solo el fonde
 	 */
 	preload(){
-	
+		this.load.image("Rosalia","assets/Rosalia.png");
+		this.load.image("Wenge","assets/wengeCara.png")
 	}
 	
 	/**
@@ -24,7 +25,8 @@
 	
 	create() {
 		
-		
+		this.add.image(300,350,'Rosalia');
+		this.add.image(800,270,'Wenge').setScale(1,1);
 		let a=0;
         let array=[
 		 'Hola soy tuitero, ¿Qué tal?',
@@ -32,7 +34,7 @@
 		 'Gracias por todo'
         ];
 		array.length=3;
-		let posx=300,posy=300;
+		let posx=300,posy=600;
 
 		let array2=[this.textButton(posx,posy,array[0],array,0)];
 		

@@ -3,18 +3,26 @@ import FondoMove from '../characters/FondoMove.js'; //importamos las distintas c
 import Barra from '../characters/Bar.js';//importamos la clase bar que indicará por donde va el nivel;
 import road from '../scenes/road.js';
 import Pool from '../characters/Pool.js';
+
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
 		super({key: nameScene});
-	}
+		
 
+	}
+	Inicia(scene){
+		this.relatedScene=scene;
+
+	}
 	init(){ // inicializar, se ejecuta cada vez que reiniciamos o iniciamos por primera vez
 		this.life=0;
 	}
 	 update(time, delta) {
 		  let x = Math.random() * this.game.config.width
 		  let y = 0
-			this.Barra.aumenta(time/1000);
+			if(this.Barra.aumenta(time/1000)){
+				this.relatedScene.scene.start('EscenaHablar');
+			}
 			//this.Barra.draw();
 	  }
 	
