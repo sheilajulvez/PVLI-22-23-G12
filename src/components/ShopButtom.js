@@ -12,7 +12,7 @@ export default class ShopButtom{
 		this.ShopButtom=this.relatedScene.add.image(500,300,'shop_button').setInteractive();
 
 		this.ShopButtom.on('pointerdown',()=>{
-			this.relatedScene.scene.start('shop');
+			this.relatedScene.scene.start('EscenaHablar');
 		});
 
 
