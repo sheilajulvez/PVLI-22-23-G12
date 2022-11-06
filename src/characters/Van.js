@@ -1,10 +1,10 @@
-
+import Car from '../characters/Car.js';//importamos a los Coches
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
 var dir='r';
-export default class Van extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
+export default class Van extends Car { //exportamos la clase extendida de Phaser
      
 	constructor(scene, x, y) {
 		super(scene, x, y, 'Van');
@@ -29,41 +29,49 @@ export default class Van extends Phaser.GameObjects.Sprite { //exportamos la cla
 
 		this.setScale(1,1);
 	}
+	move(dt,dir)
+	{
+		this.y+=(10*dt)/100;
 
+		if(dir==='r')this.x+=(40*dt)/100;
+	    	if(dir==='l')this.x-=(40*dt)/100;
+	}
+	changeDir()
+	{
+		if(this.x>900)
+		{
+			dir='l';
+		}
+		else if(this.x<200)
+		{
+			dir='r';
+		}
+	}
+	respawn()
+	{
+		if(this.y>800)
+		{
+			this.y=0;
+			var pos=random(0,1);
+			//this.x= random(100, 1200);
+			switch(pos)
+			 {
+				   case 0:
+					  this.x=350;
+					  break;
+				   case 1:
+					   this.x=610;
+					   break;  
+			}
+		}
+	}
+	
 	preUpdate(t, dt){
         super.preUpdate(t,dt);
 		//movimiento de los coches
-            this.y+=(10*dt)/100;
-
-			
-            if(this.x>900)
-            {
-                dir='l';
-            }
-            else if(this.x<200)
-            {
-                dir='r';
-            }
-			if(dir==='r')this.x+=(40*dt)/100;
-			if(dir==='l')this.x-=(40*dt)/100;
-
-
-
-			if(this.y>800)
-			{
-				this.y=0;
-				var pos=random(0,1);
-				//this.x= random(100, 1200);
-				switch(pos)
-				 {
-				 	  case 0:
-				 	 	this.x=350;
-				 	 	break;
-				 	  case 1:
-				 	  	this.x=610;
-				 	  	break;  
-				}
-			}
+           this.move(dt,dir);
+		   this.changeDir();
+		   this.respawn();
 	}
 
 }

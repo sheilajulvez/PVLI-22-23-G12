@@ -2,6 +2,7 @@ import Wenge from '../characters/Wenge.js'; //importamos al caracter de Wenge
 import FondoMove from '../characters/FondoMove.js'; //importamos las distintas casas del fondo
 import Barra from '../characters/Bar.js';//importamos la clase bar que indicará por donde va el nivel;
 import road from '../scenes/road.js';
+import Pool from '../characters/Pool.js';
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
 		super({key: nameScene});
@@ -13,10 +14,10 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	 update(time, delta) {
 		  let x = Math.random() * this.game.config.width
 		  let y = 0
-		  console.log(time);
 			this.Barra.aumenta(time/1000);
 			//this.Barra.draw();
 	  }
+	
 	preload(){
 		this.load.spritesheet('road', 'assets/carretera.png', {frameWidth: 700, frameHeight:490});
         this.load.spritesheet('Wenge', 'assets/wengeSprite.png', {frameWidth: 633, frameHeight:394});
@@ -25,6 +26,11 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	}
 
 	create(){
+		
+
+
+
+
 		//añadimos los graficos para la barra
 
 

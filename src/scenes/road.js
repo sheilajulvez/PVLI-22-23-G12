@@ -12,7 +12,7 @@ export default class road extends Phaser.GameObjects.Sprite { //exportamos la cl
 				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
 				end:3 // última imagen del Spritesheet que se ejecuta en la animación
 			}), 
-			frameRate: 20, // imágenes/frames por segundo
+			frameRate: 10, // imágenes/frames por segundo
 			repeat: -1 //para que sea bucle
 		});
 
