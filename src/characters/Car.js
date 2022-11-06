@@ -36,9 +36,9 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 	}
 	respawn()
 	{
+		
 		if (this.y>800) 
-			{
-				
+			{				
 				this.y=0;
 				var pos=random(0,5);
 				//this.x= random(100, 1200);
@@ -64,7 +64,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 				 	  	break;
 				}
 	}
-	}
+}
 
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);

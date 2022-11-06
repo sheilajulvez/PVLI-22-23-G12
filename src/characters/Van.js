@@ -4,6 +4,8 @@ function random(min, max) {
 }
 
 var dir='r';
+var cotaDer=900;
+var cotaIzq=190	;
 export default class Van extends Car { //exportamos la clase extendida de Phaser
      
 	constructor(scene, x, y) {
@@ -33,44 +35,51 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 	{
 		this.y+=(10*dt)/100;
 
-		if(dir==='r')this.x+=(40*dt)/100;
-	    	if(dir==='l')this.x-=(40*dt)/100;
+		 if(dir==='r')this.x+=(40*dt)/100;
+		 if(dir==='l')this.x-=(40*dt)/100;
 	}
-	changeDir()
+	changeDir(cotaDer, cotaIzq)
 	{
-		if(this.x>900)
+		if(this.x>cotaDer)
 		{
 			dir='l';
 		}
-		else if(this.x<200)
+		else if(this.x<cotaIzq)
 		{
 			dir='r';
 		}
 	}
-	respawn()
+	respawn()				//comprobación si la cota es la indicada para el respawn	
 	{
+	
 		if(this.y>800)
 		{
-			this.y=0;
+
+			this.y=	0;
 			var pos=random(0,1);
-			//this.x= random(100, 1200);
 			switch(pos)
-			 {
-				   case 0:
-					  this.x=350;
-					  break;
-				   case 1:
-					   this.x=610;
-					   break;  
+			{
+				case 0:
+					this.x=350;
+					cotaIzq=190;
+					cotaDer=490;
+					break;
+				case 1:
+					this.x=740;
+					cotaIzq=570;
+					cotaDer=900;
+					break;
 			}
+			console.log(pos);
 		}
 	}
 	
 	preUpdate(t, dt){
         super.preUpdate(t,dt);
+
 		//movimiento de los coches
            this.move(dt,dir);
-		   this.changeDir();
+		   this.changeDir(cotaDer,cotaIzq);
 		   this.respawn();
 	}
 
