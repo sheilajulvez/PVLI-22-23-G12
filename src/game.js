@@ -35,6 +35,18 @@ let config= { //configuramos canvas
         debug:false
       }
     },
+
+    physics:
+    {
+      default:'arcade', //el modo, tambien podría ser matter
+      arcade:
+      {
+        gravity:{y:0}, //gravedad a 0 ya que solo queremos que wenge se mueva en el eje x
+        debug:false
+      }
+    },
+
+
     scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
