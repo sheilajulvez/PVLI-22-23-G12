@@ -2,8 +2,12 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 
 	constructor(scene, x, y) {
 		super(scene, x, y, 'Wenge');
+		//this.player = this.add.sprite(x, y, 'Wenge');
+		
 
+		//this.player=this.physics.add.existing(this);
 		this.scene.add.existing(this);
+		//this.physics.add.existing(this);
 
 		this.scene.anims.create({ //animación
 			key: 'idle_Wenge', //identificador de la animación
@@ -28,30 +32,37 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
 
+
 		//movimiento de WENGE
+		//
+		// no se podria poner cuando esto no colisionara con las paredes como !this.body.setCollideWorldBounds()
 		if(this.x<800 && this.x>100)
 		{
 			if(this.d.isDown)
 			{
-				this.x+=(50*dt)/100;
+				//this.x+=(50*dt)/100;
+				this.body.setVelocity(1,0);
 			}
 			if(this.a.isDown)
 			{
-				this.x-=(50*dt)/100;
+				//this.x-=(50*dt)/100;
+				this.body.setVelocity(-1,0);
 			}
 		}
 		else if(this.x<=100)
 		{
 			if(this.d.isDown)
 			{
-				this.x+=(50*dt)/100;
+				//this.x+=(50*dt)/100;
+				this.body.setVelocity(1,0);
 			}
 		}
 		else if(this.x>=800)
 		{
 			if(this.a.isDown)
 			{
-				this.x-=(50*dt)/100;
+				//this.x-=(50*dt)/100;
+				this.body.setVelocity(-1,0);
 			}
 		}
         
