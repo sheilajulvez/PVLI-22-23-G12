@@ -26,15 +26,6 @@ let config= { //configuramos canvas
         },
     zoom: 1
   },
-    physics:
-    {
-      default:'arcade',
-      arcade:
-      {
-        gravity:{y:0},
-        debug:false
-      }
-    },
 
     physics:
     {
