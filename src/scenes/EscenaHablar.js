@@ -29,11 +29,10 @@
 		this.add.image(800,270,'Wengeface').setScale(1,1);
 		let a=0;
         let array=[
-		 'Hola soy tuitero, ¿Qué tal?',
-		 'Que ricos los macarrones con tomate',
-		 'Gracias por todo'
+		 '1-Hola soy tuitero, ¿Qué tal?',
+		 '2-Que ricos los macarrones con tomate',
+		 '3-Gracias por todo'
         ];
-		array.length=3;
 		let posx=300,posy=600;
 
 		let array2=[this.textButton(posx,posy,array[0],array,0)];
@@ -45,7 +44,7 @@
 	}
 
 	
-  textButton(x, y, message,array,a,selected=false){
+  textButton(x, y, message, array,a,selected=false){
 		let text = this.add.text(x, y, message);
 		text.setOrigin(0.5,0.5);
 		text.setAlign('center');
@@ -63,10 +62,10 @@
 		text.setInteractive();
 		text.on('pointerdown', ()=>{
 
-            text.setVisible(false);
+            //text.setVisible(false);
 			if(a<array.length) {
 				a++;
-				this.textButton(x,y,array[a],a);
+				text.setText(array[a]);
 
 			}
 			

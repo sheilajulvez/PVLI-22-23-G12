@@ -1,51 +1,52 @@
+import {Moto,Camion} from "./Motos.js";
+
+
+function random(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
+
 //clase pool
 export default class Pool {
 	//constructor de la clase 
-    constructor (scene, entities,reuse) 
+    constructor (scene,max, entities) 
 	{
-      this._group=scene.add._group();
+      this._group=scene.add.group();
+	  this._group.addMultiple(entities);
+	  entities.forEach(element => {
+		this._group.killAndHide(element);
+	  });
 	  this.max=max;
 	  this.scene=scene;
-	  this.reuse=reuse;
 	}
 	//mostrar un objeto en escena
 	
 	
-	addObject(entities)
-	{
-		this._group.addMultiple(entities);
-		entities.ForEach(c=>
-		{
-			this._group.killAndHide(c);
-			c.body.checkCollision.none=true;
-		})
-	}
 	
 	
-	
-	spawn (x, y,animationKey='anim') {
+	spawn (x, y,animationKey) {
 		let entity = this._group.getFirstDead();
-
-		if(!entity)
-		{
-			entity = this._group.getFirstNth(1, true);
-			this._group.remove(entity);
-			this._group.add(entity);
-		}
+			//Nunca deberían existir grupos sin elementos activos
 		if (entity)
 	    {
+			let num=random(0,1);
+			if(num===0)
+			{
+				entity.move=Moto.prototype.move;
+			}
+			else
+			{
+				entity.move=Camion.prototype.move;
+			}
 		  entity.x = x;
 		  entity.y = y;
 		  entity.play(animationKey);
 		  entity.setActive(true);
 		  entity.setVisible(true);
-		  entity.body.checkCollision.none=false;
 		}
 		return entity;
 	}
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
-		entity.body.checkCollision.none = true;
 		this._group.killAndHide(entity);
 	}
 	getPhaserGroup(){

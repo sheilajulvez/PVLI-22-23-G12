@@ -35,23 +35,14 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 
 	create(){
 		
-
-
-
-
-		//añadimos los graficos para la barra
-
-
 		this.add.image(500,350,'fondo');
 			this.lifetext=this.add.text (900,650,'LIFE: 3', {
 			fontsize: '20px',
 			fill:'#fff',
 			fontFamily:'verdana,arial, sans-serif'
 		});
-		let arbol = [];
-
-		//grupo de tipo fondoMove
 		new road(this,500,400);
+
 		this.Arboles=this.add.group();
 		for (let i = 0; i < 4; i++) {
 		this.Arboles.add (new FondoMove(this, 20,200*i));
@@ -59,9 +50,10 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		for (let i = 0; i < 4; i++) {
 			this.Arboles.add (new FondoMove(this, 950,200*i));
 			}
-     
-		
 		new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
 		this.Barra = new Barra(this, 10, 10);
+
+
+
 	}
 }
