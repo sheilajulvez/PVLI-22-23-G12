@@ -24,13 +24,14 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	create(){
 		super.create();
 		this.timeDelta=0;
-		
+		this.car=new Car(this,0,-1000);
+		this.physics.add.existing(this.car);
 
 		let arrayCoches=[];
 		
 		for(let i=0; i<5;i++)
 		{
-			arrayCoches.push(new Car(this,0,-1000));
+			arrayCoches.push(this.car);
 		}
 		
 		this.poolCar=new Pool(this,5,arrayCoches);		
@@ -41,6 +42,12 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan.push(new Van(this,0,-1000));
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
+		//this.add.existing(this.poolCar);
+		//this.physics.add.existing(this.poolCar);
+		//this.add.existing(this.poolVan);
+
+		
+		//this.physics.add.existing(this.player);// lo haces objeto físico
 		
 		
 	}
@@ -90,6 +97,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 					}
 					
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+
 			
 		}
 		else if(rand===1)
@@ -110,6 +118,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
 		}
 		}
+
 		
 		
 	}

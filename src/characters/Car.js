@@ -30,7 +30,9 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 
 	move(dt)
 	{
-		this.y+=(40*dt)/100;
+		console.log("un coche")
+		this.body.VelocityY(-100);
+		//this.y+=(40*dt)/100;
 	}
 	respawn()
 	{
