@@ -41,11 +41,13 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 	}
 	changeDir(cotaDer, cotaIzq)
 	{
-		if(this.x>cotaDer)
+		if(this.x<549){cotaDer=490; cotaIzq=190;}	
+		if(this.x>550){cotaDer=900; cotaIzq=570;}
+		if(this.x>=cotaDer)
 		{
 			dir='l';
 		}
-		else if(this.x<cotaIzq)
+		else if(this.x<=cotaIzq)
 		{
 			dir='r';
 		}
