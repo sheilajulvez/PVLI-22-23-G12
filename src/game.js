@@ -3,6 +3,7 @@ import Menu from './scenes/menu.js';
 import Shop from './scenes/shop.js';
 import Macarrones from './scenes/macarrones.js';
 import EscenaHablar from './scenes/EscenaHablar.js'
+import Niveles from './scenes/Niveles.js'
 
  //importamos la escena macarrones que vamos a usar
 
@@ -35,7 +36,7 @@ let config= { //configuramos canvas
         debug:false
       }
     },
-    scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar],
+    scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
   

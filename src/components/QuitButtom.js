@@ -11,7 +11,7 @@ export default class QuitButtom{
 		this.QuitButtom=this.relatedScene.add.image(500,600,'quit_buttom').setInteractive();
 		
 		this.QuitButtom.on('pointerdown',()=>{
-			this.relatedScene.scene.start('inicio');
+			this.relatedScene.scene.start('MapNiveles');
 		});
 
 	}

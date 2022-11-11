@@ -1,11 +1,8 @@
-import pool from '../characters/Pool.js'; //importamosla pool
 export default class FondoMove extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y) {
-		console.log("d");
 		super(scene, x, y, 'FondoMove');
 		this.scene.add.existing(this);
-		this.pool=pool;
 		
 		this.scene.anims.create({ //animación
 			key: 'idle_FondoMove', //identificador de la animación
