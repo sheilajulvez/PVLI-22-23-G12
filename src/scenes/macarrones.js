@@ -58,7 +58,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		super.update(t,dt);
 		this.timeDelta= this.timeDelta+dt;
 		
-		if(this.timeDelta>9000)
+		if(this.timeDelta>4000)
 		{
 	    var rand=random(0,1);
 	    if (rand===0)
