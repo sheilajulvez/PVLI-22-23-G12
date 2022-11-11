@@ -17,13 +17,14 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	init(){ // inicializar, se ejecuta cada vez que reiniciamos o iniciamos por primera vez
 		this.life=0;
 	}
-	 update(time, delta) {
+	update(time, delta) {
 		  let x = Math.random() * this.game.config.width
 		  let y = 0
 			if(this.Barra.aumenta(time/1000)){
 				this.relatedScene.scene.start('EscenaHablar');
 			}
 			//this.Barra.draw();
+			this.player.update();
 	  }
 	
 	preload(){
@@ -34,15 +35,18 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	}
 
 	create(){
-		
+	
+		//añadimos los graficos para la barra
 		this.add.image(500,350,'fondo');
 			this.lifetext=this.add.text (900,650,'LIFE: 3', {
 			fontsize: '20px',
 			fill:'#fff',
 			fontFamily:'verdana,arial, sans-serif'
 		});
-		new road(this,500,400);
+		let arbol = [];
 
+		//grupo de tipo fondoMove
+		new road(this,500,400);
 		this.Arboles=this.add.group();
 		for (let i = 0; i < 4; i++) {
 		this.Arboles.add (new FondoMove(this, 20,200*i));
@@ -50,10 +54,11 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		for (let i = 0; i < 4; i++) {
 			this.Arboles.add (new FondoMove(this, 950,200*i));
 			}
-		new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
+     
+		
+		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
+		this.add.existing(this.player); //lo añades a la escene
+		this.physics.add.existing(this.player);// lo haces objeto físico
 		this.Barra = new Barra(this, 10, 10);
-
-
-
 	}
 }
