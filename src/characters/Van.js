@@ -8,10 +8,11 @@ var cotaDer=900;
 var cotaIzq=190	;
 export default class Van extends Car { //exportamos la clase extendida de Phaser
      
-	constructor(scene, x, y) {
+	constructor(scene, x, y,pool) {
 		super(scene, x, y, 'Van');
 
 		this.scene.add.existing(this);
+		this.pool=pool;
 		this.scene.anims.create({ //animación
 			key: 'idle_WhiteCar', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Van',
@@ -52,26 +53,30 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 	respawn()				//comprobación si la cota es la indicada para el respawn	
 	{
 	
-		if(this.y>800)
-		{
-
-			this.y=	0;
-			var pos=random(0,1);
-			switch(pos)
-			{
-				case 0:
-					this.x=350;
-					cotaIzq=190;
-					cotaDer=490;
-					break;
-				case 1:
-					this.x=740;
-					cotaIzq=570;
-					cotaDer=900;
-					break;
+		if (this.y>800) 
+			{		
+				this.scene.VanisOut(this);		
 			}
-			console.log(pos);
-		}
+		// if(this.y>8	00)
+		// {
+
+		// 	this.y=	0;
+		// 	var pos=random(0,1);
+		// 	switch(pos)
+		// 	{
+		// 		case 0:
+		// 			this.x=350;
+		// 			cotaIzq=190;
+		// 			cotaDer=490;
+		// 			break;
+		// 		case 1:
+		// 			this.x=740;
+		// 			cotaIzq=570;
+		// 			cotaDer=900;
+		// 			break;
+		// 	}
+		// 	console.log(pos);
+		// }
 	}
 	
 	preUpdate(t, dt){

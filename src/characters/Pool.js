@@ -1,4 +1,5 @@
 import {Moto,Camion} from "./Motos.js";
+import Van from "./Van.js";
 
 
 function random(min, max) {
@@ -28,15 +29,6 @@ export default class Pool {
 			//Nunca deberían existir grupos sin elementos activos
 		if (entity)
 	    {
-			let num=random(0,1);
-			if(num===0)
-			{
-				entity.move=Moto.prototype.move;
-			}
-			else
-			{
-				entity.move=Camion.prototype.move;
-			}
 		  entity.x = x;
 		  entity.y = y;
 		  entity.play(animationKey);
