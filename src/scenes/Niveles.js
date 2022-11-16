@@ -24,9 +24,9 @@ export default class Niveles extends Phaser.Scene {
         this.add.image(500,350,'mapaciudad');
 
         this.Nivel.push(new Button(this, 135,485, 'boton', 'tomatico')) 
-        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar')) 
+        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','tomatico')) 
         this.Nivel.push(new Button(this, 720,545, 'boton', 'tomatico')) 
-        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar')) 
+        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','tomatico')) 
         this.Nivel.push(new Button(this, 925,265, 'boton', 'tomatico'))  
         
         // primBot =this.add.image(500,350,'boton').setInteractive();
