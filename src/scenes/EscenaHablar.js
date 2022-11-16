@@ -1,83 +1,81 @@
-/**
- * Escena de Título.
- * @extends Phaser.Scene
- */
- export default class EscenaHablar extends Phaser.Scene {
-	/**
-	 * Escena de texto cargado con fuentes del navegador.
-	 * @extends Phaser.Scene
-	 */
-	constructor() {
-		super({ key: 'EscenaHablar' });
-	}
 
-	/**
-	 * Cargamos todos los assets que vamos a necesitar
-	 * En este caso solo el fonde
-	 */
+import Textos from "../characters/Textos.js"
+
+
+export default class EscenaHablar extends Phaser.Scene{
+    constructor(scenekey){
+		super({key: "EscenaHablar"});
+        
+		
+
+	}
+    init(datos,scenavolver){
+        
+        this.scenekey=datos.name;
+       
+        
+    }
+    
 	preload(){
-		this.load.image("Rosalia","assets/Rosalia.png");
-		this.load.image("Wengeface","assets/wengeCara.png")
-	}
-	
-	/**
-	*/
-	
-	create() {
 		
-		this.add.image(300,350,'Rosalia');
-		this.add.image(800,270,'Wengeface').setScale(1,1);
-		let a=0;
-        let array=[
-		 '1-Hola soy tuitero, ¿Qué tal?',
-		 '2-Que ricos los macarrones con tomate',
-		 '3-Gracias por todo'
-        ];
-		let posx=300,posy=600;
-
-		let array2=[this.textButton(posx,posy,array[0],array,0)];
+	this.load.image("Wengecara", 'assets/wengeCara.png');
+    this.load.image("Rosi",'assets/rosalia.png');
+    this.load.image("Presi","assets/presi.png");
+    this.load.image("PatryRuncha","assets/PatryRuncha.png");
+    this.load.Sprite("cajita","assets/cajastexto/guardate.png")
+   
+   
 		
-		
-		//array2[0].setVisible(true);
-
-      	
 	}
 
-	
-  textButton(x, y, message, array,a,selected=false){
+
+    create(){
+        this.add.image(800,300,'Wengecara').setScale(0.8,0.8);
+        if(this.scenekey=="macarrones"){
+            
+            this.add.image(300,300,'Rosi').setScale(1,1);
+        }
+        let cajita = new Phaser.GameObjects.Sprite(this.scene, 0, -50,"cajita");
+        cajita.setScale(w, h);
+        cajita.setOrigin(0.5, 0.5);
+       this.DisplayText(0);
+        
+    }
+
+    DisplayText(number){
+       
+        
+        this.textButton(300,600,Textos[this.scenekey][0],0);
+    }
+
+
+
+
+    textButton(x, y, message,a){
+       
+       
 		let text = this.add.text(x, y, message);
-		text.setOrigin(0.5,0.5);
+		text.setOrigin(0.3,0.3);
 		text.setAlign('center');
-		text.setVisible(true);
-		text.setFont('Arial Black');
-		text.setFontSize(40);
-		
-		//Color del reborde de la letra y grosor si estamos en la escena con ese tipo de texto.
-		if(selected){
-			text.setStroke('#FF00FF', 4)
-			text.setFill('#43d6FF');
-			text.setShadow(10, 10, 'rgba(0,0,0,0.5)', 1);
-		}
-
 		text.setInteractive();
 		text.on('pointerdown', ()=>{
+			if(a<Textos.longitud){
 
-            //text.setVisible(false);
-			if(a<array.length) {
-				a++;
-				text.setText(array[a]);
+                a++;
+                text.setText(Textos[this.scenekey][a]);
+            }
+            else{
+               
+                this.scene.start('macarrones');
 
-			}
-			
+            }
+
+
+
 		})
-       
-		/*
-		Si movemos la cámara es necesario hacer setScrollFactor para evitar que el texto se mueva con ella
-		Puedes probarlo descomentando las siguientes líneas:
-		*/
-		
-		// this.cameras.main.pan(300, 300);
-		// text.setScrollFactor(0,0)
-	}
+    }
+
+
+
 
 }
