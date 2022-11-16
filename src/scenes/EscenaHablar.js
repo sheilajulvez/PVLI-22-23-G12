@@ -1,5 +1,6 @@
 
 import Textos from "../characters/Textos.js"
+import Macarrones from "./macarrones.js";
 
 
 export default class EscenaHablar extends Phaser.Scene{
@@ -9,7 +10,7 @@ export default class EscenaHablar extends Phaser.Scene{
 		
 
 	}
-    init(datos,scenavolver){
+    init(datos){
         
         this.scenekey=datos.name;
        
@@ -22,7 +23,7 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("Rosi",'assets/rosalia.png');
     this.load.image("Presi","assets/presi.png");
     this.load.image("PatryRuncha","assets/PatryRuncha.png");
-    this.load.Sprite("cajita","assets/cajastexto/guardate.png")
+    //this.load.Sprite("cajita","assets/cajastexto/guardate.png")
    
    
 		
@@ -35,9 +36,9 @@ export default class EscenaHablar extends Phaser.Scene{
             
             this.add.image(300,300,'Rosi').setScale(1,1);
         }
-        let cajita = new Phaser.GameObjects.Sprite(this.scene, 0, -50,"cajita");
-        cajita.setScale(w, h);
-        cajita.setOrigin(0.5, 0.5);
+       // let cajita = new Phaser.GameObjects.Sprite(this.scene, 0, -50,"cajita");
+        //cajita.setScale(w, h);
+        //cajita.setOrigin(0.5, 0.5);
        this.DisplayText(0);
         
     }
