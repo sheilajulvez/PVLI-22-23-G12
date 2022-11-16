@@ -34,10 +34,10 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 	}
 	move(dt,dir)
 	{
-		this.y+=(10*dt)/100;
+		this.body.setVelocityY(100);
 
-		 if(dir==='r')this.x+=(40*dt)/100;
-		 if(dir==='l')this.x-=(40*dt)/100;
+		 if(dir==='r')this.body.setVelocityX(100);
+		 if(dir==='l')this.body.setVelocityX(-100);
 	}
 	changeDir(cotaDer, cotaIzq)
 	{
