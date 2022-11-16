@@ -23,7 +23,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		  let x = Math.random() * this.game.config.width
 		  let y = 0
 			if(this.Barra.aumenta(time/1000)){
-				this.relatedScene.scene.start('EscenaHablar');
+				//this.relatedScene.scene.start('EscenaHablar',{name:"macarrones"});
 			}
 			//this.Barra.draw();
 			this.player.update();

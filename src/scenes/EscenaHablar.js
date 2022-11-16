@@ -1,9 +1,11 @@
+
 import Textos from "../components/Textos.js"
 import Macarrones from "./Niveles/macarrones.js";
 import Aceite from './Niveles/Aceite.js';
 import Arsenico from './Niveles/Arsenico.js';
 import Croquetas from './Niveles/Croquetas.js';
 import Manzanilla from './Niveles/Manzanilla.js';
+
 
 export default class EscenaHablar extends Phaser.Scene{
     constructor(scenekey){
@@ -15,8 +17,9 @@ export default class EscenaHablar extends Phaser.Scene{
     init(datos){
         
         this.scenekey=datos.name;
+
        console.log(this.scenekey);
-        
+
     }
     
 	preload(){
@@ -26,13 +29,14 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("Presi","assets/presi.png");
     this.load.image("PatryRuncha","assets/PatryRuncha.png");
     this.load.image("cajita","assets/cajastexto/guardate.png")
-   
+
    
 		
 	}
 
 
     create(){
+
         this.add.image(340,830,"cajita").setScale(1.7,1.3);
         this.add.image(800,300,'Wengecara').setScale(0.8,0.8);
         if(this.scenekey=="tomatico"){
@@ -50,6 +54,9 @@ export default class EscenaHablar extends Phaser.Scene{
         
         this.textButton(100,600,Textos[this.scenekey][0],0);
     }
+
+
+
 
 
 
