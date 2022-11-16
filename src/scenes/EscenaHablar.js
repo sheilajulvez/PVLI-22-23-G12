@@ -1,6 +1,9 @@
 import Textos from "../components/Textos.js"
-import Macarrones from "./macarrones.js";
-
+import Macarrones from "./Niveles/macarrones.js";
+import Aceite from './Niveles/Aceite.js';
+import Arsenico from './Niveles/Arsenico.js';
+import Croquetas from './Niveles/Croquetas.js';
+import Manzanilla from './Niveles/Manzanilla.js';
 
 export default class EscenaHablar extends Phaser.Scene{
     constructor(scenekey){
@@ -79,7 +82,5 @@ export default class EscenaHablar extends Phaser.Scene{
 		})
     }
 
-
-
-
 }
+		

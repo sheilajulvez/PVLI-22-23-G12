@@ -1,6 +1,4 @@
 
-
-
 export default class Car extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y,pool) {

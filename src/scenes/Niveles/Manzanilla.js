@@ -1,18 +1,18 @@
 
-import Car from '../characters/Car.js';//importamos a los Coches
-import Generical from '../scenes/generical.js';
-import Van from '../characters/Van.js';
-import Pool  from '../characters/Pool.js';
+import Car from '../../characters/Car.js';//importamos a los Coches
+import Generical from '../../scenes/generical.js';
+import Van from '../../characters/Van.js';
+import Pool  from '../../characters/Pool.js';
 
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
-export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
+export default class Manzanilla extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 
-		super('tomatico');
+		super('Manzanilla');
 		
 	}
 
