@@ -6,7 +6,9 @@ import Pool from '../characters/Pool.js';
 
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
+
 		super({key: nameScene});
+
 		
 
 	}

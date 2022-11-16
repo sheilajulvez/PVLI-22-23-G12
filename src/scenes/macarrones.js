@@ -11,7 +11,9 @@ function random(min, max) {
 
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
-		super('tomatico') 
+
+		super('tomatico');
+		
 	}
 
 	preload(){
@@ -38,6 +40,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.van=new Van(this,0,-1000);
 		this.physics.add.existing(this.van);
 
+		
+
 
 
 				
@@ -47,12 +51,20 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan.push(this.van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
-		//this.add.existing(this.poolCar);
-		//this.physics.add.existing(this.poolCar);
-		//this.add.existing(this.poolVan);
-
 		
 		//this.physics.add.existing(this.player);// lo haces objeto físico
+
+
+
+
+
+
+
+
+
+		this.physics.add.collider(this.player, this.car);
+		if(this.physics.collide(this.player, this.car)) {
+    		console.log("Hay colisión");}
 		
 		
 	}
