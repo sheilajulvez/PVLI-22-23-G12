@@ -34,12 +34,17 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayCoches.push(this.car);
 		}
 		
-		this.poolCar=new Pool(this,5,arrayCoches);		
+		this.poolCar=new Pool(this,5,arrayCoches);	
+		this.van=new Van(this,0,-1000);
+		this.physics.add.existing(this.van);
+
+
+
 				
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			arrayVan.push(new Van(this,0,-1000));
+			arrayVan.push(this.van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		//this.add.existing(this.poolCar);
