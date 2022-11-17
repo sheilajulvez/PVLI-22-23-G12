@@ -23,7 +23,7 @@ export default class Pool {
 	
 	spawn (x, y,animationKey) {
 		let entity = this._group.getFirstDead();
-			//Nunca deberían existir grupos sin elementos activos
+			//Nunca deberían existir grupos sin elementos activo
 		if (entity)
 	    {
 		  entity.x = x;
@@ -32,6 +32,7 @@ export default class Pool {
 		  entity.setActive(true);
 		  entity.setVisible(true);
 		}
+		
 		return entity;
 	}
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)

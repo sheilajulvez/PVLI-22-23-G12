@@ -28,7 +28,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 
 	move()
 	{
-		this.body.setVelocityY(100);
+		this.body.setVelocityY(200);
 		//this.y+=(40*dt)/100;
 	}
 	respawn()

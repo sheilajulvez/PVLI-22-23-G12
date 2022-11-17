@@ -18,12 +18,12 @@ export class Moto extends Car
 			repeat:-1	
 		});
 		this.play('idle_bike');
-		this.setScale(1,1);
+		this.setScale(0.5,0.5);
 	}
 
 	move()
 	{
-		this.body.setVelocityY(100);
+		this.body.setVelocityY(200);
 	}
 	respawn()
 	{
