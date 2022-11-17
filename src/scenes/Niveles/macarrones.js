@@ -22,7 +22,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-		this.load.spritesheet('Bike','assets/Moto.jpeg',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike','assets/Moto.jpg',{frameWidth:166 , frameHeight:490});
 	}
 
 	create(){
