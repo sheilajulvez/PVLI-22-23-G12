@@ -1,6 +1,3 @@
-import {Moto,Camion} from "./Motos.js";
-import Van from "./Van.js";
-
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);

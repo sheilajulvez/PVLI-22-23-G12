@@ -59,26 +59,7 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 			{		
 				this.scene.VanisOut(this);		
 			}
-		// if(this.y>8	00)
-		// {
-
-		// 	this.y=	0;
-		// 	var pos=random(0,1);
-		// 	switch(pos)
-		// 	{
-		// 		case 0:
-		// 			this.x=350;
-		// 			cotaIzq=190;
-		// 			cotaDer=490;
-		// 			break;
-		// 		case 1:
-		// 			this.x=740;
-		// 			cotaIzq=570;
-		// 			cotaDer=900;
-		// 			break;
-		// 	}
-		// 	console.log(pos);
-		// }
+			
 	}
 	
 	preUpdate(t, dt){
