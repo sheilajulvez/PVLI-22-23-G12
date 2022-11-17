@@ -23,7 +23,6 @@ export class Moto extends Car
 
 	move()
 	{
-		console.log("un coche")
 		this.body.setVelocityY(100);
 	}
 	respawn()

@@ -9,6 +9,7 @@ function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
+var vanSpawn=0;
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 
@@ -38,6 +39,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		
 		this.poolCar=new Pool(this,5,arrayCoches);	
+		
 		this.van=new Van(this,0,-1000);
 		this.physics.add.existing(this.van);
 
@@ -60,13 +62,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.poolBike=new Pool(this,3,arrayBike);
 		
 		this.physics.add.collider(this.player, this.car);
-		if(this.physics.collide(this.player, this.car)) {
-    		console.log("Hay colisión");}
+		this.physics.add.collider(this.player, this.van);
 
-
-		// 	this.physics.add.collider(this.player, this.car,this.van);
-		// if(this.physics.collide(this.player, this.car)||this.physics.collide(this.player, this.van)) {
-    	// 	console.log("Hay colisión");}
+		
 
 		
 		
@@ -83,19 +81,26 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		this.poolBike.release(vehicles);
 	}
+	collision()
+	{
+		if(this.physics.collide(this.player, this.car)||this.physics.collide(this.player, this.van)) {
+    		console.log("Hay colisión");}
+	}
 	update(t,dt)
 	{
 		
 		super.update(t,dt);
+		this.collision();
 		this.timeDelta= this.timeDelta+dt;
 		
-		if(this.timeDelta>500)
+		if(this.timeDelta>2500)
 		{
-	    var rand=random(0,2);
-	    if (rand===0)
+	    var rand=random(0,1);
+	    if (rand===0)				//respawm car
 		{
 			
 			    let pos=random(0,5);
+				vanSpawn++;
 				this.timeDelta=0;
 				let vehicleX=0;
 					switch(pos)
@@ -119,14 +124,52 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 							vehicleX=870;
 							   break;
 					}
-					
+				console.log(vanSpawn);
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
 
 			
 		}
-		else if(rand===1)
+		else if(rand===1)			//respawn bike
 		{
 			let pos=random(0,1);
+			vanSpawn++;
+			this.timeDelta=0;
+			let vehicleX=0;
+				switch(pos)
+					{
+						case 0:
+							vehicleX=350;
+							break;
+						case 1:
+							vehicleX=740;
+							break;
+					}
+				console.log(vanSpawn);
+				this.poolBike.spawn(vehicleX,0,'idle_bike');
+		}
+		// else
+		// {
+		// 	let pos=random(0,1);
+		// 	this.timeDelta=0;
+		// 	let vehicleX=0;
+		// 	switch(pos)
+		// 		{
+		// 			case 0:
+		// 				vehicleX=350;
+		// 				break;
+		// 			case 1:
+		// 				vehicleX=740;
+		// 				break;
+		// 		}
+		// 	console.log("respawn");
+		// 	this.poolBike.spawn(vehicleX,0,'idle_bike');
+		// }
+		}
+		
+		else if(vanSpawn==3)
+		{
+			let pos=random(0,1);
+			vanSpawn=0;
 			this.timeDelta=0;
 			let vehicleX=0;
 			switch(pos)
@@ -138,29 +181,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 						vehicleX=740;
 						break;
 				}
-			console.log("respawn");
+			
 			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
 		}
-		else
-		{
-			let pos=random(0,1);
-			this.timeDelta=0;
-			let vehicleX=0;
-			switch(pos)
-				{
-					case 0:
-						vehicleX=350;
-						break;
-					case 1:
-						vehicleX=740;
-						break;
-				}
-			console.log("respawn");
-			this.poolBike.spawn(vehicleX,0,'idle_bike');
-		}
-		}
-
-		
 		
 	}
 }

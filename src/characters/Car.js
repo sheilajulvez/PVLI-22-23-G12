@@ -6,7 +6,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 
 		this.scene.add.existing(this);
 		this.pool=pool;
-
+	
 		this.scene.anims.create({ //animación
 			key: 'idle_BlueCar', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Car',
@@ -26,9 +26,8 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		this.setScale(1,1);
 	}
 
-	move(dt)
+	move()
 	{
-		console.log("un coche")
 		this.body.setVelocityY(100);
 		//this.y+=(40*dt)/100;
 	}
@@ -39,11 +38,12 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 			{		
 				this.scene.CarisOut(this);		
 			}
+	
 	}
 
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
-		this.move(dt);
+		this.move();
 		this.respawn();
 	}
 }
