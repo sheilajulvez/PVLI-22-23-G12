@@ -71,6 +71,9 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		
 		super.update(t,dt);
 		this.timeDelta= this.timeDelta+dt;
+		if(this.Barra.fin()){
+			this.scene.start("EscenaHablar",{name:"Aceite_fin"} )
+		}
 		
 		if(this.timeDelta>4000)
 		{

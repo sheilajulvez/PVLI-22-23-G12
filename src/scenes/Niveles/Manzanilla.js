@@ -80,6 +80,9 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 	{
 		
 		super.update(t,dt);
+		if(this.Barra.fin()){
+			this.scene.start("EscenaHablar",{name:"Manzanilla_fin"} )
+		}
 		this.timeDelta= this.timeDelta+dt;
 		
 		if(this.timeDelta>4000)

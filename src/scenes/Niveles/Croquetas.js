@@ -81,7 +81,9 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		
 		super.update(t,dt);
 		this.timeDelta= this.timeDelta+dt;
-		
+		if(this.Barra.fin()){
+			this.scene.start("EscenaHablar",{name:"Croquetas_fin"} )
+		}
 		if(this.timeDelta>4000)
 		{
 	    var rand=random(0,1);

@@ -25,7 +25,8 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("Rosi",'assets/rosalia.png');
     this.load.image("Presi","assets/presi.png");
     this.load.image("PatryRuncha","assets/PatryRuncha.png");
-    this.load.image("cajita","assets/cajastexto/guardate.png")
+    this.load.image("cajita","assets/cajastexto/guardate.png");
+
    
    
 		
@@ -39,7 +40,12 @@ export default class EscenaHablar extends Phaser.Scene{
             
             this.add.image(300,300,'Rosi').setScale(1,1);
         }
-
+        if(this.scenekey=="Arsenico"){
+            this.add.image(300,300,'PatryRuncha').setScale(1,1);
+        }
+        if(this.scenekey=="Arsenico_fin"){
+            this.add.image(300,300,"Presi");
+        }
         
        this.DisplayText(0);
         
@@ -72,8 +78,11 @@ export default class EscenaHablar extends Phaser.Scene{
                 
             }
             else{
-               
-                this.scene.start(this.scenekey);
+               if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
+                 this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
+                    this.scene.start("MapNiveles");
+                }
+                else this.scene.start(this.scenekey);
 
             }
 

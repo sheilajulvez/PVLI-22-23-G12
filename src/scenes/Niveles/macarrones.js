@@ -31,6 +31,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
 		let arrayCoches=[];
 		
+
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-1000);
@@ -98,7 +99,10 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		super.update(t,dt);
 		this.collision();
 		this.timeDelta= this.timeDelta+dt;
-		
+		if(this.Barra.fin()){
+			console.log("esto entra?")
+			this.scene.start("EscenaHablar",{name:"tomatico_fin"} )
+		}
 		if(this.timeDelta>2000)
 		{
 	    var rand=0;

@@ -22,6 +22,11 @@ export default class Bar  {
         //devuelves un bool que indica si el valor es el mismo que el de la barra
         return (this.value === this.maximo);
     }
+
+    fin(){
+      
+        return (this.value >= this.maximo);
+    }
     draw(){
         //borra la barra actual
         this.bar.clear();
