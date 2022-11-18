@@ -12,6 +12,7 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 		super(scene, x, y, 'Van');
 
 		this.scene.add.existing(this);
+		this.scene.physics.add.existing(this.van);
 		this.pool=pool;
 		this.scene.anims.create({ //animación
 			key: 'idle_WhiteCar', //identificador de la animación

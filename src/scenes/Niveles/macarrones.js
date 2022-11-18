@@ -33,39 +33,42 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
 		for(let i=0; i<5;i++)
 		{
-			this.car=new Car(this,0,-1000);
-			this.physics.add.existing(this.car);
-			this.physics.add.collider(this.player, this.car);
-			arrayCoches.push(this.car);
+			let car=new Car(this,0,-1000);
+			arrayCoches.push(car);
 			
 		}
+		
+
 		console.log(arrayCoches.length);
 		
 		this.poolCar=new Pool(this,5,arrayCoches);	
+		this.physics.add.collider(this.player, this.poolCar.getPhaserGroup());
 		
-		this.van=new Van(this,0,-1000);
-		this.physics.add.existing(this.van);
+		
 
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			arrayVan.push(this.van);
+			let van=new Van(this,0,-1000);
+			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
+		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
 
 
 
-		this.bike=new Moto(this,0,-1000);
-		this.physics.add.existing(this.bike);
+		
+		
 		let arrayBike=[];
 		for(let i=0;i<3;i++)
 		{
-			arrayBike.push(this.bike);
+			let bike=new Moto(this,0,-1000);
+			arrayBike.push(bike);
 		}
 		this.poolBike=new Pool(this,3,arrayBike);
 		
 		
-		this.physics.add.collider(this.player, this.van);
+		this.physics.add.collider(this.player, this.poolBike.getPhaserGroup());
 
 		
 

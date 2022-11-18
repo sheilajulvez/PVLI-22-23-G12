@@ -5,6 +5,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		super(scene, x, y, 'Car');
 
 		this.scene.add.existing(this);
+		this.scene.physics.add.existing(this);
 		this.pool=pool;
 	
 		this.scene.anims.create({ //animación
