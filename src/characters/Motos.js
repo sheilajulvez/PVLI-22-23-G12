@@ -6,7 +6,7 @@ export class Moto extends Car
 	{
 		super(scene,x,y,'Bike');
 		this.scene.add.existing(this);
-		this.scene.physics.add.existing(this.bike);
+		this.scene.physics.add.existing(this);
 		this.pool=pool;
 		this.scene.anims.create({
 			key:'idle_bike',

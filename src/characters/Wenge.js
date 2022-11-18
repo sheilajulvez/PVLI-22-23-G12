@@ -2,9 +2,9 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 
 	constructor(scene, x, y) {
 		super(scene, x, y, 'Wenge');
+		this.scene.add.existing(this); //lo añades a la escene
+		this.scene.physics.add.existing(this);// lo haces objeto físico
 		
-		
-
 		this.scene.anims.create({ //animación
 			key: 'idle_Wenge', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Wenge', 
@@ -41,7 +41,6 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 				this.body.setVelocityX(100);
 				console.log("drecha")
 				
-
 			}
 			else if(this.a.isDown)
 			{

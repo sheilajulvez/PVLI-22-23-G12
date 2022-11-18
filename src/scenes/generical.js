@@ -59,8 +59,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
      
 		
 		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
-		this.add.existing(this.player); //lo añades a la escene
-		this.physics.add.existing(this.player);// lo haces objeto físico
+		
 		this.Barra = new Barra(this, 10, 10);
 	}
 }
