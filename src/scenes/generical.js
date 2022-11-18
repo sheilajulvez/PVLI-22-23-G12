@@ -58,7 +58,9 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
      
 		
 		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
-		
+		this.player.body.setSize(270,300);
+		this.player.body.setOffset(330,80);
+		//this.player.body.updateBounds();
 		this.Barra = new Barra(this, 10, 10);
 	}
 }

@@ -38,7 +38,9 @@ let config= { //configuramos canvas
       arcade:
       {
         gravity:{y:0},
-        debug:false
+        debug:true,
+        debugShowBody:true,
+        debugBodyColor:0x0000ff
       }
     },
    // scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles , Aceite],
