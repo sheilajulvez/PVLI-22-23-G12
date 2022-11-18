@@ -1,4 +1,3 @@
-
 import Car from '../../characters/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
@@ -9,10 +8,12 @@ function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
-export default class Croquetas extends Generical { //creamos la escena exportada/extendida de Phaser
+
+export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 
 		super('Croquetas');
+		this.vanSpawn=0;
 		
 	}
 
@@ -21,50 +22,46 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
+
+		
 	}
 
 	create(){
 		super.create();
 		this.timeDelta=0;
-		this.car=new Car(this,0,-1000);
-		this.physics.add.existing(this.car);
-
+		
 		let arrayCoches=[];
 		
+
 		for(let i=0; i<5;i++)
 		{
-			arrayCoches.push(this.car);
+			let car=new Car(this,0,-1000);
+			arrayCoches.push(car);
+			
 		}
 		
-		this.poolCar=new Pool(this,5,arrayCoches);	
-		this.van=new Van(this,0,-1000);
-		this.physics.add.existing(this.van);
 
+		//console.log(arrayCoches.length);
+		
+		this.poolCar=new Pool(this,5,arrayCoches);	
+		this.physics.add.collider(this.player, this.poolCar.getPhaserGroup());
+		
 		
 
-
-
-				
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			arrayVan.push(this.van);
+			let van=new Van(this,0,-1000);
+			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
+		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
+
+		this.physics.add.collider(this.poolCar.getPhaserGroup(), this.poolVan.getPhaserGroup());
 		
-		//this.physics.add.existing(this.player);// lo haces objeto físico
 
+		
 
-
-
-
-
-
-
-
-		this.physics.add.collider(this.player, this.car);
-		if(this.physics.collide(this.player, this.car)) {
-    		console.log("Hay colisión");}
 		
 		
 	}
@@ -76,21 +73,34 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 	{
 		this.poolVan.release(vehicles);
 	}
+	
+	collision()
+	{
+		if(this.physics.overlap(this.poolCar.getPhaserGroup(), this.poolVan.getPhaserGroup())){
+			console.log("SOLAPAMIENTO");
+		}
+		if(this.physics.collide(this.player, this.poolCar.getPhaserGroup())) {
+    		console.log("Hay colisión");}
+	}
+	
 	update(t,dt)
 	{
 		
 		super.update(t,dt);
+		this.collision();
+		
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			this.scene.start("EscenaHablar",{name:"Croquetas_fin"} )
 		}
-		if(this.timeDelta>4000)
+		if(this.timeDelta>2000)
 		{
 	    var rand=random(0,1);
-	    if (rand===0)
+	    if (rand===0)				//respawm car
 		{
 			
 			    let pos=random(0,5);
+				this.vanSpawn++;
 				this.timeDelta=0;
 				let vehicleX=0;
 					switch(pos)
@@ -113,15 +123,22 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 						   case 5:
 							vehicleX=870;
 							   break;
+							
 					}
-					
+				//console.log('pos='+pos)
+				//console.log(this.vanSpawn);
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
 
 			
 		}
-		else if(rand===1)
+		else 			//respawn bike
 		{
+			this.vanSpawn++;
+			this.timeDelta=0;
+			if(this.vanSpawn>=2)
+			{
 			let pos=random(0,1);
+			this.vanSpawn=0;
 			this.timeDelta=0;
 			let vehicleX=0;
 			switch(pos)
@@ -133,12 +150,15 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 						vehicleX=740;
 						break;
 				}
-			console.log("respawn");
+			
 			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
+	 		}
+			
 		}
+		
 		}
-
 		
 		
-	}
+	    
+	 }
 }

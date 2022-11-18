@@ -41,7 +41,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			{
 				//this.x+=(50*dt)/100;
 				this.body.setVelocityX(100);
-				console.log("drecha")
+				
 				
 			}
 			else if(this.a.isDown)

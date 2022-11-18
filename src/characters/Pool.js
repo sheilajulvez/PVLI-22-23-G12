@@ -20,7 +20,6 @@ export default class Pool {
 	
 	
 	
-	
 	spawn (x, y,animationKey) {
 		let entity = this._group.getFirstDead();
 			//Nunca deberían existir grupos sin elementos activo

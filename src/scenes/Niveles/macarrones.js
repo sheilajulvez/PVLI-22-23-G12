@@ -128,7 +128,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		{
 			this.vanSpawn++;
 			this.timeDelta=0;
-			if(this.vanSpawn===2)
+			if(this.vanSpawn>=2)
 			{
 			let pos=random(0,1);
 			this.vanSpawn=0;
