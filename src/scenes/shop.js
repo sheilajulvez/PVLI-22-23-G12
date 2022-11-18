@@ -9,7 +9,6 @@ export default class Shop extends Phaser.Scene{
 	}
 	create(){
 		this.add.image(500,350,'armario');
-
 	}
 
 }
