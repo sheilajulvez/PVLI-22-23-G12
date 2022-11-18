@@ -13,6 +13,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	constructor(){
 
 		super('tomatico');
+		this.vanSpawn=0;
 		
 	}
 
@@ -21,6 +22,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
+
 		
 	}
 
@@ -91,7 +93,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		{
 			
 			    let pos=random(0,5);
-				vanSpawn++;
+				this.vanSpawn++;
 				this.timeDelta=0;
 				let vehicleX=0;
 					switch(pos)
@@ -117,19 +119,19 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 							
 					}
 				console.log('pos='+pos)
-				console.log(vanSpawn);
+				console.log(this.vanSpawn);
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
 
 			
 		}
-		else if(rand===1)			//respawn bike
+		else 			//respawn bike
 		{
-			vanSpawn++;
+			this.vanSpawn++;
 			this.timeDelta=0;
-			if(vanSpawn===2)
+			if(this.vanSpawn===2)
 			{
 			let pos=random(0,1);
-			vanSpawn=0;
+			this.vanSpawn=0;
 			this.timeDelta=0;
 			let vehicleX=0;
 			switch(pos)

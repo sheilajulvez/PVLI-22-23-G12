@@ -8,11 +8,12 @@ import Pool  from '../../characters/Pool.js';
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
-var vanSpawn=0;
+
 export default class Aceite extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 
 		super('Aceite');
+		this.vanSpawn=0;
 		
 	}
 
@@ -104,46 +105,9 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		}
 		if(this.timeDelta>2000)
 		{
-	    var rand=random(0,1);
-	    if (rand===0)				//respawm car
-		{
-			
-			    let pos=random(0,5);
-				vanSpawn++;
-				this.timeDelta=0;
-				let vehicleX=0;
-					switch(pos)
-					 {
-						  case 0:
-							  vehicleX=210;
-							  break;
-						   case 1:
-							  vehicleX=350;
-							  break;
-						   case 2:
-							vehicleX=480;
-							  break;
-						   case 3:
-							   vehicleX=610;
-							   break;
-						   case 4:
-							vehicleX=740;
-							   break;
-						   case 5:
-							vehicleX=870;
-							   break;
-							
-					}
-				console.log('pos='+pos)
-				console.log(vanSpawn);
-				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-
-			
-		}
-		else if(rand===1)			//respawn bike
-		{
-			let pos=random(0,1);
-			vanSpawn++;
+	   				//respawm car
+		let pos=random(0,1);
+			this.vanSpawn++;
 			this.timeDelta=0;
 			let vehicleX=0;
 				switch(pos)
@@ -155,17 +119,16 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 							vehicleX=740;
 							break;
 					}
-				console.log(vanSpawn);
-				this.poolBike.spawn(vehicleX,0,'idle_bike');
-		}
+				console.log(this.vanSpawn);
+				this.poolBike.spawn(vehicleX,0,'idle_bike');	
+
+			
 		
-		}
 		
-		
-	    if(vanSpawn===4)
+	    if(this.vanSpawn===4)
 		{
 			let pos=random(0,1);
-			vanSpawn=0;
+			this.vanSpawn=0;
 			this.timeDelta=0;
 			let vehicleX=0;
 			switch(pos)
@@ -181,4 +144,5 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
 	 	}
 	 }
+ }
 }
