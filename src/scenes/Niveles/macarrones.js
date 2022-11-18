@@ -105,7 +105,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		if(this.timeDelta>2000)
 		{
-	    var rand=0;
+	    var rand=random(0,1);
 	    if (rand===0)				//respawm car
 		{
 			

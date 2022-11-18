@@ -44,7 +44,7 @@ export default class EscenaHablar extends Phaser.Scene{
             this.add.image(300,300,'PatryRuncha').setScale(1,1);
         }
         if(this.scenekey=="Arsenico_fin"){
-            this.add.image(300,300,"Presi");
+            this.add.image(300,300,"Presi").setScale(1,1);
         }
         
        this.DisplayText(0);
