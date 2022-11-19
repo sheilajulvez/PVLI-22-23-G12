@@ -25,7 +25,10 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 
 		
 	}
-
+	init(datos){
+        this.stay = datos.stay;
+       
+    }
 	create(){
 		super.create();
 		this.timeDelta=0;
@@ -91,7 +94,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
-			this.scene.start("EscenaHablar",{name:"Croquetas_fin"} )
+			this.scene.start("EscenaHablar",{name:"Croquetas_fin",stay:this.stay} )
 		}
 		if(this.timeDelta>2000)
 		{

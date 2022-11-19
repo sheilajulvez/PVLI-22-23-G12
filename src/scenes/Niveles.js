@@ -6,7 +6,7 @@ export default class Niveles extends Phaser.Scene {
         super({ key: 'MapNiveles'});
         
         this.Nivel =[ ];
-           
+           this.stay=0;
          //posicion + nombre de la imagen
        // this.NivButton= this.relatedScene.add.image(500,200,'next_level');
       //  this.add.image(500,100, 'boton');
@@ -23,11 +23,11 @@ export default class Niveles extends Phaser.Scene {
         //Nivel[0];
         this.add.image(500,350,'mapaciudad');
 
-        this.Nivel.push(new Button(this, 135,485, 'boton', 'EscenaHablar','tomatico')) 
-        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla')) 
-        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite')) 
-        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas')) 
-        this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico'))  
+        this.Nivel.push(new Button(this, 135,485, 'boton', 'EscenaHablar','tomatico',this.stay, 1 )) 
+        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla', this.stay,2)) 
+        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite',this.stay,3)) 
+        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas',this.stay,4)) 
+        this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico',this.stay,5))  
         
         // primBot =this.add.image(500,350,'boton').setInteractive();
        // boton =this.add.image(500,350,'boton');
@@ -39,6 +39,18 @@ export default class Niveles extends Phaser.Scene {
         
 
     }
+    
+    init(datos){
+        console.log("INIT");
+        
+        if (datos.stay == this.stay){
+            this.stay = this.stay +1;
+        }
+        console.log(datos.stay);
+        console.log(this.stay);
+       
+    }
+
 }
 
 

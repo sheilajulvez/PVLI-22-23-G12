@@ -13,7 +13,7 @@ export default class EscenaHablar extends Phaser.Scene{
 
 	}
     init(datos){
-        
+        this.stay= datos.stay;
         this.scenekey=datos.name;
        console.log(this.scenekey);
         
@@ -80,9 +80,10 @@ export default class EscenaHablar extends Phaser.Scene{
             else{
                if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
                  this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
-                    this.scene.start("MapNiveles");
+                    this.scene.start("MapNiveles",{stay:this.stay})
+			
                 }
-                else this.scene.start(this.scenekey);
+                else this.scene.start(this.scenekey,{stay:this.stay});
 
             }
 

@@ -24,7 +24,10 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 		this.load.spritesheet('Bike','assets/Moto.jpg',{frameWidth:166 , frameHeight:490});
 	}
-
+	init(datos){
+        this.stay = datos.stay;
+       
+    }
 	create(){
 		super.create();
 		this.timeDelta=0;
@@ -101,7 +104,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			console.log("esto entra?")
-			this.scene.start("EscenaHablar",{name:"tomatico_fin"} )
+			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay} )
 		}
 		if(this.timeDelta>2000)
 		{

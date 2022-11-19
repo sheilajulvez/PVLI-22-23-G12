@@ -14,8 +14,8 @@ export default class menu extends Phaser.Scene{
 	}
 	create(){
 		this.add.image(500,350,'fondoMenu');
-		this.Botones.push(new Button(this, 400,200, 'next_level', 'MapNiveles')) 
-        this.Botones.push(new Button(this, 400,600, 'quit_buttom', 'inicio')) 
-        this.Botones.push(new Button(this, 400,400, 'shop_button', 'shop')) 
+		this.Botones.push(new Button(this, 400,200, 'next_level', 'MapNiveles',null, 0,0)) 
+        this.Botones.push(new Button(this, 400,600, 'quit_buttom', 'inicio',null, 0,0)) 
+        this.Botones.push(new Button(this, 400,400, 'shop_button', 'shop',null, 0,0)) 
 	}
 }

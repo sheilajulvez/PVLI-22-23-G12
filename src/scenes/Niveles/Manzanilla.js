@@ -22,7 +22,10 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 	}
-
+	init(datos){
+        this.stay = datos.stay;
+       
+    }
 	create(){
 		super.create();
 		this.timeDelta=0;
@@ -81,7 +84,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		
 		super.update(t,dt);
 		if(this.Barra.fin()){
-			this.scene.start("EscenaHablar",{name:"Manzanilla_fin"} )
+			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay} )
 		}
 		this.timeDelta= this.timeDelta+dt;
 		

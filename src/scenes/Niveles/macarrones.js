@@ -76,6 +76,10 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		if(this.physics.collide(this.player, this.car)||this.physics.collide(this.player, this.van)) {
     		console.log("Hay colisión");}
 	}
+	init(datos){
+        this.stay = datos.stay;
+       
+    }
 	update(t,dt)
 	{
 		
@@ -84,7 +88,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			console.log("esto entra?")
-			this.scene.start("EscenaHablar",{name:"tomatico_fin"} )
+			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay} )
 		}
 		if(this.timeDelta>2000)
 		{

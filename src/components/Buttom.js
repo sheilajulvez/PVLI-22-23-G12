@@ -1,6 +1,6 @@
 export default class Button extends Phaser.GameObjects.Sprite{
 
-	constructor(scene,x,y, name, scarga,nombre=null){
+	constructor(scene,x,y, name, scarga,nombre, stay, niv){
 		console.log(name);
 		super(scene, x, y,name);
 		this.scene.add.existing(this);
@@ -8,6 +8,8 @@ export default class Button extends Phaser.GameObjects.Sprite{
 		this.scene = scene;
 		this.nombre=nombre;
         this.setInteractive();
+		this.stay = stay;
+		this.nivel = niv;
 		this.create();
 	}
 
@@ -21,13 +23,14 @@ export default class Button extends Phaser.GameObjects.Sprite{
 			this.startButton.setFrame(0);
 		
 		});*/
-
-		this.on('pointerdown',() => {
-			this.scene.scene.start(this.scarga,{name:this.nombre});
-			console.log("nombre"+this.nombre);
-		});
-
+		console.log(this.nivel);
+		console.log(this.stay);
+			this.on('pointerdown',() => {
+					if (this.nivel<= this.stay){
+				this.scene.scene.start(this.scarga,{name:this.nombre,stay:this.nivel});
+			}
+			});
+		
 	}
-
 
 }

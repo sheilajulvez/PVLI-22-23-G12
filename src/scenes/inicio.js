@@ -11,6 +11,6 @@ export default class inicio extends Phaser.Scene{
 	}
 	create(){
 		this.add.image(500,350,'fondoIni');
-		this.Botones.push(new Button(this, 400,200, 'start_button', 'menu')) 
+		this.Botones.push(new Button(this, 400,200, 'start_button', 'menu',null, 0,0));
 	}		
 }
