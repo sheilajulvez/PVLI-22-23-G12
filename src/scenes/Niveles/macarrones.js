@@ -2,6 +2,7 @@ import Car from '../../characters/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
+//import explosion from '../characters/explosion.js';
 
 
 function random(min, max) {
@@ -22,6 +23,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
+		this.load.spritesheet('Explosion','assets/inicio.jpg',{frameWidth:311 , frameHeight:	512	});
+
 
 		
 	}
@@ -29,22 +32,20 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	create(){
 		super.create();
 		this.timeDelta=0;
-		
 		let arrayCoches=[];
-		
+
+
 
 		for(let i=0; i<5;i++)
 		{
-			let car=new Car(this,0,-1000);
+			let car=new Car(this,0,-500);
 			arrayCoches.push(car);
 			
 		}
-		
 
-		console.log(arrayCoches.length);
 		
 		this.poolCar=new Pool(this,5,arrayCoches);	
-		this.physics.add.collider(this.player, this.poolCar.getPhaserGroup());
+		this.physics.add.overlap(this.player, this.poolCar.getPhaserGroup());
 		
 		
 
@@ -55,7 +56,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
-		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
+		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
 
 		
 
@@ -73,12 +74,19 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	
 	collision()
 	{
-		if(this.physics.collide(this.player, this.car)||this.physics.collide(this.player, this.van)) {
-    		console.log("Hay colisión");}
+		console.log("col");
+		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())||this.physics.overlap(this.player, this.poolVan.getPhaserGroup())) 
+		{
+    		console.log("Hay colisión");
+		}
+		else if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))
+		{
+			console.log("Colision coches");
+		}
 	}
-	init(datos){
-        this.stay = datos.stay;
-       
+	init(datos)
+	{
+        this.stay = datos.stay; 
     }
 	update(t,dt)
 	{
