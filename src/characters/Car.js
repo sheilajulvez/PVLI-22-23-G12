@@ -7,6 +7,8 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		this.scene.add.existing(this);
 		this.scene.physics.add.existing(this);
 		this.pool=pool;
+		this.body.setSize(90,180);
+		this.body.setOffset(10,35);
 	
 		this.scene.anims.create({ //animación
 			key: 'idle_BlueCar', //identificador de la animación
