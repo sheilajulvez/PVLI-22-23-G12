@@ -15,6 +15,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 
 		super('tomatico');
 		this.vanSpawn=0;
+		this.collisionCar=false;
+		this.collisionVan=false;
 		
 	}
 
@@ -33,7 +35,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		super.create();
 		this.timeDelta=0;
 		let arrayCoches=[];
-
+		
 
 
 		for(let i=0; i<5;i++)
@@ -75,9 +77,13 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	collision()
 	{
 		console.log("col");
-		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())||this.physics.overlap(this.player, this.poolVan.getPhaserGroup())) 
+		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())) 
 		{
-    		console.log("Hay colisión");
+    		console.log("CAR");
+		}
+		else if(this.physics.overlap(this.player, this.poolVan.getPhaserGroup()))
+		{
+			console.log("VAN");
 		}
 		else if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))
 		{

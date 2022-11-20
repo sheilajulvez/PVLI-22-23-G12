@@ -7,6 +7,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		this.scene.add.existing(this);
 		this.scene.physics.add.existing(this);
 		this.pool=pool;
+		this.destroyNow=false;
 		this.body.setSize(90,180);
 		this.body.setOffset(10,35);
 	
@@ -32,7 +33,13 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 	move()
 	{
 		this.body.setVelocityY(200);
-		//this.y+=(40*dt)/100;
+	}
+	collision()
+	{
+		if(this.scene.physics.overlap(this.scene.player, this)) 
+		{
+    		this.destroyNow=true;
+		}
 	}
 	respawn()
 	{
@@ -46,7 +53,13 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
+		this.collision();
 		this.move();
 		this.respawn();
+		if(this.destroyNow==true)
+		{
+			this.destroyNow=false;
+			this.scene.poolCar.release(this);
+		}
 	}
 }

@@ -14,6 +14,7 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 		this.scene.add.existing(this);
 		this.scene.physics.add.existing(this);
 		this.pool=pool;
+		this.destroyNow=false;
 		this.body.setSize(80,150);
 		this.body.setOffset(10,20);
 		this.scene.anims.create({ //animación
@@ -55,6 +56,13 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 			dir='r';
 		}
 	}
+	collision()
+	{
+		if(this.scene.physics.overlap(this.scene.player, this)) 
+		{
+    		this.destroyNow=true;
+		}
+	}
 	respawn()				//comprobación si la cota es la indicada para el respawn	
 	{
 	
@@ -72,6 +80,12 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
            this.move(dt,dir);
 		   this.changeDir(cotaDer,cotaIzq);
 		   this.respawn();
+		   this.collision();
+		   if(this.destroyNow==true)
+		   {
+			this.destroyNow=false;
+			this.scene.poolVan.release(this);
+		   }
 	}
 
 }

@@ -15,6 +15,7 @@ export default class Pool {
 	  });
 	  this.max=max;
 	  this.scene=scene;
+	  this.now=null;
 	}
 	//mostrar un objeto en escena
 	
@@ -25,6 +26,7 @@ export default class Pool {
 			//Nunca deberían existir grupos sin elementos activo
 		if (entity)
 	    {
+		  this.now=entity;
 		  entity.x = x;
 		  entity.y = y;
 		  entity.play(animationKey);
@@ -37,6 +39,7 @@ export default class Pool {
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
 		this._group.killAndHide(entity);
+		
 	}
 	getPhaserGroup(){
 		return this._group;
