@@ -26,6 +26,11 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("Presi","assets/presi.png");
     this.load.image("PatryRuncha","assets/PatryRuncha.png");
     this.load.image("cajita","assets/cajastexto/guardate.png");
+    this.load.image("fondo_soleado","assets/Daytime_Background_1024x800.png");
+    this.load.image("fondo_noche","assets/dark background.png");
+    this.load.image("jefa_wenge","assets/jefa_de_Wenge.png");
+    this.load.image("Sheila","assets/Sheila.png");
+    this.load.image("Twitero","assets/twitero.png");
 
    
    
@@ -34,18 +39,43 @@ export default class EscenaHablar extends Phaser.Scene{
 
 
     create(){
+        //ponemos el fondo que toca
+        if(this.scenekey=="tomatico"
+        ||this.scenekey=="Arsenico"||this.scenekey=="tomatico_fin"||this.scenekey=="Manzanilla"
+        ||this.scenekey=="Manzanilla_fin"){
+            this.add.image(1,1,"fondo_soleado").setScale(1,1).setOrigin(0,0);
+        }
+        else if(this.scenekey=="Aceite"||this.scenekey=="Aciete_fin"||this.scenekey=="Croquetas"
+        ||this.scenekey=="Croquetas_fin"){
+            this.add.image(0,0,"fondo_noche").setScale(2,2);
+        }
+        //personajes y fotos
         this.add.image(340,830,"cajita").setScale(1.7,1.3);
         this.add.image(800,300,'Wengecara').setScale(0.8,0.8);
-        if(this.scenekey=="tomatico"){
+        if(this.scenekey=="tomatico"||this.scenekey=="Aceite"||this.scenekey=="Croquetas"
+        ||this.scenekey=="Manzanilla"){
             
-            this.add.image(300,300,'Rosi').setScale(1,1);
+            this.add.image(300,300,'jefa_wenge').setScale(0.8,0.8);
         }
+      
         if(this.scenekey=="Arsenico"){
-            this.add.image(300,300,'PatryRuncha').setScale(1,1);
+            this.add.image(300,270,'PatryRuncha').setScale(1,1);
         }
-        if(this.scenekey=="Arsenico_fin"){
-            this.add.image(300,300,"Presi").setScale(1,1);
+        if(this.scenekey=="Aceite_fin"){
+            this.add.image(300,270,"Rosi").setScale(1,1);
         }
+        if(this.scenekey=="tomatico_fin"){
+            this.add.image(300,300,"Twitero").setScale(0.6,0.6);
+        }
+        if(this.scenekey=="Croquetas_fin"){
+            this.add.image(300,300,"Sheila").setScale(1,0.8);
+        }
+
+
+        if(this.scenekey=="Arsenico_fin"||this.scenekey=="Manzanilla_fin"){
+            this.add.image(300,270,"Presi").setScale(1,1);
+        }
+      
         
        this.DisplayText(0);
         

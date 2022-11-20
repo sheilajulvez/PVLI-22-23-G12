@@ -104,7 +104,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			console.log("esto entra?")
-			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay} )
+			this.scene.start("EscenaHablar",{name:"Aceite_fin",stay:this.stay} )
 		}
 		if(this.timeDelta>2000)
 		{
