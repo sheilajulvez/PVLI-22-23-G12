@@ -12,10 +12,10 @@ export default class explosion extends Phaser.GameObjects.Sprite { //exportamos 
 			frames: scene.anims.generateFrameNumbers('Explosion', 
 			{
 				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
-				end:3 // última imagen del Spritesheet que se ejecuta en la animación
+				end:2 // última imagen del Spritesheet que se ejecuta en la animación
 			}), 
 			frameRate: 10, // imágenes/frames por segundo
-			repeat: -1 //para que sea bucle
+			repeat: 0 //para que sea bucle
 		});
 
 		
@@ -27,7 +27,13 @@ export default class explosion extends Phaser.GameObjects.Sprite { //exportamos 
 
 	
    
-	update(t, dt){
+	update(t, dt)
+	{
+		this.timePassed=+dt;
+		if(this.timePassed>3000)
+		{
+			delete this;
+		}
 	}
 
 

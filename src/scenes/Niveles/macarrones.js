@@ -2,7 +2,7 @@ import Car from '../../characters/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
-//import explosion from '../characters/explosion.js';
+import explosion from '../../characters/explosion.js';
 
 
 function random(min, max) {
@@ -74,7 +74,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.poolVan.release(vehicles);
 	}
 	
-	collision()
+	collision(dt)
 	{
 		console.log("col");
 		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())) 
@@ -87,7 +87,12 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		else if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))
 		{
-			console.log("Colision coches");
+			this.explosion=new explosion(this,110,110);
+			var delete1=+dt;
+			if(delete1>3000)
+			{
+				delete this.explosion;
+			}
 		}
 	}
 	init(datos)
@@ -98,7 +103,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		
 		super.update(t,dt);
-		this.collision();
+		this.collision(dt);
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			console.log("esto entra?")

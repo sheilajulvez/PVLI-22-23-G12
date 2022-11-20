@@ -59,6 +59,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		if(this.destroyNow==true)
 		{
 			this.destroyNow=false;
+			
 			this.scene.poolCar.release(this);
 		}
 	}
