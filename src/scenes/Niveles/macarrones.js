@@ -25,7 +25,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-		this.load.spritesheet('Explosion','assets/inicio.jpg',{frameWidth:311 , frameHeight:	512	});
+		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:311 , frameHeight:	512	});
 
 
 		
@@ -35,8 +35,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		super.create();
 		this.timeDelta=0;
 		let arrayCoches=[];
-		
-
 
 		for(let i=0; i<5;i++)
 		{
@@ -44,13 +42,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayCoches.push(car);
 			
 		}
-
-		
 		this.poolCar=new Pool(this,5,arrayCoches);	
 		this.physics.add.overlap(this.player, this.poolCar.getPhaserGroup());
 		
-		
-
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
@@ -58,13 +52,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
-		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
-		
-
-		
-
-		
-		
+		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());	
 	}
 	CarisOut(vehicles)
 	{
@@ -77,7 +65,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	
 	collision(dt)
 	{
-		console.log("col");
 		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())) 
 		{
     		console.log("CAR");
@@ -86,16 +73,40 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		{
 			console.log("VAN");
 		}
-		else if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))
+		if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))
 		{
-			this.explosion=new explosion(this,110,110);
+			/*this.explosion=new explosion(this,110,110);
 			var delete1=+dt;
 			if(delete1>3000)
 			{
 				delete this.explosion;
+			}*/
+			if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
+				createExplosion(
+					this.poolVan.getPhaserGroup().body.center.x,
+					this.poolCar.getPhaserGroup().body.top);
+
+
 			}
+			else if(this.poolVan.getPhaserGroup().body.down && this.poolCar.getPhaserGroup().body.up){
+				createExplosion(
+					this.poolCar.getPhaserGroup().body.center.x,
+					this.poolVan.getPhaserGroup().body.top);
+
+			}
+			
 		}
+		
+		
+
+
 	}
+	createExplosion(x,y){
+		var explosion=new explosion(this,x,y);
+
+	}
+
+
 	init(datos)
 	{
         this.stay = datos.stay; 

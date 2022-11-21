@@ -7,19 +7,20 @@ export default class explosion extends Phaser.GameObjects.Sprite { //exportamos 
 		//this.body.setSize(200,220);
 		//this.body.setOffset(360,140);
 		
-		this.scene.anims.create({ //animación
+		/*this.scene.anims.create({ //animación
 			key: 'idle_Explosion', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Explosion', 
 			{
 				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
-				end:2 // última imagen del Spritesheet que se ejecuta en la animación
+				end:3 // última imagen del Spritesheet que se ejecuta en la animación
 			}), 
 			frameRate: 10, // imágenes/frames por segundo
 			repeat: 0 //para que sea bucle
 		});
 
+
 		
-		this.play('idle_Explosion'); //activa la animavcion
+		this.play('idle_Explosion'); //activa la animavcion*/
 
 		this.setScale(0.35,0.35);
 	}
@@ -27,7 +28,7 @@ export default class explosion extends Phaser.GameObjects.Sprite { //exportamos 
 
 	
    
-	update(t, dt)
+	update(dt)
 	{
 		this.timePassed=+dt;
 		if(this.timePassed>3000)
