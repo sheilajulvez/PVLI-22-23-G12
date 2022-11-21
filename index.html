@@ -20,59 +20,47 @@ JOSE MORENO BARBERO
     <script src="./lib/phaser.js"></script>
     <!--carga el script de game-->
     <script type="module" src="./src/game.js"></script>      
-
-
 </head>
 <body>
      <!-- Titulo del juego-->
-    <h1>Plobo</h1>
-    <div>
- 
-        <div class="tab">
-          <!-- tres botones -->
-            <button class="tablinks" onclick="newtab(event, 'RedSoc')">Redes Sociales</button>
-            <button class="tablinks" onclick="newtab(event, 'Estudio')">Estudio</button>
-            <button class="tablinks" onclick="newtab(event, 'Juego')">Juego</button>
-            <button class="tablinks" onclick="newtab(event, 'Controles')">Controles</button>
-          </div>
+     <div id="navbar">
+      <img id="logo"src="assets/icono.png" height=75 width=75> <h1> Plobo</h1>
+      
+      <div id="myNav" class="overlay">
+        <a  class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a class="tablinks" onclick="newtab(event, 'Estudio')">Kulenga Studios </a>
+          <a class="tablinks" onclick="newtab(event, 'Redes')">Contactanos</a>
+          <a class="tablinks" onclick="newtab(event, 'Controles')">Controles</a>
+        </div>
+      </div>
+      <span style="font-size:30px"  class = p  onclick="openNav()">&#9776; open:).....</span>
+    </div>
+    <div id="Redes" class="tabcontent">
+      <br><br><br><br><br>
+      <p>
+        Hola!<br>
+        Puedes encontrarnos en estas Redes Sociales, agradecemos tu apoyo.<br><br>
+        <a href="https://twitter.com/Kulenga_Studios" taget="_blank">
           
-          <!-- Tab content -->
-          <div id="RedSoc" class="tabcontent">
-            <h3>Redes Sociales</h3>
-            <p>Hola!<br>
-              Puedes encontrarnos en estas Redes Sociales, agradecemos tu apoyo.<br><br>
-              <a href="https://twitter.com/Kulenga_Studios" taget="_blank">
-                <img src="assets/twitter.png" height=150 width=200>
-                <a href="https://www.tiktok.com/@kulengastudios" taget="_blank">
-                  <img src="assets/tiktok.png" height=150 width=200> </a>
-            </p>
-          </div>
-          
-          <div id="Estudio" class="tabcontent">
-            <h3 title="Imagen del estudio"> <img src="assets/Kulenga.png" height=60 width=60>Estudio</h3>
-            <p>Desarrollando PLOBO<br>
-              <img src="assets/logo.png" height=150 width=200><br>
-              Kulenga Studios es un grupo de estudiantes de videojuegos de la UCM.<br>
-            Está formado por: Francisco Miguel Galván, Sheila Julvez, Cristina Mora y Jose Moreno <br>
-            Creadores de juegos como NEON RISING </p>
-          </div>
-          
-          <div id="Juego" class="tabcontent">
-            <h3>Juego</h3><br>
-          </div>
-
-          <div id="Controles" class="tabcontent">
-            <h3 title="ControlesMovimiento"> Controla el movimiento de Wenge</h3>
-            
-            <center><img src="assets/image-1.png.png" height=250 width=300></center>
-          </div>
-
-          <footer>
-            "Copyright 2022-2023 Plobo. All rights reserved Kulenga Studios"
-          </footer>
-            
-       
+          <a href="https://www.tiktok.com/@kulengastudios" taget="_blank">
+            <img src="assets/tiktok.png" height=150 width=200> </a>
+      </p>
+    </div>
+    <div id="Estudio" class="tabcontent">
+      <p>Desarrollando PLOBO<br>
+        <img src="assets/logo.png" height=150 width=200><br>
+        Kulenga Studios es un grupo de estudiantes de videojuegos de la UCM.<br>
+      Está formado por: Francisco Miguel Galván, Sheila Julvez, Cristina Mora y Jose Moreno <br>
+      Creadores de juegos como NEON RISING </p>
+    </div>
+    <div id="Controles" class="tabcontent">      
+      <center><img src="assets/image-1.png.png" height=250 width=300></center>
     </div>
 
+    <div><br><br><br><br><br> 
+      
+    </div> 
+ 
 </body>
 </html>

@@ -19,5 +19,12 @@
 		document.getElementById(opcion).style.display = "block"; //block hace que el elemento se represente como un bloque
 		evt.currentTarget.className += " active";
 	  }
+	  function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+      }
+      
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+      }
 
 	  

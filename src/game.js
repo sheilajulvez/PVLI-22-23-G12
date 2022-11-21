@@ -14,7 +14,7 @@ import Niveles from './scenes/Niveles.js'
 
 let config= { //configuramos canvas
   type: Phaser.AUTO,
-  parent:'Juego',  //crea el canvas dentro del index
+   parent:'Juego',  //crea el canvas dentro del index
   //ancho y alto de pantalla como window, ya se ira viendo
   width:1000,
   height: 700,
@@ -38,7 +38,7 @@ let config= { //configuramos canvas
       arcade:
       {
         gravity:{y:0},
-        debug:false,
+        debug:true,
         debugShowBody:true,
         debugBodyColor:0x0000ff
       }
