@@ -31,24 +31,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 	create(){
 		super.create();
 		this.timeDelta=0;
-		
-		let arrayCoches=[];
-		
 
-		for(let i=0; i<5;i++)
-		{
-			let car=new Car(this,0,-1000);
-			arrayCoches.push(car);
-			
-		}
-		
-
-		console.log(arrayCoches.length);
-		
-		this.poolCar=new Pool(this,5,arrayCoches);	
-		this.physics.add.collider(this.player, this.poolCar.getPhaserGroup());
-		
-		
 
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
@@ -79,10 +62,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		
 		
 	}
-	CarisOut(vehicles)
-	{
-		this.poolCar.release(vehicles);
-	}
+	
 	VanisOut(vehicles)
 	{
 		this.poolVan.release(vehicles);
@@ -93,13 +73,12 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 	}
 	collision()
 	{
-		if(this.physics.collide(this.player, this.car)||this.physics.collide(this.player, this.van)) {
-    		console.log("Hay colisión");}
+		
 	}
 	update(t,dt)
 	{
 		
-		super.update(t,dt);
+		super.update();
 		this.collision();
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){

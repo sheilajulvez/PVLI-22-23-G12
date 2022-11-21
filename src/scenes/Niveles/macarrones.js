@@ -59,6 +59,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
+		
 
 		
 
@@ -102,7 +103,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	update(t,dt)
 	{
 		
-		super.update(t,dt);
+		super.update();
 		this.collision(dt);
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){

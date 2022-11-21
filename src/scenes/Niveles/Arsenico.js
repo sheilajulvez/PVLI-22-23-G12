@@ -83,7 +83,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 	update(t,dt)
 	{
 		
-		super.update(t,dt);
+		super.update();
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			this.scene.start("EscenaHablar",{name:"Arsenico_fin",stay:this.stay} )

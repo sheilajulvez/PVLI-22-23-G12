@@ -9,7 +9,7 @@ function random(min, max) {
 }
 
 
-export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
+export default class Croquetas extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 
 		super('Croquetas');
@@ -89,7 +89,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	update(t,dt)
 	{
 		
-		super.update(t,dt);
+		super.update();
 		this.collision();
 		
 		this.timeDelta= this.timeDelta+dt;

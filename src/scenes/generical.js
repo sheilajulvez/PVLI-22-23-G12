@@ -19,13 +19,11 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	init(){ // inicializar, se ejecuta cada vez que reiniciamos o iniciamos por primera vez
 		this.life=0;
 	}
-	update(time, delta) {
+	update() {
 		  let x = Math.random() * this.game.config.width
 		  let y = 0
-		  this.Barra.aumenta(time/1000);
-			
-			//this.Barra.draw();
-			this.player.update();
+		  this.Barra.aumenta(10);
+		  this.player.update();
 	  }
 	
 	preload(){
