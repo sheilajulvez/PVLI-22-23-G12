@@ -18,6 +18,7 @@
 		// coge el elemento con el id de la opcion querida y activa su contenido
 		document.getElementById(opcion).style.display = "block"; //block hace que el elemento se represente como un bloque
 		evt.currentTarget.className += " active";
+		if (opcion !="Juego") closeNav();
 	  }
 	  function openNav() {
         document.getElementById("myNav").style.width = "100%";
@@ -27,4 +28,6 @@
         document.getElementById("myNav").style.width = "0%";
       }
 
-	  
+	  window.onload = function () {
+		newtab(event, 'Juego');
+	  }
