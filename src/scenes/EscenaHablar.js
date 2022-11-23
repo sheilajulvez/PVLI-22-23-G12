@@ -50,7 +50,7 @@ export default class EscenaHablar extends Phaser.Scene{
             this.add.image(0,0,"fondo_noche").setScale(2,2);
         }
         //personajes y fotos
-        this.add.image(340,830,"cajita").setScale(1.7,1.3);
+       
         this.add.image(800,300,'Wengecara').setScale(0.8,0.8);
         if(this.scenekey=="tomatico"||this.scenekey=="Aceite"||this.scenekey=="Croquetas"
         ||this.scenekey=="Manzanilla"){
@@ -76,7 +76,7 @@ export default class EscenaHablar extends Phaser.Scene{
             this.add.image(300,270,"Presi").setScale(1,1);
         }
       
-        
+        this.cajita= this.add.image(340,830,"cajita").setScale(1.7,1.3);
        this.DisplayText(0);
         
     }
@@ -99,8 +99,29 @@ export default class EscenaHablar extends Phaser.Scene{
 		//text.setAlign('center');
         text.setTint(0x000000);
 		text.setInteractive();
+
+        
       
 		text.on('pointerdown', ()=>{
+            text.scene.tweens.add(
+                {
+                    targets: text,
+                    scaleX: 0.9,
+                    scaleY: 0.9,
+                    duration: 150,
+                    yoyo: true
+                }
+            );
+            this.cajita.scene.tweens.add(
+                {
+                    targets: this.cajita,
+                    scaleX: 0.9,
+                    scaleY: 0.9,
+                    duration: 100,
+                    yoyo: true
+                }
+            );
+
 			if(a<Textos.longitud-1){
 
                 a++;

@@ -23,10 +23,16 @@ export default class Button extends Phaser.GameObjects.Sprite{
 			this.startButton.setFrame(0);
 		
 		});*/
-		console.log(this.nivel);
+		console.log(this.nivel);	
 		console.log(this.stay);
+		
+		
 			this.on('pointerdown',() => {
+
+	
+
 					if (this.nivel<= this.stay){
+						
 				this.scene.scene.start(this.scarga,{name:this.nombre,stay:this.nivel});
 			}
 			});
