@@ -41,14 +41,14 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			if(this.d.isDown)
 			{
 				//this.x+=(50*dt)/100;
-				this.body.setVelocityX(100);
+				this.body.setVelocityX(500);
 				
 				
 			}
 			else if(this.a.isDown)
 			{
 				//this.x-=(50*dt)/100;
-				this.body.setVelocityX(-100);
+				this.body.setVelocityX(-500);
 
 			}
 			else{
@@ -61,7 +61,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			if(this.d.isDown)
 			{
 				//this.x+=(50*dt)/100;
-				this.body.setVelocityX(300);
+				this.body.setVelocityX(500);
 			}
 			else {
 				this.body.setVelocityX(0);
@@ -72,7 +72,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			if(this.a.isDown)
 			{
 				//this.x-=(50*dt)/100;
-				this.body.setVelocityX(-300);
+				this.body.setVelocityX(-500);
 			}
 			else{
 				this.body.setVelocityX(0);

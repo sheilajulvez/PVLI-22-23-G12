@@ -53,6 +53,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());	
+		this.physics.add.overlap()
 	}
 	CarisOut(vehicles)
 	{
