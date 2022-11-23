@@ -44,9 +44,16 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 	respawn()
 	{
 		
+		if(this.y>540)
+		{
+			if(this.body.checkCollision.none)
+				this.body.checkCollision.none=false;
+		}
+
 		if (this.y>800) 
 			{		
 				this.scene.CarisOut(this);		
+				
 			}
 	
 	}
@@ -59,8 +66,9 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		if(this.destroyNow==true)
 		{
 			this.destroyNow=false;
-			
+			this.body.checkCollision.none=true;
 			this.scene.poolCar.release(this);
 		}
+		
 	}
 }

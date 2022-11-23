@@ -66,6 +66,11 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 	respawn()				//comprobación si la cota es la indicada para el respawn	
 	{
 	
+		if(this.y>540)
+		{
+			if(this.body.checkCollision.none)
+				this.body.checkCollision.none=false;
+		}
 		if (this.y>800) 
 			{		
 				this.scene.VanisOut(this);		
@@ -77,13 +82,15 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
         super.preUpdate(t,dt);
 
 		//movimiento de los coches
+		this.collision();
            this.move(dt,dir);
 		   this.changeDir(cotaDer,cotaIzq);
 		   this.respawn();
-		   this.collision();
+		
 		   if(this.destroyNow==true)
 		   {
 			this.destroyNow=false;
+			this.body.checkCollision.none=true;
 			this.scene.poolVan.release(this);
 		   }
 	}
