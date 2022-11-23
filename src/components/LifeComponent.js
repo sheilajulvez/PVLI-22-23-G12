@@ -1,22 +1,26 @@
 //creamos un componente de vida, por si se quisiera reutilizar
 export default class LifeComponent {
 
-	constructor(scene,live){
+	constructor(scene,x,y,life){
 		this.scenen= scene;
-		this.lives=live;
+		this.lifes=life;
+		this.scene.add.existing(this); //lo añades a la escene
 	}
-
+	preload(){
+		this.load.image("Life","assets/vidas.png");
+	}
+		
 	create(){
-		//crea tantos objetos como vidas haya
-		//debería añadir la imagen y cargarla 
+		for(let i=0;i<this.lives;i++){
+		this.add.image(500+ (10*i),350,'Life');}
 	}
 	//devuelve un "boleano" que indica si todavía quedan vidas en el juego 
 	RestaVida() {
 		this.lives=this.lives--;
 		if (this.live == 0) {
 			//se termina el juego
-		  	//this.Scene.endGame();
 		  return false;
+		  	//this.Scene.endGame();
 		}
 		//si todavia quedan vidas
 		else return true;

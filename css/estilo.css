@@ -122,6 +122,8 @@ body {
 .p{
   cursor: url("../assets/cursor2.png"), auto;
   float: right;
+  margin-top: 1%;
+  margin-right:2%;
 }
 
   
