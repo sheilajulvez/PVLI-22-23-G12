@@ -2,7 +2,7 @@
 export default class LifeComponent {
 
 	constructor(scene,x,y,life){
-		this.scenen= scene;
+		this.scene= scene;
 		this.lifes=life;
 		this.scene.add.existing(this); //lo añades a la escene
 	}
@@ -24,6 +24,16 @@ export default class LifeComponent {
 		}
 		//si todavia quedan vidas
 		else return true;
-	  }
+		this.event.emit("Vida");
+	}
+	AddVida(){
+		this.lives++;
+		this.event.emit("Vida");
 
+	}
+	Actualiza(){
+
+	}
 }
+
+

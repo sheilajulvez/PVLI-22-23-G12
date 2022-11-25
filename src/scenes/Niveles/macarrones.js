@@ -3,7 +3,7 @@ import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
 import explosion from '../../characters/explosion.js';
-
+import LifeComponent from '../../components/LifeComponent.js';
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -53,7 +53,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());	
-		this.physics.add.overlap()
+		//this.physics.add.overlap()
 	}
 	CarisOut(vehicles)
 	{
@@ -68,10 +68,12 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())) 
 		{
+			this.events.on('Vida', Actualiza);
     		console.log("CAR");
 		}
 		else if(this.physics.overlap(this.player, this.poolVan.getPhaserGroup()))
 		{
+			this.events.on('Vida', Actualiza);
 			console.log("VAN");
 		}
 		if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))

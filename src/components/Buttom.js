@@ -22,11 +22,7 @@ export default class Button extends Phaser.GameObjects.Sprite{
 		this.startButton.on('pointerout',() => {
 			this.startButton.setFrame(0);
 		
-		});*/
-		console.log(this.nivel);	
-		console.log(this.stay);
-		
-		
+		});*/		
 			this.on('pointerdown',() => {
 
 	
