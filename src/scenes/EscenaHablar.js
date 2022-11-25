@@ -8,8 +8,7 @@ import Manzanilla from './Niveles/Manzanilla.js';
 export default class EscenaHablar extends Phaser.Scene{
     constructor(scenekey){
 		super({key: "EscenaHablar"});
-        
-		
+      
 
 	}
     init(datos){
@@ -31,6 +30,7 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("jefa_wenge","assets/jefa_de_Wenge.png");
     this.load.image("Sheila","assets/Sheila.png");
     this.load.image("Twitero","assets/twitero.png");
+    this.load.image("Texto_Wenge","assets/cajastexto/texto_wenge.png");
 
    
    
@@ -45,7 +45,7 @@ export default class EscenaHablar extends Phaser.Scene{
         ||this.scenekey=="Manzanilla_fin"){
             this.add.image(1,1,"fondo_soleado").setScale(1,1).setOrigin(0,0);
         }
-        else if(this.scenekey=="Aceite"||this.scenekey=="Aciete_fin"||this.scenekey=="Croquetas"
+        else if(this.scenekey=="Aceite"||this.scenekey=="Aceite_fin"||this.scenekey=="Croquetas"
         ||this.scenekey=="Croquetas_fin"){
             this.add.image(0,0,"fondo_noche").setScale(2,2);
         }
@@ -76,25 +76,69 @@ export default class EscenaHablar extends Phaser.Scene{
             this.add.image(300,270,"Presi").setScale(1,1);
         }
       
-        this.cajita= this.add.image(340,830,"cajita").setScale(1.7,1.3);
-       this.DisplayText(0);
-        
-    }
-
-    DisplayText(number){
+       this.cajita= this.add.image(340,830,"cajita").setScale(1.7,1.3);
+       this.nombre=this.scenekey+"_a";
+       this.nombre2=this.scenekey+"_b";
+       this.comprueba=this.scenekey+"_comprueba_a";
+       this.comprueba2=this.scenekey+"_comprueba_b";
        
+      
+        this.texto_largo={
+            
+            a:0,
+            txt:Textos[this.scenekey],
+            identificador:this.scenekey,
+           
+            b:this.textButton(100,600,Textos[this.scenekey][0],this.scenekey),
+        };
+        if(this.scenekey=="Arsenico_fin"||this.scenekey=="Manzanilla_fin"||this.scenekey=="Croquetas_fin"
+        ||this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"){
+            this.add.image(890,850,"Texto_Wenge");
+            this.opcion_a={
+            
+                a:0,
+                txt:Textos[this.nombre],
+                identificador:this.nombre,
+               
+                b:this.textButton(650,580,Textos[this.nombre][0],this.nombre),
+            };
+            this.opcion_b={
+                
+                a:0,
+                txt:Textos[this.nombre2],
+                identificador:this.nombre2,
+    
+                b:this.textButton(790,600,Textos[this.nombre2][0],this.nombre2),
+            };
+           
+         
+           
+        }
+      
         
-        this.textButton(100,600,Textos[this.scenekey][0],0);
     }
+ 
+    siguiente_texto(){
+        if(this.scenekey=="Arsenico_fin"||this.scenekey=="Manzanilla_fin"||this.scenekey=="Croquetas_fin"
+        ||this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"){
+            this.opcion_a.a++;
+        
+            this.opcion_a.b.setText(this.opcion_a.txt[ this.opcion_a.a]);
+            this.opcion_b.a++;
+            this.opcion_b.b.setText(this.opcion_b.txt[ this.opcion_b.a]);
+        }
+      
+        this.texto_largo.a++;
+        this.texto_largo.b.setText(this.texto_largo.txt[ this.texto_largo.a]);
 
 
-
-
-    textButton(x, y, message,a){
+    }
+    textButton(x, y, message,name){
        
        
 		let text = this.add.text(x, y, message);
-
+       
+		
 		//text.setOrigin(0.5,0.0);
 		//text.setAlign('center');
         text.setTint(0x000000);
@@ -121,14 +165,25 @@ export default class EscenaHablar extends Phaser.Scene{
                     yoyo: true
                 }
             );
-
-			if(a<Textos.longitud-1){
-
-                a++;
-                text.setText(Textos[this.scenekey][a]);
-                
-            }
-            else{
+            console.log(name);
+            console.log(this.nombre);
+        
+             if(name==this.nombre){
+                if(Textos[this.comprueba][this.opcion_a.a]){
+                    console.log("wengita ganas money");
+                }
+                console.log("working?");
+               
+             }
+             else if(name==this.nombre2){
+                if(Textos[this.comprueba2][this.opcion_b.a]){
+                    console.log("wengita ganas money");
+                }
+                console.log("working?");
+               
+             }
+             this.siguiente_texto();
+             if(this.texto_largo.a==Textos.longitud){
                if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
                  this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
                     this.scene.start("MapNiveles",{stay:this.stay})
@@ -137,10 +192,12 @@ export default class EscenaHablar extends Phaser.Scene{
                 else this.scene.start(this.scenekey,{stay:this.stay});
 
             }
+           
 
-
-
+          
 		})
+        return text;
+
     }
 
 }
