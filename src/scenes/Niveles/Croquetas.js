@@ -22,7 +22,9 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-
+		//imagen para la máscara
+		this.load.image('mask', '');
+		//añadimos las luces
 		
 	}
 	init(datos){
@@ -101,7 +103,6 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 	    var rand=random(0,1);
 	    if (rand===0)				//respawm car
 		{
-			
 			    let pos=random(0,5);
 				this.vanSpawn++;
 				this.timeDelta=0;
@@ -131,8 +132,6 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 				//console.log('pos='+pos)
 				//console.log(this.vanSpawn);
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-
-			
 		}
 		else 			//respawn bike
 		{
@@ -158,10 +157,6 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 	 		}
 			
 		}
-		
 		}
-		
-		
-	    
 	 }
 }

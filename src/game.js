@@ -13,7 +13,7 @@ import Niveles from './scenes/Niveles.js'
  //importamos la escena macarrones que vamos a usar
 
 let config= { //configuramos canvas
-  type: Phaser.AUTO,
+  type: Phaser.AUTO,//WEBGl
    parent:'Juego',  //crea el canvas dentro del index
   //ancho y alto de pantalla como window, ya se ira viendo
   width:1000,

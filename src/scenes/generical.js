@@ -53,7 +53,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		for (let i = 0; i < 4; i++) {
 			this.Arboles.add (new FondoMove(this, 950,200*i));
 			}
-     
 		
 		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
 		

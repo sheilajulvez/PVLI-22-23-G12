@@ -4,12 +4,11 @@ import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
 import explosion from '../../characters/explosion.js';
 import LifeComponent from '../../components/LifeComponent.js';
+import{GameOver} from '../GameOver.js';
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
-
-
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 
@@ -52,7 +51,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
-		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());	
+		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
 		//this.physics.add.overlap()
 	}
 	CarisOut(vehicles)
@@ -99,10 +98,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			}
 			
 		}
-		
-		
-
-
 	}
 	createExplosion(x,y){
 		var explosion=new explosion(this,x,y);
@@ -188,8 +183,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		
 		}
-		
-		
 	    
+	 }
+	 GameOver(){
+		this.scene.start('gameover');
 	 }
 }
