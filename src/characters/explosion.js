@@ -1,9 +1,9 @@
-export default class explosion extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
+export default class Explosion extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y) {
 		super(scene, x, y, 'Explosion');
-		this.scene.add.existing(this); //lo añades a la escene
-		this.scene.physics.add.existing(this);// lo haces objeto físico
+		scene.add.existing(this); //lo añades a la escene
+		scene.physics.add.existing(this);// lo haces objeto físico
 		//this.body.setSize(200,220);
 		//this.body.setOffset(360,140);
 		

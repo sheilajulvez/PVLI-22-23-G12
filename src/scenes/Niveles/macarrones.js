@@ -2,7 +2,7 @@ import Car from '../../characters/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
-import explosion from '../../characters/explosion.js';
+import Explosion from '../../characters/explosion.js';
 import LifeComponent from '../../components/LifeComponent.js';
 import GameOver from '../GameOver.js';
 
@@ -32,6 +32,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		super.create();
 		this.timeDelta=0;
 		let arrayCoches=[];
+
 		this.prueba = this.sound.add("musiquita");
 		for(let i=0; i<5;i++)
 		{
@@ -49,8 +50,10 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
-		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
-		//this.physics.add.overlap()
+		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());	
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 	}
 	CarisOut(vehicles)
 	{
@@ -61,46 +64,30 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.poolVan.release(vehicles);
 	}
 	
-	collision(dt)
-	{
-		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())) 
-		{
-			//this.events.on('Vida', Actualiza);
-			this.prueba.play();
-    		console.log("CAR");
-		}
-		else if(this.physics.overlap(this.player, this.poolVan.getPhaserGroup()))
-		{
-			//this.events.on('Vida', Actualiza);
-			this.prueba.play();
-			console.log("VAN");
-		}
-		if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))
-		{
-			/*this.explosion=new explosion(this,110,110);
-			var delete1=+dt;
-			if(delete1>3000)
-			{
-				delete this.explosion;
+	
+	Explosiones(obj1,obj2){
+	
+		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
+		/*if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
+				createExplosion(
+					this.poolVan.getPhaserGroup().body.center.x,
+					this.poolCar.getPhaserGroup().body.top);
+
+
+			}
+			else if(this.poolVan.getPhaserGroup().body.down && this.poolCar.getPhaserGroup().body.up){
+				createExplosion(
+					this.poolCar.getPhaserGroup().body.center.x,
+					this.poolVan.getPhaserGroup().body.top);
+
 			}*/
-			// if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
-			// 	createExplosion(
-			// 		this.poolVan.getPhaserGroup().body.center.x,
-			// 		this.poolCar.getPhaserGroup().body.top);
-
-
-			// }
-			// else if(this.poolVan.getPhaserGroup().body.down && this.poolCar.getPhaserGroup().body.up){
-			// 	createExplosion(
-			// 		this.poolCar.getPhaserGroup().body.center.x,
-			// 		this.poolVan.getPhaserGroup().body.top);
-
-			// }
+			obj1.destroy();
+			obj2.destroy();
 			
-		}
 	}
 	createExplosion(x,y){
-		var explosion=new explosion(this,x,y);
+
+		 this.explosion=new Explosion(this,x,y);
 
 	}
 
@@ -113,14 +100,15 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		
 		super.update();
-		this.collision(dt);
+	
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
-			console.log("esto entra?")
+			
 			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay} )
 		}
 		if(this.timeDelta>2000)
 		{
+			this.explosion.destroy();
 	    var rand=random(0,1);
 	    if (rand===0)				//respawm car
 		{
@@ -151,8 +139,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 							   break;
 							
 					}
-				console.log('pos='+pos)
-				console.log(this.vanSpawn);
+				
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
 
 			
