@@ -4,7 +4,7 @@ import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
 import explosion from '../../characters/explosion.js';
 import LifeComponent from '../../components/LifeComponent.js';
-import{GameOver} from '../GameOver.js';
+import GameOver from '../GameOver.js';
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -25,16 +25,14 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:311 , frameHeight:	512	});
-
-
-		
+		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 	}
 
 	create(){
 		super.create();
 		this.timeDelta=0;
 		let arrayCoches=[];
-
+		this.prueba = this.sound.add("musiquita");
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-500);
@@ -67,12 +65,14 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		if(this.physics.overlap(this.player, this.poolCar.getPhaserGroup())) 
 		{
-			this.events.on('Vida', Actualiza);
+			//this.events.on('Vida', Actualiza);
+			this.prueba.play();
     		console.log("CAR");
 		}
 		else if(this.physics.overlap(this.player, this.poolVan.getPhaserGroup()))
 		{
-			this.events.on('Vida', Actualiza);
+			//this.events.on('Vida', Actualiza);
+			this.prueba.play();
 			console.log("VAN");
 		}
 		if(this.physics.overlap(this.poolVan.getPhaserGroup(), this.poolCar.getPhaserGroup()))
@@ -83,19 +83,19 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			{
 				delete this.explosion;
 			}*/
-			if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
-				createExplosion(
-					this.poolVan.getPhaserGroup().body.center.x,
-					this.poolCar.getPhaserGroup().body.top);
+			// if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
+			// 	createExplosion(
+			// 		this.poolVan.getPhaserGroup().body.center.x,
+			// 		this.poolCar.getPhaserGroup().body.top);
 
 
-			}
-			else if(this.poolVan.getPhaserGroup().body.down && this.poolCar.getPhaserGroup().body.up){
-				createExplosion(
-					this.poolCar.getPhaserGroup().body.center.x,
-					this.poolVan.getPhaserGroup().body.top);
+			// }
+			// else if(this.poolVan.getPhaserGroup().body.down && this.poolCar.getPhaserGroup().body.up){
+			// 	createExplosion(
+			// 		this.poolCar.getPhaserGroup().body.center.x,
+			// 		this.poolVan.getPhaserGroup().body.top);
 
-			}
+			// }
 			
 		}
 	}
