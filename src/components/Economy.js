@@ -7,7 +7,7 @@ export default class Economy{
         this.money+=cantidad;
     }
     LessMoney(cantidad){
-        console.log("llamas");
+ 
         console.log(cantidad);
         console.log(this.money);
         if(this.money>=cantidad){

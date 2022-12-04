@@ -26,10 +26,8 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
-		this.player=new Wenge(this, 400, 600); 
-		if(datos.wenge.velocity>500){
-			this.player.AddVelocity();
-		}
+		this.player=datos.wenge;
+	
         
     }
 
@@ -38,6 +36,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.timeDelta=0;
 		this.money.ShowMoney();
 		this.car=new Car(this,0,-1000);
+		this.player=new Wenge(this, 400, 600); 
 		this.physics.add.existing(this.car);
 
 		let arrayCoches=[];
@@ -84,8 +83,8 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		super.update();
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
-			this.money.addMoney(200);
-			this.scene.start("EscenaHablar",{name:"Arsenico_fin",stay:this.stay,dinero:this.money} )
+			this.money.AddMoney(200);
+			this.scene.start("EscenaHablar",{name:"Arsenico_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>4000)
 		{

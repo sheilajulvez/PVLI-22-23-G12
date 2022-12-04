@@ -30,10 +30,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
         this.stay = datos.stay;
 		this.money=datos.dinero;
 		this.player=datos.wenge;
-		this.player=new Wenge(this, 400, 600); 
-		if(datos.wenge.velocity>500){
-			this.player.AddVelocity();
-		}
+	
         
 		
        
@@ -51,7 +48,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
-
+		this.player=new Wenge(this, 400, 600); 
 
 
 		
