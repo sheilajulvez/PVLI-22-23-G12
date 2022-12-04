@@ -17,21 +17,12 @@ export default class Button extends Phaser.GameObjects.Sprite{
 
 	create(){
 		
-		/*this.startButton.on('pointerover',() => {
-			this.startButton.setFrame(1);
-		});
-
-		this.startButton.on('pointerout',() => {
-			this.startButton.setFrame(0);
-		
-		});*/		
+		this.clickSound= this.scene.sound.add("click");	
 			this.on('pointerdown',() => {
 
-				console.log("fw");
+				this.clickSound.play();
 
 					if (this.nivel<= this.stay){
-						console.log(this.scarga);
-						console.log("buton"+this.wenge+" "+this.dinero);
 				this.scene.scene.start(this.scarga,{name:this.nombre,stay:this.nivel,wenge:this.wenge,dinero:this.dinero});
 			}
 			});

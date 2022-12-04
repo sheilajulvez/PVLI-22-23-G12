@@ -35,6 +35,7 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("Sheila","assets/Sheila.png");
     this.load.image("Twitero","assets/twitero.png");
     this.load.image("Texto_Wenge","assets/cajastexto/texto_wenge.png");
+    this.load.audio("click", 'assets/sounds/click.mp3');
     if(this.stay>1){
         this.money.SetScene(this);
         this.money. ShowMoney();
@@ -48,6 +49,7 @@ export default class EscenaHablar extends Phaser.Scene{
 
     create(){
         //ponemos el fondo que toca
+        this.clickSound= this.sound.add("click")
         if(this.scenekey=="tomatico"
         ||this.scenekey=="Arsenico"||this.scenekey=="tomatico_fin"||this.scenekey=="Manzanilla"
         ||this.scenekey=="Manzanilla_fin"){
@@ -126,7 +128,7 @@ export default class EscenaHablar extends Phaser.Scene{
         else{
             this.cajita.setInteractive();
             this.cajita.on("pointerdown",()=>{
-               
+               this.clickSound.play();
                 this.siguiente_texto();
                 if(this.texto_largo.a==Textos.longitud){
                     if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
@@ -169,6 +171,7 @@ export default class EscenaHablar extends Phaser.Scene{
         if(name!=this.scenekey){
             text.setInteractive();
             text.on('pointerdown', ()=>{
+                this.clickSound.play();
                 text.scene.tweens.add(
                     {
                         targets: text,

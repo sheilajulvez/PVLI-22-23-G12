@@ -17,6 +17,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.vanSpawn=0;
 		this.collisionCar=false;
 		this.collisionVan=false;
+		this.gritoB=false;
+		this.gritoReset=5000;
 		this.money=new Economy(this);
 		
 	}
@@ -28,14 +30,32 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:311 , frameHeight:	512	});
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
+		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
 	}
 
 	create(){
 		super.create();
 		this.timeDelta=0;
 		let arrayCoches=[];
+
+
+		const config1 =
+		{
+			mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: true,
+ 			 delay: 0,
+		}
+
+
 		this.money.ShowMoney();
-		this.prueba = this.sound.add("musiquita");
+		// this.musiquita = this.sound.add("musiquita",config);
+		// this.musiquita.play();
+		this.pitido1 = this.sound.add('pitido1',config1);
+		//this.grit2 = this.sound.add('grito');	
 		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
 		console.log("macarrones: "+this.player);
 		console.log("macarrones: "+this.money);
@@ -55,7 +75,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
-		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());	
+		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
+			
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
@@ -95,6 +116,21 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		 this.explosion=new Explosion(this,x,y);
 
 	}
+	grito()
+	{
+		if(this.gritoB===true && this.gritoReset>10000)
+		{
+			console.log("GRITA");
+			this.gritoReset=0;
+			this.gritoB=false;
+			this.pitido1.play();
+			
+		}
+		else if(this.gritoReset>2500)
+		{
+			this.pitido1.stop();
+		}
+	}
 
 
 	init(datos)
@@ -105,10 +141,12 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		
 		super.update();
-	
+		 this.grito();
+		 this.gritoReset+= dt;
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			
+		//  this.musiquita.stop();
 			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>2000)
@@ -121,6 +159,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			    let pos=random(0,5);
 				this.vanSpawn++;
 				this.timeDelta=0;
+				
 				let vehicleX=0;
 					switch(pos)
 					 {
