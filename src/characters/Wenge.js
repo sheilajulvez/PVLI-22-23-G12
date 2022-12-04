@@ -3,13 +3,13 @@
 
 export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
-	constructor(scene, x, y) {
+	constructor(scene, x, y,anim) {
 		super(scene, x, y, 'Wenge');
 		this.scene.add.existing(this); //lo añades a la escene
 		this.scene.physics.add.existing(this);// lo haces objeto físico
 		this.body.setSize(200,220);
 		this.body.setOffset(360,140);
-		
+		this.anim=anim;
 		this.scene.anims.create({ //animación
 			key: 'idle_Wenge', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Wenge', 
@@ -21,8 +21,22 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			repeat: -1 //para que sea bucle
 		});
 
-		
-		this.play('idle_Wenge'); //activa la animavcion
+		this.scene.anims.create({
+			key: 'Wenge_motomami', //identificador de la animación
+			frames: scene.anims.generateFrameNumbers('Wenge_motomami', 
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:37 // última imagen del Spritesheet que se ejecuta en la animación
+			}), 
+			frameRate: 60, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+		})
+		console.log(anim);
+		if(anim=="Wenge_motomami"){
+			
+			this.play("Wenge_motomami");
+		}
+		else this.play('idle_Wenge'); //activa la animavcion
 		this.velocity=500;
 		this.setScale(0.35,0.35);
 		this.d = this.scene.input.keyboard.addKey('D'); // registramos la tecla D como input
@@ -33,7 +47,9 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		console.log("suma vel");
 		this.velocity+=200;
 	}
-   
+	SetAnim(name){
+		this.anim=name;
+	}
 	update(t, dt){
 		//super.preUpdate(t, dt);
 

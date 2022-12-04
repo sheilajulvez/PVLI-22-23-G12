@@ -29,6 +29,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	preload(){
 		this.load.spritesheet('road', 'assets/carretera.png', {frameWidth: 700, frameHeight:490});
         this.load.spritesheet('Wenge', 'assets/wengeSprite.png', {frameWidth: 633, frameHeight:394});
+		this.load.spritesheet('Wenge_motomami', 'assets/tienda/wengeSprite_motomami.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});
 
 	}

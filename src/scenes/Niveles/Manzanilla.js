@@ -36,7 +36,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		super.create();
 		this.timeDelta=0;
 		this.car=new Car(this,0,-1000);
-		this.player=new Wenge(this, 400, 600); 
+		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.physics.add.existing(this.car);
 
 		let arrayCoches=[];

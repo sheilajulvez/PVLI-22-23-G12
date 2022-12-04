@@ -48,7 +48,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
-		this.player=new Wenge(this, 400, 600); 
+		this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
 
 
 		

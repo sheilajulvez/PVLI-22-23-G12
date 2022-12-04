@@ -46,7 +46,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			arrayCoches.push(this.car);
 		}
 		
-		this.poolCar=new Pool(this,5,arrayCoches);	
+		this.poolCar=new Pool(this,5,arrayCoches,"Wenge_motomami");	
 		this.van=new Van(this,0,-1000);
 		this.physics.add.existing(this.van);
 

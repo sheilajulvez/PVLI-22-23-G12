@@ -41,7 +41,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.timeDelta=0;
 		this.money.ShowMoney();
 		let arrayCoches=[];
-		this.player=new Wenge(this, 400, 600); 
+		this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
 
 		for(let i=0; i<5;i++)
 		{

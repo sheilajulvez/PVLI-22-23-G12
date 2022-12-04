@@ -23,9 +23,10 @@ export default class outfits_button {
           
             if(this.current_money.LessMoney(this.price)){
              if(this.name=="motomami"){
+                this.wenge.SetAnim("Wenge_motomami");
 
              }else if(this.name=="daltonismo"){
-                      
+                      we
              }else if(this.name=="Nueva_Coleccion"){
 
              }

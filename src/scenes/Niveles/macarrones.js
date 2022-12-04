@@ -65,7 +65,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		// this.musiquita.play();
 		this.pitido1 = this.sound.add('pitido1',config1);
 		//this.grit2 = this.sound.add('grito');	
-		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
+		this.player=new Wenge(this, 400, 600,"default"); //creamos a nuestro personaje, nuestra Wenge
 		console.log("macarrones: "+this.player);
 		console.log("macarrones: "+this.money);
 		for(let i=0; i<5;i++)
