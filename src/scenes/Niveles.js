@@ -16,6 +16,7 @@ export default class Niveles extends Phaser.Scene {
         this.load.image("mapaciudad","assets/mapaciudad.png");
         //guardas la imagen
         this.load.image('boton',"assets/boton.png");
+        this.load.image('shop_button','assets/shop.jpg');
     }
     create(){
         
@@ -23,11 +24,16 @@ export default class Niveles extends Phaser.Scene {
         //Nivel[0];
         this.add.image(500,350,'mapaciudad');
 
-        this.Nivel.push(new Button(this, 135,485, 'boton', 'EscenaHablar','tomatico',this.stay, 1 )) 
-        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla', this.stay,2)) 
-        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite',this.stay,3)) 
-        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas',this.stay,4)) 
-        this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico',this.stay,5))  
+        this.Nivel.push(new Button(this, 135,485, 'boton', 'EscenaHablar','tomatico',this.stay, 1,this.wenge,this.money )) 
+        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla', this.stay,2,this.wenge,this.money)) 
+        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite',this.stay,3,this.wenge,this.money)) 
+        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas',this.stay,4,this.wenge,this.money)) 
+        this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico',this.stay,5,this.wenge,this.money))  
+       if(this.stay>1){
+        this.money.SetScene(this);
+        this.money.ShowMoney();
+        this.Nivel.push(new Button(this, 400,400, 'shop_button', 'shop',"Niveles", this.stay,this.stay-1,this.wenge,this.money)); 
+       }
         
         // primBot =this.add.image(500,350,'boton').setInteractive();
        // boton =this.add.image(500,350,'boton');
@@ -41,13 +47,15 @@ export default class Niveles extends Phaser.Scene {
     }
     
     init(datos){
-        console.log("INIT");
-        
+        this.money=datos.dinero;
+        this.wenge=datos.wenge;
         if (datos.stay == this.stay){
             this.stay = this.stay +1;
         }
-        console.log(datos.stay);
-        console.log(this.stay);
+
+     
+        console.log("niveles:" +this.money);
+        console.log("niveles:"+ this.wenge);
        
     }
 

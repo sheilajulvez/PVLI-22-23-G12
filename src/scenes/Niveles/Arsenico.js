@@ -3,7 +3,7 @@ import Car from '../../characters/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
-
+import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -19,17 +19,24 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 	preload(){
 		super.preload();
 		this.Inicia(this);
+		this.money.SetScene(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 	}
 	init(datos){
         this.stay = datos.stay;
-       
+		this.money=datos.dinero;
+		this.player=new Wenge(this, 400, 600); 
+		if(datos.wenge.velocity>500){
+			this.player.AddVelocity();
+		}
+        
     }
 
 	create(){
 		super.create();
 		this.timeDelta=0;
+		this.money.ShowMoney();
 		this.car=new Car(this,0,-1000);
 		this.physics.add.existing(this.car);
 
@@ -57,15 +64,6 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.poolVan=new Pool(this,5,arrayVan);
 		
 		//this.physics.add.existing(this.player);// lo haces objeto físico
-
-
-
-
-
-
-
-
-
 		this.physics.add.collider(this.player, this.car);
 		if(this.physics.collide(this.player, this.car)) {
     		console.log("Hay colisión");}
@@ -86,7 +84,8 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		super.update();
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
-			this.scene.start("EscenaHablar",{name:"Arsenico_fin",stay:this.stay} )
+			this.money.addMoney(200);
+			this.scene.start("EscenaHablar",{name:"Arsenico_fin",stay:this.stay,dinero:this.money} )
 		}
 		if(this.timeDelta>4000)
 		{

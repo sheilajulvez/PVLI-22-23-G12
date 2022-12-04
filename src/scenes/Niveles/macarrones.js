@@ -4,7 +4,8 @@ import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
 import Explosion from '../../characters/explosion.js';
 import LifeComponent from '../../components/LifeComponent.js';
-import GameOver from '../GameOver.js';
+import Economy from "../../components/Economy.js"
+import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -16,6 +17,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.vanSpawn=0;
 		this.collisionCar=false;
 		this.collisionVan=false;
+		this.money=new Economy(this);
 		
 	}
 
@@ -32,8 +34,11 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		super.create();
 		this.timeDelta=0;
 		let arrayCoches=[];
-
+		this.money.ShowMoney();
 		this.prueba = this.sound.add("musiquita");
+		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
+		console.log("macarrones: "+this.player);
+		console.log("macarrones: "+this.money);
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-500);
@@ -104,7 +109,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			
-			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay} )
+			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>2000)
 		{

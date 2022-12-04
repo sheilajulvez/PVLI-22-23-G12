@@ -1,8 +1,8 @@
-import Wenge from '../characters/Wenge.js'; //importamos al caracter de Wenge
+
 import FondoMove from '../characters/FondoMove.js'; //importamos las distintas casas del fondo
 import Barra from '../characters/Bar.js';//importamos la clase bar que indicará por donde va el nivel;
 import road from '../scenes/road.js';
-
+import Money from "../components/Economy.js"
 
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
@@ -54,7 +54,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 			this.Arboles.add (new FondoMove(this, 950,200*i));
 			}
 		
-		this.player=new Wenge(this, 400, 600); //creamos a nuestro personaje, nuestra Wenge
 		
 		//this.player.body.updateBounds();
 		this.Barra = new Barra(this, 10, 10);

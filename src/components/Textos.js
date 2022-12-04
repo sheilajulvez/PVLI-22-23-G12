@@ -52,7 +52,7 @@ export default {
     Croquetas_fin_comprueba_a:[true,false,true,true],
     Croquestas_fin_comprueba_b:[false,true,false,false],
     Arsenico:["Buenas yo soy Patry Runcha, lider del \npartido comunista, nos hemos dado cuenta que\n tienes una relación muy cercana  con el\n presidente",
-    "Eres su repartidora de Plovoo,\nWenge, vengo a pedirte algo muy serio,\nsi estas cansada de ser tu propia jefa\neste es el momento",
+    "Eres su repartidora de Ploboo,\nWenge, vengo a pedirte algo muy serio,\nsi estas cansada de ser tu propia jefa\neste es el momento",
     "El Presi te ha pedido su típica manzanilla pero\nesta vez, si quieres,\nsólo si tu quieres,\nla podemos aliñar",
     "Efectivamente, con arsénico, que se acabe el\n yugo  del capitalismo en este pais y\n por fin el proletario tenga lo que se merece, \n el poder"],
     Arsenico_fin:["Hola Wikiri \n sigo un poco agobiado con todo esto",

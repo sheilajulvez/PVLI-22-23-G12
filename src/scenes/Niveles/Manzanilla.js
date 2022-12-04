@@ -3,6 +3,7 @@ import Car from '../../characters/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
+import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 
 
 function random(min, max) {
@@ -19,14 +20,21 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 	preload(){
 		super.preload();
 		this.Inicia(this);
+		this.money.SetScene(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 	}
 	init(datos){
         this.stay = datos.stay;
-       
+		this.money=datos.dinero;
+		this.player=new Wenge(this, 400, 600); 
+		if(datos.wenge.velocity>500){
+			this.player.AddVelocity();
+		}
+        
     }
 	create(){
+		this.money.ShowMoney();
 		super.create();
 		this.timeDelta=0;
 		this.car=new Car(this,0,-1000);
@@ -84,7 +92,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		
 		super.update();
 		if(this.Barra.fin()){
-			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay} )
+			this.money.AddMoney(200);
+			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		this.timeDelta= this.timeDelta+dt;
 		

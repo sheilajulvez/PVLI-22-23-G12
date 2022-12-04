@@ -14,7 +14,11 @@ export default class EscenaHablar extends Phaser.Scene{
     init(datos){
         this.stay= datos.stay;
         this.scenekey=datos.name;
-       console.log(this.scenekey);
+        this.money=datos.dinero;
+        this.player=datos.wenge;
+        console.log("escena hablar "+this.money);
+        console.log("escena hablar "+this.player);
+       
         
     }
     
@@ -31,8 +35,12 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("Sheila","assets/Sheila.png");
     this.load.image("Twitero","assets/twitero.png");
     this.load.image("Texto_Wenge","assets/cajastexto/texto_wenge.png");
-
-   
+    if(this.stay>1){
+        this.money.SetScene(this);
+        this.money. ShowMoney();
+       
+    }
+ 
    
 		
 	}
@@ -77,6 +85,7 @@ export default class EscenaHablar extends Phaser.Scene{
         }
       
        this.cajita= this.add.image(340,830,"cajita").setScale(1.7,1.3);
+       
        this.nombre=this.scenekey+"_a";
        this.nombre2=this.scenekey+"_b";
        this.comprueba=this.scenekey+"_comprueba_a";
@@ -114,6 +123,21 @@ export default class EscenaHablar extends Phaser.Scene{
          
            
         }
+        else{
+            this.cajita.setInteractive();
+            this.cajita.on("pointerdown",()=>{
+               
+                this.siguiente_texto();
+                if(this.texto_largo.a==Textos.longitud){
+                    if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
+                      this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
+                         this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
+                 
+                     }
+                     else this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});}
+     
+            })
+        }
       
         
     }
@@ -142,60 +166,64 @@ export default class EscenaHablar extends Phaser.Scene{
 		//text.setOrigin(0.5,0.0);
 		//text.setAlign('center');
         text.setTint(0x000000);
-		text.setInteractive();
+        if(name!=this.scenekey){
+            text.setInteractive();
+            text.on('pointerdown', ()=>{
+                text.scene.tweens.add(
+                    {
+                        targets: text,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        duration: 150,
+                        yoyo: true
+                    }
+                );
+                this.cajita.scene.tweens.add(
+                    {
+                        targets: this.cajita,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        duration: 100,
+                        yoyo: true
+                    }
+                );
+                
+            
+                 if(name==this.nombre){
+                    if(Textos[this.comprueba][this.opcion_a.a]){
+                        this.money.AddMoney(50);
+                        console.log(this.money.money);
+                    }
+                   
+                 }
+                 else if(name==this.nombre2){
+                    if(Textos[this.comprueba2][this.opcion_b.a]){
+                       this.money.AddMoney(50);
+                       console.log(this.money.moeny);
+                    }
+                   
+                 }
+                 this.siguiente_texto();
+                 if(this.texto_largo.a==Textos.longitud){
+                   if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
+                     this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
+                        console.log("antes de niveles"+this.money+" player"+this.player);
+                        this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
+                
+                    }
+                    else this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});
+    
+                }
+               
+    
+              
+            })
+        }
+		
 
         
       
-		text.on('pointerdown', ()=>{
-            text.scene.tweens.add(
-                {
-                    targets: text,
-                    scaleX: 0.9,
-                    scaleY: 0.9,
-                    duration: 150,
-                    yoyo: true
-                }
-            );
-            this.cajita.scene.tweens.add(
-                {
-                    targets: this.cajita,
-                    scaleX: 0.9,
-                    scaleY: 0.9,
-                    duration: 100,
-                    yoyo: true
-                }
-            );
-            console.log(name);
-            console.log(this.nombre);
-        
-             if(name==this.nombre){
-                if(Textos[this.comprueba][this.opcion_a.a]){
-                    console.log("wengita ganas money");
-                }
-                console.log("working?");
-               
-             }
-             else if(name==this.nombre2){
-                if(Textos[this.comprueba2][this.opcion_b.a]){
-                    console.log("wengita ganas money");
-                }
-                console.log("working?");
-               
-             }
-             this.siguiente_texto();
-             if(this.texto_largo.a==Textos.longitud){
-               if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
-                 this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
-                    this.scene.start("MapNiveles",{stay:this.stay})
-			
-                }
-                else this.scene.start(this.scenekey,{stay:this.stay});
-
-            }
-           
-
-          
-		})
+		
         return text;
 
     }

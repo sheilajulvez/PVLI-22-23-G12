@@ -1,4 +1,6 @@
 
+
+
 export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y) {
@@ -21,14 +23,16 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 
 		
 		this.play('idle_Wenge'); //activa la animavcion
-
+		this.velocity=500;
 		this.setScale(0.35,0.35);
 		this.d = this.scene.input.keyboard.addKey('D'); // registramos la tecla D como input
 		this.a = this.scene.input.keyboard.addKey('A'); // registramos la tecla A como input
 	}
 
-
-	
+	AddVelocity(){
+		console.log("suma vel");
+		this.velocity+=200;
+	}
    
 	update(t, dt){
 		//super.preUpdate(t, dt);
@@ -41,14 +45,14 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			if(this.d.isDown)
 			{
 				//this.x+=(50*dt)/100;
-				this.body.setVelocityX(500);
+				this.body.setVelocityX(this.velocity);
 				
 				
 			}
 			else if(this.a.isDown)
 			{
 				//this.x-=(50*dt)/100;
-				this.body.setVelocityX(-500);
+				this.body.setVelocityX(-1*this.velocity);
 
 			}
 			else{
@@ -61,7 +65,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			if(this.d.isDown)
 			{
 				//this.x+=(50*dt)/100;
-				this.body.setVelocityX(500);
+				this.body.setVelocityX(this.velocity);
 			}
 			else {
 				this.body.setVelocityX(0);
@@ -72,7 +76,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			if(this.a.isDown)
 			{
 				//this.x-=(50*dt)/100;
-				this.body.setVelocityX(-500);
+				this.body.setVelocityX(-1*this.velocity);
 			}
 			else{
 				this.body.setVelocityX(0);
