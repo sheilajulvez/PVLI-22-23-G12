@@ -41,6 +41,13 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
     		this.destroyNow=true;
 		}
 	}
+	shoutdDetection()
+	{
+		if(this.x - this.scene.player.x< 20 &&this.y - this.scene.player.y< 20)
+		{
+			this.scene.gritoB=true;
+		}
+	}
 	respawn()
 	{
 		

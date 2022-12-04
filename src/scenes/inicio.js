@@ -8,6 +8,7 @@ export default class inicio extends Phaser.Scene{
 	preload(){
 		this.load.image("fondoIni","assets/logo.png"  );
 		this.load.image("start_button","assets/pixil-frame-0.png");
+		this.load.audio("click", 'assets/sounds/click.mp3');
 	}
 	create(){
 		this.add.image(500,350,'fondoIni');
