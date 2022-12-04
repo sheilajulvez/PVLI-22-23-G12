@@ -45,7 +45,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 	{
 		
 	
-		if (this.scene.player.y<=this.y)
+		if (this.scene.player.y<this.y)
 		{
 			
 			this.scene.gritoB=true;

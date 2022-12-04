@@ -31,6 +31,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:311 , frameHeight:	512	});
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
+		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
 	}
 
 	create(){
@@ -49,8 +50,18 @@ export default class Macarrones extends Generical { //creamos la escena exportad
  			 loop: true,
  			 delay: 0,
 		}
+		const config2 =
+		{
+			mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
 
-
+		this.explosionSound = this.sound.add('explosionSound',config2);
 		this.money.ShowMoney();
 		// this.musiquita = this.sound.add("musiquita",config);
 		// this.musiquita.play();
@@ -94,6 +105,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	Explosiones(obj1,obj2){
 	
 		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
+		this.explosionSound.play();
 		/*if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
 				createExplosion(
 					this.poolVan.getPhaserGroup().body.center.x,
@@ -112,7 +124,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			
 	}
 	createExplosion(x,y){
-
+		
 		 this.explosion=new Explosion(this,x,y);
 
 	}
@@ -151,7 +163,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		if(this.timeDelta>2000)
 		{
-			this.explosion.destroy();
+		this.explosion.destroy();
 	    var rand=random(0,1);
 	    if (rand===0)				//respawm car
 		{
