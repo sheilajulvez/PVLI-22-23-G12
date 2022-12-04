@@ -23,6 +23,18 @@ export default class Dash_button {
            console.log("cisco");
             }
         })
+        this.sprite.on("pointerover",()=>{
+            this.sprite.scene.tweens.add(
+                {
+                    targets: this.sprite,
+                    scaleX: 3,
+                    scaleY: 3,
+                    duration: 200,
+                    yoyo: true,
+                }
+            );
+            
+        })
        
     }
 
