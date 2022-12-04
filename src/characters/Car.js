@@ -44,10 +44,10 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 	shoutDetection()
 	{
 		
-	
-		if (this.scene.player.y<this.y)
+	console.log(this.y);
+		if (this.y>200)
 		{
-			
+			if(this.scene.gritoB==false)
 			this.scene.gritoB=true;
 		}
 	}
