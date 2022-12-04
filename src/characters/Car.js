@@ -41,14 +41,11 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
     		this.destroyNow=true;
 		}
 	}
-	shoutDetection()
+	pipi()
 	{
-		
-	console.log(this.y);
-		if (this.y>200)
+		if(this.y>400 && this.y<402)
 		{
-			if(this.scene.gritoB==false)
-			this.scene.gritoB=true;
+			this.scene.pitido();
 		}
 	}
 	respawn()
@@ -63,17 +60,15 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		if (this.y>800) 
 			{		
 				this.scene.CarisOut(this);		
-				
 			}
-	
 	}
 
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
 		this.collision();
 		this.move();
+		this.pipi();
 		this.respawn();
-		this.shoutDetection();
 		if(this.destroyNow==true)
 		{
 			this.destroyNow=false;

@@ -26,9 +26,12 @@
 			this.load.image("velocity","assets/tienda/velocity_button.png");
 			this.load.image("extra_life","assets/tienda/life_button.png");
 			this.load.image("dash_image","assets/tienda/dash_button.png");
+			this.load.audio("music","assets/sounds/videoplayback.mp3");
 		}
 		create()
 		{
+			this.music=this.sound.add("music");
+			this.music.play();
 			this.add.image(0,0,"fondo_shop").setOrigin(0,0).setScale(0.5,0.7);
 			//this.add.image("velocity_button",300,300);
 			//this.add.sprite("velocity_button",600,600);
