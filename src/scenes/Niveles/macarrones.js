@@ -6,7 +6,9 @@ import Explosion from '../../characters/explosion.js';
 import LifeComponent from '../../components/LifeComponent.js';
 import Economy from "../../components/Economy.js"
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
+import Danger from '../../characters/Danger.js';
 
+import Ambulance from '../../characters/Ambulance.js';
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
@@ -14,9 +16,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	constructor(){
 
 		super('tomatico');
-		this.vanSpawn=0;
 		this.collisionCar=false;
 		this.collisionVan=false;
+		this.ambulanceCont=0;
 		this.money=new Economy(this);
 		
 	}
@@ -26,7 +28,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
+		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	})
 		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:311 , frameHeight:	512	});
+		this.load.image('danger','assets/danger.png');
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
 		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
@@ -37,6 +41,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.timeDelta=0;
 		let arrayCoches=[];
 
+		//this.ambulance=new Ambulance(this,300,0);
 
 		const config1 =
 		{
@@ -66,8 +71,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.pitido1 = this.sound.add('pitido1',config1);
 		//this.grit2 = this.sound.add('grito');	
 		this.player=new Wenge(this, 400, 600,"default"); //creamos a nuestro personaje, nuestra Wenge
-		console.log("macarrones: "+this.player);
-		console.log("macarrones: "+this.money);
+		
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-500);
@@ -126,7 +130,10 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		 this.explosion=new Explosion(this,x,y);
 
 	}
-
+	pitido()
+	{
+		this.pitido1.play();
+	}
 	init(datos)
 	{
         this.stay = datos.stay; 
@@ -147,13 +154,50 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		{
 		this.explosion.destroy();
 	    var rand=random(0,1);
+		console.log(this.ambulanceCont);
+		if(this.ambulanceCont===5)
+		{   let pos=random(0,5);
+			let vehicleX=0;
+			this.ambulanceCont=0;
+			this.timeDelta=0;
+			switch(pos)
+			{
+				 case 0:
+					 vehicleX=210;
+					 break;
+				  case 1:
+					 vehicleX=350;
+					 break;
+				  case 2:
+				   vehicleX=480;
+					 break;
+				  case 3:
+					  vehicleX=610;
+					  break;
+				  case 4:
+				   vehicleX=740;
+					  break;
+				  case 5:
+				   vehicleX=870;
+					  break;
+				   
+		   }
+
+		   this.add.image(vehicleX-100,0,"danger").setOrigin(0,0).setScale(0.5,0.7);
+			var wait=0;
+			while(wait<500)
+			{
+				wait+=dt;
+			}
+			
+			
+			this.ambulance= new Ambulance(this,vehicleX,0);
+		}
 	    if (rand===0)				//respawm car
 		{
-			
+			    this.ambulanceCont=this.ambulanceCont+1;
 			    let pos=random(0,5);
-				this.vanSpawn++;
 				this.timeDelta=0;
-				
 				let vehicleX=0;
 					switch(pos)
 					 {
@@ -177,19 +221,15 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 							   break;
 							
 					}
-				this.pitido1.play();
+				
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
 
 			
 		}
-		else 			//respawn bike
+		else if(rand==1)			//respawn bike
 		{
-			this.vanSpawn++;
-			this.timeDelta=0;
-			if(this.vanSpawn>=2)
-			{
+			this.ambulanceCont=this.ambulanceCont+1;
 			let pos=random(0,1);
-			this.vanSpawn=0;
 			this.timeDelta=0;
 			let vehicleX=0;
 			switch(pos)
@@ -201,9 +241,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 						vehicleX=740;
 						break;
 				}
-				this.pitido1.play();
+				
 			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
-	 		}
+	 		
 			
 		}
 		
