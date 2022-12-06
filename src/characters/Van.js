@@ -60,6 +60,7 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 	{
 		if(this.scene.physics.overlap(this.scene.player, this)) 
 		{
+			
     		this.destroyNow=true;
 		}
 	}
