@@ -86,7 +86,17 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		//	this.play("Wenge_daltonismo");
 		//}
 		//else this.play('idle_Wenge'); //activa la animavcion
-		this.dashSound=this.scene.sound.add('dash');
+		const config =
+		{
+			mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
+		this.dashSound=this.scene.sound.add('dash',config);
 		this.velocity=500;
 		this.setScale(0.35,0.35);
 		this.d = this.scene.input.keyboard.addKey('D'); // registramos la tecla D como input
