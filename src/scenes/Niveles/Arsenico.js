@@ -38,6 +38,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.car=new Car(this,0,-1000);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
+		this.player.dash=this.player_b.dash;
 		this.physics.add.existing(this.car);
 
 		let arrayCoches=[];

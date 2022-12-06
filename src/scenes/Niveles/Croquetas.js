@@ -44,6 +44,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		//this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
+		this.player.dash=this.player_b.dash;
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-1000);

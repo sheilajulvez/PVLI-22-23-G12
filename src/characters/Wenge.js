@@ -11,6 +11,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.body.setOffset(360,140);
 		this.coolDown=0;
 		this.anim=anim;
+		this.dash=false;
 		this.scene.anims.create({ //animación
 			key: 'idle_Wenge', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Wenge', 
@@ -104,7 +105,9 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.q = this.scene.input.keyboard.addKey('Q'); // registramos la tecla A como input
 		this.e = this.scene.input.keyboard.addKey('E'); // registramos la tecla A como input
 	}
-
+	SetDash(){
+		this.dash=true;
+	}
 	AddVelocity(){
 		console.log("suma vel");
 		this.velocity+=200;
@@ -144,7 +147,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 					delay: 10
 				});
 				}
-				else if(this.e.isDown && this.coolDown<=0 && this.x<634)
+				else if(this.e.isDown && this.coolDown<=0 && this.x<634&&this.dash)
 				{
 					this.coolDown=200;
 					this.dashSound.play();
@@ -181,7 +184,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 					delay: 10
 				});
 				}
-				else if(this.e.isDown && this.coolDown<=0 && this.x<634)
+				else if(this.e.isDown && this.coolDown<=0 && this.x<634 &&this.dash)
 				{
 					this.coolDown=200;
 					this.dashSound.play();
@@ -212,7 +215,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 					delay: 10
 				});
 			}
-			else if(this.e.isDown && this.coolDown<=0 && this.x<634)
+			else if(this.e.isDown && this.coolDown<=0 && this.x<634&&this.dash)
 			{
 				this.coolDown=200;
 				this.dashSound.play();

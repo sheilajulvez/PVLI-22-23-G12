@@ -55,11 +55,15 @@
 			this.extre_life=new Extra_life(550,600,this,this.money,"extra_life",this.wenge);
 			this.add.image(500,450,"extra_life_explanation").setScale(0.5,0.5);;
 			if(this.wenge.velocity<=500){
-				console.log(this.wenge.velocity);
+				
 				this.velocity=new velocity_button(700,600,this,this.money,"velocity",this.wenge);
 			}
-			this.add.image(650,450,"velocity_explanation").setScale(0.5,0.5);;
-			this.dash=new Dash_button(850,600,this,this.money,"dash_image",this.wenge);
+			this.add.image(650,450,"velocity_explanation").setScale(0.5,0.5);
+			if(this.wenge.dash==false){
+				console.log(this.wenge.dash);
+				this.dash=new Dash_button(850,600,this,this.money,"dash_image",this.wenge);
+			}
+			
 			this.add.image(800,450,"dash_explicacion").setScale(0.5,0.5);
 			//this.extra_life_button.preload();
 			//this.ShowMoney();
@@ -69,6 +73,7 @@
 			this.extre_life.create();
 			if(this.wenge.velocity<=500)
 			this.velocity.create();
+			if(this.wenge.dash==false)
 			this.dash.create();
 			this.money.SetScene(this);
 			this.money.ShowMoney();
