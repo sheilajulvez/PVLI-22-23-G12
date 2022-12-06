@@ -38,10 +38,10 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.audio("click", 'assets/sounds/click.mp3');
     if(this.stay>1){
         this.money.SetScene(this);
-        this.money. ShowMoney();
+        this.money.ShowMoney();
        
     }
- 
+   
    
 		
 	}
@@ -140,9 +140,15 @@ export default class EscenaHablar extends Phaser.Scene{
      
             })
         }
-      
+        if(this.scenekey!="tomatico"){
+            this.money.SetScene(this);
+            this.money.ShowMoney();
+            console.log("nananananan");}
+     //  this.ShowMoney();
+ 
         
     }
+
  
     siguiente_texto(){
         if(this.scenekey=="Arsenico_fin"||this.scenekey=="Manzanilla_fin"||this.scenekey=="Croquetas_fin"
@@ -195,14 +201,15 @@ export default class EscenaHablar extends Phaser.Scene{
                  if(name==this.nombre){
                     if(Textos[this.comprueba][this.opcion_a.a]){
                         this.money.AddMoney(50);
-                        console.log(this.money.money);
+                        this.money.SetText();
+                       
                     }
                    
                  }
                  else if(name==this.nombre2){
                     if(Textos[this.comprueba2][this.opcion_b.a]){
                        this.money.AddMoney(50);
-                       console.log(this.money.moeny);
+                       this.money.SetText();
                     }
                    
                  }

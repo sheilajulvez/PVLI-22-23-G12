@@ -8,6 +8,7 @@ export default class outfits_button {
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;
+
     
     }
     preload(){
@@ -24,13 +25,15 @@ export default class outfits_button {
             if(this.current_money.LessMoney(this.price)){
              if(this.name=="motomami"){
                 this.wenge.SetAnim("Wenge_motomami");
-
+              
              }else if(this.name=="daltonismo"){
                 console.log(this.name);
                      this.wenge.SetAnim("Wenge_daltonismo");
+                    
              }else if(this.name=="nueva_coleccion"){
                 console.log("nueva_coleccion");
                  this.wenge.SetAnim("Wenge_nuevacoleccion");
+                
              }
             }
         })
@@ -38,9 +41,9 @@ export default class outfits_button {
             this.sprite.scene.tweens.add(
                 {
                     targets: this.sprite,
-                    scaleX: 3,
-                    scaleY: 3,
-                    duration: 200,
+                    scaleX: 1.5,
+                    scaleY: 1.5,
+                    duration: 100,
                     yoyo: true,
                 }
             );

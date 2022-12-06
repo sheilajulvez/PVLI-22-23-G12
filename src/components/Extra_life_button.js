@@ -20,16 +20,18 @@ export default class Extra_life {
         this.sprite.on("pointerdown",()=>{
             console.log("criis");
             if(this.current_money.LessMoney(this.price)){
-           console.log("criis");
+            console.log("criis");
+            this.sprite.setVisible(false);
+           this.current_money.SetText("DINERO "+this.current_money.money);
             }
         })
         this.sprite.on("pointerover",()=>{
             this.sprite.scene.tweens.add(
                 {
                     targets: this.sprite,
-                    scaleX: 3,
-                    scaleY: 3,
-                    duration: 200,
+                    scaleX: 1.5,
+                    scaleY: 1.5,
+                    duration: 100,
                     yoyo: true,
                 }
             );

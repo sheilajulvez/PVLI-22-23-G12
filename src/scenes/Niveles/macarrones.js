@@ -65,7 +65,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 
 		this.explosionSound = this.sound.add('explosionSound',config2);
-		this.money.ShowMoney();
+		
 		// this.musiquita = this.sound.add("musiquita",config);
 		// this.musiquita.play();
 		this.pitido1 = this.sound.add('pitido1',config1);
@@ -93,6 +93,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
+
+
+		this.money.ShowMoney();
 	}
 	CarisOut(vehicles)
 	{
