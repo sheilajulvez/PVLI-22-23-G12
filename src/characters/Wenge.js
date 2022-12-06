@@ -52,6 +52,28 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			frameRate: 60, // imágenes/frames por segundo
 			repeat: -1 //para que sea bucle
 		})
+
+		
+				// this.tweenLeft = this.scene.tweens.add({
+				// 	targets: [ this ],
+				// 	x: this.x-160,
+				// 	duration: 200,
+				// 	ease: 'Sine.easeInOut',
+				// 	flipX: true,
+				// 	yoyo: false,
+				// 	repeat: 0,
+				// 	delay: 10
+				// });
+				// this.tweenRight = this.scene.tweens.add({
+				// 	targets: [ this ],
+				// 	x: this.x+160,
+				// 	duration: 200,
+				// 	ease: 'Sine.easeInOut',
+				// 	flipX: true,
+				// 	yoyo: false,
+				// 	repeat: 0,
+				// 	delay: 10
+				// });
 		this.play(anim);
 		//if(anim=="Wenge_motomami"){
 			
@@ -100,13 +122,32 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 				{
 					this.coolDown=200;
 					this.dashSound.play();
-					this.body.setVelocityX(-1*this.velocity*20);
+					
+				 this.scene.tweens.add({
+					targets: [ this ],
+					x: this.x-160,
+					duration: 200,
+					ease: 'Sine.easeInOut',
+					flipX: true,
+					yoyo: false,
+					repeat: 0,
+					delay: 10
+				});
 				}
 				else if(this.e.isDown && this.coolDown<=0 && this.x<634)
 				{
 					this.coolDown=200;
 					this.dashSound.play();
-					this.body.setVelocityX(this.velocity*30);
+					this.scene.tweens.add({
+						targets: [ this ],
+						x: this.x+160,
+						duration: 200,
+						ease: 'Sine.easeInOut',
+						flipX: true,
+						yoyo: false,
+						repeat: 0,
+						delay: 10
+					});
 				}
 				
 			}
@@ -118,26 +159,63 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 				{
 					this.coolDown=200;
 					this.dashSound.play();
-					this.body.setVelocityX(-1*this.velocity*20);
+					
+				 this.scene.tweens.add({
+					targets: [ this ],
+					x: this.x-160,
+					duration: 200,
+					ease: 'Sine.easeInOut',
+					flipX: true,
+					yoyo: false,
+					repeat: 0,
+					delay: 10
+				});
 				}
 				else if(this.e.isDown && this.coolDown<=0 && this.x<634)
 				{
 					this.coolDown=200;
 					this.dashSound.play();
-					this.body.setVelocityX(this.velocity*30);
+					this.scene.tweens.add({
+						targets: [ this ],
+						x: this.x+160,
+						duration: 200,
+						ease: 'Sine.easeInOut',
+						flipX: true,
+						yoyo: false,
+						repeat: 0,
+						delay: 10
+					});
 				}
 			}
 			else if(this.q.isDown && this.coolDown<=0 && this.x>266)
 			{
-					this.coolDown=200;
-					this.dashSound.play();
-					this.body.setVelocityX(-1*this.velocity*20);
+				this.coolDown=200;
+				this.dashSound.play();
+				this.scene.tweens.add({
+					targets: [ this ],
+					x: this.x-160,
+					duration: 200,
+					ease: 'Sine.easeInOut',
+					flipX: true,
+					yoyo: false,
+					repeat: 0,
+					delay: 10
+				});
 			}
 			else if(this.e.isDown && this.coolDown<=0 && this.x<634)
 			{
-					this.coolDown=200;
-					this.dashSound.play();
-					this.body.setVelocityX(this.velocity*30);
+				this.coolDown=200;
+				this.dashSound.play();
+				this.scene.tweens.add({
+					targets: [ this ],
+					x: this.x+160,
+					duration: 200,
+					ease: 'Sine.easeInOut',
+					flipX: true,
+					yoyo: false,
+					repeat: 0,
+					delay: 10
+				});
 			}
 			else{
 				this.body.setVelocityX(0);
