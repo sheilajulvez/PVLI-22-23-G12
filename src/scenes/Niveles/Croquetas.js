@@ -32,7 +32,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
-		
+		this.player_b=datos.wenge;
 	
         
     }
@@ -41,8 +41,9 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.timeDelta=0;
 		this.money.ShowMoney();
 		let arrayCoches=[];
-		this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
-
+		//this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
+		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
+		this.player.velocity=this.player_b.velocity;
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-1000);

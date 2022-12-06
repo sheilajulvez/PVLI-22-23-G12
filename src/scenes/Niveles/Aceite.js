@@ -29,7 +29,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
-		this.player=datos.wenge;
+		this.player_b=datos.wenge;
 	
         
 		
@@ -39,7 +39,8 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		super.create();
 		this.timeDelta=0;
 		this.money.ShowMoney();
-
+		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
+		this.player.velocity=this.player_b.velocity;
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
@@ -48,7 +49,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
-		this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
+		//this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
 
 
 		
@@ -83,7 +84,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			this.money.AddMoney(200);
-			this.scene.start("EscenaHablar",{name:"Aceite_fin",stay:this.stay,dinero:this.money} )
+			this.scene.start("EscenaHablar",{name:"Aceite_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>2000)
 		{

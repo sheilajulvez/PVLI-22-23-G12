@@ -45,7 +45,7 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 	{
 		if(this.y>400 && this.y<402)
 		{
-			this.scene.pitido();
+			//this.scene.pitido();
 		}
 	}
 	respawn()

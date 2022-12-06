@@ -37,6 +37,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.timeDelta=0;
 		this.car=new Car(this,0,-1000);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
+		console.log(this.player_b.anim);
+		this.player.velocity=this.player_b.velocity;
 		this.physics.add.existing(this.car);
 
 		let arrayCoches=[];
@@ -76,6 +78,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		if(this.physics.collide(this.player, this.car)) {
     		console.log("Hay colisión");}
 		
+			//this.player.PlayAnim(this);
 		
 	}
 	CarisOut(vehicles)

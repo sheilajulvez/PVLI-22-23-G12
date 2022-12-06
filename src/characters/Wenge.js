@@ -31,12 +31,38 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			frameRate: 60, // imágenes/frames por segundo
 			repeat: -1 //para que sea bucle
 		})
-		console.log(anim);
-		if(anim=="Wenge_motomami"){
+		this.scene.anims.create({
+			key: 'Wenge_daltonismo', //identificador de la animación
+			frames: scene.anims.generateFrameNumbers('Wenge_daltonismo', 
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:37 // última imagen del Spritesheet que se ejecuta en la animación
+			}), 
+			frameRate: 60, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+		})
+		this.scene.anims.create({
+			key: 'Wenge_nuevacoleccion', //identificador de la animación
+			frames: scene.anims.generateFrameNumbers('Wenge_nuevacoleccion', 
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:37 // última imagen del Spritesheet que se ejecuta en la animación
+			}), 
+			frameRate: 60, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+		})
+		this.play(anim);
+		//if(anim=="Wenge_motomami"){
 			
-			this.play("Wenge_motomami");
-		}
-		else this.play('idle_Wenge'); //activa la animavcion
+		//	this.play("Wenge_motomami");
+		//}
+		//else if(anim=="Wenge_nuevacoleccion"){
+		//	this.play("Wenge_nuevacoleccion")
+		//}
+		//else if(anim=="Wenge_daltonismo"){
+		//	this.play("Wenge_daltonismo");
+		//}
+		//else this.play('idle_Wenge'); //activa la animavcion
 		this.velocity=500;
 		this.setScale(0.35,0.35);
 		this.d = this.scene.input.keyboard.addKey('D'); // registramos la tecla D como input
@@ -50,6 +76,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 	SetAnim(name){
 		this.anim=name;
 	}
+	
 	update(t, dt){
 		//super.preUpdate(t, dt);
 

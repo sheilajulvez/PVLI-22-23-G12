@@ -26,9 +26,11 @@ export default class outfits_button {
                 this.wenge.SetAnim("Wenge_motomami");
 
              }else if(this.name=="daltonismo"){
-                      we
-             }else if(this.name=="Nueva_Coleccion"){
-
+                console.log(this.name);
+                     this.wenge.SetAnim("Wenge_daltonismo");
+             }else if(this.name=="nueva_coleccion"){
+                console.log("nueva_coleccion");
+                 this.wenge.SetAnim("Wenge_nuevacoleccion");
              }
             }
         })
