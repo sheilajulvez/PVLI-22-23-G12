@@ -4,7 +4,6 @@ export default class Danger extends Phaser.GameObjects.Sprite { //exportamos la 
 		super(scene, x, y, 'danger');
 
 		this.scene.add.existing(this);
-		this.setScale(1.45,1.65);
-		
+
 	}
 }
