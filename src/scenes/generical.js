@@ -33,6 +33,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.load.spritesheet('Wenge_daltonismo', 'assets/tienda/wengeSprite_daltonica.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_nuevacoleccion', 'assets/tienda/wengeSprite_nuevacoleccion.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});
+		this.load.audio('dash', 'assets/sounds/fium.mp3');
 
 	}
 
