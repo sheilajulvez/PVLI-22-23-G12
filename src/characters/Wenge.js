@@ -131,7 +131,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			{
 				//this.x+=(50*dt)/100;
 				this.body.setVelocityX(this.velocity);
-				if(this.q.isDown && this.coolDown<=0 && this.x>266)
+				if(this.q.isDown && this.coolDown<=0 && this.x>266&&this.dash)
 				{
 					this.coolDown=200;
 					this.dashSound.play();
@@ -168,7 +168,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 			{
 				//this.x-=(50*dt)/100;
 				this.body.setVelocityX(-1*this.velocity);
-				if(this.q.isDown && this.coolDown<=0 && this.x>266)
+				if(this.q.isDown && this.coolDown<=0 && this.x>266&&this.dash)
 				{
 					this.coolDown=200;
 					this.dashSound.play();
@@ -200,7 +200,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 					});
 				}
 			}
-			else if(this.q.isDown && this.coolDown<=0 && this.x>266)
+			else if(this.q.isDown && this.coolDown<=0 && this.x>266&&this.dash)
 			{
 				this.coolDown=200;
 				this.dashSound.play();
