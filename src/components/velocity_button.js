@@ -8,6 +8,7 @@ export default class Velocity_button {
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;
+        this.buy=this.scene.sound.add("buy");
     
     }
     preload(){
@@ -21,6 +22,7 @@ export default class Velocity_button {
         this.sprite.on("pointerdown",()=>{
             console.log("wenga");
             if(this.current_money.LessMoney(this.price)){
+                this.buy.play();
                 this.wenge.AddVelocity();
                 this.sprite.setVisible(false);
                 this.current_money.SetText("DINERO "+this.current_money.money);
