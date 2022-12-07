@@ -16,7 +16,7 @@
 			this.stay=datos.stay;
 		}
 		preload(){
-			
+			this.load.image("cuadrado_tienda","assets/tienda/TIENDA_BONITO.png")
 			this.load.image("fondo_shop","assets/tienda/tienda.png");
 			this.load.image("salida_button","assets/tienda/salida_button.png");
 		//	this.load.image("velocity_button","assets/tienda/velocity_button.png");
@@ -40,11 +40,12 @@
 		{
 			
 			this.music=this.sound.add("music");
-			this.music.play();
+			//this.music.play();
 			this.add.image(0,0,"fondo_shop").setOrigin(0,0).setScale(0.5,0.7);
 			//this.add.image("velocity_button",300,300);
 			//this.add.sprite("velocity_button",600,600);
-			let a=this.add.image(100,100,"salida_button").setInteractive();
+			this.add.image(-50,120,"cuadrado_tienda").setScale(0.36,0.53).setOrigin(0,0);
+			let a=this.add.image(100,225,"salida_button").setInteractive().setScale(1.5,1.5);
 			a.on("pointerdown",()=>{
 				this.music.stop();
 				this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.wenge})
