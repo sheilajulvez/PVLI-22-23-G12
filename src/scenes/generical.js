@@ -4,11 +4,13 @@ import Barra from '../characters/Bar.js';//importamos la clase bar que indicará
 import road from '../scenes/road.js';
 import Money from "../components/Economy.js"
 
+
+
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
 
 		super({key: nameScene});
-
+		
 		
 
 	}
@@ -20,10 +22,12 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.life=0;
 	}
 	update() {
+		
 		  let x = Math.random() * this.game.config.width
 		  let y = 0
 		  this.Barra.aumenta(10);
 		  this.player.update();
+		
 	  }
 	
 	preload(){
@@ -34,11 +38,24 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.load.spritesheet('Wenge_nuevacoleccion', 'assets/tienda/wengeSprite_nuevacoleccion.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});
 		this.load.audio('dash', 'assets/sounds/fium.mp3');
+		this.load.audio('skate1','assets/sounds/skate1.mp3');
+		this.load.audio('skate2','assets/sounds/skate2.mp3');
+		this.load.audio('skate3','assets/sounds/skate3.mp3');
 
 	}
 
 	create(){
 	
+		const config =
+		{
+			mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
 		//añadimos los graficos para la barra
 		this.add.image(500,350,'fondo');
 			this.lifetext=this.add.text (900,650,'LIFE: 3', {
@@ -61,5 +78,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		
 		//this.player.body.updateBounds();
 		this.Barra = new Barra(this, 10, 10);
+
+		
 	}
 }

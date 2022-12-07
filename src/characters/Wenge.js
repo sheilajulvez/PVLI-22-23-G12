@@ -1,6 +1,10 @@
 
 
 
+function random(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
+
 export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y,anim) {
@@ -10,6 +14,8 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.body.setSize(200,220);
 		this.body.setOffset(360,140);
 		this.coolDown=0;
+		this.skateSound=[];
+		this.timeDelta=500;
 		this.anim=anim;
 		this.dash=false;
 		this.scene.anims.create({ //animación
@@ -97,6 +103,10 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
  			 loop: false,
  			 delay: 0,
 		}
+		for(let i=1;i<4;i++)
+        {
+            this.skateSound.push(this.scene.sound.add("skate"+i,config));
+        }
 		this.dashSound=this.scene.sound.add('dash',config);
 		this.velocity=500;
 		this.setScale(0.35,0.35);
@@ -116,11 +126,19 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.anim=name;
 	}
 	
-	update(t, dt){
+	update(){
 		//super.preUpdate(t, dt);
+		console.log("Time:"+this.timeDelta)
+		this.timeDelta+=1;
 		if(this.coolDown>=0)
 		{
 			this.coolDown= this.coolDown-1;
+		}
+		if(this.timeDelta>=600)
+		{
+			this.timeDelta=0;
+			let rand=random(0,2);
+			this.skateSound[rand].play();
 		}
 		//movimiento de WENGE
 		//
