@@ -8,18 +8,18 @@ export default class Dash_button {
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;
+        this.buy=this.scene.sound.add("buy");
     
     }
-    preload(){
-        //super.preload();
-  
-    }
     create(){
+        
        console.log(this.scene);
         this.sprite=this.scene.add.sprite(this.x,this.y,this.name).setInteractive();
         this.sprite.on("pointerdown",()=>{
+            
             console.log(this.wenge.dash);
             if(this.current_money.LessMoney(this.price)){
+            this.buy.play();
             this.wenge.SetDash();
             this.sprite.setVisible(false);
             this.current_money.SetText("DINERO "+this.current_money.money);

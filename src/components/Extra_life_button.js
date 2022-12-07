@@ -8,6 +8,8 @@ export default class Extra_life {
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;
+        this.buy=this.scene.sound.add("buy");
+    
     
     }
     preload(){
@@ -20,6 +22,7 @@ export default class Extra_life {
         this.sprite.on("pointerdown",()=>{
             console.log("criis");
             if(this.current_money.LessMoney(this.price)){
+             this.buy.play();
             console.log("criis");
             this.sprite.setVisible(false);
            this.current_money.SetText("DINERO "+this.current_money.money);

@@ -177,10 +177,6 @@ export default class EscenaHablar extends Phaser.Scene{
         if(this.scenekey=="Arsenico_fin"||this.scenekey=="Manzanilla_fin"||this.scenekey=="Croquetas_fin"
         ||this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"){
             this.opcion_a.a++;
-            for(let i=1;i<8;i++)
-            {
-                this.arrayHablar[i].stop();             //no se donde ponerlo, tiene que ser que al pinchar la ultima vez salte esto
-            }
             this.opcion_a.b.setText(this.opcion_a.txt[ this.opcion_a.a]);
             this.opcion_b.a++;
             this.opcion_b.b.setText(this.opcion_b.txt[ this.opcion_b.a]);
@@ -203,7 +199,7 @@ export default class EscenaHablar extends Phaser.Scene{
         if(name!=this.scenekey){
             text.setInteractive();
             text.on('pointerdown', ()=>{
-              let rand=random(1,7);
+              let rand=random(0,6);
               this.arrayHablar[rand].play();
                 text.scene.tweens.add(
                     {
@@ -246,10 +242,7 @@ export default class EscenaHablar extends Phaser.Scene{
                      this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
 
                        
-                        for(let i=1;i<8;i++)
-                        {
-                            this.arrayHablar[i].stop();             //no se donde ponerlo, tiene que ser que al pinchar la ultima vez salte esto
-                        }
+            
                         console.log("antes de niveles"+this.money+" player"+this.player);
                         this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
                 

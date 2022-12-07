@@ -8,7 +8,8 @@ export default class outfits_button {
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;
-
+        this.buy=this.scene.sound.add("buy");
+    
     
     }
     preload(){
@@ -23,17 +24,19 @@ export default class outfits_button {
         this.sprite.on("pointerdown",()=>{
           
             if(this.current_money.LessMoney(this.price)){
+               
              if(this.name=="motomami"){
                 this.wenge.SetAnim("Wenge_motomami");
+                this.buy.play();
               
              }else if(this.name=="daltonismo"){
                 console.log(this.name);
                      this.wenge.SetAnim("Wenge_daltonismo");
-                    
+                     this.buy.play();
              }else if(this.name=="nueva_coleccion"){
                 console.log("nueva_coleccion");
                  this.wenge.SetAnim("Wenge_nuevacoleccion");
-                
+                 this.buy.play();
              }
             }
         })

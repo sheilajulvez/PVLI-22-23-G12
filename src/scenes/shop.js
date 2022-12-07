@@ -33,6 +33,7 @@
 			this.load.image("dash_image","assets/tienda/dash_button.png");
 			this.load.image("dash_explicacion","assets/tienda/dash_explicacion.png");
 			this.load.audio("music","assets/sounds/videoplayback.mp3");
+			this.load.audio("buy","assets/sounds/buy.mp3");
 		}
 		create()
 		{

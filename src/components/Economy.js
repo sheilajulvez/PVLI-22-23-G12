@@ -1,7 +1,7 @@
 export default class Economy{
     constructor(scene){
         this.scene=scene;
-        this.money=0;
+        this.money=1100;
         this.text=" ";
     }
     AddMoney(cantidad){
