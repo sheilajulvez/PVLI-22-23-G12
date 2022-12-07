@@ -5,6 +5,10 @@ import Arsenico from './Niveles/Arsenico.js';
 import Croquetas from './Niveles/Croquetas.js';
 import Manzanilla from './Niveles/Manzanilla.js';
 
+function random(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
+
 export default class EscenaHablar extends Phaser.Scene{
     constructor(scenekey){
 		super({key: "EscenaHablar"});
@@ -16,6 +20,7 @@ export default class EscenaHablar extends Phaser.Scene{
         this.scenekey=datos.name;
         this.money=datos.dinero;
         this.player=datos.wenge;
+        this.arrayHablar=[];
         console.log("escena hablar "+this.money);
         console.log("escena hablar "+this.player);
        
@@ -36,6 +41,14 @@ export default class EscenaHablar extends Phaser.Scene{
     this.load.image("Twitero","assets/twitero.png");
     this.load.image("Texto_Wenge","assets/cajastexto/texto_wenge.png");
     this.load.audio("click", 'assets/sounds/click.mp3');
+    this.load.audio("talking1",'assets/sounds/talking1.mp3');
+    this.load.audio("talking2",'assets/sounds/talking2.mp3');
+    this.load.audio("talking3",'assets/sounds/talking3.mp3');
+    this.load.audio("talking4",'assets/sounds/talking4.mp3');
+    this.load.audio("talking5",'assets/sounds/talking5.mp3');
+    this.load.audio("talking6",'assets/sounds/talking6.mp3');
+    this.load.audio("talking7",'assets/sounds/talking7.mp3');
+   
     if(this.stay>1){
         this.money.SetScene(this);
         this.money.ShowMoney();
@@ -49,7 +62,23 @@ export default class EscenaHablar extends Phaser.Scene{
 
     create(){
         //ponemos el fondo que toca
-        this.clickSound= this.sound.add("click")
+        this.clickSound= this.sound.add("click");
+        // this.talkingSound1=this.sound.add("talking1");
+        // this.talkingSound2=this.sound.add("talking2");
+        // this.talkingSound3=this.sound.add("talking3");
+        // this.talkingSound4=this.sound.add("talking4");
+        // this.talkingSound5=this.sound.add("talking5");
+        // this.talkingSound6=this.sound.add("talking6");
+        // this.talkingSound7=this.sound.add("talking7");
+
+        for(let i=1;i<8;i++)
+        {
+            this.arrayHablar.push(this.sound.add("talking"+i));
+        }
+        let rand=random(1,7);
+        let sound=this.arrayHablar[rand].play();
+
+
         if(this.scenekey=="tomatico"
         ||this.scenekey=="Arsenico"||this.scenekey=="tomatico_fin"||this.scenekey=="Manzanilla"
         ||this.scenekey=="Manzanilla_fin"){
@@ -128,7 +157,8 @@ export default class EscenaHablar extends Phaser.Scene{
         else{
             this.cajita.setInteractive();
             this.cajita.on("pointerdown",()=>{
-               this.clickSound.play();
+                let rand=random(1,7);
+                this.arrayHablar[rand].play();
                 this.siguiente_texto();
                 if(this.texto_largo.a==Textos.longitud){
                     if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
@@ -177,7 +207,8 @@ export default class EscenaHablar extends Phaser.Scene{
         if(name!=this.scenekey){
             text.setInteractive();
             text.on('pointerdown', ()=>{
-                this.clickSound.play();
+              let rand=random(1,7);
+              this.arrayHablar[rand].play();
                 text.scene.tweens.add(
                     {
                         targets: text,
@@ -217,11 +248,21 @@ export default class EscenaHablar extends Phaser.Scene{
                  if(this.texto_largo.a==Textos.longitud){
                    if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
                      this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
+
+                       
+                       
                         console.log("antes de niveles"+this.money+" player"+this.player);
                         this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
                 
                     }
-                    else this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});
+                    else
+                    {
+                        for(let i=1;i<8;i++)
+                        {
+                            this.arrayHablar[i].stop();             //no se donde ponerlo, tiene que ser que al pinchar la ultima vez salte esto
+                        }
+                        this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});
+                    }
     
                 }
                

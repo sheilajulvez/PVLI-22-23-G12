@@ -44,6 +44,7 @@
 			//this.add.sprite("velocity_button",600,600);
 			let a=this.add.image(100,100,"salida_button").setInteractive();
 			a.on("pointerdown",()=>{
+				this.music.stop();
 				this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.wenge})
 			});
 			this.nueva_coleccion=new outfits_button(100,600,this,this.money,"nueva_coleccion",this.wenge);
