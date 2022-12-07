@@ -1,5 +1,3 @@
-
-import Button from '../components/Buttom.js';
 export default class GameOver extends Phaser.Scene{
 	constructor(){
 		super({key:'gameover'});

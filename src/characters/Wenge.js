@@ -1,6 +1,4 @@
-
-
-
+import LifeComponent from './../components/LifeComponent.js';
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
@@ -17,6 +15,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.skateSound=[];
 		this.timeDelta=500;
 		this.anim=anim;
+		this.life= new LifeComponent(this.scene, 100,100,3);
 		this.dash=false;
 		this.outfits=[["Wenge_motomami",false],["Wenge_daltonismo",false],["Wenge_nuevacoleccion",false]];
 		this.outfits.lenght=3;
@@ -143,7 +142,6 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 	}
 	update(){
 		//super.preUpdate(t, dt);
-		console.log("Time:"+this.timeDelta)
 		this.timeDelta+=1;
 		if(this.coolDown>=0)
 		{

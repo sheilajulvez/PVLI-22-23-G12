@@ -3,7 +3,6 @@ import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
 import Explosion from '../../characters/explosion.js';
-import LifeComponent from '../../components/LifeComponent.js';
 import Economy from "../../components/Economy.js"
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 import Danger from '../../characters/Danger.js';
@@ -95,7 +94,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 
 
-		this.money.ShowMoney();
+		//this.money.ShowMoney();
 	}
 	CarisOut(vehicles)
 	{
@@ -146,7 +145,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
 		super.update();
 		 
-		 
+		if (this.player.life.lifes == 0) this.scene.start("gameover");
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			
@@ -251,7 +250,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		
 		}
-	    
+	    this.player.life.Update();
 	 }
 	 GameOver(){
 		this.scene.start('gameover');

@@ -56,14 +56,14 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 			dir='r';
 		}
 	}
-	collision()
+	/*collision()
 	{
 		if(this.scene.physics.overlap(this.scene.player, this)) 
 		{
 			
     		this.destroyNow=true;
 		}
-	}
+	}*/
 	respawn()				//comprobación si la cota es la indicada para el respawn	
 	{
 	

@@ -5,7 +5,6 @@ import road from '../scenes/road.js';
 import Money from "../components/Economy.js"
 
 
-
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
 
@@ -37,6 +36,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.load.spritesheet('Wenge_daltonismo', 'assets/tienda/wengeSprite_daltonica.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_nuevacoleccion', 'assets/tienda/wengeSprite_nuevacoleccion.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});
+		this.load.image('Life', 'assets/vidas.png');
 		this.load.audio('dash', 'assets/sounds/fium.mp3');
 		this.load.audio('skate1','assets/sounds/skate1.mp3');
 		this.load.audio('skate2','assets/sounds/skate2.mp3');
@@ -63,7 +63,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 			fill:'#fff',
 			fontFamily:'verdana,arial, sans-serif'
 		});
-		let arbol = [];
+		
 
 		//grupo de tipo fondoMove
 		new road(this,500,400);
@@ -78,7 +78,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		
 		//this.player.body.updateBounds();
 		this.Barra = new Barra(this, 10, 10);
-
 		
 	}
 }

@@ -4,7 +4,7 @@ export default class Bar  {
         this.x =x;
         this.y =y;
         this.value=0;
-        this.maximo=400;
+        this.maximo=40000;
         this.tamx=110;
         this.tamy=30;
         this.p = this.tamx / this.maximo;

@@ -9,6 +9,7 @@ import Croquetas from './scenes/Niveles/Croquetas.js';
 import Manzanilla from './scenes/Niveles/Manzanilla.js';
 import EscenaHablar from './scenes/EscenaHablar.js'
 import Niveles from './scenes/Niveles.js'
+import GameOver from './scenes/GameOver.js';
 
  //importamos la escena macarrones que vamos a usar
 
@@ -44,7 +45,7 @@ let config= { //configuramos canvas
       }
     },
    // scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles , Aceite],
-    scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla],
+    scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla, GameOver],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
   
