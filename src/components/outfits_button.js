@@ -1,15 +1,15 @@
 export default class outfits_button {
-    constructor(x,y,scene, current_money,name,wenge){
+    constructor(x,y,scene, current_money,name,wenge,key){
        // super(scene, x, y, name);
         this.scene=scene;
         this.x=x;
         this.y=y;
-        this.price=50;
+        this.price=200;
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;
         this.buy=this.scene.sound.add("buy");
-    
+        this.key=key;
     
     }
     preload(){
@@ -21,25 +21,28 @@ export default class outfits_button {
        
         this.sprite=this.scene.add.sprite(this.x,this.y,this.name).setInteractive().setScale(1.2,1.2);
         console.log(this.sprite);
-        this.sprite.on("pointerdown",()=>{
-          
-            if(this.current_money.LessMoney(this.price)){
-               
-             if(this.name=="motomami"){
-                this.wenge.SetAnim("Wenge_motomami");
-                this.buy.play();
-              
-             }else if(this.name=="daltonismo"){
-                console.log(this.name);
-                     this.wenge.SetAnim("Wenge_daltonismo");
-                     this.buy.play();
-             }else if(this.name=="nueva_coleccion"){
-                console.log("nueva_coleccion");
-                 this.wenge.SetAnim("Wenge_nuevacoleccion");
-                 this.buy.play();
-             }
+        let a=0;
+        let found=false;
+        while(a<this.wenge.outfits.lenght&&!(found)){
+            if(this.wenge.outfits[a][0]==this.key){
+                found=true;
             }
+            else ++a;
+        }
+        this.sprite.on("pointerdown",()=>{
+          if(this.wenge.outfits[a][1]){
+            this.wenge.SetAnim(this.key);
+            console.log("CAMBIO");
+          }else{
+            if(this.current_money.LessMoney(this.price)){
+                this.wenge.SetAnim(this.key);
+                 console.log("compra");
+                }
+                this.current_money.SetText();
+          }
+
         })
+        
         this.sprite.on("pointerover",()=>{
             this.sprite.scene.tweens.add(
                 {

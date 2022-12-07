@@ -4,7 +4,7 @@ export default class Dash_button {
         this.scene=scene;
         this.x=x;
         this.y=y;
-        this.price=250;
+        this.price=300;
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;

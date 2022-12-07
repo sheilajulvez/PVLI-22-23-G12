@@ -18,6 +18,9 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.timeDelta=500;
 		this.anim=anim;
 		this.dash=false;
+		this.outfits=[["Wenge_motomami",false],["Wenge_daltonismo",false],["Wenge_nuevacoleccion",false]];
+		this.outfits.lenght=3;
+
 		this.scene.anims.create({ //animación
 			key: 'idle_Wenge', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Wenge', 
@@ -123,9 +126,21 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.velocity+=200;
 	}
 	SetAnim(name){
+		let a=0;
+		let found=false;
+		while(a<this.outfits.lenght&&!(found)){
+            if(this.outfits[a][0]==name){
+				console.log(this.outfits[a][0]);
+				console.log(name);
+				this.outfits[a][1]=true;
+                found=true;
+            }
+            else ++a;
+        }
+		console.log(this.outfits.lenght);
+		console.log(this.outfits[a][1])
 		this.anim=name;
 	}
-	
 	update(){
 		//super.preUpdate(t, dt);
 		console.log("Time:"+this.timeDelta)

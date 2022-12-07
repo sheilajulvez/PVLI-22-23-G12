@@ -34,6 +34,7 @@
 			this.load.image("dash_explicacion","assets/tienda/dash_explicacion.png");
 			this.load.audio("music","assets/sounds/videoplayback.mp3");
 			this.load.audio("buy","assets/sounds/buy.mp3");
+			
 		}
 		create()
 		{
@@ -48,11 +49,16 @@
 				this.music.stop();
 				this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.wenge})
 			});
-			this.nueva_coleccion=new outfits_button(100,600,this,this.money,"nueva_coleccion",this.wenge);
+			this.nueva_coleccion=new outfits_button(100,600,this,this.money,"nueva_coleccion",this.wenge,"Wenge_nuevacoleccion");
+			//Wenge_nuevacoleccion  Wenge_motomami    Wenge_daltonismo
+
 			this.add.image(50,450,"nuevacoleccion_explicacion").setScale(0.5,0.5);;
-			this.motomami=new outfits_button(250,600,this,this.money,"motomami",this.wenge);
+			
+			this.motomami=new outfits_button(250,600,this,this.money,"motomami",this.wenge,
+			"Wenge_motomami");
 			this.add.image(200,450,"motomami_explanation").setScale(0.5,0.5);;
-			this.daltonismo=new outfits_button(400,600,this,this.money,"daltonismo",this.wenge);
+			this.daltonismo=new outfits_button(400,600,this,this.money,"daltonismo",this.wenge, "Wenge_daltonismo");
+
 			this.add.image(350,450,"daltonismo_explicacion").setScale(0.5,0.5);;
 			this.extre_life=new Extra_life(550,600,this,this.money,"extra_life",this.wenge);
 			this.add.image(500,450,"extra_life_explanation").setScale(0.5,0.5);;

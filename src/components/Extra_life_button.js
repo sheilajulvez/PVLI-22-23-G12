@@ -4,7 +4,7 @@ export default class Extra_life {
         this.scene=scene;
         this.x=x;
         this.y=y;
-        this.price=50;
+        this.price=150;
         this.current_money=current_money;
         this.name=name;
         this.wenge=wenge;

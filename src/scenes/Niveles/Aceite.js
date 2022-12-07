@@ -42,6 +42,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
 		this.player.dash=this.player_b.dash;
+		this.player.outfits=this.player_b.outfits;
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
