@@ -1,10 +1,23 @@
 
-import Car from '../../characters/Car.js';//importamos a los Coches
+
+
+
+
+
+
+
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
-import { Moto } from '../../characters/Motos.js';
 import Pool  from '../../characters/Pool.js';
+import Explosion from '../../characters/explosion.js';
+import Economy from "../../components/Economy.js"
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
+import Danger from '../../characters/Danger.js';
+import Ambulance from '../../characters/Ambulance.js';
+import { Moto } from '../../characters/Motos.js';
+
+
+
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
