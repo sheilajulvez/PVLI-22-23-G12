@@ -1,11 +1,4 @@
 import Car from '../characters/Car.js';//importamos a los Coches
-function random(min, max) {
-    return Math.floor((Math.random() * (max - min + 1)) + min);
-}
-
-var dir='r';
-var cotaDer=900;
-var cotaIzq=190	;
 export default class Ambulance extends Car { //exportamos la clase extendida de Phaser
      
 	constructor(scene, x, y) {
@@ -14,7 +7,6 @@ export default class Ambulance extends Car { //exportamos la clase extendida de 
 		this.scene.add.existing(this);
 		this.scene.physics.add.existing(this);
 		
-		this.destroyNow=false;
 		this.body.setSize(80,150);
 		this.body.setOffset(10,20);
 		this.scene.anims.create({ //animación
@@ -37,15 +29,24 @@ export default class Ambulance extends Car { //exportamos la clase extendida de 
 		this.setScale(1,1);
 	}
 	
-	
-	respawn()				//comprobación si la cota es la indicada para el respawn	
+
+	collision()
 	{
-		if (this.y>800) 
-			{		
-				this.scene.VanisOut(this);		
-			}		
+		if(this.scene.physics.overlap(this.scene.player, this)) 
+		{
+			this.scene.player.life.RestaVida();
+		}
+		else if(this.scene.physics.overlap(this.scene.poolCar.getPhaserGroup(), this)) 
+		{
+			console.log("DESTRUYE COCHE Y CREA EXPLOSION");
+		}
+		else if(this.scene.physics.overlap(this.scene.poolCar.getPhaserGroup(), this))
+		{
+			console.log("DESTRUYE VAN Y CREA EXPLOSION");
+		}
 	}
 	
+
 	preUpdate(t, dt){
         super.preUpdate(t,dt);
 

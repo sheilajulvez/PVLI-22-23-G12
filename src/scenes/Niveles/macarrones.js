@@ -186,6 +186,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			}
 
 			new Danger(this,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
+			this.ambulance=new Ambulance(this,vehicleX-10,-335);
 			}
 
 			//COCHE
