@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
