@@ -52,7 +52,7 @@ export default class Ambulance extends Car { //exportamos la clase extendida de 
 
 		//movimiento de los coches
 		this.collision();
-        this.move(dt,dir);
+        //this.move(dt,dir);
 	}
 
 }
