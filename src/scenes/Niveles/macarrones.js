@@ -6,7 +6,6 @@ import Explosion from '../../characters/explosion.js';
 import Economy from "../../components/Economy.js"
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 import Danger from '../../characters/Danger.js';
-
 import Ambulance from '../../characters/Ambulance.js';
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -152,7 +151,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		if(this.timeDelta>2000)
 		{
-			if(this.exp){this.explosion.destroy();}
+			if(this.exp){this.explosion.destroy(); this.exp=false;}
 		
 	   	 	var rand=random(0,1);
 			
@@ -187,7 +186,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 
 			new Danger(this,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
 			this.ambulance=new Ambulance(this,vehicleX-10,-335);
-			}
+		}
 
 			//COCHE
 			if (rand===0)

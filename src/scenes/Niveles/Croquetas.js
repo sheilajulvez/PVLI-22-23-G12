@@ -14,7 +14,10 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 	constructor(){
 
 		super('Croquetas');
-		this.vanSpawn=0;
+		this.ambulanceCont=0;
+		this.money=new Economy(this);
+		this.exp=false;
+		
 		
 	}
 
@@ -27,6 +30,9 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		//imagen para la máscara
 		//this.load.image('mask', '');
 		//añadimos las luces
+
+		
+		
 		
 	}
 	init(datos){
