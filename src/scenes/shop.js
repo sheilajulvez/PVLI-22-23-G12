@@ -47,10 +47,10 @@
 				loop: true,
 				delay: 0,
 			}
-			this.music.play();
+		
 			
 			this.music=this.sound.add("music",config);
-			
+			this.music.play();
 			this.add.image(0,0,"fondo_shop").setOrigin(0,0).setScale(0.5,0.7);
 			//this.add.image("velocity_button",300,300);
 			//this.add.sprite("velocity_button",600,600);
