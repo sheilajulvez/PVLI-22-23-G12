@@ -15,10 +15,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	constructor(){
 
 		super('tomatico');
-		this.collisionCar=false;
-		this.collisionVan=false;
 		this.ambulanceCont=0;
 		this.money=new Economy(this);
+		this.exp=false;
 		
 	}
 
@@ -86,9 +85,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
 			
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{console.log("coche coche"); this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
 
 
 		//this.money.ShowMoney();
@@ -127,6 +126,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	createExplosion(x,y){
 		
 		 this.explosion=new Explosion(this,x,y);
+		 this.exp=true;
+
 
 	}
 	pitido()
@@ -151,97 +152,102 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		if(this.timeDelta>2000)
 		{
-		//this.explosion.destroy();
-	    var rand=random(0,1);
-		console.log(this.ambulanceCont);
-		if(this.ambulanceCont===5)
-		{   let pos=random(0,5);
-			let vehicleX=0;
-			this.ambulanceCont=0;
-			this.timeDelta=0;
-			switch(pos)
-			{
-				 case 0:
-					 vehicleX=210;
-					 break;
-				  case 1:
-					 vehicleX=350;
-					 break;
-				  case 2:
-				   vehicleX=480;
-					 break;
-				  case 3:
-					  vehicleX=610;
-					  break;
-				  case 4:
-				   vehicleX=740;
-					  break;
-				  case 5:
-				   vehicleX=870;
-					  break;
-				   
-		   }
+			if(this.exp){this.explosion.destroy();}
+		
+	   	 	var rand=random(0,1);
+			
+			//AMBULANCIA
+			if(this.ambulanceCont===5)
+			{   let pos=random(0,5);
+				let vehicleX=0;
+				this.ambulanceCont=0;
+				this.timeDelta=0;
+				switch(pos)
+				{
+				 	case 0:
+					 	vehicleX=210;
+					 	break;
+				  	case 1:
+					 	vehicleX=350;
+					 	break;
+				 	 case 2:
+				   	vehicleX=480;
+					 	break;
+					case 3:
+						vehicleX=610;
+						break;
+					case 4:
+					vehicleX=740;
+						break;
+					case 5:
+					vehicleX=870;
+						break;
+					
+			}
 
-		   new Danger(this,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
-		}
-	    if (rand===0)				//respawm car
-		{
-			    this.ambulanceCont=this.ambulanceCont+1;
-			    let pos=random(0,5);
+			new Danger(this,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
+			}
+
+			//COCHE
+			if (rand===0)
+			{
+					this.ambulanceCont=this.ambulanceCont+1;
+					let pos=random(0,5);
+					this.timeDelta=0;
+					let vehicleX=0;
+						switch(pos)
+						{
+							case 0:
+								vehicleX=210;
+								break;
+							case 1:
+								vehicleX=350;
+								break;
+							case 2:
+								vehicleX=480;
+								break;
+							case 3:
+								vehicleX=610;
+								break;
+							case 4:
+								vehicleX=740;
+								break;
+							case 5:
+								vehicleX=870;
+								break;
+								
+						}
+					
+					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+
+				
+			}
+			//FURGONETA 
+			else if(rand==1)
+			{
+				this.ambulanceCont=this.ambulanceCont+1;
+				let pos=random(0,1);
 				this.timeDelta=0;
 				let vehicleX=0;
-					switch(pos)
-					 {
-						  case 0:
-							  vehicleX=210;
-							  break;
-						   case 1:
-							  vehicleX=350;
-							  break;
-						   case 2:
-							vehicleX=480;
-							  break;
-						   case 3:
-							   vehicleX=610;
-							   break;
-						   case 4:
+				switch(pos)
+					{
+						case 0:
+							vehicleX=350;
+							break;
+						case 1:
 							vehicleX=740;
-							   break;
-						   case 5:
-							vehicleX=870;
-							   break;
-							
+							break;
 					}
+					
+				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
 				
-				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-
-			
-		}
-		else if(rand==1)			//respawn bike
-		{
-			this.ambulanceCont=this.ambulanceCont+1;
-			let pos=random(0,1);
-			this.timeDelta=0;
-			let vehicleX=0;
-			switch(pos)
-				{
-					case 0:
-						vehicleX=350;
-						break;
-					case 1:
-						vehicleX=740;
-						break;
-				}
 				
-			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
-	 		
+			}
 			
+			}
+			this.player.life.Update();
 		}
-		
+	GameOver(){
+			this.scene.start('gameover');
 		}
-	    this.player.life.Update();
-	 }
-	 GameOver(){
-		this.scene.start('gameover');
-	 }
-}
+	}

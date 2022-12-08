@@ -8,7 +8,7 @@ export default class Danger extends Phaser.GameObjects.Sprite { //exportamos la 
 
 	preUpdate(t,dt)
 	{
-		console.log(this.deleteTime);
+		
 		this.deleteTime-=dt;
 		if(this.deleteTime<=0)
 		{

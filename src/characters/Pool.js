@@ -30,11 +30,9 @@ export default class Pool {
 		  entity.setVisible(true);
 		}
 		
-		console.log(this._group.getLength());
 		return entity;
-
-
 	}
+	
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
 		entity.body.checkCollision.none = true;
