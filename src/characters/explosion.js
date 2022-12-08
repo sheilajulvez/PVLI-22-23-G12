@@ -19,7 +19,7 @@ export default class Explosion extends Phaser.GameObjects.Sprite { //exportamos 
 		});
 		this.play('idle_Explosion'); //activa la animavcion
 
-		//this.setScale(0.35,0.35);
+		this.setScale(0.35,0.35);
 	}
 
 	update(dt)

@@ -27,7 +27,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});	
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	})
-		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:311 , frameHeight:	512	});
+		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:350, frameHeight:	300});
 		this.load.image('danger','assets/danger.png');
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
@@ -104,7 +104,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	
 	Explosiones(obj1,obj2){
 	
-		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
+		this.createExplosion(obj2.body.center.x,obj2.body.center.y);
 		this.explosionSound.play();
 		/*if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
 				createExplosion(
