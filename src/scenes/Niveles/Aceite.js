@@ -144,7 +144,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 
 		if(this.timeDelta>2000)
 		{
-			if(this.exp){this.explosion,destroy(); this.exp=false;}
+			if(this.exp){this.explosion,destroy();}
 			
 			var rand=random(0,1);
 			
