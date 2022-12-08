@@ -23,8 +23,8 @@ export default class Extra_life {
             console.log("criis");
             if(this.current_money.LessMoney(this.price)){
              this.buy.play();
-            console.log("criis");
-            this.sprite.setVisible(false);
+              this.wenge.life.AddVida();
+           // this.sprite.setVisible(false);
            this.current_money.SetText("DINERO "+this.current_money.money);
             }
         })
