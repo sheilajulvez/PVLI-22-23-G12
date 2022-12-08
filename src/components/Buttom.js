@@ -26,6 +26,23 @@ export default class Button extends Phaser.GameObjects.Sprite{
 				this.scene.scene.start(this.scarga,{name:this.nombre,stay:this.nivel,wenge:this.wenge,dinero:this.dinero});
 			}
 			});
+			console.log(this.stay);
+			console.log(this.nivel);
+			if(this.stay>=this.nivel){
+				this.on("pointerover",()=>{
+					this.scene.tweens.add(
+						{
+							targets: this,
+							scaleX: 1.5,
+							scaleY: 1.5,
+							duration: 100,
+							yoyo: true,
+						}
+					);
+					
+				})
+			}
+			
 		
 	}
 
