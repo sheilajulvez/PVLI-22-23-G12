@@ -32,15 +32,25 @@
 			this.load.image("extra_life_explanation","assets/tienda/life_explicacion.png");
 			this.load.image("dash_image","assets/tienda/dash_button.png");
 			this.load.image("dash_explicacion","assets/tienda/dash_explicacion.png");
-			this.load.audio("music","assets/sounds/videoplayback.mp3");
+			this.load.audio("music","assets/sounds/shopMusic.mp3");
 			this.load.audio("buy","assets/sounds/buy.mp3");
 			
 		}
 		create()
-		{
+		{const config=
+			{
+				mute: false,
+				volume: 0.1,
+		 	 rate: 1,
+			    detune: 0,
+				seek: 0,
+				loop: true,
+				delay: 0,
+			}
+			this.music.play();
 			
-			this.music=this.sound.add("music");
-			//this.music.play();
+			this.music=this.sound.add("music",config);
+			
 			this.add.image(0,0,"fondo_shop").setOrigin(0,0).setScale(0.5,0.7);
 			//this.add.image("velocity_button",300,300);
 			//this.add.sprite("velocity_button",600,600);
