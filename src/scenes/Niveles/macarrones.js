@@ -73,9 +73,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
 		for(let i=0; i<5;i++)
 		{
-			let car=new Car(this,0,-500);
-			arrayCoches.push(car);
-			
+			arrayCoches[i]=(new Car(this,0,-500+i*100));
 		}
 		this.poolCar=new Pool(this,5,arrayCoches);	
 		this.physics.add.overlap(this.player, this.poolCar.getPhaserGroup());
@@ -83,8 +81,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			let van=new Van(this,0,-1000);
-			arrayVan.push(van);
+			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
 		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
@@ -154,7 +151,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		if(this.timeDelta>2000)
 		{
-		this.explosion.destroy();
+		//this.explosion.destroy();
 	    var rand=random(0,1);
 		console.log(this.ambulanceCont);
 		if(this.ambulanceCont===5)
@@ -185,15 +182,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 				   
 		   }
 
-		   this.add.image(vehicleX-100,0,"danger").setOrigin(0,0).setScale(0.5,0.7);
-			var wait=0;
-			while(wait<500)
-			{
-				wait+=dt;
-			}
-			
-			
-			this.ambulance= new Ambulance(this,vehicleX,0);
+		   new Danger(this,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
 		}
 	    if (rand===0)				//respawm car
 		{
