@@ -41,6 +41,15 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 			this.scene.player.life.RestaVida();
     		this.destroyNow=true;
 		}
+		/*if(this.scene.physics.overlap(this.scene.poolVan.getPhaserGroup(),this)){
+			this.scene.Explosiones(this.scene.poolVan.getPhaserGroup(),this);
+			this.destroyNow=true;
+		}
+		if(this.scene.physics.overlap(this.scene.poolCar.getPhaserGroup(),this)){
+			this.scene.Explosiones(this.scene.poolCar.getPhaserGroup(),this);
+			this.destroyNow=true;
+		}*/
+
 	}
 	pipi()
 	{

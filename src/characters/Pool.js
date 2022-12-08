@@ -32,10 +32,10 @@ export default class Pool {
 		
 		return entity;
 	}
-	
+
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
-		entity.body.checkCollision.none = true;
+		entity.body.checkCollision.none = false;
 		this._group.killAndHide(entity);
 		
 	}

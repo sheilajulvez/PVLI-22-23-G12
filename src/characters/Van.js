@@ -59,18 +59,18 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 	collision()
 	{
 		if(this.scene.physics.overlap(this.scene.player, this)) 
-		{
-			
+		{	
+			this.scene.player.life.RestaVida();
     		this.destroyNow=true;
 		}
-		if(this.scene.physics.overlap(this.scene.poolVan.getPhaserGroup(),this)){
+		/*if(this.scene.physics.overlap(this.scene.poolVan.getPhaserGroup(),this)){
 			this.scene.Explosiones(this.scene.poolVan.getPhaserGroup(),this);
 			this.destroyNow=true;
 		}
 		if(this.scene.physics.overlap(this.scene.poolCar.getPhaserGroup(),this)){
 			this.scene.Explosiones(this.scene.poolCar.getPhaserGroup(),this);
 			this.destroyNow=true;
-		}
+		}*/
 	}
 	respawn()				//comprobación si la cota es la indicada para el respawn	
 	{
