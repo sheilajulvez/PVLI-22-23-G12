@@ -104,7 +104,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	
 	Explosiones(obj1,obj2){
 	
-		this.createExplosion(obj2.body.center.x,obj2.body.center.y);
+		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
 		this.explosionSound.play();
 		/*if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
 				createExplosion(
