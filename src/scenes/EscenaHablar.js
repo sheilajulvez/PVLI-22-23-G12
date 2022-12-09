@@ -152,15 +152,8 @@ export default class EscenaHablar extends Phaser.Scene{
             this.cajita.on("pointerdown",()=>{
                 let rand=random(0,6);
                 this.arrayHablar[rand].play();
-                this.siguiente_texto();
-                if(this.texto_largo.a==Textos.longitud){
-                    if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
-                      this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
-                         this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
-                 
-                     }
-                     else this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});}
-     
+                this.Siguiente();
+              
             })
         }
         if(this.scenekey!="tomatico"){
@@ -170,6 +163,18 @@ export default class EscenaHablar extends Phaser.Scene{
      //  this.ShowMoney();
  
         
+    }
+
+    Siguiente(){
+        this.siguiente_texto();
+        if(this.texto_largo.a==Textos.longitud){
+            if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
+              this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
+                 this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
+         
+             }
+             else this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});}
+
     }
 
  
@@ -238,12 +243,11 @@ export default class EscenaHablar extends Phaser.Scene{
                  }
                  this.siguiente_texto();
                  if(this.texto_largo.a==Textos.longitud){
-                   if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
+                    if(this.scenekey=="arsenico_fin"){
+                        this.scene.start("Escena_final");
+                    }
+                  else if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||
                      this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
-
-                       
-            
-                        console.log("antes de niveles"+this.money+" player"+this.player);
                         this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
                 
                     }
