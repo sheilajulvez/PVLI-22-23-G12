@@ -4,7 +4,6 @@ import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';
 import Explosion from '../../characters/explosion.js';
 import Economy from "../../components/Economy.js"
-import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 import Danger from '../../characters/Danger.js';
 import Ambulance from '../../characters/Ambulance.js';
 function random(min, max) {
@@ -31,8 +30,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
 		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
-		this.load.image('mask', 'assets/mask.png');
 
+		//creas la mascara
+		this.load.image('mask', 'assets/mask.png');
 	}
 
 	create(){

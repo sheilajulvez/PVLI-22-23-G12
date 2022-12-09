@@ -45,7 +45,7 @@ let config= { //configuramos canvas
       }
     },
    // scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles , Aceite],
-    scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla, GameOver],
+    scene:[Menu,Shop, Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla, GameOver],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
   

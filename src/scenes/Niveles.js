@@ -6,6 +6,7 @@ export default class Niveles extends Phaser.Scene {
         super({ key: 'MapNiveles'});
         
         this.Nivel =[ ];
+        this.Botones =[ ];
            this.stay=0;
          //posicion + nombre de la imagen
        // this.NivButton= this.relatedScene.add.image(500,200,'next_level');
@@ -13,6 +14,7 @@ export default class Niveles extends Phaser.Scene {
         // for (let i=0; i<5; i++) Nivel.push(this.NivButton);
     }
     preload(){
+		this.load.image('quit_buttom',"assets/exit1.jpg");
         this.load.image("mapaciudad","assets/mapaciudad.png");
         //guardas la imagen
         this.load.image('boton',"assets/boton.png");
@@ -32,8 +34,9 @@ export default class Niveles extends Phaser.Scene {
      
         this.money.SetScene(this);
         this.money.ShowMoney();
-        this.Nivel.push(new Button(this, 400,400, 'shop_button', 'shop',"Niveles", this.stay,this.stay-1,this.wenge,this.money)); 
+        this.Botones.push(new Button(this, 200,600, 'shop_button', 'shop',"Niveles", this.stay,this.stay-1,this.wenge,this.money)); 
        
+        this.Botones.push(new Button(this, 500,600, 'quit_buttom', 'menu',null, 0,0)) 
         
         // primBot =this.add.image(500,350,'boton').setInteractive();
        // boton =this.add.image(500,350,'boton');
