@@ -32,7 +32,7 @@
 			this.load.image("extra_life_explanation","assets/tienda/life_explicacion.png");
 			this.load.image("dash_image","assets/tienda/dash_button.png");
 			this.load.image("dash_explicacion","assets/tienda/dash_explicacion.png");
-			this.load.audio("music","assets/sounds/shopMusic.mp3");
+			this.load.audio("music","assets/sounds/shopMusic1.mp3");
 			this.load.audio("buy","assets/sounds/buy.mp3");
 			
 		}
