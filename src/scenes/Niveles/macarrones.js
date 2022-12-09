@@ -1,4 +1,5 @@
 import Car from '../../characters/Car.js';//importamos a los Coches
+import Wenge from '../../characters/Wenge.js'
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Van.js';
 import Pool  from '../../characters/Pool.js';

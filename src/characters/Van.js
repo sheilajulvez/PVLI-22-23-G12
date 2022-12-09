@@ -8,12 +8,11 @@ var cotaDer=900;
 var cotaIzq=190	;
 export default class Van extends Car { //exportamos la clase extendida de Phaser
      
-	constructor(scene, x, y,pool) {
+	constructor(scene, x, y) {
 		super(scene, x, y, 'Van');
 
 		this.scene.add.existing(this);
 		this.scene.physics.add.existing(this);
-		this.pool=pool;
 		this.destroyNow=false;
 		this.body.setSize(80,150);
 		this.body.setOffset(10,20);
@@ -29,8 +28,6 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
             
 		});
       
-
-
 		this.play('idle_WhiteCar'); //activa la animavcion
        
 
