@@ -30,7 +30,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 	preload(){
 		super.preload();
 		this.Inicia(this);
-		this.load.spritesheet('Bike','assets/Moto.jpg',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike','assets/Moto.png',{frameWidth:166 , frameHeight:490});
 		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	})
 		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:650, frameHeight:	600});
 		this.load.image('danger','assets/danger.png');
@@ -130,9 +130,9 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
    init(datos)
    {
 	   
-	this.stay = datos.stay; 
-	   this.money=datos.dinero;
-	   this.player_b=datos.wenge;
+		this.stay = datos.stay; 
+	   	this.money=datos.dinero;
+	   	this.player_b=datos.wenge;
 	  
    }
 	update(t,dt)

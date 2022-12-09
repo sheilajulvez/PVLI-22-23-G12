@@ -2,44 +2,47 @@ import Car from '../characters/Car.js';
 
 export class Moto extends Car
 { //exportamos la clase extendida de Phaser
-	constructor(scene,x,y,pool)
+	constructor(scene,x,y)
 	{
 		super(scene,x,y,'Bike');
-		this.scene.add.existing(this);
-		this.scene.physics.add.existing(this);
-		this.pool=pool;
-		this.scene.anims.create({
-			key:'idle_bike',
-			frames: scene.anims.generateFrameNumbers('Bike',
-			{
-				start:0,
-				end:0
-			}),
-			frameRate:10,
-			repeat:-1	
-		});
-		this.play('idle_bike');
-		this.setScale(0.5,0.5);
 	}
 
 	move()
 	{
-		this.body.setVelocityY(200);
+		super.move();
 	}
+	collision()
+	{
+		super.collision();
+	
+
+	}
+
 	respawn()
 	{
-		
+		if(this.y>540)
+		{
+			if(this.body.checkCollision.none)
+				this.body.checkCollision.none=false;
+		}
 		if (this.y>800) 
 			{		
 				this.scene.BikeisOut(this);		
 			}
 	}
 
+
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
-		this.move();
-		this.respawn();
+
+		if(this.destroyNow==true)
+		{
+			this.destroyNow=false;
+			this.body.checkCollision.none=true;
+			this.scene.poolBike.release(this);
+		}
 	}
+	
 }
 
 export class Camion
