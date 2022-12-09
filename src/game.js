@@ -1,5 +1,5 @@
 //importamos todas las escenas
-import Inicio from './scenes/inicio.js';
+//import Inicio from './scenes/inicio.js';
 import Menu from './scenes/menu.js';
 import Shop from './scenes/shop.js';
 import Macarrones from './scenes/Niveles/macarrones.js';
