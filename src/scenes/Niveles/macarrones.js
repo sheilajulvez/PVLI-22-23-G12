@@ -74,6 +74,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.player.velocity=this.player_b.velocity;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
+		this.player.life.SetScene(this);
 		for(let i=0; i<5;i++)
 		{
 			arrayCoches[i]=(new Car(this,0,-500+i*100));

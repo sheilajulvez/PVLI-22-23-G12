@@ -41,6 +41,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.player.dash=this.player_b.dash;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
+		this.player.life.SetScene(this);
 		this.physics.add.existing(this.car);
 
 		let arrayCoches=[];

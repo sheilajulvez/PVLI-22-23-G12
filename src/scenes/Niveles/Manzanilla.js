@@ -41,6 +41,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.player.velocity=this.player_b.velocity;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
+		this.player.life.SetScene(this);
 		this.physics.add.existing(this.car);
 
 		let arrayCoches=[];

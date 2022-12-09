@@ -29,6 +29,6 @@ export default class menu extends Phaser.Scene{
 		this.Botones.push(new Button(this, 400,200, 'next_level', 'MapNiveles',null, 0,0,this.player,this.money)) 
 		
         this.Botones.push(new Button(this, 400,600, 'quit_buttom', 'inicio',null, 0,0)) 
-        
+        this.player.life.free();
 	}
 }

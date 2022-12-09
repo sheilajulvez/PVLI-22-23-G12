@@ -72,7 +72,11 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 
 		this.pitido1 = this.sound.add('pitido1',config1);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); //creamos a nuestro personaje, nuestra Wenge
-
+		this.player.dash=this.player_b.dash;
+		this.player.velocity=this.player_b.velocity;
+		this.player.outfits=this.player_b.outfits;
+		this.player.life=this.player_b.life;
+		this.player.life.SetScene(this);
 
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
@@ -96,8 +100,6 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
 
 	}
-
-	
 	VanisOut(vehicles)
 	{
 		this.poolVan.release(vehicles);
