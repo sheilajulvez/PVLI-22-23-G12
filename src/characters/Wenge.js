@@ -83,7 +83,8 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 				// 	repeat: 0,
 				// 	delay: 10
 				// });
-		this.play(anim);
+				console.log(this.anim);
+		this.play(this.anim);
 		//if(anim=="Wenge_motomami"){
 			
 		//	this.play("Wenge_motomami");

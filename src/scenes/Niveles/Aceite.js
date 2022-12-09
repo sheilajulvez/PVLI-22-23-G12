@@ -71,7 +71,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.explosionSound = this.sound.add('explosionSound',config2);
 
 		this.pitido1 = this.sound.add('pitido1',config1);
-		this.player=new Wenge(this, 400, 600,"idle_Wenge"); //creamos a nuestro personaje, nuestra Wenge
+		this.player=new Wenge(this, 400, 600,this.player_b.anim); //creamos a nuestro personaje, nuestra Wenge
 
 
 		let arrayVan=[];

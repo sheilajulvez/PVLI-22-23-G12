@@ -31,16 +31,9 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	
 	preload(){
 		this.load.spritesheet('road', 'assets/carretera.png', {frameWidth: 700, frameHeight:490});
-        this.load.spritesheet('Wenge', 'assets/wengeSprite.png', {frameWidth: 633, frameHeight:394});
-		this.load.spritesheet('Wenge_motomami', 'assets/tienda/wengeSprite_motomami.png', {frameWidth: 633, frameHeight:394});
-		this.load.spritesheet('Wenge_daltonismo', 'assets/tienda/wengeSprite_daltonica.png', {frameWidth: 633, frameHeight:394});
-		this.load.spritesheet('Wenge_nuevacoleccion', 'assets/tienda/wengeSprite_nuevacoleccion.png', {frameWidth: 633, frameHeight:394});
+       
 		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});
-		this.load.image('Life', 'assets/vidas.png');
-		this.load.audio('dash', 'assets/sounds/fium.mp3');
-		this.load.audio('skate1','assets/sounds/skate1.mp3');
-		this.load.audio('skate2','assets/sounds/skate2.mp3');
-		this.load.audio('skate3','assets/sounds/skate3.mp3');
+		
 
 	}
 

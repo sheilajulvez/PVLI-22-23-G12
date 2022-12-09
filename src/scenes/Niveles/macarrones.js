@@ -67,8 +67,11 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		// this.musiquita.play();
 		this.pitido1 = this.sound.add('pitido1',config1);
 		//this.grit2 = this.sound.add('grito');	
-		this.player=new Wenge(this, 400, 600,"idle_Wenge"); //creamos a nuestro personaje, nuestra Wenge
-		
+		this.player=new Wenge(this, 400, 600,this.player_b.anim); //creamos a nuestro personaje, nuestra Wenge
+		this.player.dash=this.player_b.dash;
+		this.player.velocity=this.player_b.velocity;
+		this.player.outfits=this.player_b.outfits;
+		this.player.life=this.player_b.life;
 		for(let i=0; i<5;i++)
 		{
 			arrayCoches[i]=(new Car(this,0,-500+i*100));
@@ -136,6 +139,10 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	init(datos)
 	{
         this.stay = datos.stay; 
+		this.money=datos.dinero;
+		this.player_b=datos.wenge;
+		
+		
     }
 	update(t,dt)
 	{

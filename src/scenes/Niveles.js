@@ -29,11 +29,11 @@ export default class Niveles extends Phaser.Scene {
         this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite',this.stay,3,this.wenge,this.money)) 
         this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas',this.stay,4,this.wenge,this.money)) 
         this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico',this.stay,5,this.wenge,this.money))  
-       if(this.stay>1){
+      
         this.money.SetScene(this);
         this.money.ShowMoney();
         this.Nivel.push(new Button(this, 400,400, 'shop_button', 'shop',"Niveles", this.stay,this.stay-1,this.wenge,this.money)); 
-       }
+       
         
         // primBot =this.add.image(500,350,'boton').setInteractive();
        // boton =this.add.image(500,350,'boton');
