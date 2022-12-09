@@ -14,7 +14,7 @@ import GameOver from './scenes/GameOver.js';
  //importamos la escena macarrones que vamos a usar
 
 let config= { //configuramos canvas
-  type: Phaser.AUTO,//WEBGl
+  type: Phaser.WEBGL,//WEBGl
    parent:'Juego',  //crea el canvas dentro del index
   //ancho y alto de pantalla como window, ya se ira viendo
   width:1000,

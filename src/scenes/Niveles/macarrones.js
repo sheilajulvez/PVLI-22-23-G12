@@ -31,6 +31,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
 		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
+		this.load.image('mask', 'assets/mask.png');
+
 	}
 
 	create(){
@@ -91,7 +93,22 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
 
+		this.lights_mask = this.make.container(0, 0,0);
+		const campfire_mask = this.make.sprite({
+            x: 400,
+            y: 300,
+            key: 'mask',
+            add: false,
+        });
 
+        // adding the images to the container
+        this.lights_mask.add( [campfire_mask ] );
+		this.lights_mask.setVisible(false);
+
+		//this.player.mask = new Phaser.Display.Masks.BitmapMask( this, this.lights_mask );
+
+
+		
 		//this.money.ShowMoney();
 	}
 	CarisOut(vehicles)
