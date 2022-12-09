@@ -129,7 +129,11 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
    }
    init(datos)
    {
-	   this.stay = datos.stay; 
+	   
+	this.stay = datos.stay; 
+	   this.money=datos.dinero;
+	   this.player_b=datos.wenge;
+	  
    }
 	update(t,dt)
 	{
