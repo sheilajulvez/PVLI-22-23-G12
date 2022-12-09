@@ -78,6 +78,10 @@ export default class Car extends Phaser.GameObjects.Sprite { //exportamos la cla
 		//this.pipi();
 		this.respawn();
 		this.collision();
+		if(this.body.checkCollision.none)
+		{
+			this.body.checkCollision.none=false;
+		}
 		if(this.destroyNow==true)
 		{
 			this.destroyNow=false;
