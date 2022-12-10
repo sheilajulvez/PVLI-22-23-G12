@@ -9,8 +9,8 @@ export default class Escena_final extends Phaser.Scene{
         this.load.image("pregunta","assets/escena_fin/darle_la_manzanilla.png");
         this.load.image("SI","assets/escena_fin/SI.png");
         this.load.image("NO","assets/escena_fin/NO.png");
-        this.load.image("si_se_la_das","assets/escena_fin/si_se_la_das.png");
-        this.load.image("no_se_la_das","assets/escena_fin/no_se_la_das.png");
+        this.load.image("si_se_la_das","assets/escena_fin/creitos_si.png");
+        this.load.image("no_se_la_das","assets/escena_fin/creaditos_no.png");
     }
     create(){
         let text=this.add.image(500,300,"pregunta");
@@ -20,30 +20,28 @@ export default class Escena_final extends Phaser.Scene{
             si.setVisible(false);
             no.setVisible(false);
             text.setVisible(false);
-            let a=this.add.image(500,800,"si_se_la_das").setScale(0.3,0.3);
+            let a=this.add.image(500,2000,"si_se_la_das").setScale(1.2,1.2);
              this.tweens.add({
                 targets: [ a ],
-                y: -1000,
-                duration: 100000,
-                // ease: 'Sine.easeInOut',
-                // flipX: true,
-                // yoyo: true,
-                repeat: 1
+                y: -1500,
+                duration: 100999,
+        
+                repeat: false
             }); 
         });
         no.on("pointerdown",()=>{
             si.setVisible(false);
             no.setVisible(false);
             text.setVisible(false);
-            let a=this.add.image(500,800,"si_se_la_das").setScale(0.3,0.3);
+            let a=this.add.image(500,2000,"no_se_la_das").setScale(1.2,1.2);
             this.tweens.add({
                targets: [ a ],
-               y: -1000,
-               duration: 100000,
+               y: -1500,
+               duration: 100999,
                // ease: 'Sine.easeInOut',
                // flipX: true,
                // yoyo: true,
-               repeat: 1
+               repeat: false
            }); 
         })
         si.on("pointerover",()=>{
@@ -58,7 +56,7 @@ export default class Escena_final extends Phaser.Scene{
             );
 
         })
-        no.on("pointerover",()=>{
+        no.on("pointerover",()=>{   
             this.tweens.add(
                 {
                     targets: this,
