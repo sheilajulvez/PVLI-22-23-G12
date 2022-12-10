@@ -1,4 +1,4 @@
-import Car from '../characters/Car.js';//importamos a los Coches
+import Car from './Car.js';//importamos a los Coches
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
@@ -53,7 +53,7 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 			dir='r';
 		}
 	}
-	collision()
+	/*collision()
 	{
 		if(this.scene.physics.overlap(this.scene.player, this)) 
 		{	
@@ -67,8 +67,8 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 		if(this.scene.physics.overlap(this.scene.poolCar.getPhaserGroup(),this)){
 			this.scene.Explosiones(this.scene.poolCar.getPhaserGroup(),this);
 			this.destroyNow=true;
-		}*/
-	}
+		}
+	}*/
 	respawn()				//comprobación si la cota es la indicada para el respawn	
 	{
 	

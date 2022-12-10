@@ -1,12 +1,12 @@
-import Car from '../../characters/Car.js';//importamos a los Coches
+import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Wenge from '../../characters/Wenge.js'
 import Generical from '../../scenes/generical.js';
-import Van from '../../characters/Van.js';
+import Van from '../../characters/Vehiculos/Van.js';
 import Pool  from '../../characters/Pool.js';
 import Explosion from '../../characters/explosion.js';
 import Economy from "../../components/Economy.js"
 import Danger from '../../characters/Danger.js';
-import Ambulance from '../../characters/Ambulance.js';
+import Ambulance from '../../characters/Vehiculos/Ambulance.js';
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
@@ -39,7 +39,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	create(){
 		super.create();
 		this.timeDelta=0;
-		let arrayCoches=[];
+	
 
 		//this.ambulance=new Ambulance(this,300,0);
 
@@ -76,11 +76,14 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
 		this.player.life.SetScene(this);
+		
+		let arrayCoches=[];
+		this.poolCar=new Pool(this,arrayCoches);	
 		for(let i=0; i<5;i++)
 		{
-			arrayCoches[i]=(new Car(this,0,-500+i*100));
+			arrayCoches.push(new Car(this,0,-500+i*100));
 		}
-		this.poolCar=new Pool(this,5,arrayCoches);	
+		
 		this.physics.add.overlap(this.player, this.poolCar.getPhaserGroup());
 		
 		let arrayVan=[];
@@ -88,7 +91,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		{
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
-		this.poolVan=new Pool(this,5,arrayVan);
+		this.poolVan=new Pool(this,arrayVan);
 		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
 			
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{console.log("coche coche"); this.Explosiones(obj1,obj2)});

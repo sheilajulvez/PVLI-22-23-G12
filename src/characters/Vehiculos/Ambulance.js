@@ -1,4 +1,4 @@
-import Car from '../characters/Car.js';//importamos a los Coches
+import Car from './Car.js';//importamos a los Coches
 export default class Ambulance extends Car { //exportamos la clase extendida de Phaser
      
 	constructor(scene, x, y) {
