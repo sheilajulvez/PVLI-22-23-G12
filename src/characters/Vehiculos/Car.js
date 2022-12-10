@@ -1,11 +1,9 @@
 import Vehicle from "./Vehicle.js";
-import Pool from "../Pool.js";
-
 
 export default class Car extends Vehicle { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y) {
-		super(scene, x, y, this.scene.poolCar, 'Car');
+		super(scene, x, y, 'Car');
 		this.body.setSize(90,180);
 		this.body.setOffset(10,35);
 		
@@ -24,7 +22,7 @@ export default class Car extends Vehicle { //exportamos la clase extendida de Ph
 
 
 		this.play('idle_BlueCar'); //activa la animacion
-		this.poolCar= new Pool(this,);
+		
 	}
 
 	
@@ -32,6 +30,17 @@ export default class Car extends Vehicle { //exportamos la clase extendida de Ph
 	
 	preUpdate(t, dt){
 		super.preUpdate(t, dt,this.poolCar);
+		if (this.y>800) 		//en todos los que tengan poool
+			{		
+				this.scene.poolCar.release(this);		
+			}
+		if(this.destroyNow==true)
+		{
+			this.destroyNow=false;
+			this.body.checkCollision.none=true;
+			this.scene.poolCar.release(this);
+		}
+		
 		
 	}
 }

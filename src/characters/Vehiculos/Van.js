@@ -1,4 +1,5 @@
-import Car from './Car.js';//importamos a los Coches
+import Vehicle from "./Vehicle.js";
+
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
@@ -6,14 +7,11 @@ function random(min, max) {
 var dir='r';
 var cotaDer=900;
 var cotaIzq=190	;
-export default class Van extends Car { //exportamos la clase extendida de Phaser
+export default class Van extends Vehicle{ //exportamos la clase extendida de Phaser
      
 	constructor(scene, x, y) {
 		super(scene, x, y, 'Van');
 
-		this.scene.add.existing(this);
-		this.scene.physics.add.existing(this);
-		this.destroyNow=false;
 		this.body.setSize(80,150);
 		this.body.setOffset(10,20);
 		this.scene.anims.create({ //animación
@@ -29,13 +27,10 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 		});
       
 		this.play('idle_WhiteCar'); //activa la animavcion
-       
-
-		this.setScale(1,1);
 	}
-	move(dt,dir)
+	move(dir)
 	{
-		this.body.setVelocityY(100);
+		super.move(100);
 
 		 if(dir==='r')this.body.setVelocityX(100);
 		 if(dir==='l')this.body.setVelocityX(-100);
@@ -53,53 +48,24 @@ export default class Van extends Car { //exportamos la clase extendida de Phaser
 			dir='r';
 		}
 	}
-	/*collision()
-	{
-		if(this.scene.physics.overlap(this.scene.player, this)) 
-		{	
-			this.scene.player.life.RestaVida();
-    		this.destroyNow=true;
-		}
-		/*if(this.scene.physics.overlap(this.scene.poolVan.getPhaserGroup(),this)){
-			this.scene.Explosiones(this.scene.poolVan.getPhaserGroup(),this);
-			this.destroyNow=true;
-		}
-		if(this.scene.physics.overlap(this.scene.poolCar.getPhaserGroup(),this)){
-			this.scene.Explosiones(this.scene.poolCar.getPhaserGroup(),this);
-			this.destroyNow=true;
-		}
-	}*/
-	respawn()				//comprobación si la cota es la indicada para el respawn	
-	{
 	
-		if(this.y>540)
-		{
-			if(this.body.checkCollision.none)
-				this.body.checkCollision.none=false;
-		}
-		if (this.y>800) 
-			{		
-				this.scene.VanisOut(this);		
-			}
-
-			
-	}
 	
 	preUpdate(t, dt){
         super.preUpdate(t,dt);
-
-		//movimiento de los coches
-		this.collision();
-           this.move(dt,dir);
-		   this.changeDir(cotaDer,cotaIzq);
-		   this.respawn();
 		
+		this.changeDir(cotaDer,cotaIzq);
+		this.move();
+	
 		   if(this.destroyNow==true)
 		   {
 			this.destroyNow=false;
 			this.body.checkCollision.none=true;
 			this.scene.poolVan.release(this);
 		   }
+		   if (this.y>800) 		//en todos los que tengan poool
+			{		
+				this.scene.poolVan.release(this);		
+			}
 	}
 
 }

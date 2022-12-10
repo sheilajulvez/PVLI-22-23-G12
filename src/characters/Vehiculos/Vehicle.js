@@ -1,12 +1,12 @@
 
 export default class Vehicle extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
-	constructor(scene, x, y,p) {
+	constructor(scene, x, y) {
 		super(scene, x, y, 'Vehicle');
 		this.scene.add.existing(this);
 		this.scene.physics.add.existing(this);
 		this.destroyNow=false;
-		const pool=p;
+		
 
 		//this.body.setSize(90,180);
 		//this.body.setOffset(10,35);
@@ -30,9 +30,9 @@ export default class Vehicle extends Phaser.GameObjects.Sprite { //exportamos la
 		this.setScale(1,1);
 	}
 
-	move()
+	move(velocity)
 	{
-		this.body.setVelocityY(200);
+		this.body.setVelocityY(velocity);
 	}
 	collision()
 	{
@@ -61,14 +61,10 @@ export default class Vehicle extends Phaser.GameObjects.Sprite { //exportamos la
 
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
-		this.move();
+		this.move(200);
 		this.collision();
         this.respawn();
         //this.pipi();
-        if (this.y>800) 
-			{		
-				this.scene.pool.release(this);		
-			}
 		if(this.destroyNow==true)
 		{
 			this.destroyNow=false;
