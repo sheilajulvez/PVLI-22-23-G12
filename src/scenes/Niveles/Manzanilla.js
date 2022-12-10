@@ -23,6 +23,11 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.money.SetScene(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
+
+		this.load.image('noche', 'assets/noche.png');
+
+		//creas la mascara
+		this.load.image('mask', 'assets/mask.png');
 	}
 	init(datos){
         this.stay = datos.stay;
@@ -69,19 +74,53 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		
 		//this.physics.add.existing(this.player);// lo haces objeto físico
 
-
-
-
-
-
-
-
-
 		this.physics.add.collider(this.player, this.car);
 		if(this.physics.collide(this.player, this.car)) {
     		console.log("Hay colisión");}
+
+
+
+			//creación de la textura de renderizado para efecto de noche
+		const rt = this.make.renderTexture({
+			width:1000,
+			height:700,
+		}, true)
+
+		// fill it with black
+		rt.fill(0x000000, 0.7)
+		this.noche = this.add.image(0,0, 1000,700, 'noche');
+
+		//container para todas las luces
+		this.lights_mask = this.make.container(0, 0);
+        /* vision mask -  cada luz */
+        const vision_mask = this.make.sprite({
+            x: 400,
+            y: 300,
+            key: 'mask',
+            add: false
+        });
+
+        // campfire mask
+        const campfire_mask = this.make.sprite({
+            x: 900,
+            y: 300,
+            key: 'mask',
+            add: false,
+        });
+        /* vision mask -  cada luz FIN */
+
+        // adding the images to the container
+        this.lights_mask.add( [ vision_mask, campfire_mask ] );
+
+        // now this is the important line I did not expect:
+        // the lights container was being drawn into the scene (even though I used "make" and not "add")
+        this.lights_mask.setVisible(false);
+
+        // adding the lights mask to the render texture
+        rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.lights_mask );
+        rt.mask.invertAlpha = true
+
 		
-			//this.player.PlayAnim(this);
 		
 	}
 	CarisOut(vehicles)
