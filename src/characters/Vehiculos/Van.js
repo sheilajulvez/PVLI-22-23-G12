@@ -57,14 +57,14 @@ export default class Van extends Vehicle{ //exportamos la clase extendida de Pha
 	
 		   if(this.destroyNow==true)
 		   {
-			this.destroyNow=false;
 			this.body.checkCollision.none=true;
 			this.scene.poolVan.release(this);
+			this.destroyNow=false;
 		   }
 		   if (this.y>800) 		//en todos los que tengan poool
-			{		
+		   {		
 				this.scene.poolVan.release(this);		
-			}
+		   }
 	}
 
 }

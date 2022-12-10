@@ -1,14 +1,13 @@
 import Vehicle from "./Vehicle.js";
 
-export default class Car extends Vehicle { //exportamos la clase extendida de Phaser
+export default class Moto extends Vehicle { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y) {
-		super(scene, x, y, 'Car');
+		super(scene, x, y, 'Moto');
 		this.body.setSize(90,180);
 		this.body.setOffset(10,35);
 		
-	
-		this.scene.anims.create({ //animación
+		/*this.scene.anims.create({ //animación
 			key: 'idle_BlueCar', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Car',
 			{
@@ -21,7 +20,7 @@ export default class Car extends Vehicle { //exportamos la clase extendida de Ph
 		});
 
 
-		this.play('idle_BlueCar'); //activa la animacion
+		this.play('idle_BlueCar'); //activa la animacion*/
 		
 	}
 
@@ -33,12 +32,12 @@ export default class Car extends Vehicle { //exportamos la clase extendida de Ph
 		super.move(200);
 		if (this.y>800) 		//en todos los que tengan poool
 		{		
-				this.scene.poolCar.release(this);		
+				this.scene.poolMoto.release(this);		
 		}
 		if(this.destroyNow==true)
 		{
 			this.body.checkCollision.none=true;
-			this.scene.poolCar.release(this);
+			this.scene.poolMoto.release(this);
 			this.destroyNow=false;
 		}
 		
