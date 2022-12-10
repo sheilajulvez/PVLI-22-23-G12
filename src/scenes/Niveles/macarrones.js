@@ -23,7 +23,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 
 	preload(){
 		super.preload();
-		this.Inicia(this);
+		
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});	
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	});
@@ -40,6 +40,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	create(){
 		super.create();
 		this.timeDelta=0;
+		this.Inicia(this);
 		//this.ambulance=new Ambulance(this,300,0);
 
 		const config1 =
@@ -80,7 +81,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			
 		for(let i=0; i<5;i++)
 		{
-			arrayCoches.push(new Car(this,0,-500+i*100));
+			arrayCoches[i]=(new Car(this,0,-1000-i*100));
 		}
 		this.poolCar=new Pool(this,arrayCoches);
 		
