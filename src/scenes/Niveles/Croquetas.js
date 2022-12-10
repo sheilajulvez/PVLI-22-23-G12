@@ -30,21 +30,6 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		
 		
 	}
-
-	preload(){
-		super.preload();
-		this.Inicia(this);
-		this.money.SetScene(this);
-		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
-		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-		//imagen para la máscara
-		//this.load.image('mask', '');
-		//añadimos las luces
-
-		
-		
-		
-	}
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
@@ -55,10 +40,11 @@ export default class Croquetas extends Generical { //creamos la escena exportada
     }
 	create(){
 		super.create();
+		this.Inicia(this);
+		this.money.SetScene(this);	
 		this.timeDelta=0;
 		this.money.ShowMoney();
 		let arrayCoches=[];
-		//this.player=new Wenge(this, 400, 600,"Wenge_motomami"); 
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
 		this.player.dash=this.player_b.dash;

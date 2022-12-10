@@ -12,10 +12,6 @@ export default class Extra_life {
     
     
     }
-    preload(){
-        //super.preload();
-  
-    }
     create(){
         //super.create();
         this.sprite=this.scene.add.sprite(this.x,this.y,this.name).setInteractive().setScale(1.2,1.2);

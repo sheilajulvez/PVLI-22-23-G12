@@ -11,9 +11,6 @@ export default class LifeComponent {
 		this.scene.add.existing(this); //lo añades a la escene
 	
 	}
-	preload(){
-		//this.load.image("Life","../assets/vidas.png");
-	}
 	//devuelve un "boleano" que indica si todavía quedan vidas en el juego 
 	RestaVida() {
 		console.log(this.lifes);

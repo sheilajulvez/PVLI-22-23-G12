@@ -25,20 +25,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.Barra.aumenta(10);
 		this.player.update();
 	}
-	
-	preload(){
-		//carretera
-		this.load.spritesheet('road', 'assets/carretera.png', {frameWidth: 700, frameHeight:490});
-		//arboles
-		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});	
-
-		//COSAS QUE ESTAN EN TODOS LOS NIVELES------>mirar que sonidos van a estar tambien en todos(pitidos, musica,gritos...)
-		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	})
-		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:650, frameHeight:	600});
-		this.load.image('danger','assets/danger.png');
-
-
-	}
 
 	create(){
 	

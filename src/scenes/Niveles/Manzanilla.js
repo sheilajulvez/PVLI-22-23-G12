@@ -16,19 +16,6 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		super('Manzanilla');
 		
 	}
-
-	preload(){
-		super.preload();
-		this.Inicia(this);
-		this.money.SetScene(this);
-		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});
-		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-
-		this.load.image('noche', 'assets/noche.png');
-
-		//creas la mascara
-		this.load.image('mask', 'assets/mask.png');
-	}
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
@@ -37,8 +24,10 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
         
     }
 	create(){
-		this.money.ShowMoney();
 		super.create();
+		this.Inicia(this);
+		this.money.SetScene(this);
+		this.money.ShowMoney();
 		this.timeDelta=0;
 		this.car=new Car(this,0,-1000);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 

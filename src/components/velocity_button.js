@@ -11,10 +11,6 @@ export default class Velocity_button {
         this.buy=this.scene.sound.add("buy");
     
     }
-    preload(){
-        //super.preload();
-  
-    }
     create(){
        // this.ShowMoney();
         //super.create();

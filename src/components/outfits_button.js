@@ -12,10 +12,6 @@ export default class outfits_button {
         this.key=key;
     
     }
-    preload(){
-        //super.preload();
-  
-    }
     create(){
         //super.create();
        

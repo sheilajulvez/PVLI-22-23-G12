@@ -17,13 +17,6 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		super('Aceite');
 	}
 
-	preload(){
-		super.preload();
-		this.load.spritesheet('Bike','assets/Moto.png',{frameWidth:166 , frameHeight:490});
-		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
-		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
-		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
-	}
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;

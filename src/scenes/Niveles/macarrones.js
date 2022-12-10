@@ -7,27 +7,12 @@ import Ambulance from '../../characters/Vehiculos/Ambulance.js';
 import Moto from '../../characters/Vehiculos/Moto.js'
 
 
-
-
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 		super('tomatico');
-	}
-
-	preload(){
-		super.preload();
-		
-		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});	
-		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-		this.load.spritesheet('Moto','assets/Moto.png',{frameWidth:166 , frameHeight:490});
-		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
-		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
-		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
-		//creas la mascara
-		this.load.image('mask', 'assets/mask.png');
 	}
 
 	create(){

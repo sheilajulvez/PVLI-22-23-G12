@@ -1,4 +1,3 @@
-
 //clase pool
 export default class Pool {
 	//constructor de la clase 

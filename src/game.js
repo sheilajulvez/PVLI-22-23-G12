@@ -1,5 +1,5 @@
 //importamos todas las escenas
-//import Inicio from './scenes/inicio.js';
+import Inicio from './scenes/inicio.js';
 import Menu from './scenes/menu.js';
 import Shop from './scenes/shop.js';
 import Macarrones from './scenes/Niveles/macarrones.js';
@@ -46,7 +46,7 @@ let config= { //configuramos canvas
       }
     },
    // scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles , Aceite],
-    scene:[Menu,Shop, Escena_fin,Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla, GameOver],
+    scene:[Inicio,Menu,Shop, Escena_fin,Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla, GameOver],
     title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
     version: "1.0.0"   
   
