@@ -2,7 +2,7 @@
 //clase pool
 export default class Pool {
 	//constructor de la clase 
-    constructor (scene,max, entities) 
+    constructor (scene, entities) 
 	{
       this._group=scene.add.group();
 	  this._group.addMultiple(entities);
@@ -10,7 +10,7 @@ export default class Pool {
 		this._group.killAndHide(element);
 		element.body.checkCollision.none = true;
 	  });
-	  this.max=max;
+	 
 	  this.scene=scene;
 
 	}
@@ -25,7 +25,7 @@ export default class Pool {
 	    {
 		  entity.x = x;
 		  entity.y = y;
-		  entity.play(animationKey);
+		  //entity.play(animationKey);
 		  entity.setActive(true);
 		  entity.setVisible(true);
 		}

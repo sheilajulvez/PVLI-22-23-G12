@@ -1,48 +1,45 @@
-import Car from '../../characters/Car.js';//importamos a los Coches
-import Wenge from '../../characters/Wenge.js'
 import Generical from '../../scenes/generical.js';
-import Van from '../../characters/Van.js';
+import Wenge from '../../characters/Wenge.js'
 import Pool  from '../../characters/Pool.js';
+import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
+import Van from '../../characters/Vehiculos/Van.js';
+import Ambulance from '../../characters/Vehiculos/Ambulance.js';
+import Moto from '../../characters/Vehiculos/Moto.js'
 import Explosion from '../../characters/explosion.js';
-import Economy from "../../components/Economy.js"
 import Danger from '../../characters/Danger.js';
-import Ambulance from '../../characters/Ambulance.js';
+import Economy from "../../components/Economy.js"
+
+
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
-
 		super('tomatico');
 		this.ambulanceCont=0;
 		this.money=new Economy(this);
 		this.exp=false;
-		
 	}
 
 	preload(){
 		super.preload();
-		
+		this.Inicia(this);
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});	
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	})
+		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	});
+		this.load.spritesheet('Moto','assets/Moto.png',{frameWidth:166 , frameHeight:490});
 		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:650, frameHeight:	600});
 		this.load.image('danger','assets/danger.png');
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
 		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
-
+		//creas la mascara
+		this.load.image('mask', 'assets/mask.png');
 	}
 
 	create(){
 		super.create();
-		
-		this.Inicia(this);
-	
-
 		this.timeDelta=0;
-		let arrayCoches=[];
-
 		//this.ambulance=new Ambulance(this,300,0);
 
 		const config1 =
@@ -78,24 +75,50 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
 		this.player.life.SetScene(this);
+
+		let arrayCoches=[];
+			
 		for(let i=0; i<5;i++)
 		{
-			arrayCoches[i]=(new Car(this,0,-500+i*100));
+			arrayCoches.push(new Car(this,0,-500+i*100));
 		}
-		this.poolCar=new Pool(this,5,arrayCoches);	
-		this.physics.add.overlap(this.player, this.poolCar.getPhaserGroup());
+		this.poolCar=new Pool(this,arrayCoches);
+		
+		//this.physics.add.overlap(this.player, this.poolCar.getPhaserGroup());
 		
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
-		this.poolVan=new Pool(this,5,arrayVan);
-		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
+		this.poolVan=new Pool(this,arrayVan);
+		//this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
+
+		let arrayMoto=[];
+		for(let i=0;i<5;i++){
+			arrayMoto[i]=(new Moto(this,0,-500+i*100));
+		}
+		this.poolMoto=new Pool(this,arrayMoto);
+
 			
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{console.log("coche coche"); this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
+
+		this.lights_mask = this.make.container(0, 0,0);
+		const campfire_mask = this.make.sprite({
+            x: 400,
+            y: 300,
+            key: 'mask',
+            add: false,
+        });
+
+        // adding the images to the container
+        this.lights_mask.add( [campfire_mask ] );
+		this.lights_mask.setVisible(false);
+
+		//this.player.mask = new Phaser.Display.Masks.BitmapMask( this, this.lights_mask );
+
 
 		
 		//this.money.ShowMoney();
@@ -107,6 +130,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	VanisOut(vehicles)
 	{
 		this.poolVan.release(vehicles);
+	}
+	MotoisOut(vehicles){
+		this.poolMoto.release(vehicles);
 	}
 	
 	
@@ -158,7 +184,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		if (this.player.life.lifes == 0) this.scene.start("gameover");
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
-			
 		//  this.musiquita.stop();
 			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
@@ -231,7 +256,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 								
 						}
 					
-					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+					//this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+					this.poolMoto.spawn(vehicleX,0,'idle_BlueCar');
+					
 
 				
 			}

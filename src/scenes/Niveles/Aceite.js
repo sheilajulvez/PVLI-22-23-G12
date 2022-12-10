@@ -1,13 +1,13 @@
 
 import Generical from '../../scenes/generical.js';
-import Van from '../../characters/Van.js';
+import Van from '../../characters/Vehiculos/Van.js';
 import Pool  from '../../characters/Pool.js';
 import Explosion from '../../characters/explosion.js';
 import Economy from "../../components/Economy.js"
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 import Danger from '../../characters/Danger.js';
-import Ambulance from '../../characters/Ambulance.js';
-import { Moto } from '../../characters/Motos.js';
+import Ambulance from '../../characters/Vehiculos/Ambulance.js';
+//import Moto from '../../characters/Vehiculos/Motos.js';
 
 
 
@@ -93,7 +93,6 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.poolBike=new Pool(this,3,arrayBike);
 		this.physics.add.collider(this.player, this.poolBike.getPhaserGroup());	
 
-			
 		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
@@ -144,8 +143,6 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 			this.money.AddMoney(200);
 			this.scene.start("EscenaHablar",{name:"Aceite_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
-
-
 
 		if(this.timeDelta>2000)
 		{
@@ -214,7 +211,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 								
 						}
 					
-					this.poolCar.spawn(vehicleX,0,'idle_bike');
+					this.poolBike.spawn(vehicleX,0,'idle_bike');
 
 				
 			}
