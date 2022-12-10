@@ -25,7 +25,7 @@ export default class Pool {
 	    {
 		  entity.x = x;
 		  entity.y = y;
-		  //entity.play(animationKey);
+		  entity.play(animationKey);
 		  entity.setActive(true);
 		  entity.setVisible(true);
 		}

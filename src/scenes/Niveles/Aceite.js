@@ -1,14 +1,10 @@
 
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Vehiculos/Van.js';
-import Pool  from '../../characters/Pool.js';
-import Explosion from '../../characters/explosion.js';
-import Economy from "../../components/Economy.js"
-import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
-import Danger from '../../characters/Danger.js';
 import Ambulance from '../../characters/Vehiculos/Ambulance.js';
-//import Moto from '../../characters/Vehiculos/Motos.js';
-
+import Moto from '../../characters/Vehiculos/Moto.js'
+import Pool  from '../../characters/Pool.js';
+import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 
 
 
@@ -18,21 +14,12 @@ function random(min, max) {
 
 export default class Aceite extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
-
 		super('Aceite');
-		this.ambulanceCont=0;
-		this.money=new Economy(this);
-		this.exp=false;
-		
 	}
 
 	preload(){
 		super.preload();
-		this.Inicia(this);
 		this.load.spritesheet('Bike','assets/Moto.png',{frameWidth:166 , frameHeight:490});
-		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	})
-		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:650, frameHeight:	600});
-		this.load.image('danger','assets/danger.png');
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
 		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
@@ -41,11 +28,10 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
         this.stay = datos.stay;
 		this.money=datos.dinero;
 		this.player_b=datos.wenge;
- 
     }
 	create(){
-		
 		super.create();
+		this.Inicia(this);
 		this.timeDelta=0;
 		const config1 =
 		{
@@ -68,7 +54,6 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
  			 delay: 0,
 		}
 		this.explosionSound = this.sound.add('explosionSound',config2);
-
 		this.pitido1 = this.sound.add('pitido1',config1);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); //creamos a nuestro personaje, nuestra Wenge
 		this.player.dash=this.player_b.dash;
@@ -83,7 +68,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,5,arrayVan);
-		this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
+	
 
 		let arrayBike=[];
 		for(let i=0;i<3;i++)
@@ -91,7 +76,6 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 			arrayBike[i]=(new Moto(this,0,-1000+i*100));
 		}
 		this.poolBike=new Pool(this,3,arrayBike);
-		this.physics.add.collider(this.player, this.poolBike.getPhaserGroup());	
 
 		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
@@ -106,33 +90,19 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 	{
 		this.poolBike.release(vehicles);
 	}
-	Explosiones(obj1,obj2){
 	
-		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
-		this.explosionSound.play();
-		obj1.destroy();
-		obj2.destroy();
-			
-	}
-	createExplosion(x,y){
-		
-		this.explosion=new Explosion(this,x,y);
-		this.exp=true;
-
-
-   }
-   pitido()
-   {
-	   this.pitido1.play();
-   }
-   init(datos)
-   {
+  	 pitido()
+   	{
+	   //this.pitido1.play();
+   	}
+  	 init(datos)
+   	{
 	   
 		this.stay = datos.stay; 
 	   	this.money=datos.dinero;
 	   	this.player_b=datos.wenge;
 	  
-   }
+   	}
 	update(t,dt)
 	{
 		super.update();
@@ -146,7 +116,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 
 		if(this.timeDelta>2000)
 		{
-			if(this.exp){this.explosion,destroy();}
+			if(this.exp){this.explosion.destroy();}
 			
 			var rand=random(0,1);
 			
@@ -179,8 +149,9 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 					
 			}
 
-			new Danger(this,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
+			this.newdanger(this,vehicleX);
 			this.ambulance=new Ambulance(this,vehicleX-10,-335);
+			
 		}
 		if (rand===0)
 			{

@@ -8,7 +8,7 @@ export default class Moto extends Vehicle { //exportamos la clase extendida de P
 		this.body.setOffset(10,35);
 		
 		/*this.scene.anims.create({ //animación
-			key: 'idle_BlueCar', //identificador de la animación
+			key: 'idle_Moto', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('Car',
 			{
 				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
@@ -20,7 +20,7 @@ export default class Moto extends Vehicle { //exportamos la clase extendida de P
 		});
 
 
-		this.play('idle_BlueCar'); //activa la animacion*/
+		this.play('idle_Moto'); //activa la animacion*/
 		
 	}
 

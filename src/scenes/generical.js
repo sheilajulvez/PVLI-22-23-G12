@@ -2,12 +2,17 @@
 import FondoMove from '../characters/FondoMove.js'; //importamos las distintas ARBOLES del fondo
 import Barra from '../characters/Bar.js';//importamos la clase bar que indicará por donde va el nivel BARRA;
 import road from '../scenes/road.js'; //CARRETERA
-
+import Economy from "../components/Economy.js"
+import Ambulance from '../characters/Vehiculos/Ambulance.js';
+import Danger from '../characters/Danger.js';
 
 //CREAMOS FONDO, ARBOLES Y BARRA
 export default class Generical extends Phaser.Scene { //creamos la escena exportada/extendida de Phaser
 	constructor(nameScene){
 		super({key: nameScene});
+		this.ambulanceCont=0;
+		this.money=new Economy(this);
+		this.exp=false;
 	}
 	Inicia(scene){
 		this.relatedScene=scene;
@@ -26,6 +31,12 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.load.spritesheet('road', 'assets/carretera.png', {frameWidth: 700, frameHeight:490});
 		//arboles
 		this.load.spritesheet('FondoMove', 'assets/arbol.png', {frameWidth:	128 , frameHeight:	120	});	
+
+		//COSAS QUE ESTAN EN TODOS LOS NIVELES------>mirar que sonidos van a estar tambien en todos(pitidos, musica,gritos...)
+		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	})
+		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:650, frameHeight:	600});
+		this.load.image('danger','assets/danger.png');
+
 
 	}
 
@@ -57,5 +68,24 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		//this.player.body.updateBounds();
 		this.Barra = new Barra(this, 10, 10);
 		
+	}
+	Explosiones(obj1,obj2){
+	
+		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
+		this.explosionSound.play();
+		obj1.destroy();
+		obj2.destroy();
+			
+	}
+	createExplosion(x,y){
+		
+		this.explosion=new Explosion(this,x,y);
+		this.exp=true;
+    }
+    newdanger(scene,vehicleX){
+		new Danger(scene,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
+    }
+	newambulance(scene,vehicleX){
+		new Ambulance(scene,vehicleX-10,-335);
 	}
 }

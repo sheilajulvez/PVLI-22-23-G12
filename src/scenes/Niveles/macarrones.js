@@ -5,9 +5,8 @@ import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Van from '../../characters/Vehiculos/Van.js';
 import Ambulance from '../../characters/Vehiculos/Ambulance.js';
 import Moto from '../../characters/Vehiculos/Moto.js'
-import Explosion from '../../characters/explosion.js';
-import Danger from '../../characters/Danger.js';
-import Economy from "../../components/Economy.js"
+
+
 
 
 function random(min, max) {
@@ -16,9 +15,6 @@ function random(min, max) {
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 		super('tomatico');
-		this.ambulanceCont=0;
-		this.money=new Economy(this);
-		this.exp=false;
 	}
 
 	preload(){
@@ -26,10 +22,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
 		this.load.spritesheet('Car', 'assets/BlueCar.png', {frameWidth:200 , frameHeight:280});	
 		this.load.spritesheet('Van', 'assets/WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-		this.load.spritesheet('Ambulance','assets/ambulance.png',{frameWidth:166 , frameHeight:	233	});
 		this.load.spritesheet('Moto','assets/Moto.png',{frameWidth:166 , frameHeight:490});
-		this.load.spritesheet('Explosion','assets/explosion.png',{frameWidth:650, frameHeight:	600});
-		this.load.image('danger','assets/danger.png');
 		this.load.audio('musiquita','assets/sounds/videoplayback.mp3');
 		this.load.audio('pitido1','assets/sounds/pitido1.mp3');
 		this.load.audio('explosionSound','assets/sounds/explosion.mp3');
@@ -84,8 +77,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayCoches[i]=(new Car(this,0,-1000-i*100));
 		}
 		this.poolCar=new Pool(this,arrayCoches);
-		
-		//this.physics.add.overlap(this.player, this.poolCar.getPhaserGroup());
+
 		
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
@@ -93,7 +85,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,arrayVan);
-		//this.physics.add.overlap(this.player,this.poolVan.getPhaserGroup());
 
 		let arrayMoto=[];
 		for(let i=0;i<5;i++){
@@ -132,39 +123,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		this.poolVan.release(vehicles);
 	}
-	MotoisOut(vehicles){
-		this.poolMoto.release(vehicles);
-	}
 	
-	
-	Explosiones(obj1,obj2){
-	
-		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
-		this.explosionSound.play();
-		/*if(this.poolVan.getPhaserGroup().body.up && this.poolCar.getPhaserGroup().body.down){
-				createExplosion(
-					this.poolVan.getPhaserGroup().body.center.x,
-					this.poolCar.getPhaserGroup().body.top);
 
-
-			}
-			else if(this.poolVan.getPhaserGroup().body.down && this.poolCar.getPhaserGroup().body.up){
-				createExplosion(
-					this.poolCar.getPhaserGroup().body.center.x,
-					this.poolVan.getPhaserGroup().body.top);
-
-			}*/
-			obj1.destroy();
-			obj2.destroy();
-			
-	}
-	createExplosion(x,y){
-		
-		 this.explosion=new Explosion(this,x,y);
-		 this.exp=true;
-
-
-	}
 	pitido()
 	{
 		this.pitido1.play();
@@ -223,8 +183,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 					
 			}
 
-			new Danger(this,vehicleX-100,0).setOrigin(0,0).setScale(0.5,0.7);
-			this.ambulance=new Ambulance(this,vehicleX-10,-335);
+			this.newdanger(this,vehicleX);
+			this.ambulance=this.newambulance(this,vehicleX);
 		}
 
 			//COCHE
@@ -258,7 +218,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 						}
 					
 					//this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-					this.poolMoto.spawn(vehicleX,0,'idle_BlueCar');
+					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
 					
 
 				
