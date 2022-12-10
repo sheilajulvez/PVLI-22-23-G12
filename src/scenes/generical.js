@@ -4,6 +4,7 @@ import Barra from '../characters/Bar.js';//importamos la clase bar que indicará
 import road from '../scenes/road.js'; //CARRETERA
 import Economy from "../components/Economy.js"
 import Ambulance from '../characters/Vehiculos/Ambulance.js';
+import Explosion from "../characters/explosion.js";
 import Danger from '../characters/Danger.js';
 
 //CREAMOS FONDO, ARBOLES Y BARRA
