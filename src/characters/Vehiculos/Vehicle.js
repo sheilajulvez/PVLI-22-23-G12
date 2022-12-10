@@ -61,7 +61,6 @@ export default class Vehicle extends Phaser.GameObjects.Sprite { //exportamos la
 
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
-		this.move(200);
 		this.collision();
         this.respawn();
         //this.pipi();

@@ -52,9 +52,8 @@ export default class Van extends Vehicle{ //exportamos la clase extendida de Pha
 	
 	preUpdate(t, dt){
         super.preUpdate(t,dt);
-		
 		this.changeDir(cotaDer,cotaIzq);
-		this.move();
+		this.move(dir);
 	
 		   if(this.destroyNow==true)
 		   {
