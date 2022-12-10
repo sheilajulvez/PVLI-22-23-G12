@@ -18,84 +18,8 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.life= new LifeComponent(this.scene, 100,100,3);
 		this.dash=false;
 		this.outfits=[["Wenge_motomami",false],["Wenge_daltonismo",false],["Wenge_nuevacoleccion",false]];
-		this.outfits.lenght=3;
-
-		this.scene.anims.create({ //animación
-			key: 'idle_Wenge', //identificador de la animación
-			frames: scene.anims.generateFrameNumbers('Wenge', 
-			{
-				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
-				end:37 // última imagen del Spritesheet que se ejecuta en la animación
-			}), 
-			frameRate: 60, // imágenes/frames por segundo
-			repeat: -1 //para que sea bucle
-		});
-
-		this.scene.anims.create({
-			key: 'Wenge_motomami', //identificador de la animación
-			frames: scene.anims.generateFrameNumbers('Wenge_motomami', 
-			{
-				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
-				end:37 // última imagen del Spritesheet que se ejecuta en la animación
-			}), 
-			frameRate: 60, // imágenes/frames por segundo
-			repeat: -1 //para que sea bucle
-		})
-		this.scene.anims.create({
-			key: 'Wenge_daltonismo', //identificador de la animación
-			frames: scene.anims.generateFrameNumbers('Wenge_daltonismo', 
-			{
-				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
-				end:37 // última imagen del Spritesheet que se ejecuta en la animación
-			}), 
-			frameRate: 60, // imágenes/frames por segundo
-			repeat: -1 //para que sea bucle
-		})
-		this.scene.anims.create({
-			key: 'Wenge_nuevacoleccion', //identificador de la animación
-			frames: scene.anims.generateFrameNumbers('Wenge_nuevacoleccion', 
-			{
-				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
-				end:37 // última imagen del Spritesheet que se ejecuta en la animación
-			}), 
-			frameRate: 60, // imágenes/frames por segundo
-			repeat: -1 //para que sea bucle
-		})
-
-		
-				// this.tweenLeft = this.scene.tweens.add({
-				// 	targets: [ this ],
-				// 	x: this.x-160,
-				// 	duration: 200,
-				// 	ease: 'Sine.easeInOut',
-				// 	flipX: true,
-				// 	yoyo: false,
-				// 	repeat: 0,
-				// 	delay: 10
-				// });
-				// this.tweenRight = this.scene.tweens.add({
-				// 	targets: [ this ],
-				// 	x: this.x+160,
-				// 	duration: 200,
-				// 	ease: 'Sine.easeInOut',
-				// 	flipX: true,
-				// 	yoyo: false,
-				// 	repeat: 0,
-				// 	delay: 10
-				// });
-				console.log(this.anim);
+		this.outfits.lenght=3;		
 		this.play(this.anim);
-		//if(anim=="Wenge_motomami"){
-			
-		//	this.play("Wenge_motomami");
-		//}
-		//else if(anim=="Wenge_nuevacoleccion"){
-		//	this.play("Wenge_nuevacoleccion")
-		//}
-		//else if(anim=="Wenge_daltonismo"){
-		//	this.play("Wenge_daltonismo");
-		//}
-		//else this.play('idle_Wenge'); //activa la animavcion
 		const config =
 		{
 			mute: false,

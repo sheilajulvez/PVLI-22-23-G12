@@ -103,14 +103,90 @@ export default class Inicio extends Phaser.Scene {
 	createAnims() {
 
 	  //Wenge
-	  this.anims.create({
-		key: 'StrongEnemyIzq',
-		frames: this.anims.generateFrameNumbers('StrongEnemyIzq', { start: 0, end: 8 }),
-		frameRate: 10,
-		repeat: -1
-	  });
-  
-  
+	  this.anims.create({ //animación
+		key: 'idle_Wenge', //identificador de la animación
+		frames: this.anims.generateFrameNumbers('Wenge', 
+		{
+			start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+			end:37 // última imagen del Spritesheet que se ejecuta en la animación
+		}), 
+		frameRate: 60, // imágenes/frames por segundo
+		repeat: -1 //para que sea bucle
+		})
+		this.anims.create({
+			key: 'Wenge_motomami', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Wenge_motomami', 
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:37 // última imagen del Spritesheet que se ejecuta en la animación
+			}), 
+			frameRate: 60, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+		})
+		this.anims.create({
+			key: 'Wenge_daltonismo', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Wenge_daltonismo', 
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:37 // última imagen del Spritesheet que se ejecuta en la animación
+			}), 
+			frameRate: 60, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+		})
+		this.anims.create({
+			key: 'Wenge_nuevacoleccion', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Wenge_nuevacoleccion', 
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:37 // última imagen del Spritesheet que se ejecuta en la animación
+			}), 
+			frameRate: 60, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+		})
+		this.anims.create({ //animación
+			key: 'idle_Explosion', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Explosion', 
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:3 // última imagen del Spritesheet que se ejecuta en la animación
+			}), 
+			frameRate: 4, // imágenes/frames por segundo
+			repeat: 0 //para que sea bucle
+		});
+		this.anims.create({ //animación
+			key: 'idle_WhiteCar', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Van',
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:6 // última imagen del Spritesheet que se ejecuta en la animación
+			}),
+			frameRate: 10, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+            
+		});
+		this.anims.create({ //animación
+			key: 'idle_BlueCar', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Car',
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:6 // última imagen del Spritesheet que se ejecuta en la animación
+			}),
+			frameRate: 10, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+
+		});
+		this.anims.create({ //animación
+			key: 'idle_Ambulance', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Ambulance',
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:6 // última imagen del Spritesheet que se ejecuta en la animación
+			}),
+			frameRate: 10, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+            
+		});
+	
 	}
 	/*
 	Creaccion de las animaciones y carga del menu

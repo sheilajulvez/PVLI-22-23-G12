@@ -6,21 +6,7 @@ export default class Moto extends Vehicle { //exportamos la clase extendida de P
 		super(scene, x, y, 'Moto');
 		this.body.setSize(90,180);
 		this.body.setOffset(10,35);
-		
-		/*this.scene.anims.create({ //animación
-			key: 'idle_Moto', //identificador de la animación
-			frames: scene.anims.generateFrameNumbers('Car',
-			{
-				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
-				end:6 // última imagen del Spritesheet que se ejecuta en la animación
-			}),
-			frameRate: 10, // imágenes/frames por segundo
-			repeat: -1 //para que sea bucle
-
-		});
-
-
-		this.play('idle_Moto'); //activa la animacion*/
+		//this.play('idle_Moto'); //activa la animacion*/
 		
 	}
 
