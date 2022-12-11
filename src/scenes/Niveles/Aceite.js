@@ -47,6 +47,8 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
  			 delay: 0,
 		}
 		this.explosionSound = this.sound.add('explosionSound',config2);
+		this.music= this.sound.add('musica5',config1);
+		this.music.play();
 		this.pitido1 = this.sound.add('pitido1',config1);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); //creamos a nuestro personaje, nuestra Wenge
 		this.player.dash=this.player_b.dash;
@@ -103,6 +105,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.timeDelta= this.timeDelta+dt;
 	
 		if(this.Barra.fin()){
+			this.music.stop();
 			this.money.AddMoney(200);
 			this.scene.start("EscenaHablar",{name:"Aceite_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
