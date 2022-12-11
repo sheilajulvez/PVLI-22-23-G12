@@ -20,7 +20,7 @@ export default class Economy{
     ShowMoney(){
        
         let a="DINERO:"+this.money;
-        this.text=this.scene.add.text(800,30,a);
+        this.text=this.scene.add.text(700,30,a);
         this.text.setTint(0x000000);
         this.text.setScale(2,2);
 

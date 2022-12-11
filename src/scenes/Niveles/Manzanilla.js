@@ -20,7 +20,6 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.timeDelta=0;
 		this.Inicia(this);
 		this.money.SetScene(this);
-		this.money.ShowMoney();
 		const config1 =
 		{
 			mute: false,
