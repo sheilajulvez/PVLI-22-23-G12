@@ -3,7 +3,6 @@ import Wenge from '../../characters/Wenge.js'
 import Pool  from '../../characters/Pool.js';
 import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Van from '../../characters/Vehiculos/Van.js';
-import Ambulance from '../../characters/Vehiculos/Ambulance.js';
 import Moto from '../../characters/Vehiculos/Moto.js'
 
 
@@ -19,7 +18,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		super.create();
 		this.timeDelta=0;
 		this.Inicia(this);
-		//this.ambulance=new Ambulance(this,300,0);
 
 		const config1 =
 		{
@@ -82,23 +80,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
 
-		this.lights_mask = this.make.container(0, 0,0);
-		const campfire_mask = this.make.sprite({
-            x: 400,
-            y: 300,
-            key: 'mask',
-            add: false,
-        });
 
-        // adding the images to the container
-        this.lights_mask.add( [campfire_mask ] );
-		this.lights_mask.setVisible(false);
-
-		//this.player.mask = new Phaser.Display.Masks.BitmapMask( this, this.lights_mask );
-
-
-		
-		//this.money.ShowMoney();
 	}
 	CarisOut(vehicles)
 	{
@@ -108,7 +90,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		this.poolVan.release(vehicles);
 	}
-	
 
 	pitido()
 	{
@@ -119,7 +100,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
         this.stay = datos.stay; 
 		this.money=datos.dinero;
 		this.player_b=datos.wenge;
-		
 		
     }
 	update(t,dt)
