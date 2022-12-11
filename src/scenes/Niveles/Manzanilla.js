@@ -53,20 +53,20 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
 		this.player.life.SetScene(this);
-		let arrayCoches=[];
+		this.arrayCoches=[];
 		
 		for(let i=0; i<5;i++)
 		{
-			arrayCoches[i]=(new Car(this,0,-1000-i*100));
+			this.arrayCoches[i]=(new Car(this,0,-1000-i*100));
 		}
-		this.poolCar=new Pool(this,arrayCoches);
+		this.poolCar=new Pool(this,this.arrayCoches);
 			
-		let arrayVan=[];
+		this.arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			arrayVan[i]=(new Van(this,0,-1000 - i*100));
+			this.arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
-		this.poolVan=new Pool(this,arrayVan);
+		this.poolVan=new Pool(this,this.arrayVan);
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{console.log("coche coche"); this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
@@ -233,28 +233,27 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
 			}
 		}
-		//seguimiento de las luces paraloscoches 
-			this.carmask0.y =this.poolCar._group.children.entries[0].y+60;
-			this.carmask0.x =this.poolCar._group.children.entries[0].x-40;
-			this.carmask1.y =this.poolCar._group.children.entries[1].y+60;
-			this.carmask1.x =this.poolCar._group.children.entries[1].x-40;
-			this.carmask2.y =this.poolCar._group.children.entries[2].y+60;
-			this.carmask2.x =this.poolCar._group.children.entries[2].x-40;
-			this.carmask3.y =this.poolCar._group.children.entries[3].y+60;
-			this.carmask3.x =this.poolCar._group.children.entries[3].x-40;
-			this.carmask4.y =this.poolCar._group.children.entries[4].y+60;
-			this.carmask4.x =this.poolCar._group.children.entries[4].x-40;
+			this.carmask0.y =this.arrayCoches[0].y+60;
+			this.carmask0.x =this.arrayCoches[0].x-40;
+			this.carmask1.y =this.arrayCoches[1].y+60;
+			this.carmask1.x =this.arrayCoches[1].x-40;
+			this.carmask2.y =this.arrayCoches.y+60;
+			this.carmask2.x =this.arrayCoches.x-40;
+			this.carmask3.y =this.arrayCoches.y+60;
+			this.carmask3.x =this.arrayCoches.x-40;
+			this.carmask4.y =this.arrayCoches.y+60;
+			this.carmask4.x =this.arrayCoches.x-40;
 
-			this.vanmask0.y =this.poolVan._group.children.entries[0].y+60;
-			this.vanmask0.x =this.poolVan._group.children.entries[0].x-40;
-			this.vanmask1.y =this.poolVan._group.children.entries[1].y+60;
-			this.vanmask1.x =this.poolVan._group.children.entries[1].x-40;
-			this.vanmask2.y =this.poolVan._group.children.entries[2].y+60;
-			this.vanmask2.x =this.poolVan._group.children.entries[2].x-40;
-			this.vanmask3.y =this.poolVan._group.children.entries[3].y+60;
-			this.vanmask3.x =this.poolVan._group.children.entries[3].x-40;
-			this.vanmask4.y =this.poolVan._group.children.entries[4].y+60;
-			this.vanmask4.x =this.poolVan._group.children.entries[4].x-40;
+			this.vanmask0.y =this.arrayVan[0].y+60;
+			this.vanmask0.x =this.arrayVan[0].x-40;
+			this.vanmask1.y =this.arrayVan[1].y+60;
+			this.vanmask1.x =this.arrayVan[1].x-40;
+			this.vanmask2.y =this.arrayVan[2].y+60;
+			this.vanmask2.x =this.arrayVan[2].x-40;
+			this.vanmask3.y =this.arrayVan[3].y+60;
+			this.vanmask3.x =this.arrayVan[3].x-40;
+			this.vanmask4.y =this.arrayVan[4].y+60;
+			this.vanmask4.x =this.arrayVan[4].x-40;
 		
 	}
 
