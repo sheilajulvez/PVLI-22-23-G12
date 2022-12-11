@@ -1,8 +1,4 @@
-
-
-
-
-
+import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Vehiculos/Van.js';
 import Pool  from '../../characters/Pool.js';
@@ -11,9 +7,6 @@ import Economy from "../../components/Economy.js"
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 import Danger from '../../characters/Danger.js';
 import Ambulance from '../../characters/Vehiculos/Ambulance.js';
-
-
-
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -43,7 +36,6 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.Inicia(this);
 		this.money.SetScene(this);	
 		this.timeDelta=0;
-		this.money.ShowMoney();
 		let arrayCoches=[];
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
@@ -61,7 +53,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 
 		//console.log(arrayCoches.length);
 		
-		this.poolCar=new Pool(this,5,arrayCoches);	
+		this.poolCar=new Pool(this,arrayCoches);	
 		this.physics.add.collider(this.player, this.poolCar.getPhaserGroup());
 		
 		this.music=this.sound.add('musica3');
@@ -72,14 +64,11 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			let van=new Van(this,0,-1000);
 			arrayVan.push(van);
 		}
-		this.poolVan=new Pool(this,5,arrayVan);
+		this.poolVan=new Pool(this,arrayVan);
 		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
 
 		this.physics.add.collider(this.poolCar.getPhaserGroup(), this.poolVan.getPhaserGroup());
 		
-
-		
-
 		
 		
 	}
