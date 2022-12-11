@@ -50,6 +50,13 @@ export default class Inicio extends Phaser.Scene {
 		//creas la mascara
 		this.load.image('mask', 'mask.png');
 		this.load.image('noche', 'noche.png');
+		//ESCENA FINAL
+		this.load.setPath('assets/escena_fin/');
+		this.load.image("pregunta","darle_la_manzanilla.png");
+        this.load.image("SI","SI.png");
+        this.load.image("NO","NO.png");
+        this.load.image("si_se_la_das","creitos_si.png");
+        this.load.image("no_se_la_das","creaditos_no.png");
 
 	  //TIENDA
 		this.load.setPath('assets/tienda/');
