@@ -86,7 +86,31 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		//container para todas las luces
 		this.lights_mask = this.make.container(0, 0);
       /*  vision mask -  cada luz */
-        const vision_mask = this.make.sprite({
+        this.carmask0 = this.make.sprite({
+            x: 400,
+            y: 300,
+            key: 'mask',
+            add: false
+        });
+		this.carmask1 = this.make.sprite({
+            x: 400,
+            y: 300,
+            key: 'mask',
+            add: false
+        });
+		this.carmask2 = this.make.sprite({
+            x: 400,
+            y: 300,
+            key: 'mask',
+            add: false
+        });
+		this.carmask3 = this.make.sprite({
+            x: 400,
+            y: 300,
+            key: 'mask',
+            add: false
+        });
+		this.carmask4 = this.make.sprite({
             x: 400,
             y: 300,
             key: 'mask',
@@ -94,7 +118,27 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
         });
 
         // campfire mask
-        const campfire_mask = this.make.sprite({
+        this.vanmask0 = this.make.sprite({
+            x: 900,
+            y: 300,
+            key: 'mask',
+            add: false,
+        });this.vanmask1 = this.make.sprite({
+            x: 900,
+            y: 300,
+            key: 'mask',
+            add: false,
+        });this.vanmask2 = this.make.sprite({
+            x: 900,
+            y: 300,
+            key: 'mask',
+            add: false,
+        });this.vanmask3 = this.make.sprite({
+            x: 900,
+            y: 300,
+            key: 'mask',
+            add: false,
+        });this.vanmask4 = this.make.sprite({
             x: 900,
             y: 300,
             key: 'mask',
@@ -103,7 +147,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
         /* vision mask -  cada luz FIN */
 
         // adding the images to the container
-        this.lights_mask.add( [ vision_mask, campfire_mask ] );
+        this.lights_mask.add( [ this.carmask0,this.carmask1,this.carmask2,this.carmask3,this.carmask4,
+			this.vanmask0,this.vanmask1,this.vanmask2,this.vanmask3,this.vanmask4] );
 
         // now this is the important line I did not expect:
         // the lights container was being drawn into the scene (even though I used "make" and not "add")
@@ -139,62 +184,78 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		this.timeDelta= this.timeDelta+dt;
-		
 		if(this.timeDelta>4000)
 		{
-	    var rand=random(0,1);
-	    if (rand===0)
-		{
-			
-			    let pos=random(0,5);
+			var rand=random(0,1);
+			if (rand===0)
+			{	
+				let pos=random(0,5);
 				this.timeDelta=0;
 				let vehicleX=0;
-					switch(pos)
-					 {
-						  case 0:
-							  vehicleX=210;
-							  break;
-						   case 1:
-							  vehicleX=350;
-							  break;
-						   case 2:
+					switch(pos){
+						case 0:
+							vehicleX=210;
+							break;
+						case 1:
+							vehicleX=350;
+							break;
+						case 2:
 							vehicleX=480;
-							  break;
-						   case 3:
-							   vehicleX=610;
-							   break;
-						   case 4:
+							break;
+						case 3:
+							vehicleX=610;
+							break;
+						case 4:
 							vehicleX=740;
-							   break;
-						   case 5:
+							break;
+						case 5:
 							vehicleX=870;
-							   break;
+							break;
 					}
-					
-				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+							
+						this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+				
+			}
+			else if(rand===1){
+				let pos=random(0,1);
+				this.timeDelta=0;
+				let vehicleX=0;
+				switch(pos)
+					{
+						case 0:
+							vehicleX=350;
+							break;
+						case 1:
+							vehicleX=740;
+							break;
+					}
+				console.log("respawn");
+				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
+			}
+		}
+		//seguimiento de las luces paraloscoches 
+			this.carmask0.y =this.poolCar._group.children.entries[0].y+60;
+			this.carmask0.x =this.poolCar._group.children.entries[0].x-40;
+			this.carmask1.y =this.poolCar._group.children.entries[1].y+60;
+			this.carmask1.x =this.poolCar._group.children.entries[1].x-40;
+			this.carmask2.y =this.poolCar._group.children.entries[2].y+60;
+			this.carmask2.x =this.poolCar._group.children.entries[2].x-40;
+			this.carmask3.y =this.poolCar._group.children.entries[3].y+60;
+			this.carmask3.x =this.poolCar._group.children.entries[3].x-40;
+			this.carmask4.y =this.poolCar._group.children.entries[4].y+60;
+			this.carmask4.x =this.poolCar._group.children.entries[4].x-40;
 
-			
-		}
-		else if(rand===1)
-		{
-			let pos=random(0,1);
-			this.timeDelta=0;
-			let vehicleX=0;
-			switch(pos)
-				{
-					case 0:
-						vehicleX=350;
-						break;
-					case 1:
-						vehicleX=740;
-						break;
-				}
-			console.log("respawn");
-			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
-		}
-		}
-
-		
+			this.vanmask0.y =this.poolVan._group.children.entries[0].y+60;
+			this.vanmask0.x =this.poolVan._group.children.entries[0].x-40;
+			this.vanmask1.y =this.poolVan._group.children.entries[1].y+60;
+			this.vanmask1.x =this.poolVan._group.children.entries[1].x-40;
+			this.vanmask2.y =this.poolVan._group.children.entries[2].y+60;
+			this.vanmask2.x =this.poolVan._group.children.entries[2].x-40;
+			this.vanmask3.y =this.poolVan._group.children.entries[3].y+60;
+			this.vanmask3.x =this.poolVan._group.children.entries[3].x-40;
+			this.vanmask4.y =this.poolVan._group.children.entries[4].y+60;
+			this.vanmask4.x =this.poolVan._group.children.entries[4].x-40;
 		
 	}
+
 }

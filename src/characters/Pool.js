@@ -16,7 +16,6 @@ export default class Pool {
 	//mostrar un objeto en escena
 	
 	
-	
 	spawn (x, y,animationKey) {
 		var entity = this._group.getFirstDead();
 			//Nunca deberían existir grupos sin elementos activo
@@ -41,5 +40,4 @@ export default class Pool {
 	getPhaserGroup(){
 		return this._group;
 	}
-
 }
