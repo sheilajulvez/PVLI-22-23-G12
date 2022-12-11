@@ -17,6 +17,7 @@ export default class LifeComponent {
 	RestaVida() {
 		if(this.puedeRestar)
 		{
+			this.cont=0;
 		console.log(this.lifes);
 		this.hitSound.play();
 		this.lifes=this.lifes -1;
