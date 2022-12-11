@@ -254,7 +254,10 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.vanmask3.x =this.arrayVan[3].x-40;
 			this.vanmask4.y =this.arrayVan[4].y+60;
 			this.vanmask4.x =this.arrayVan[4].x-40;
-		
+			this.player.life.Update();
+	}
+	GameOver(){
+		this.scene.start('gameover');
 	}
 
 }
