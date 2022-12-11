@@ -68,6 +68,7 @@ export default class Inicio extends Phaser.Scene {
 		this.load.audio('musiquita','videoplayback.mp3');
 		this.load.audio('pitido1','pitido1.mp3');
 		this.load.audio('explosionSound','explosion.mp3');
+		this.load.audio('hitSound','hitSound.mp3');
 
 	
 
