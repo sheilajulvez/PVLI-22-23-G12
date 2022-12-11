@@ -48,10 +48,5 @@ export default class Vehicle extends Phaser.GameObjects.Sprite { //exportamos la
         //this.pipi();
 		if(this.body.checkCollision.none)
 				this.body.checkCollision.none=false;
-		if(this.destroyNow==true)
-		{
-			
-		}
-		
 	}
 }

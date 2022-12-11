@@ -42,7 +42,7 @@ export default class Inicio extends Phaser.Scene {
 		//Van
 		this.load.spritesheet('Van', 'WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 		//ambulacia
-		this.load.spritesheet('Ambulance','ambulance.png',{frameWidth:166 , frameHeight:	233	});
+		this.load.spritesheet('Ambulance','ambulance.png',{frameWidth:160 , frameHeight:	233	});
 		//aviso
 		this.load.image('danger','danger.png');
 		//explosiones

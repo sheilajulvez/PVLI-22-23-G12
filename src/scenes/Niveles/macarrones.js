@@ -61,7 +61,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		this.poolCar=new Pool(this,arrayCoches);
 
-		
+		this.createExplosion(this.player.x+200,this.player.y);
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{

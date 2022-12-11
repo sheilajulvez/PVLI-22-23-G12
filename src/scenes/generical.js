@@ -14,6 +14,11 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.ambulanceCont=0;
 		this.money=new Economy(this);
 		this.exp=false;
+
+
+
+
+		
 	}
 	Inicia(scene){
 		this.relatedScene=scene;

@@ -45,6 +45,15 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 	SetDash(){
 		this.dash=true;
 	}
+
+	collision()
+	{
+		if(this.scene.physics.overlap(this, this.scene.explosion)) 
+		{
+			this.scene.super.explosion.destroyNow=true;
+			this.scene.player.life.RestaVida();	
+		}
+	}
 	AddVelocity(){
 		console.log("suma vel");
 		this.velocity+=200;
@@ -67,6 +76,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 	}
 	update(){
 		//super.preUpdate(t, dt);
+		this.collision();
 		this.timeDelta+=1;
 		if(this.coolDown>=0)
 		{
