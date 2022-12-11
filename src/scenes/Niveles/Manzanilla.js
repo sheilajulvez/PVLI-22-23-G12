@@ -44,8 +44,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 
 		this.explosionSound = this.sound.add('explosionSound',config2);
 		
-		// this.musiquita = this.sound.add("musiquita",config);
-		// this.musiquita.play();
+		this.music= this.sound.add('musica1',config1);
+		this.music.play();
 		this.pitido1 = this.sound.add('pitido1',config1);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.dash=this.player_b.dash;
@@ -81,8 +81,6 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 
 		// fill it with black
 		rt.fill(0x000000, 0.7)
-		this.noche = this.add.image(0,0, 1000,700, 'noche');
-
 		//container para todas las luces
 		this.lights_mask = this.make.container(0, 0);
       /*  vision mask -  cada luz */
@@ -180,6 +178,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		
 		super.update();
 		if(this.Barra.fin()){
+			this.music.stop();
 			this.money.AddMoney(200);
 			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}

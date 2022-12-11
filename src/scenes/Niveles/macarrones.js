@@ -42,10 +42,10 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 
 		this.explosionSound = this.sound.add('explosionSound',config2);
 		
-		// this.musiquita = this.sound.add("musiquita",config);
-		// this.musiquita.play();
-		this.pitido1 = this.sound.add('pitido1',config1);
-		//this.grit2 = this.sound.add('grito');	
+		this.music = this.sound.add("musica2",config2);
+		this.music.play();
+		
+			
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); //creamos a nuestro personaje, nuestra Wenge
 		this.player.dash=this.player_b.dash;
 		this.player.velocity=this.player_b.velocity;
@@ -67,15 +67,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		{
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
-		this.poolVan=new Pool(this,arrayVan);
-
-		let arrayMoto=[];
-		for(let i=0;i<5;i++){
-			arrayMoto[i]=(new Moto(this,0,-500+i*100));
-		}
-		this.poolMoto=new Pool(this,arrayMoto);
-
-			
+		this.poolVan=new Pool(this,arrayVan);		
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{console.log("coche coche"); this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
@@ -91,10 +83,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.poolVan.release(vehicles);
 	}
 
-	pitido()
-	{
-		this.pitido1.play();
-	}
+
 	init(datos)
 	{
         this.stay = datos.stay; 
@@ -110,7 +99,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		if (this.player.life.lifes == 0) this.scene.start("gameover");
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
-		//  this.musiquita.stop();
+		    this.music.stop();
 			this.scene.start("EscenaHablar",{name:"tomatico_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>2000)

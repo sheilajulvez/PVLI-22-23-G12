@@ -52,8 +52,8 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 
 		
 
-
-
+		this.music=this.sound.add('musica4');
+		this.music.play();
 				
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
@@ -84,6 +84,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			this.money.AddMoney(200);
+			this.music.stop();
 			this.scene.start("EscenaHablar",{name:"Arsenico_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>4000)

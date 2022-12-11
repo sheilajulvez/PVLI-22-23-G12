@@ -64,8 +64,8 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.poolCar=new Pool(this,5,arrayCoches);	
 		this.physics.add.collider(this.player, this.poolCar.getPhaserGroup());
 		
-		
-
+		this.music=this.sound.add('musica3');
+		this.music.play();
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
@@ -110,6 +110,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			this.money.AddMoney(200);
+			this.music.stop();
 			this.scene.start("EscenaHablar",{name:"Croquetas_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>2000)

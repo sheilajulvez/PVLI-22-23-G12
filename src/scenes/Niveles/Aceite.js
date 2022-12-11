@@ -60,7 +60,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		{
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
-		this.poolVan=new Pool(this,5,arrayVan);
+		this.poolVan=new Pool(this,arrayVan);
 	
 
 		let arrayBike=[];
@@ -68,7 +68,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		{
 			arrayBike[i]=(new Moto(this,0,-1000+i*100));
 		}
-		this.poolBike=new Pool(this,3,arrayBike);
+		this.poolBike=new Pool(this,arrayBike);
 
 		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});

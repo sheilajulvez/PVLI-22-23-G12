@@ -10,20 +10,18 @@ export default class Moto extends Vehicle { //exportamos la clase extendida de P
 		
 	}
 
-	
 
-	
 	preUpdate(t, dt){
 		super.preUpdate(t, dt,this.poolCar);
 		super.move(200);
 		if (this.y>800) 		//en todos los que tengan poool
 		{		
-				this.scene.poolMoto.release(this);		
+				this.scene.poolBike.release(this);		
 		}
 		if(this.destroyNow==true)
 		{
 			this.body.checkCollision.none=true;
-			this.scene.poolMoto.release(this);
+			this.scene.poolBike.release(this);
 			this.destroyNow=false;
 		}
 		
