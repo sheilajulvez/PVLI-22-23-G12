@@ -50,7 +50,6 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 	{
 		if(this.scene.physics.overlap(this, this.scene.explosion)) 
 		{
-			this.scene.explosion.destroyNow=true;
 			this.scene.player.life.RestaVida();	
 		}
 	}

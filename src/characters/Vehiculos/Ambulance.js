@@ -34,7 +34,7 @@ export default class Ambulance extends Car { //exportamos la clase extendida de 
 
 	preUpdate(t, dt){
         super.preUpdate(t,dt);
-
+		super.move(400);
 		//movimiento de los coches
 		this.collision();
         //this.move(dt,dir);

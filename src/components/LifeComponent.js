@@ -5,6 +5,8 @@ export default class LifeComponent {
 		this.scene = scene;
 		this.lifes=life;
 		this.sprt=[];
+		this.cont=0;
+		this.puedeRestar=true;
 		//for(var i=0; i<this.lifes; i++){
 		//	this.sprt.push(this.scene.add.image(950- (55*i),50,'Life'));
 		//}
@@ -13,12 +15,17 @@ export default class LifeComponent {
 	}
 	//devuelve un "boleano" que indica si todavía quedan vidas en el juego 
 	RestaVida() {
+		if(this.puedeRestar)
+		{
 		console.log(this.lifes);
 		this.hitSound.play();
 		this.lifes=this.lifes -1;
 		console.log(this.sprt[this.sprt.length- 1]);
 		this.sprt[this.sprt.length- 1].destroy();
 		this.sprt.pop();
+		this.puedeRestar=false
+		}
+		
 	}
 	AddVida(){
 		this.lifes++;
@@ -41,8 +48,17 @@ export default class LifeComponent {
 			this.sprt.pop();
 		}
 	}
-	Update(){
-		
+	Update()
+	{
+	if(!this.puedeRestar)
+	{
+		console.log(this.cont);
+		this.cont++;
+	}	
+	if(this.cont>=100)
+	{
+		this.puedeRestar=true;
+	}
 		
 	}
 }
