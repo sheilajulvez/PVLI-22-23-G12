@@ -221,6 +221,17 @@ export default class Inicio extends Phaser.Scene {
 			repeat: -1 //para que sea bucle
             
 		});
+		this.anims.create({ //animación
+			key: 'idle_Moto', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Bike',
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:6 // última imagen del Spritesheet que se ejecuta en la animación
+			}),
+			frameRate: 10, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+            
+		});
 	
 	}
 	/*

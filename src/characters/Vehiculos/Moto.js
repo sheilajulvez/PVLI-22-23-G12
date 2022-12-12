@@ -6,8 +6,8 @@ export default class Moto extends Vehicle { //exportamos la clase extendida de P
 		super(scene, x, y, 'Moto');
 		this.body.setSize(90,180);
 		this.body.setOffset(10,35);
-		//this.play('idle_Moto'); //activa la animacion*/
-		
+		this.play('idle_Moto'); //activa la animacion*/
+		this.setScale(0.5,0.5);
 	}
 
 
