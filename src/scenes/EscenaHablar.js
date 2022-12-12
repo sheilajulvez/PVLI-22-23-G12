@@ -21,33 +21,12 @@ export default class EscenaHablar extends Phaser.Scene{
         this.money=datos.dinero;
         this.player=datos.wenge;
         this.arrayHablar=[];
-        console.log("escena hablar "+this.money);
-        console.log("escena hablar "+this.player);
-       
         
     }
     
 	preload(){
 		
-	this.load.image("Wengecara", 'assets/wengeCara.png');
-    this.load.image("Rosi",'assets/rosalia.png');
-    this.load.image("Presi","assets/presi.png");
-    this.load.image("PatryRuncha","assets/PatryRuncha.png");
-    this.load.image("cajita","assets/cajastexto/guardate.png");
-    this.load.image("fondo_soleado","assets/Daytime_Background_1024x800.png");
-    this.load.image("fondo_noche","assets/dark background.png");
-    this.load.image("jefa_wenge","assets/jefa_de_Wenge.png");
-    this.load.image("Sheila","assets/Sheila.png");
-    this.load.image("Twitero","assets/twitero.png");
-    this.load.image("Texto_Wenge","assets/cajastexto/texto_wenge.png");
-    this.load.audio("click", 'assets/sounds/click.mp3');
-    this.load.audio("talking1",'assets/sounds/talking1.mp3');
-    this.load.audio("talking2",'assets/sounds/talking2.mp3');
-    this.load.audio("talking3",'assets/sounds/talking3.mp3');
-    this.load.audio("talking4",'assets/sounds/talking4.mp3');
-    this.load.audio("talking5",'assets/sounds/talking5.mp3');
-    this.load.audio("talking6",'assets/sounds/talking6.mp3');
-    this.load.audio("talking7",'assets/sounds/talking7.mp3');
+	
    
     if(this.stay>1){
         this.money.SetScene(this);
