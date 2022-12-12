@@ -1,4 +1,3 @@
-
 import FondoMove from '../characters/FondoMove.js'; //importamos las distintas ARBOLES del fondo
 import Barra from '../characters/Bar.js';//importamos la clase bar que indicará por donde va el nivel BARRA;
 import road from '../scenes/road.js'; //CARRETERA
@@ -14,11 +13,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		this.ambulanceCont=0;
 		this.money=new Economy(this);
 		this.exp=false;
-
-
-
-
-		
 	}
 	Inicia(scene){
 		this.relatedScene=scene;
@@ -68,7 +62,7 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		obj1.destroy();
 		obj2.destroy();
 			
-	}
+	}	
 	createExplosion(x,y){
 		
 		this.explosion=new Explosion(this,x,y);

@@ -3,8 +3,6 @@ import Wenge from '../../characters/Wenge.js'
 import Pool  from '../../characters/Pool.js';
 import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Van from '../../characters/Vehiculos/Van.js';
-import Moto from '../../characters/Vehiculos/Moto.js'
-
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -68,9 +66,9 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,arrayVan);		
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{console.log("coche coche"); this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
 
 
 	}
@@ -83,7 +81,6 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.poolVan.release(vehicles);
 	}
 
-
 	init(datos)
 	{
         this.stay = datos.stay; 
@@ -92,11 +89,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
     }
 	update(t,dt)
-	{
-		
+	{	
 		super.update();
-		 
-	
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 		    this.music.stop();
@@ -172,10 +166,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 						}
 					
 					//this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-					
-
-				
+					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');		
 			}
 			//FURGONETA 
 			else if(rand==1)

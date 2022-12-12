@@ -21,7 +21,7 @@ export default class Inicio extends Phaser.Scene {
 		progressBar.fillRect(350, 280, 300 * value, 35);
 	  });
   
-	  //IMAGENES
+	  	//IMAGENES
 	  	this.load.setPath('assets/');
 	  	//fondo menu
 		this.load.image("fondoIni","ini.png");

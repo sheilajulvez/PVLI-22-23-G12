@@ -7,18 +7,22 @@ export default class Explosion extends Phaser.GameObjects.Sprite { //exportamos 
 		this.play('idle_Explosion'); //activa la animavcion
 		this.setScale(0.35,0.35);
 	}
+	colision(){
+		if(this.scene.physics.overlap(this.scene.player, this)) 
+		{console.log("entra");
+			this.scene.player.life.RestaVida();
+		}
+	}
 
 	
 	preupdate(dt)
 	{
-		console.log(this.timePassed);
+		this.colision();
 		this.timePassed=+dt;
 		if(this.timePassed>3000)
 		{
 			delete this;
-		}
-
-		
+		}	
 	}
 	
 
