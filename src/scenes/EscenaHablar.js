@@ -105,7 +105,12 @@ export default class EscenaHablar extends Phaser.Scene{
         };
         if(this.scenekey=="Arsenico_fin"||this.scenekey=="Manzanilla_fin"||this.scenekey=="Croquetas_fin"
         ||this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"){
-            this.add.image(890,850,"Texto_Wenge");
+            
+           
+            this.add.image(900,925,"texto_wenge_2").setScale(3,3);
+            this.add.image(900,900,"texto_wenge_1").setScale(4,4);
+            this.opcion2=this.add.image(680,565,"texto_wenge_3").setInteractive().setScale(0.6,0.6)
+            this.opcion1= this.add.image(820,630,"texto_wenge_3").setInteractive().setScale(0.6,0.6)
             this.opcion_a={
             
                 a:0,
@@ -120,10 +125,75 @@ export default class EscenaHablar extends Phaser.Scene{
                 txt:Textos[this.nombre2],
                 identificador:this.nombre2,
     
-                b:this.textButton(790,600,Textos[this.nombre2][0],this.nombre2),
+                b:this.textButton(850,630,Textos[this.nombre2][0],this.nombre2),
             };
-           
-         
+            this.opcion1.on("pointerdown",()=>{
+                let rand=random(0,6);
+                this.arrayHablar[rand].play();
+                console.log("entraaa");
+                this.opcion1.scene.tweens.add(
+                    {
+                        targets: this.opcion1,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        duration: 150,
+                        yoyo: true
+                    }
+                );
+                this.cajita.scene.tweens.add(
+                    {
+                        targets: this.cajita,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        duration: 100,
+                        yoyo: true
+                    }
+                );
+                if(Textos[this.comprueba][this.opcion_a.a]){
+                    this.money.AddMoney(50);
+                    this.money.SetText();
+                   
+                }
+                this.Siguiente();
+            })
+            this.opcion2.on("pointerdown",()=>{
+                let rand=random(0,6);
+                this.arrayHablar[rand].play();
+                this.opcion2.scene.tweens.add(
+                    {
+                        targets: this.opcion2,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        duration: 150,
+                        yoyo: true
+                    }
+                );
+
+                this.cajita.scene.tweens.add(
+                    {
+                        targets: this.cajita,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        duration: 100,
+                        yoyo: true
+                    }
+                );
+                if(Textos[this.comprueba2][this.opcion_b.a]){
+                    this.money.AddMoney(50);
+                    this.money.SetText();
+                 }
+                 this.Siguiente();
+            }
+            )
+
+             
+  
+            
+
+
+
+
+
            
         }
         else{
@@ -143,6 +213,7 @@ export default class EscenaHablar extends Phaser.Scene{
  
         
     }
+
 
     Siguiente(){
         this.siguiente_texto();
@@ -180,68 +251,6 @@ export default class EscenaHablar extends Phaser.Scene{
 		//text.setOrigin(0.5,0.0);
 		//text.setAlign('center');
         text.setTint(0x000000);
-        if(name!=this.scenekey){
-            text.setInteractive();
-            text.on('pointerdown', ()=>{
-              let rand=random(0,6);
-              this.arrayHablar[rand].play();
-                text.scene.tweens.add(
-                    {
-                        targets: text,
-                        scaleX: 0.9,
-                        scaleY: 0.9,
-                        duration: 150,
-                        yoyo: true
-                    }
-                );
-                this.cajita.scene.tweens.add(
-                    {
-                        targets: this.cajita,
-                        scaleX: 0.9,
-                        scaleY: 0.9,
-                        duration: 100,
-                        yoyo: true
-                    }
-                );
-                
-            
-                 if(name==this.nombre){
-                    if(Textos[this.comprueba][this.opcion_a.a]){
-                        this.money.AddMoney(50);
-                        this.money.SetText();
-                       
-                    }
-                   
-                 }
-                 else if(name==this.nombre2){
-                    if(Textos[this.comprueba2][this.opcion_b.a]){
-                       this.money.AddMoney(50);
-                       this.money.SetText();
-                    }
-                   
-                 }
-                 this.siguiente_texto();
-                 if(this.texto_largo.a==Textos.longitud){
-                    if(this.scenekey=="arsenico_fin"){
-                        this.scene.start("Escena_final");
-                    }
-                  else if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||
-                     this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
-                        this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
-                
-                    }
-                    else
-                    {
-                       
-                        this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});
-                    }
-    
-                }
-               
-    
-              
-            })
-        }
 		
 
         

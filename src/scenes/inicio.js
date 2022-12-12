@@ -61,7 +61,9 @@ export default class Inicio extends Phaser.Scene {
 		this.load.image("Sheila","Sheila.png");
 		this.load.image("Twitero","twitero.png");
 		this.load.image("Texto_Wenge","cajastexto/texto_wenge.png");
-		
+		this.load.image("texto_wenge_1","cajastexto/texto_wenge1.png");
+		this.load.image("texto_wenge_2","cajastexto/texto_wenge2.png");
+		this.load.image("texto_wenge_3","cajastexto/fondo-verde.png");
 		//creas la mascara
 		this.load.image('mask', 'mask.png');
 		this.load.image('noche', 'noche.png');
