@@ -38,7 +38,4 @@ export default class Extra_life {
         })
     }
 
-    Add_life(){
-
-    }
 }
