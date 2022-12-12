@@ -47,6 +47,21 @@ export default class Inicio extends Phaser.Scene {
 		this.load.image('danger','danger.png');
 		//explosiones
 		this.load.spritesheet('Explosion','explosion.png',{frameWidth:650, frameHeight:	600});
+		// dialogos
+		this.load.image("Wengecara", 'wengeCara.png');
+		//rosi 
+		this.load.image("Rosi",'rosalia.png');
+		this.load.image("Presi","presi.png");
+		this.load.image("PatryRuncha","PatryRuncha.png");
+		
+		this.load.image("cajita","cajastexto/guardate.png");
+		this.load.image("fondo_soleado","Daytime_Background_1024x800.png");
+		this.load.image("fondo_noche","dark background.png");
+		this.load.image("jefa_wenge","jefa_de_Wenge.png");
+		this.load.image("Sheila","Sheila.png");
+		this.load.image("Twitero","twitero.png");
+		this.load.image("Texto_Wenge","cajastexto/texto_wenge.png");
+		
 		//creas la mascara
 		this.load.image('mask', 'mask.png');
 		this.load.image('noche', 'noche.png');
@@ -64,7 +79,7 @@ export default class Inicio extends Phaser.Scene {
 		this.load.spritesheet('Wenge_motomami', 'wengeSprite_motomami.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_daltonismo', 'wengeSprite_daltonica.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_nuevacoleccion', 'wengeSprite_nuevacoleccion.png', {frameWidth: 633, frameHeight:394});
-		
+	
 	  //AUDIO
 		this.load.setPath('assets/sounds/');
 		this.load.audio('dash', 'fium.mp3');
@@ -81,7 +96,14 @@ export default class Inicio extends Phaser.Scene {
 		this.load.audio('musica3','cancion3.mp3');
 		this.load.audio('musica4','cancion4.mp3');
 		this.load.audio('musica5','cancion5.mp3');
-
+		this.load.audio("click", 'click.mp3');
+		this.load.audio("talking1",'talking1.mp3');
+		this.load.audio("talking2",'talking2.mp3');
+		this.load.audio("talking3",'talking3.mp3');
+		this.load.audio("talking4",'talking4.mp3');
+		this.load.audio("talking5",'talking5.mp3');
+		this.load.audio("talking6",'talking6.mp3');
+		this.load.audio("talking7",'talking7.mp3');
 
 
 		var width = this.cameras.main.width;

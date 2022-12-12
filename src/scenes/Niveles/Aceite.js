@@ -101,7 +101,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 	update(t,dt)
 	{
 		super.update();
-		if (this.player.life.lifes == 0) this.scene.start("gameover");
+		//if (this.player.life.lifes == 0) this.scene.start("gameover");
 		this.timeDelta= this.timeDelta+dt;
 	
 		if(this.Barra.fin()){

@@ -14,7 +14,7 @@ export default class Escena_final extends Phaser.Scene{
             let a=this.add.image(500,3000,"si_se_la_das").setScale(1,1);
              this.tweens.add({
                 targets: [ a ],
-                y: -1500,
+                y: -1100,
                 duration: 100999,
         
                 repeat: false
@@ -27,7 +27,7 @@ export default class Escena_final extends Phaser.Scene{
             let a=this.add.image(500,3000,"no_se_la_das").setScale(1,1);
             this.tweens.add({
                targets: [ a ],
-               y: -1500,
+               y: -1100,
                duration: 100999,
                // ease: 'Sine.easeInOut',
                // flipX: true,

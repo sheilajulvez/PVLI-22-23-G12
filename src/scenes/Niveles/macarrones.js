@@ -96,7 +96,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		
 		super.update();
 		 
-		if (this.player.life.lifes == 0) this.scene.start("gameover");
+	
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 		    this.music.stop();
