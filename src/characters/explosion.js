@@ -11,8 +11,9 @@ export default class Explosion extends Phaser.GameObjects.Sprite { //exportamos 
 	
 	preupdate(dt)
 	{
+		console.log(this.timePassed);
 		this.timePassed=+dt;
-		if(this.timePassed>3000 )
+		if(this.timePassed>3000)
 		{
 			delete this;
 		}
