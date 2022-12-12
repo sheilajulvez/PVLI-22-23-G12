@@ -39,8 +39,4 @@ export default class Dash_button {
         })
        
     }
-
-    Add_life(){
-
-    }
 }
