@@ -66,9 +66,9 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,this.arrayVan);
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{console.log("coche coche"); this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("coche furgo");this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ console.log("furgo furgi");this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 
 	
 
@@ -83,7 +83,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		//container para todas las luces
 		this.lights_mask = this.make.container(0, 0);
       /*  vision mask -  cada luz */
-        this.carmask0 = this.make.sprite({
+       /* this.carmask0 = this.make.sprite({
             x: 400,
             y: 300,
             key: 'mask',
@@ -141,11 +141,23 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
             key: 'mask',
             add: false,
         });
-        /* vision mask -  cada luz FIN */
+        vision mask -  cada luz FIN */
+		this.carmask = this.make.sprite({
+			x: 900,
+			y: 300,
+			key: 'mask',
+			add: false,});
+		this.vanmask = this.make.sprite({
+				x: 900,
+				y: 300,
+				key: 'mask',
+				add: false,});
+
 
         // adding the images to the container
-        this.lights_mask.add( [ this.carmask0,this.carmask1,this.carmask2,this.carmask3,this.carmask4,
-			this.vanmask0,this.vanmask1,this.vanmask2,this.vanmask3,this.vanmask4] );
+        //this.lights_mask.add( [ this.carmask0,this.carmask1,this.carmask2,this.carmask3,this.carmask4,
+			//this.vanmask0,this.vanmask1,this.vanmask2,this.vanmask3,this.vanmask4] );
+			this.lights_mask.add([this.carmask,this.vanmask]);
 
         // now this is the important line I did not expect:
         // the lights container was being drawn into the scene (even though I used "make" and not "add")
@@ -184,6 +196,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.timeDelta= this.timeDelta+dt;
 		if(this.timeDelta>4000)
 		{
+			if(this.exp){this.explosion.destroy();}
 			var rand=random(0,1);
 			if (rand===0)
 			{	
@@ -211,7 +224,11 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 							break;
 					}
 							
-						this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
+					this.carmask.x=vehicleX-40;
+					this.carmask.y=this.poolCar.devuelvey()+60;
+						
+						
 				
 			}
 			else if(rand===1){
@@ -227,11 +244,15 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 							vehicleX=740;
 							break;
 					}
-				console.log("respawn");
+				
 				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
+				this.vanmask.x=vehicleX-40;
+				this.vanmask.y=this.poolVan.devuelvey()+60;
 			}
 		}
-			this.carmask0.y =this.arrayCoches[0].y+60;
+	
+		
+			/*this.carmask0.y =this.arrayCoches[0].y+60;
 			this.carmask0.x =this.arrayCoches[0].x-40;
 			this.carmask1.y =this.arrayCoches[1].y+60;
 			this.carmask1.x =this.arrayCoches[1].x-40;
@@ -251,7 +272,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.vanmask3.y =this.arrayVan[3].y+60;
 			this.vanmask3.x =this.arrayVan[3].x-40;
 			this.vanmask4.y =this.arrayVan[4].y+60;
-			this.vanmask4.x =this.arrayVan[4].x-40;
+			this.vanmask4.x =this.arrayVan[4].x-40;*/
 			this.player.life.Update();
 	}
 	GameOver(){

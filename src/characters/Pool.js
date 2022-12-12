@@ -30,6 +30,12 @@ export default class Pool {
 		
 		return entity;
 	}
+	devuelvey(){
+		var entity= this._group.getFirstDead();
+		console.log(entity.y);
+		if(entity)return entity.y;
+
+	}
 
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
