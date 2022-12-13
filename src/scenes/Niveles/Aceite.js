@@ -55,7 +55,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		this.player.velocity=this.player_b.velocity;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
-		this.player.life.SetScene(this);
+		this.player.life.SetScene(this,'l_aceite');
 
 		let arrayVan=[];
 		for(let i=0; i<5;i++)

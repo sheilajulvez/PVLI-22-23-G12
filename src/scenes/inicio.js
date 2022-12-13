@@ -29,8 +29,8 @@ export default class Inicio extends Phaser.Scene {
 		this.load.image("start_button","Play.png");
 		//wenge 
 		this.load.spritesheet('Wenge', 'wengeSprite.png', {frameWidth: 633, frameHeight:394});
-		//imagen de vida
-		this.load.image('Life', 'vidas.png');
+		
+
 		//carretera
 		this.load.spritesheet('road', 'carretera.png', {frameWidth: 700, frameHeight:490});
 		//arboles
@@ -136,6 +136,14 @@ export default class Inicio extends Phaser.Scene {
 		this.load.audio("talking5",'talking5.mp3');
 		this.load.audio("talking6",'talking6.mp3');
 		this.load.audio("talking7",'talking7.mp3');
+
+		this.load.setPath('assets/Vidas/')
+		//imagen de vida
+		this.load.image('l_macarrones', 'macarrones.png');
+		this.load.image('l_manzanilla','manzanilla.png');
+		this.load.image('l_aceite','aceite.png');
+		this.load.image('l_croqueta','croqueta.png');
+		this.load.image('l_veneno','veneno.png');
 
 
 		var width = this.cameras.main.width;
