@@ -21,6 +21,7 @@ export default class EscenaHablar extends Phaser.Scene{
         this.money=datos.dinero;
         this.player=datos.wenge;
         this.arrayHablar=[];
+        this.hablarAct;
         
     }
     
@@ -129,7 +130,13 @@ export default class EscenaHablar extends Phaser.Scene{
             };
             this.opcion1.on("pointerdown",()=>{
                 let rand=random(0,6);
+                if(this.hablarAct!=null)
+                {
+                    this.hablarAct.stop();
+                }
                 this.arrayHablar[rand].play();
+                this.hablarAct= this.arrayHablar[rand];
+                 
                 console.log("entraaa");
                 this.opcion1.scene.tweens.add(
                     {
@@ -159,7 +166,12 @@ export default class EscenaHablar extends Phaser.Scene{
             })
             this.opcion2.on("pointerdown",()=>{
                 let rand=random(0,6);
+                if(this.hablarAct!=null)
+                {
+                    this.hablarAct.stop();
+                }
                 this.arrayHablar[rand].play();
+                this.hablarAct= this.arrayHablar[rand];
                 this.opcion2.scene.tweens.add(
                     {
                         targets: this.opcion2,
@@ -187,14 +199,6 @@ export default class EscenaHablar extends Phaser.Scene{
             }
             )
 
-             
-  
-            
-
-
-console.log(this.opcion_b.a);
-console.log(Textos[this.comprueba2]);
-
 
            
         }
@@ -202,7 +206,12 @@ console.log(Textos[this.comprueba2]);
             this.cajita.setInteractive();
             this.cajita.on("pointerdown",()=>{
                 let rand=random(0,6);
+                if(this.hablarAct!=null)
+                {
+                    this.hablarAct.stop();
+                }
                 this.arrayHablar[rand].play();
+                this.hablarAct= this.arrayHablar[rand];
                 this.Siguiente();
               
             })
@@ -222,13 +231,21 @@ console.log(Textos[this.comprueba2]);
         if(this.texto_largo.a==Textos.longitud){
             if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||
               this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
+             
+                 
+               
                  this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
          
              }
              if(this.scenekey=="Arsenico_fin"){
                 this.scene.start("Escena_final");
              }
-             else this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});}
+             else
+             {
+                console.log(this.hablarAct);
+                this.hablarAct.stop();
+                this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});}
+             } 
 
     }
 
@@ -240,6 +257,7 @@ console.log(Textos[this.comprueba2]);
             this.opcion_a.b.setText(this.opcion_a.txt[ this.opcion_a.a]);
             this.opcion_b.a++;
             this.opcion_b.b.setText(this.opcion_b.txt[ this.opcion_b.a]);
+            
         }
       
         this.texto_largo.a++;
