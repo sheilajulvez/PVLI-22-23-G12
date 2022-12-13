@@ -6,6 +6,7 @@ export default class Ambulance extends Vehicle {
 		this.body.setSize(80,150);
 		this.body.setOffset(10,20);
 		this.play('idle_Ambulance'); 
+		this.body.checkCollision.none=false;
 	}
 	
 
