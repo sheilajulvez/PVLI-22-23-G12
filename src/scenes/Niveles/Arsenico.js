@@ -85,6 +85,12 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			 this.poolCar.release(obj1);
 			 this.poolCar.release(obj2);
 		});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>
+		{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			 this.poolCar.release(obj1);
+			 this.poolBike.release(obj2);
+		});
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolCar.release(obj1);
@@ -95,6 +101,12 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
+			
+		});		
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			this.poolVan.release(obj1);
+			this.poolBike.release(obj2);
 			
 		});		
 		this.physics.add.overlap(this.ambulance,this.poolCar.getPhaserGroup(),(obj1,obj2)=>
