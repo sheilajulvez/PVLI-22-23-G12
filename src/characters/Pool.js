@@ -1,4 +1,5 @@
 //clase pool
+import Moto from "../characters/Vehiculos/Moto.js"
 export default class Pool {
 	//constructor de la clase 
     constructor (scene, entities) 
@@ -19,14 +20,23 @@ export default class Pool {
 	spawn (x, y,animationKey) {
 		var entity = this._group.getFirstDead();
 			//Nunca deberían existir grupos sin elementos activo
+		
 		if (entity)
 	    {
 		  entity.x = x;
 		  entity.y = y;
-		  entity.play(animationKey);
+		  
 		  entity.setActive(true);
 		  entity.setVisible(true);
 		  entity.body.checkCollision.none = false;
+		  if(entity.move==Moto.prototype.move){
+		
+			entity.play(entity.anim);
+		}
+		else{
+			entity.play(animationKey);
+		}
+		
 		}
 		
 		return entity;
