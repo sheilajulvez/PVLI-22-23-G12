@@ -117,7 +117,7 @@ export default class EscenaHablar extends Phaser.Scene{
                 txt:Textos[this.nombre],
                 identificador:this.nombre,
                
-                b:this.textButton(650,580,Textos[this.nombre][0],this.nombre),
+                b:this.textButton(600,550,Textos[this.nombre][0],this.nombre),
             };
             this.opcion_b={
                 
@@ -125,7 +125,7 @@ export default class EscenaHablar extends Phaser.Scene{
                 txt:Textos[this.nombre2],
                 identificador:this.nombre2,
     
-                b:this.textButton(850,630,Textos[this.nombre2][0],this.nombre2),
+                b:this.textButton(760,630,Textos[this.nombre2][0],this.nombre2),
             };
             this.opcion1.on("pointerdown",()=>{
                 let rand=random(0,6);
@@ -149,6 +149,7 @@ export default class EscenaHablar extends Phaser.Scene{
                         yoyo: true
                     }
                 );
+                console.log(Textos[this.comprueba][this.opcion_a.a]);
                 if(Textos[this.comprueba][this.opcion_a.a]){
                     this.money.AddMoney(50);
                     this.money.SetText();

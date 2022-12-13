@@ -14,11 +14,7 @@ export default class Niveles extends Phaser.Scene {
         // for (let i=0; i<5; i++) Nivel.push(this.NivButton);
     }
     preload(){
-		this.load.image('quit_buttom',"assets/exit1.jpg");
-        this.load.image("mapaciudad","assets/mapaciudad.png");
-        //guardas la imagen
-        this.load.image('boton',"assets/boton.png");
-        this.load.image('shop_button','assets/shop.jpg');
+	
     }
     create(){
         
@@ -54,10 +50,11 @@ export default class Niveles extends Phaser.Scene {
     init(datos){
         this.money=datos.dinero;
         this.wenge=datos.wenge;
-        if (datos.stay == this.stay){
+        if (datos.stay == this.stay&&this.wenge.alive){
             this.stay = this.stay +1;
         }
-
+        this.wenge.alive=true;
+        console.log(this.stay);
      
         console.log("niveles:" +this.money);
         console.log("niveles:"+ this.wenge);
