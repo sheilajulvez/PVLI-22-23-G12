@@ -62,8 +62,8 @@ export default {
     Arsenico_fin_a:["¿Wikiri?\n¿enserio?","No se lo que\nes votar","¿Consti-que?","Sí claro"],
     Arsenico_fin_b:["Sí soy","Tiene\nsentido","Solo quieren\nderechos","No"],
     Arsenico_fin_comprueba_a:[true,false,true,true],
-    Arseico_fin_comprueba_b:[false,true,false,false],
-
+    Arsenico_fin_comprueba_b:[false,true,false,false],
+    
  
 
 }

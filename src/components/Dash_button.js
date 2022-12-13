@@ -13,11 +13,9 @@ export default class Dash_button {
     }
     create(){
         
-       console.log(this.scene);
         this.sprite=this.scene.add.sprite(this.x,this.y,this.name).setInteractive();
         this.sprite.on("pointerdown",()=>{
             
-            console.log(this.wenge.dash);
             if(this.current_money.LessMoney(this.price)){
             this.buy.play();
             this.wenge.SetDash();

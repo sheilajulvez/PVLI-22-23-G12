@@ -93,7 +93,7 @@ export default class EscenaHablar extends Phaser.Scene{
        this.nombre2=this.scenekey+"_b";
        this.comprueba=this.scenekey+"_comprueba_a";
        this.comprueba2=this.scenekey+"_comprueba_b";
-       
+       console.log(this.comprueba2)
       
         this.texto_largo={
             
@@ -192,7 +192,8 @@ export default class EscenaHablar extends Phaser.Scene{
             
 
 
-
+console.log(this.opcion_b.a);
+console.log(Textos[this.comprueba2]);
 
 
            
@@ -219,10 +220,13 @@ export default class EscenaHablar extends Phaser.Scene{
     Siguiente(){
         this.siguiente_texto();
         if(this.texto_largo.a==Textos.longitud){
-            if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||this.scenekey=="Arsenico_fin"||
+            if(this.scenekey=="tomatico_fin"||this.scenekey=="Aceite_fin"||
               this.scenekey=="Croquetas_fin"||this.scenekey=="Manzanilla_fin"){
                  this.scene.start("MapNiveles",{stay:this.stay,dinero:this.money,wenge:this.player},)
          
+             }
+             if(this.scenekey=="Arsenico_fin"){
+                this.scene.start("Escena_final");
              }
              else this.scene.start(this.scenekey,{stay:this.stay,dinero:this.money,wenge:this.player});}
 

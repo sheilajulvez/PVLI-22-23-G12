@@ -15,14 +15,6 @@ export default class Ambulance extends Vehicle {
 		if(this.scene.physics.overlap(this.scene.player, this)) 
 		{
 			this.scene.player.life.RestaVida();
-		}		
-		else if(this.scene.poolCar!=null  && this.scene.physics.overlap(this.scene.poolCar.getPhaserGroup(), this)) 
-		{
-			console.log("DESTRUYE COCHE Y CREA EXPLOSION");
-		}
-		else if(this.scene.physics.overlap(this.scene.poolVan.getPhaserGroup(), this))
-		{
-			console.log("DESTRUYE VAN Y CREA EXPLOSION");
 		}
 	}
 	

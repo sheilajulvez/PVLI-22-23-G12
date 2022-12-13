@@ -16,7 +16,6 @@ export default class Velocity_button {
         //super.create();
         this.sprite=this.scene.add.sprite(this.x,this.y,this.name).setInteractive().setScale(1.2,1.2);
         this.sprite.on("pointerdown",()=>{
-            console.log("wenga");
             if(this.current_money.LessMoney(this.price)){
                 this.buy.play();
                 this.wenge.AddVelocity();

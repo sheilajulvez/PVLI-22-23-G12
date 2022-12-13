@@ -16,7 +16,6 @@ export default class outfits_button {
         //super.create();
        
         this.sprite=this.scene.add.sprite(this.x,this.y,this.name).setInteractive().setScale(1.2,1.2);
-        console.log(this.sprite);
         let a=0;
         let found=false;
         while(a<this.wenge.outfits.lenght&&!(found)){

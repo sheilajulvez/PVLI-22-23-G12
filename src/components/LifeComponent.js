@@ -18,10 +18,8 @@ export default class LifeComponent {
 		if(this.puedeRestar)
 		{
 			this.cont=0;
-		console.log(this.lifes);
 		this.hitSound.play();
 		this.lifes=this.lifes -1;
-		console.log(this.sprt[this.sprt.length- 1]);
 		this.sprt[this.sprt.length- 1].destroy();
 		this.sprt.pop();
 		this.puedeRestar=false
@@ -53,7 +51,6 @@ export default class LifeComponent {
 	{
 	if(!this.puedeRestar)
 	{
-		console.log(this.cont);
 		this.cont++;
 	}	
 	if(this.cont>=100)

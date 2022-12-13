@@ -9,7 +9,7 @@ export default class Explosion extends Phaser.GameObjects.Sprite { //exportamos 
 	}
 	colision(){
 		if(this.scene.physics.overlap(this.scene.player, this)) 
-		{console.log("entra");
+		{
 			this.scene.player.life.RestaVida();
 		}
 	}

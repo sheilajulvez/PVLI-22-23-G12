@@ -7,7 +7,6 @@
 	export default class Shop extends Phaser.Scene{
 		constructor(scenekey){
 			super({key: "shop"});
-		 	 console.log("aqui?");
 	
 		}
 		init(datos){
@@ -61,7 +60,6 @@
 			}
 			this.add.image(680,300,"velocity_explanation").setScale(0.5,0.5);
 			if(this.wenge.dash==false){
-				console.log(this.wenge.dash);
 				this.dash=new Dash_button(885,450,this,this.money,"dash_image",this.wenge);
 			}
 			

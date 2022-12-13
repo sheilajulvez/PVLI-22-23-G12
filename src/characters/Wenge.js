@@ -55,7 +55,6 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		}
 	}
 	AddVelocity(){
-		console.log("suma vel");
 		this.velocity+=200;
 	}
 	SetAnim(name){
@@ -63,15 +62,11 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		let found=false;
 		while(a<this.outfits.lenght&&!(found)){
             if(this.outfits[a][0]==name){
-				console.log(this.outfits[a][0]);
-				console.log(name);
 				this.outfits[a][1]=true;
                 found=true;
             }
             else ++a;
         }
-		console.log(this.outfits.lenght);
-		console.log(this.outfits[a][1])
 		this.anim=name;
 	}
 	update(){
