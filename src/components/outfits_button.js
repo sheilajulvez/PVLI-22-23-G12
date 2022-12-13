@@ -27,11 +27,9 @@ export default class outfits_button {
         this.sprite.on("pointerdown",()=>{
           if(this.wenge.outfits[a][1]){
             this.wenge.SetAnim(this.key);
-            console.log("CAMBIO");
           }else{
             if(this.current_money.LessMoney(this.price)){
                 this.wenge.SetAnim(this.key);
-                 console.log("compra");
                 }
                 this.current_money.SetText();
           }

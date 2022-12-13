@@ -66,10 +66,25 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,arrayVan);		
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
-		
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>
+		{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			 this.poolCar.release(obj1);
+			 this.poolCar.release(obj2);
+		});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			this.poolCar.release(obj1);
+			this.poolVan.release(obj2);
+
+		});
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			this.poolVan.release(obj1);
+			this.poolVan.release(obj2);
+			
+			});
+
 
 	}
 	CarisOut(vehicles)
