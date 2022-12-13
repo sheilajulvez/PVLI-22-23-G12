@@ -184,7 +184,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		super.update();
 		this.timeDelta= this.timeDelta+dt;
 			if (this.player.life.lifes <= 0){
-			
+			this.music.stop();
 			this.player.alive=false;
 			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}

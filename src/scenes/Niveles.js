@@ -23,8 +23,8 @@ export default class Niveles extends Phaser.Scene {
         this.add.image(500,350,'mapaciudad');
 
         this.Nivel.push(new Button(this, 135,485, 'boton', 'EscenaHablar','tomatico',this.stay, 1,this.wenge,this.money )) 
-        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla', this.stay,1,this.wenge,this.money)) 
-        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite',this.stay,1,this.wenge,this.money)) 
+        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla', this.stay,2,this.wenge,this.money)) 
+        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite',this.stay,3,this.wenge,this.money)) 
         this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas',this.stay,1,this.wenge,this.money)) 
         this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico',this.stay,1,this.wenge,this.money))  
      
