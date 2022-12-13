@@ -90,8 +90,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			height:700,
 		}, true)
 
-		// mascara en negro y con opacidad 0.7
-		rt.fill(0x000000, 0.7)
+		// mascara en negro y con opacidad 0.4
+		rt.fill(0x000000, 0.4)
 		//container para todas las luces
 		this.lights_mask = this.make.container(0, 0);
       /*  vision mask -  cada luz */
@@ -246,12 +246,12 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.carmask0.x =this.arrayCoches[0].x-40;
 		this.carmask1.y =this.arrayCoches[1].y+60;
 		this.carmask1.x =this.arrayCoches[1].x-40;
-		this.carmask2.y =this.arrayCoches.y+60;
-		this.carmask2.x =this.arrayCoches.x-40;
-		this.carmask3.y =this.arrayCoches.y+60;
-		this.carmask3.x =this.arrayCoches.x-40;
-		this.carmask4.y =this.arrayCoches.y+60;
-		this.carmask4.x =this.arrayCoches.x-40;
+		this.carmask2.y =this.arrayCoches[2].y+60;
+		this.carmask2.x =this.arrayCoches[2].x-40;
+		this.carmask3.y =this.arrayCoches[3].y+60;
+		this.carmask3.x =this.arrayCoches[3].x-40;
+		this.carmask4.y =this.arrayCoches[4].y+60;
+		this.carmask4.x =this.arrayCoches[4].x-40;
 
 		this.vanmask0.y =this.arrayVan[0].y+60;
 		this.vanmask0.x =this.arrayVan[0].x-40;
