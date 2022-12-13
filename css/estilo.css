@@ -6,7 +6,7 @@ h1 {
     height: 5vh;*/
 
     float:left;
-    color:rgb(66, 159, 131);
+    color:#EFBB43;
     text-decoration: none;
     font-family: "Courier";
     font-size: 30px; 
@@ -19,7 +19,7 @@ h1 {
 
 #navbar {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #2E7E6F;
   padding: 1px 1px;
   position: fixed;
   width: 100%;
@@ -38,6 +38,7 @@ body {
 	margin: 0px;
 	font-family: Silkscreen;
     height: 10vh;
+
 }
 /* Style de el  cuadrado de fondo*/
 .tab {
@@ -45,7 +46,7 @@ body {
     width: 1080px;
     /*margen*/
     margin: auto;
-    background: rgb(247, 245, 133);
+    background: #2E7E6F;
     /*barra*/
     padding: 20px 15px 50px 50px;
     /*borde redondeado*/
@@ -81,11 +82,18 @@ body {
   }
   /* Style del contenido que se muestra */
   .tabcontent {
+    font-family: New Century Schoolbook;
+    font-size:60px;
+    font: weight 180px;;
     display: none;
     padding: 6px 12px;
     margin-top: 110px;
   }
-
+ .titulo{
+  font-family: New Century Schoolbook;
+  font-size:100px;
+  font: weight 500px;;
+  }
   
 /* fondo negro */
 .overlay {
@@ -126,6 +134,7 @@ body {
   float: right;
   margin-top: 0.5%;
   margin-right:2%;
+  color: #EFBB43;
 }
   
   

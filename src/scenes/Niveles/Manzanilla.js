@@ -1,4 +1,3 @@
-
 import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Vehiculos/Van.js';
@@ -201,14 +200,18 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
     }
 	update(t,dt)
 	{
-		
 		super.update();
+		this.timeDelta= this.timeDelta+dt;
+			if (this.player.life.lifes <= 0){
+			
+			this.player.alive=false;
+			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
+		}
 		if(this.Barra.fin()){
 			this.music.stop();
 			this.money.AddMoney(200);
 			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
-		this.timeDelta= this.timeDelta+dt;
 		if(this.timeDelta>4000)
 		{
 			if(this.exp){this.explosion.destroy();}
@@ -291,9 +294,6 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.vanmask4.y =this.arrayVan[4].y+60;
 			this.vanmask4.x =this.arrayVan[4].x-40;
 			this.player.life.Update();
-	}
-	GameOver(){
-		this.scene.start('gameover');
 	}
 
 }
