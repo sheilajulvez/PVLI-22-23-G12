@@ -4,6 +4,18 @@ export default class Escena_final extends Phaser.Scene{
 
     }
     create(){
+        const config =
+		{
+			 mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
+		this.music = this.sound.add('musica7',config);
+       
         let text=this.add.image(500,300,"pregunta");
         let si=this.add.image(300,400,"SI").setInteractive();
         let no=this.add.image(600,400,"NO").setInteractive();
@@ -11,6 +23,7 @@ export default class Escena_final extends Phaser.Scene{
             si.setVisible(false);
             no.setVisible(false);
             text.setVisible(false);
+            this.music.play();
             let a=this.add.image(500,3000,"si_se_la_das").setScale(1,1);
              this.tweens.add({
                 targets: [ a ],
@@ -24,6 +37,7 @@ export default class Escena_final extends Phaser.Scene{
             si.setVisible(false);
             no.setVisible(false);
             text.setVisible(false);
+            this.music.play();
             let a=this.add.image(500,3000,"no_se_la_das").setScale(1,1);
             this.tweens.add({
                targets: [ a ],
