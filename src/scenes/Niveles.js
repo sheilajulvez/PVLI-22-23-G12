@@ -30,9 +30,8 @@ export default class Niveles extends Phaser.Scene {
      
         this.money.SetScene(this);
         this.money.ShowMoney();
-        this.Botones.push(new Button(this, 200,600, 'shop_button', 'shop',"Niveles", this.stay,this.stay-1,this.wenge,this.money)); 
-       
-        this.Botones.push(new Button(this, 500,600, 'quit_buttom', 'menu',null, 0,0)) 
+        this.Botones.push(new Button(this, 150,70, 'shop_button', 'shop',"Niveles", this.stay,this.stay-1,this.wenge,this.money)); 
+        this.Botones.push(new Button(this, 950,650, 'quit_buttom', 'menu',null, 0,0)) 
 
         //this.Botones.push(new Button(this, 100,100, 'quit_buttom', 'Escena_final',"Escena_final", this.stay,this.stay)) ;
         
