@@ -2,17 +2,15 @@ import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Vehiculos/Van.js';
 import Pool  from '../../characters/Pool.js';
-import Explosion from '../../characters/explosion.js';
-import Economy from "../../components/Economy.js"
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 import Danger from '../../characters/Danger.js';
 import Ambulance from '../../characters/Vehiculos/Ambulance.js';
-
+//random para los coches
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
-
+//clase del nivel 4
 export default class Croquetas extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 		super('Croquetas');	
@@ -23,32 +21,26 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.player_b=datos.wenge;
     }
 	create(){
+		//create del padre
 		super.create();
+		//iniciar el tiempo
 		this.timeDelta=0;
 		this.Inicia(this);
 		this.money.SetScene(this);	
-		let arrayCoches=[];
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
 		this.player.dash=this.player_b.dash;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
 		this.player.life.SetScene(this,'l_croqueta');
+		let arrayCoches=[];
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-1000);
 			arrayCoches.push(car);
 			
 		}
-		
-
-		//console.log(arrayCoches.length);
-		
-		this.poolCar=new Pool(this,arrayCoches);	
-		this.physics.add.collider(this.player, this.poolCar.getPhaserGroup());
-		
-		this.music=this.sound.add('musica3');
-		this.music.play();
+		this.poolCar=new Pool(this,arrayCoches);
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
@@ -56,10 +48,28 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,arrayVan);
-		this.physics.add.collider(this.player,this.poolVan.getPhaserGroup());
-
-		this.physics.add.collider(this.poolCar.getPhaserGroup(), this.poolVan.getPhaserGroup());
+		this.music=this.sound.add('musica3');
+		this.music.play();
 		
+		//colisiones	
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>
+		{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			 this.poolCar.release(obj1);
+			 this.poolCar.release(obj2);
+		});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			this.poolCar.release(obj1);
+			this.poolVan.release(obj2);
+
+		});
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			this.poolVan.release(obj1);
+			this.poolVan.release(obj2);
+			
+		});
 		
 		
 	}
@@ -71,34 +81,25 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 	{
 		this.poolVan.release(vehicles);
 	}
-	
-	collision()
-	{
-		if(this.physics.overlap(this.poolCar.getPhaserGroup(), this.poolVan.getPhaserGroup())){
-			console.log("SOLAPAMIENTO");
-		}
-		if(this.physics.collide(this.player, this.poolCar.getPhaserGroup())) {
-    		console.log("Hay colisión");}
-	}
+
 	
 	update(t,dt)
 	{
-		
 		super.update();
-		this.collision();
+		this.timeDelta= this.timeDelta+dt;
 		if (this.player.life.lifes <= 0){
 			this.music.stop();
 			this.player.alive=false;
 			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
-		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
-			this.money.AddMoney(200);
 			this.music.stop();
 			this.scene.start("EscenaHablar",{name:"Croquetas_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		if(this.timeDelta>2000)
 		{
+			if(this.exp){this.explosion.destroy();}
+
 	    var rand=random(0,1);
 		//AMBULANCIA
 		if(this.ambulanceCont===5)
@@ -126,12 +127,11 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 				case 5:
 				vehicleX=870;
 					break;
-				
-		}
+			}
 
-	this.newdanger(this,vehicleX);
-	this.ambulance=this.newambulance(this,vehicleX);
-}
+			this.newdanger(this,vehicleX);
+			this.ambulance=this.newambulance(this,vehicleX);
+		}
 	    if (rand===0)				//respawm car
 		{
 			this.ambulanceCont=this.ambulanceCont+1;
@@ -161,11 +161,9 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 							   break;
 							
 					}
-				//console.log('pos='+pos)
-				//console.log(this.vanSpawn);
 				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
 		}
-		else 			//respawn bike
+		else //respawn van
 		{
 			this.ambulanceCont=this.ambulanceCont+1;
 			this.vanSpawn++;
