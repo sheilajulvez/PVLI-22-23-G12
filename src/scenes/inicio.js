@@ -37,6 +37,9 @@ export default class Inicio extends Phaser.Scene {
 		this.load.spritesheet('FondoMove', 'arbol.png', {frameWidth:128 , frameHeight:	120	});	
 		//moto
 		this.load.spritesheet('Bike','Moto.png',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike_amarilla','Moto_amarilla.png',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike_roja','Moto_roja.png',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike_verde','Moto_fantastica.png',{frameWidth:166 , frameHeight:490});
 		//coche
 		this.load.spritesheet('Car', 'BlueCar.png', {frameWidth:200 , frameHeight:280});
 		//Van
@@ -240,6 +243,39 @@ export default class Inicio extends Phaser.Scene {
 		this.anims.create({ //animación
 			key: 'idle_Ambulance', //identificador de la animación
 			frames: this.anims.generateFrameNumbers('Ambulance',
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:6 // última imagen del Spritesheet que se ejecuta en la animación
+			}),
+			frameRate: 10, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+            
+		});
+		this.anims.create({ //animación
+			key: 'idle_Moto_amarilla', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Bike_amarilla',
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:6 // última imagen del Spritesheet que se ejecuta en la animación
+			}),
+			frameRate: 10, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+            
+		});
+		this.anims.create({ //animación
+			key: 'idle_Moto_roja', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Bike_roja',
+			{
+				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
+				end:6 // última imagen del Spritesheet que se ejecuta en la animación
+			}),
+			frameRate: 10, // imágenes/frames por segundo
+			repeat: -1 //para que sea bucle
+            
+		});
+		this.anims.create({ //animación
+			key: 'idle_Moto_verde', //identificador de la animación
+			frames: this.anims.generateFrameNumbers('Bike_verde',
 			{
 				start:0, // primera imagen del Spritesheet que se ejecuta en la animación
 				end:6 // última imagen del Spritesheet que se ejecuta en la animación
