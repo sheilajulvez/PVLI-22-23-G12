@@ -2,12 +2,14 @@ import Vehicle from "./Vehicle.js";
 
 export default class Moto extends Vehicle { //exportamos la clase extendida de Phaser
 
-	constructor(scene, x, y) {
+	constructor(scene, x, y,anim) {
 		super(scene, x, y, 'Moto');
 		this.body.setSize(90,180);
 		this.body.setOffset(10,35);
-		this.play('idle_Moto'); //activa la animacion*/
+		this.anim=anim;
+		this.play(this.anim); //activa la animacion*/
 		this.setScale(0.5,0.5);
+		
 	}
 
 
