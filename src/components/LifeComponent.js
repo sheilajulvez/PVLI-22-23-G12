@@ -28,7 +28,7 @@ export default class LifeComponent {
 	AddVida(){
 		this.lifes++;
 	}
-	SetScene(scene){
+	SetScene(scene,image){
 		this.scene=scene;
 		this.scene.add.existing(this); 
 		for(var i=0; i<this.sprt.length; i++){
@@ -36,7 +36,7 @@ export default class LifeComponent {
 			this.sprt.pop();
 		}
 		for(var i=0; i<this.lifes; i++){
-			this.sprt.push(this.scene.add.image(950- (55*i),50,'Life'));
+			this.sprt.push(this.scene.add.image(950- (55*i),50,image));
 		}
 	}
 	free(){
