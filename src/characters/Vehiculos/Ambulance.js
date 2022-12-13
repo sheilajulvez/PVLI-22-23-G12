@@ -11,7 +11,6 @@ export default class Ambulance extends Vehicle {
 
 	collision()
 	{
-
 		if(this.scene.physics.overlap(this.scene.player, this)) 
 		{
 			this.scene.player.life.RestaVida();

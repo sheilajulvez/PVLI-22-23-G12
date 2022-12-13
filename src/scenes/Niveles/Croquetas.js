@@ -101,37 +101,37 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		{
 	    var rand=random(0,1);
 		//AMBULANCIA
-			if(this.ambulanceCont===5)
-			{   let pos=random(0,5);
-				let vehicleX=0;
-				this.ambulanceCont=0;
-				this.timeDelta=0;
-				switch(pos)
-				{
-					case 0:
-						vehicleX=210;
-						break;
-					case 1:
-						vehicleX=350;
-						break;
-					case 2:
-					vehicleX=480;
-						break;
-					case 3:
-						vehicleX=610;
-						break;
-					case 4:
-					vehicleX=740;
-						break;
-					case 5:
-					vehicleX=870;
-						break;
-					
-			}
+		if(this.ambulanceCont===5)
+		{   let pos=random(0,5);
+			let vehicleX=0;
+			this.ambulanceCont=0;
+			this.timeDelta=0;
+			switch(pos)
+			{
+				case 0:
+					vehicleX=210;
+					break;
+				case 1:
+					vehicleX=350;
+					break;
+				case 2:
+				vehicleX=480;
+					break;
+				case 3:
+					vehicleX=610;
+					break;
+				case 4:
+				vehicleX=740;
+					break;
+				case 5:
+				vehicleX=870;
+					break;
+				
+		}
 
-		this.newdanger(this,vehicleX);
-		this.ambulance=this.newambulance(this,vehicleX);
-	}
+	this.newdanger(this,vehicleX);
+	this.ambulance=this.newambulance(this,vehicleX);
+}
 	    if (rand===0)				//respawm car
 		{
 			this.ambulanceCont=this.ambulanceCont+1;
