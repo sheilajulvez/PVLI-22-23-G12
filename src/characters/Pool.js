@@ -41,6 +41,7 @@ export default class Pool {
 	release (entity) {
 		entity.body.checkCollision.none = true;
 		this._group.killAndHide(entity);
+	
 	}
 	getPhaserGroup(){
 		return this._group;
