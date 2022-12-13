@@ -55,16 +55,6 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		}
 		this.poolCar=new Pool(this,arrayCoches);
 
-		const config =
-		{
-			 mute: false,
- 			 volume: 0.1,
- 		 	 rate: 1,
-			 detune: 0,
- 			 seek: 0,
- 			 loop: false,
- 			 delay: 0,
-		}
 		this.explosionSound = this.sound.add('explosionSound',config);
 
 		this.music=this.sound.add('musica4');
