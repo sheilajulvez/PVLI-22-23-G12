@@ -31,7 +31,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		const config =
 		{
 			 mute: false,
- 			 volume: 0.1,
+ 			 volume: 0.01,
  		 	 rate: 1,
 			 detune: 0,
  			 seek: 0,
@@ -39,7 +39,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
  			 delay: 0,
 		}
 		this.explosionSound = this.sound.add('explosionSound',config);
-		this.music = this.sound.add("musica2",config);
+		this.music = this.sound.add("musica4",config);
 		this.music.play();
 		this.ambulance=new Ambulance(this,4000,0);
 		//Creacion del personaje y asignacion de variables
@@ -59,10 +59,6 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.poolCar=new Pool(this,arrayCoches);
 
 		this.explosionSound = this.sound.add('explosionSound',config);
-
-		this.music=this.sound.add('musica4');
-		this.music.play();
-				
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
@@ -73,10 +69,10 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.arrayBike=[];
 		for(let i=0;i<4;i++)
 		{
-			this.arrayBike[i]=(new Moto(this,0,-1000+i*100,"idle_Moto"));
-			this.arrayBike[i+1]=(new Moto(this,0,-1000+(i+1)*100,"idle_Moto_verde"));
-			this.arrayBike[i+2]=(new Moto(this,0,-1000+(i+2)*100,"idle_Moto_roja"));
-			this.arrayBike[i+3]=(new Moto(this,0,-1000+(i+3)*100,"idle_Moto_amarilla"));
+			this.arrayBike[i]=(new Moto(this,0,-1000-i*100,"idle_Moto"));
+			this.arrayBike[i+1]=(new Moto(this,0,-1000-(i+10)*100,"idle_Moto_verde"));
+			this.arrayBike[i+2]=(new Moto(this,0,-1000-(i+20)*100,"idle_Moto_roja"));
+			this.arrayBike[i+3]=(new Moto(this,0,-1000-(i+30)*100,"idle_Moto_amarilla"));
 			i=i+3;
 		}
 		this.poolBike=new Pool(this,this.arrayBike);
