@@ -41,7 +41,7 @@ let config= { //configuramos canvas
       {
         gravity:{y:0},
         debug:true,
-        debugShowBody:false,
+        debugShowBody:true,
         debugBodyColor:0x0000ff
       }
     },

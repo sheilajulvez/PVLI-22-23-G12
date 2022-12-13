@@ -15,27 +15,18 @@ function random(min, max) {
 
 export default class Croquetas extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
-
-		super('Croquetas');
-		this.ambulanceCont=0;
-		this.money=new Economy(this);
-		this.exp=false;
-		
-		
+		super('Croquetas');	
 	}
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
 		this.player_b=datos.wenge;
-		
-	
-        
     }
 	create(){
 		super.create();
+		this.timeDelta=0;
 		this.Inicia(this);
 		this.money.SetScene(this);	
-		this.timeDelta=0;
 		let arrayCoches=[];
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
@@ -109,8 +100,41 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		if(this.timeDelta>2000)
 		{
 	    var rand=random(0,1);
+		//AMBULANCIA
+			if(this.ambulanceCont===5)
+			{   let pos=random(0,5);
+				let vehicleX=0;
+				this.ambulanceCont=0;
+				this.timeDelta=0;
+				switch(pos)
+				{
+					case 0:
+						vehicleX=210;
+						break;
+					case 1:
+						vehicleX=350;
+						break;
+					case 2:
+					vehicleX=480;
+						break;
+					case 3:
+						vehicleX=610;
+						break;
+					case 4:
+					vehicleX=740;
+						break;
+					case 5:
+					vehicleX=870;
+						break;
+					
+			}
+
+		this.newdanger(this,vehicleX);
+		this.ambulance=this.newambulance(this,vehicleX);
+	}
 	    if (rand===0)				//respawm car
 		{
+			this.ambulanceCont=this.ambulanceCont+1;
 			    let pos=random(0,5);
 				this.vanSpawn++;
 				this.timeDelta=0;
@@ -143,6 +167,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		}
 		else 			//respawn bike
 		{
+			this.ambulanceCont=this.ambulanceCont+1;
 			this.vanSpawn++;
 			this.timeDelta=0;
 			if(this.vanSpawn>=2)

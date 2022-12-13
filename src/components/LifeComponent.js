@@ -18,17 +18,15 @@ export default class LifeComponent {
 		if(this.puedeRestar)
 		{
 			this.cont=0;
-		this.hitSound.play();
-		this.lifes=this.lifes -1;
-		this.sprt[this.sprt.length- 1].destroy();
-		this.sprt.pop();
-		this.puedeRestar=false
+			this.hitSound.play();
+			this.lifes=this.lifes -1;
+			this.sprt[this.sprt.length- 1].destroy();
+			this.sprt.pop();
+			this.puedeRestar=false
 		}
-		
 	}
 	AddVida(){
 		this.lifes++;
-
 	}
 	SetScene(scene){
 		this.scene=scene;

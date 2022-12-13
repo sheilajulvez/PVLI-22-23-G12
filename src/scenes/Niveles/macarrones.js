@@ -3,30 +3,23 @@ import Wenge from '../../characters/Wenge.js'
 import Pool  from '../../characters/Pool.js';
 import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Van from '../../characters/Vehiculos/Van.js';
-
+//creaccion dee la funcion randoom
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
+//clsse macarrones
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 		super('tomatico');
 	}
 
 	create(){
+		//create del padre
 		super.create();
+		//inicias el tiempo a 0
 		this.timeDelta=0;
 		this.Inicia(this);
-
-		const config1 =
-		{
-			mute: false,
- 			 volume: 0.1,
- 		 	 rate: 1,
-			 detune: 0,
- 			 seek: 0,
- 			 loop: false,
- 			 delay: 0,
-		}
+		//configuración del sonido
 		const config2 =
 		{
 			 mute: false,
@@ -37,35 +30,32 @@ export default class Macarrones extends Generical { //creamos la escena exportad
  			 loop: false,
  			 delay: 0,
 		}
-
 		this.explosionSound = this.sound.add('explosionSound',config2);
-		
 		this.music = this.sound.add("musica2",config2);
 		this.music.play();
 		
-			
-		this.player=new Wenge(this, 400, 600,this.player_b.anim); //creamos a nuestro personaje, nuestra Wenge
+		//reamos a nuestro peronaje y asingamos las variables necesarias
+		this.player=new Wenge(this, 400, 600,this.player_b.anim);
 		this.player.dash=this.player_b.dash;
 		this.player.velocity=this.player_b.velocity;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
 		this.player.life.SetScene(this);
 
-		let arrayCoches=[];
-			
+		//creacion del las pool
+		let arrayCoches=[]
 		for(let i=0; i<5;i++)
 		{
 			arrayCoches[i]=(new Car(this,0,-1000-i*100));
 		}
 		this.poolCar=new Pool(this,arrayCoches);
-
-		//this.createExplosion(this.player.x+200,this.player.y);
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
 			arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
-		this.poolVan=new Pool(this,arrayVan);		
+		this.poolVan=new Pool(this,arrayVan);	
+		//colisiones	
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>
 		{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
@@ -83,9 +73,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
 			
-			});
-
-
+		});
 	}
 	CarisOut(vehicles)
 	{
@@ -120,79 +108,41 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		if(this.timeDelta>2000)
 		{
 			if(this.exp){this.explosion.destroy();}
-		
 	   	 	var rand=random(0,1);
-			
-			//AMBULANCIA
-			if(this.ambulanceCont===5)
-			{   let pos=random(0,5);
-				let vehicleX=0;
-				this.ambulanceCont=0;
-				this.timeDelta=0;
-				switch(pos)
-				{
-				 	case 0:
-					 	vehicleX=210;
-					 	break;
-				  	case 1:
-					 	vehicleX=350;
-					 	break;
-				 	 case 2:
-				   	vehicleX=480;
-					 	break;
-					case 3:
-						vehicleX=610;
-						break;
-					case 4:
-					vehicleX=740;
-						break;
-					case 5:
-					vehicleX=870;
-						break;
-					
-			}
-
-			this.newdanger(this,vehicleX);
-			this.ambulance=this.newambulance(this,vehicleX);
-		}
 
 			//COCHE
 			if (rand===0)
 			{
-					this.ambulanceCont=this.ambulanceCont+1;
-					let pos=random(0,5);
-					this.timeDelta=0;
-					let vehicleX=0;
-						switch(pos)
-						{
-							case 0:
-								vehicleX=210;
-								break;
-							case 1:
-								vehicleX=350;
-								break;
-							case 2:
-								vehicleX=480;
-								break;
-							case 3:
-								vehicleX=610;
-								break;
-							case 4:
-								vehicleX=740;
-								break;
-							case 5:
-								vehicleX=870;
-								break;
-								
-						}
-					
-					//this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');		
+				let pos=random(0,5);
+				this.timeDelta=0;
+				let vehicleX=0;
+					switch(pos)
+					{
+						case 0:
+							vehicleX=210;
+							break;
+						case 1:
+							vehicleX=350;
+							break;
+						case 2:
+							vehicleX=480;
+							break;
+						case 3:
+							vehicleX=610;
+							break;
+						case 4:
+							vehicleX=740;
+							break;
+						case 5:
+							vehicleX=870;
+							break;
+							
+					}
+				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');		
 			}
 			//FURGONETA 
 			else if(rand==1)
 			{
-				this.ambulanceCont=this.ambulanceCont+1;
 				let pos=random(0,1);
 				this.timeDelta=0;
 				let vehicleX=0;
@@ -207,14 +157,12 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 					}
 					
 				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
-				
-				
 			}
-			
-			}
-			this.player.life.Update();
 		}
-	GameOver(){
-			this.scene.start('gameover');
-		}
+		this.player.life.Update();
 	}
+	GameOver()
+	{
+		this.scene.start('gameover');
+	}
+}
