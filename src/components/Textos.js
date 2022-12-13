@@ -40,7 +40,7 @@ export default {
     Aceite_fin_comprueba_a:[false,true,false,false],
     Aceite_fin_comprueba_b:[true,true,true,true],
     Croquetas:["Hola Dengue, me temo que se vienen curvas,\nentre que es de noche y la revuelta comunista,\n la gente se está volviendo loca ",
-    "una vez mas el increible personal de KULENGA STUDIOS\n está trasnochando para terminar una entrega,\n de ¿PUBLI? algo así",
+    "una vez mas el increible personal de KULENGA\n STUDIOS\n está trasnochando para terminar una entrega,\n de ¿PUBLI? algo así",
     "Llevales unas croqueticas que están esmayaos\n los pobres",
     "El grupo comunista liderado por PatryRuncha\n y Raemoncín anda suelto, ten muhco cuidado"],
     Croquetas_fin:["Buenas, yo soy Sheila, tú eras Wakanda ¿no?\n como la peli jiji",
