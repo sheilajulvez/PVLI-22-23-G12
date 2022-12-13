@@ -60,8 +60,6 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			arrayVan.push(this.van);
 		}
 		this.poolVan=new Pool(this,arrayVan);
-		
-		//this.physics.add.existing(this.player);// lo haces objeto físico
 		this.physics.add.collider(this.player, this.car);
 		if(this.physics.collide(this.player, this.car)) {
     		console.log("Hay colisión");}
