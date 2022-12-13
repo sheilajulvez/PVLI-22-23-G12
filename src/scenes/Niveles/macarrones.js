@@ -7,7 +7,7 @@ import Van from '../../characters/Vehiculos/Van.js';
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
-//clsse macarrones
+//clase macarrones
 export default class Macarrones extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 		super('tomatico');
@@ -34,7 +34,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.music = this.sound.add("musica2",config);
 		this.music.play();
 		
-		//reamos a nuestro peronaje y asingamos las variables necesarias
+		//Creamos a nuestro peronaje y asingamos las variables necesarias
 		this.player=new Wenge(this, 400, 600,this.player_b.anim);
 		this.player.dash=this.player_b.dash;
 		this.player.velocity=this.player_b.velocity;

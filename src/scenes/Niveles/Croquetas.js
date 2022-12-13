@@ -27,25 +27,26 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.timeDelta=0;
 		this.Inicia(this);
 		this.money.SetScene(this);	
+		this.ambulance=null;
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
 		this.player.dash=this.player_b.dash;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
 		this.player.life.SetScene(this,'l_croqueta');
+
 		let arrayCoches=[];
 		for(let i=0; i<5;i++)
 		{
-			let car=new Car(this,0,-1000);
-			arrayCoches.push(car);
-			
+			arrayCoches[i]=(new Car(this,0,-1000-i*200));
+	
 		}
 		this.poolCar=new Pool(this,arrayCoches);
+
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			let van=new Van(this,0,-1000);
-			arrayVan.push(van);
+			arrayVan[i]=(new Van(this,0,1000 + i*200));
 		}
 		this.poolVan=new Pool(this,arrayVan);
 		const config =
@@ -81,6 +82,20 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			this.poolVan.release(obj2);
 			
 		});
+		if(this.ambulance!=null)
+		{
+			this.physics.add.overlap(this.ambulance,this.poolCar.getPhaserGroup(),(obj1,obj2)=>
+			{
+				if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+				 this.poolCar.release(obj2);
+			});
+			this.physics.add.overlap(this.ambulance,this.poolVan.getPhaserGroup(),(obj1,obj2)=>
+			{
+				if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+				 this.Van.release(obj2);
+			});
+		}
+		
 		
 		
 	}
@@ -107,7 +122,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			this.music.stop();
 			this.scene.start("EscenaHablar",{name:"Croquetas_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
-		if(this.timeDelta>2000)
+		if(this.timeDelta>1000)
 		{
 			if(this.exp){this.explosion.destroy();}
 
@@ -176,13 +191,10 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		}
 		else //respawn van
 		{
+			console.log("aaaa00");
 			this.ambulanceCont=this.ambulanceCont+1;
-			this.vanSpawn++;
 			this.timeDelta=0;
-			if(this.vanSpawn>=2)
-			{
 			let pos=random(0,1);
-			this.vanSpawn=0;
 			this.timeDelta=0;
 			let vehicleX=0;
 			switch(pos)
@@ -196,7 +208,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 				}
 			
 			this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
-	 		}
+	 		
 			
 		}
 		}

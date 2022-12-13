@@ -29,6 +29,7 @@ export default class Pool {
 		  entity.setActive(true);
 		  entity.setVisible(true);
 		  entity.body.checkCollision.none = false;
+		  console.log(this._group.getLength());
 		  if(entity.move==Moto.prototype.move){
 				entity.play(entity.anim);
 			}
