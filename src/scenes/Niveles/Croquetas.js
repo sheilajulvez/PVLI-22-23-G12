@@ -48,7 +48,18 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			arrayVan.push(van);
 		}
 		this.poolVan=new Pool(this,arrayVan);
-		this.music=this.sound.add('musica3');
+		const config =
+		{
+			 mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
+		this.explosionSound = this.sound.add('explosionSound',config);
+		this.music=this.sound.add('musica3',config);
 		this.music.play();
 		
 		//colisiones	

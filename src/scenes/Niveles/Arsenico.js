@@ -54,12 +54,29 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			arrayCoches[i]=(new Car(this,0,-1000-i*200));
 		}
 		this.poolCar=new Pool(this,arrayCoches);
+
+		const config =
+		{
+			 mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
+		this.explosionSound = this.sound.add('explosionSound',config);
+
+		this.music=this.sound.add('musica4');
+		this.music.play();
+				
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
 			arrayVan[i]=(new Van(this,0,1000 + i*200));
 		}
 		this.poolVan=new Pool(this,arrayVan);
+
 		this.arrayBike=[];
 		for(let i=0;i<4;i++)
 		{
@@ -90,8 +107,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
 			
-		});
-		
+		});		
 	}
 	CarisOut(vehicles)
 	{
