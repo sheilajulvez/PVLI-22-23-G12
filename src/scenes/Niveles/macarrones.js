@@ -16,11 +16,11 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	create(){
 		//create del padre
 		super.create();
-		//inicias el tiempo a 0
+		//inicias el tiempo (en relación al respawn de los vehículos) a 0
 		this.timeDelta=0;
 		this.Inicia(this);
 		//configuración del sonido
-		const config2 =
+		const config =
 		{
 			 mute: false,
  			 volume: 0.1,
@@ -30,8 +30,8 @@ export default class Macarrones extends Generical { //creamos la escena exportad
  			 loop: false,
  			 delay: 0,
 		}
-		this.explosionSound = this.sound.add('explosionSound',config2);
-		this.music = this.sound.add("musica2",config2);
+		this.explosionSound = this.sound.add('explosionSound',config);
+		this.music = this.sound.add("musica2",config);
 		this.music.play();
 		
 		//reamos a nuestro peronaje y asingamos las variables necesarias
@@ -52,7 +52,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			arrayVan[i]=(new Van(this,0,-1000 - i*100));
+			arrayVan[i]=(new Van(this,0,1000 + i*100));
 		}
 		this.poolVan=new Pool(this,arrayVan);	
 		//colisiones	
@@ -98,7 +98,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.timeDelta= this.timeDelta+dt;
 		
 		if (this.player.life.lifes <= 0){
-			
+			this.music.stop();
 			this.player.alive=false;
 			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}

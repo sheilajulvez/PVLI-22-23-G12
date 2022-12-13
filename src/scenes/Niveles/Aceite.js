@@ -107,7 +107,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		super.update();
 		//if (this.player.life.lifes == 0) this.scene.start("gameover");
 		if (this.player.life.lifes <= 0){
-			
+			this.music.stop();
 			this.player.alive=false;
 			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
@@ -119,7 +119,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 			this.scene.start("EscenaHablar",{name:"Aceite_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 
-		if(this.timeDelta>2000)
+		if(this.timeDelta>200)
 		{
 			if(this.exp){this.explosion.destroy();}
 			
@@ -187,7 +187,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 								
 						}
 					
-					this.poolBike.spawn(vehicleX,0,);
+					this.poolBike.spawn(vehicleX,0,"outita");
 
 				
 			}

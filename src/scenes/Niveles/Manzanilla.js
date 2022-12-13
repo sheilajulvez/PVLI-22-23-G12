@@ -4,21 +4,24 @@ import Van from '../../characters/Vehiculos/Van.js';
 import Pool  from '../../characters/Pool.js';
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 
-
+//funcion random para los coches
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
-
+//escena
 export default class Manzanilla extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
 		super('Manzanilla');
 	}
 	
 	create(){
+		//create de generical
 		super.create();
 		this.timeDelta=0;
 		this.Inicia(this);
 		this.money.SetScene(this);
+
+		//configuracion del sonido
 		const config1 =
 		{
 			mute: false,
@@ -29,70 +32,65 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
  			 loop: false,
  			 delay: 0,
 		}
-		const config2 =
-		{
-			 mute: false,
- 			 volume: 0.1,
- 		 	 rate: 1,
-			 detune: 0,
- 			 seek: 0,
- 			 loop: false,
- 			 delay: 0,
-		}
 
-		this.explosionSound = this.sound.add('explosionSound',config2);
-		
+		//añades los sonidos
+		this.explosionSound = this.sound.add('explosionSound',config1);
 		this.music= this.sound.add('musica1',config1);
 		this.music.play();
 		this.pitido1 = this.sound.add('pitido1',config1);
+
+		//configuracion de los valores de wenge
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.dash=this.player_b.dash;
 		this.player.velocity=this.player_b.velocity;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
 		this.player.life.SetScene(this,'l_manzanilla');
+
+		//creacion de los coches de tipo car
 		this.arrayCoches=[];
-		
 		for(let i=0; i<5;i++)
 		{
 			this.arrayCoches[i]=(new Car(this,0,-1000-i*100));
 		}
 		this.poolCar=new Pool(this,this.arrayCoches);
-			
+
+		//creacion de los coches de tipo van	
 		this.arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
 			this.arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,this.arrayVan);
+
+		//colision entre pool de tipo coche y tipo coche
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>
 		{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			 this.poolCar.release(obj1);
 			 this.poolCar.release(obj2);
 		});
+		//colision entre pool de tipo coche y tipo van
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolCar.release(obj1);
 			this.poolVan.release(obj2);
 
 		});
+		//colision entre pool de tipo van y tipo van
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
-			
 			});
 
-	
-
-			//creación de la textura de renderizado para efecto de noche
+		//creación de la textura de renderizado para efecto de noche
 		const rt = this.make.renderTexture({
 			width:1000,
 			height:700,
 		}, true)
 
-		// fill it with black
+		// mascara en negro y con opacidad 0.7
 		rt.fill(0x000000, 0.7)
 		//container para todas las luces
 		this.lights_mask = this.make.container(0, 0);
@@ -156,33 +154,16 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
             add: false,
         });
        // vision mask -  cada luz FIN 
-		/*this.carmask = this.make.sprite({
-			x: 900,
-			y: 300,
-			key: 'mask',
-			add: false,});
-		this.vanmask = this.make.sprite({
-				x: 900,
-				y: 300,
-				key: 'mask',
-				add: false,});
-*/
 
-        // adding the images to the container
+        // añadir las imagenes al container
         this.lights_mask.add( [ this.carmask0,this.carmask1,this.carmask2,this.carmask3,this.carmask4,
 			this.vanmask0,this.vanmask1,this.vanmask2,this.vanmask3,this.vanmask4] );
-		//this.lights_mask.add([this.carmask,this.vanmask]);
-
-        // now this is the important line I did not expect:
-        // the lights container was being drawn into the scene (even though I used "make" and not "add")
+		//ocultamos el container
         this.lights_mask.setVisible(false);
 
-        // adding the lights mask to the render texture
+        // añadimos las imagenes a la mascara rt
         rt.mask = new Phaser.Display.Masks.BitmapMask(this, this.lights_mask );
         rt.mask.invertAlpha = true
-
-		
-		
 
 	}
 	CarisOut(vehicles)
@@ -203,7 +184,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		super.update();
 		this.timeDelta= this.timeDelta+dt;
 			if (this.player.life.lifes <= 0){
-			
+			this.music.stop();
 			this.player.alive=false;
 			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
@@ -221,79 +202,68 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 				let pos=random(0,5);
 				this.timeDelta=0;
 				let vehicleX=0;
-					switch(pos){
-						case 0:
-							vehicleX=210;
-							break;
-						case 1:
-							vehicleX=350;
-							break;
-						case 2:
-							vehicleX=480;
-							break;
-						case 3:
-							vehicleX=610;
-							break;
-						case 4:
-							vehicleX=740;
-							break;
-						case 5:
-							vehicleX=870;
-							break;
-					}
+				switch(pos){
+					case 0:
+						vehicleX=210;
+						break;
+					case 1:
+						vehicleX=350;
+						break;
+					case 2:
+						vehicleX=480;
+						break;
+					case 3:
+						vehicleX=610;
+						break;
+					case 4:
+						vehicleX=740;
+						break;
+					case 5:
+						vehicleX=870;
+						break;
+				}
 							
-					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-					//this.carmask.x=vehicleX-40;
-					//this.carmask.y=this.poolCar.devuelvey()+60;
-						
-						
-				
+				this.poolCar.spawn(vehicleX,0,'idle_BlueCar');		
 			}
 			else if(rand===1){
 				let pos=random(0,1);
 				this.timeDelta=0;
 				let vehicleX=0;
 				switch(pos)
-					{
-						case 0:
-							vehicleX=350;
-							break;
-						case 1:
-							vehicleX=740;
-							break;
-					}
-				
+				{
+					case 0:
+						vehicleX=350;
+						break;
+					case 1:
+						vehicleX=740;
+						break;
+				}
 				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
-				//this.vanmask.x=vehicleX-40;
-				//this.vanmask.y=this.poolVan.devuelvey()+60;
 			}
-		}
-		
-		
-			this.carmask0.y =this.arrayCoches[0].y+60;
-			console.log(this.arrayCoches[0].y+60);
-			//this.carmask0.y=this.poolCar._group.children.entries[0].
-			this.carmask0.x =this.arrayCoches[0].x-40;
-			this.carmask1.y =this.arrayCoches[1].y+60;
-			this.carmask1.x =this.arrayCoches[1].x-40;
-			this.carmask2.y =this.arrayCoches.y+60;
-			this.carmask2.x =this.arrayCoches.x-40;
-			this.carmask3.y =this.arrayCoches.y+60;
-			this.carmask3.x =this.arrayCoches.x-40;
-			this.carmask4.y =this.arrayCoches.y+60;
-			this.carmask4.x =this.arrayCoches.x-40;
+		}		
+		//asignacion de las mascaras a cada coche
+		this.carmask0.y =this.arrayCoches[0].y+60;
+		this.carmask0.x =this.arrayCoches[0].x-40;
+		this.carmask1.y =this.arrayCoches[1].y+60;
+		this.carmask1.x =this.arrayCoches[1].x-40;
+		this.carmask2.y =this.arrayCoches.y+60;
+		this.carmask2.x =this.arrayCoches.x-40;
+		this.carmask3.y =this.arrayCoches.y+60;
+		this.carmask3.x =this.arrayCoches.x-40;
+		this.carmask4.y =this.arrayCoches.y+60;
+		this.carmask4.x =this.arrayCoches.x-40;
 
-			this.vanmask0.y =this.arrayVan[0].y+60;
-			this.vanmask0.x =this.arrayVan[0].x-40;
-			this.vanmask1.y =this.arrayVan[1].y+60;
-			this.vanmask1.x =this.arrayVan[1].x-40;
-			this.vanmask2.y =this.arrayVan[2].y+60;
-			this.vanmask2.x =this.arrayVan[2].x-40;
-			this.vanmask3.y =this.arrayVan[3].y+60;
-			this.vanmask3.x =this.arrayVan[3].x-40;
-			this.vanmask4.y =this.arrayVan[4].y+60;
-			this.vanmask4.x =this.arrayVan[4].x-40;
-			this.player.life.Update();
+		this.vanmask0.y =this.arrayVan[0].y+60;
+		this.vanmask0.x =this.arrayVan[0].x-40;
+		this.vanmask1.y =this.arrayVan[1].y+60;
+		this.vanmask1.x =this.arrayVan[1].x-40;
+		this.vanmask2.y =this.arrayVan[2].y+60;
+		this.vanmask2.x =this.arrayVan[2].x-40;
+		this.vanmask3.y =this.arrayVan[3].y+60;
+		this.vanmask3.x =this.arrayVan[3].x-40;
+		this.vanmask4.y =this.arrayVan[4].y+60;
+		this.vanmask4.x =this.arrayVan[4].x-40;
+		this.player.life.Update();
 	}
 
 }
