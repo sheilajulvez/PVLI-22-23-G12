@@ -27,7 +27,8 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.timeDelta=0;
 		this.Inicia(this);
 		this.money.SetScene(this);	
-		this.ambulance=null;
+		//this.ambulance=null;
+		this.ambulance=new Ambulance(this,4000,0);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
 		this.player.dash=this.player_b.dash;
@@ -82,19 +83,20 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			this.poolVan.release(obj2);
 			
 		});
-		if(this.ambulance!=null)
-		{
+		
+			
 			this.physics.add.overlap(this.ambulance,this.poolCar.getPhaserGroup(),(obj1,obj2)=>
 			{
+				
 				if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 				 this.poolCar.release(obj2);
 			});
 			this.physics.add.overlap(this.ambulance,this.poolVan.getPhaserGroup(),(obj1,obj2)=>
 			{
 				if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
-				 this.Van.release(obj2);
+				 this.poolVan.release(obj2);
 			});
-		}
+		
 		
 		
 		
@@ -156,7 +158,9 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			}
 
 			this.newdanger(this,vehicleX);
-			this.ambulance=this.newambulance(this,vehicleX);
+			this.ambulance.setX(vehicleX);
+			this.ambulance.setY(-335);
+			
 		}
 	    if (rand===0)				//respawm car
 		{

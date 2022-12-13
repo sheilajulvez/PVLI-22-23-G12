@@ -7,6 +7,7 @@ export default class Ambulance extends Vehicle {
 		this.body.setOffset(10,20);
 		this.play('idle_Ambulance'); 
 		this.body.checkCollision.none=false;
+		console.log(this.y);
 	}
 	
 
@@ -17,21 +18,29 @@ export default class Ambulance extends Vehicle {
 			this.scene.player.life.RestaVida();
 		}
 	}
+	setX(x)
+	{
+		this.x=x;
+	}
+	setY(y)
+	{
+		this.y=y;
+	}
 	
 	preUpdate(t, dt){
 		super.preUpdate(t, dt);
 		super.move(400);
-		if (this.y>800 ) 		//en todos los que tengan poool
-		{		
-			this.destroyNow=true;
-		}
+		// if (this.y>800 ) 		//en todos los que tengan poool
+		// {		
+		// 	this.destroyNow=true;
+		// }
 	
-		if(this.destroyNow==true)
-		{
-			this.body.checkCollision.none=true;
-			this.destroy();
-			this.destroyNow=false;
-		}
+		// if(this.destroyNow==true)
+		// {
+		// 	this.body.checkCollision.none=true;
+		// 	this.destroy();
+		// 	this.destroyNow=false;
+		// }
 		
 		
 	}
