@@ -27,7 +27,6 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.timeDelta=0;
 		this.Inicia(this);
 		this.money.SetScene(this);	
-		//this.ambulance=null;
 		this.ambulance=new Ambulance(this,4000,0);
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.velocity=this.player_b.velocity;
@@ -96,9 +95,6 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 				if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 				 this.poolVan.release(obj2);
 			});
-		
-		
-		
 		
 	}
 	CarisOut(vehicles)

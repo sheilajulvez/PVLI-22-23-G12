@@ -5,6 +5,8 @@ import Van from '../../characters/Vehiculos/Van.js';
 import Pool  from '../../characters/Pool.js';
 import Wenge from '../../characters/Wenge.js'; //importamos al caracter de Wenge
 import Moto from '../../characters/Vehiculos/Moto.js'
+import Ambulance from '../../characters/Vehiculos/Ambulance.js';
+import Danger from '../../characters/Danger.js';
 //creaccion dee la funcion randoom
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
@@ -39,6 +41,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.explosionSound = this.sound.add('explosionSound',config);
 		this.music = this.sound.add("musica2",config);
 		this.music.play();
+		this.ambulance=new Ambulance(this,4000,0);
 		//Creacion del personaje y asignacion de variables
 		this.player=new Wenge(this, 400, 600,this.player_b.anim); 
 		this.player.dash=this.player_b.dash;
@@ -98,6 +101,22 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			this.poolVan.release(obj2);
 			
 		});		
+		this.physics.add.overlap(this.ambulance,this.poolCar.getPhaserGroup(),(obj1,obj2)=>
+		{
+			
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			 this.poolCar.release(obj2);
+		});
+		this.physics.add.overlap(this.ambulance,this.poolVan.getPhaserGroup(),(obj1,obj2)=>
+		{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			 this.poolVan.release(obj2);
+		});
+		this.physics.add.overlap(this.ambulance,this.poolBike.getPhaserGroup(),(obj1,obj2)=>
+		{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			 this.poolBike.release(obj2);
+		});
 	}
 	CarisOut(vehicles)
 	{
@@ -153,7 +172,8 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			}
 
 			this.newdanger(this,vehicleX);
-			this.ambulance=this.newambulance(this,vehicleX);
+			this.ambulance.setX(vehicleX);
+			this.ambulance.setY(-335);
 		}
 			var rand=random(0,2);
 			//rando coche
