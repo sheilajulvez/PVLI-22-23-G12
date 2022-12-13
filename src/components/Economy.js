@@ -26,7 +26,7 @@ export default class Economy{
     }
     SetText(){
 
-        let a="DINERO:"+this.money;
+        let a=+this.money;
         this.text.setText(a);
       //  this.text.setText("DINERO: "+this.money);
     }
