@@ -30,12 +30,13 @@ export default class Pool {
 		  entity.setVisible(true);
 		  entity.body.checkCollision.none = false;
 		  if(entity.move==Moto.prototype.move){
-		
-			entity.play(entity.anim);
-		}
+				entity.play(entity.anim);
+			}
+			
 		else{
-			entity.play(animationKey);
-		}
+				entity.play(animationKey);
+			}
+		
 		
 		}
 		
