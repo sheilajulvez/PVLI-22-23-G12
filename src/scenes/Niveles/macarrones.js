@@ -46,13 +46,13 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		let arrayCoches=[]
 		for(let i=0; i<5;i++)
 		{
-			arrayCoches[i]=(new Car(this,0,-1000-i*100));
+			arrayCoches[i]=(new Car(this,0,-1000-i*200));
 		}
 		this.poolCar=new Pool(this,arrayCoches);
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
-			arrayVan[i]=(new Van(this,0,1000 + i*100));
+			arrayVan[i]=(new Van(this,0,1000 + i*200));
 		}
 		this.poolVan=new Pool(this,arrayVan);	
 		//colisiones	
