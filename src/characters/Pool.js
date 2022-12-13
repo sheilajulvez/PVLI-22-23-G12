@@ -7,7 +7,7 @@ export default class Pool {
 	  this._group.addMultiple(entities);
 	  entities.forEach(element => {
 		this._group.killAndHide(element);
-		element.body.checkCollision.none = true;
+		element.body.checkCollision.none = false;
 	  });
 	 
 	  this.scene=scene;
@@ -26,7 +26,7 @@ export default class Pool {
 		  entity.play(animationKey);
 		  entity.setActive(true);
 		  entity.setVisible(true);
-		  //entity.body.checkCollision.none = true;
+		  entity.body.checkCollision.none = false;
 		}
 		
 		return entity;

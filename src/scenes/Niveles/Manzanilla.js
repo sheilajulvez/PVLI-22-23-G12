@@ -68,18 +68,18 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.poolVan=new Pool(this,this.arrayVan);
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>
 		{
-			if (obj1.body.checkCollision.none == true) this.Explosiones(obj1,obj2)
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			 this.poolCar.release(obj1);
 			 this.poolCar.release(obj2);
 		});
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
-			if (obj1.body.checkCollision.none == true) this.Explosiones(obj1,obj2)
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolCar.release(obj1);
 			this.poolVan.release(obj2);
 
 		});
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
-			if (obj1.body.checkCollision.none == true) this.Explosiones(obj1,obj2)
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
 			});
@@ -97,7 +97,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		//container para todas las luces
 		this.lights_mask = this.make.container(0, 0);
       /*  vision mask -  cada luz */
-       /* this.carmask0 = this.make.sprite({
+       this.carmask0 = this.make.sprite({
             x: 400,
             y: 300,
             key: 'mask',
@@ -155,8 +155,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
             key: 'mask',
             add: false,
         });
-        vision mask -  cada luz FIN */
-		this.carmask = this.make.sprite({
+       // vision mask -  cada luz FIN 
+		/*this.carmask = this.make.sprite({
 			x: 900,
 			y: 300,
 			key: 'mask',
@@ -166,12 +166,12 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 				y: 300,
 				key: 'mask',
 				add: false,});
-
+*/
 
         // adding the images to the container
-        //this.lights_mask.add( [ this.carmask0,this.carmask1,this.carmask2,this.carmask3,this.carmask4,
-			//this.vanmask0,this.vanmask1,this.vanmask2,this.vanmask3,this.vanmask4] );
-			this.lights_mask.add([this.carmask,this.vanmask]);
+        this.lights_mask.add( [ this.carmask0,this.carmask1,this.carmask2,this.carmask3,this.carmask4,
+			this.vanmask0,this.vanmask1,this.vanmask2,this.vanmask3,this.vanmask4] );
+		//this.lights_mask.add([this.carmask,this.vanmask]);
 
         // now this is the important line I did not expect:
         // the lights container was being drawn into the scene (even though I used "make" and not "add")
@@ -239,8 +239,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 					}
 							
 					this.poolCar.spawn(vehicleX,0,'idle_BlueCar');
-					this.carmask.x=vehicleX-40;
-					this.carmask.y=this.poolCar.devuelvey()+60;
+					//this.carmask.x=vehicleX-40;
+					//this.carmask.y=this.poolCar.devuelvey()+60;
 						
 						
 				
@@ -260,13 +260,13 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 					}
 				
 				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
-				this.vanmask.x=vehicleX-40;
-				this.vanmask.y=this.poolVan.devuelvey()+60;
+				//this.vanmask.x=vehicleX-40;
+				//this.vanmask.y=this.poolVan.devuelvey()+60;
 			}
 		}
 		
 		
-			/*this.carmask0.y =this.arrayCoches[0].y+60;
+			this.carmask0.y =this.arrayCoches[0].y+60;
 			this.carmask0.x =this.arrayCoches[0].x-40;
 			this.carmask1.y =this.arrayCoches[1].y+60;
 			this.carmask1.x =this.arrayCoches[1].x-40;
@@ -286,7 +286,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.vanmask3.y =this.arrayVan[3].y+60;
 			this.vanmask3.x =this.arrayVan[3].x-40;
 			this.vanmask4.y =this.arrayVan[4].y+60;
-			this.vanmask4.x =this.arrayVan[4].x-40;*/
+			this.vanmask4.x =this.arrayVan[4].x-40;
 			this.player.life.Update();
 	}
 	GameOver(){
