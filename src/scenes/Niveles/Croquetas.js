@@ -33,7 +33,7 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.player.dash=this.player_b.dash;
 		this.player.outfits=this.player_b.outfits;
 		this.player.life=this.player_b.life;
-		this.player.life.SetScene(this,'l_croquetas');
+		this.player.life.SetScene(this,'l_croqueta');
 		for(let i=0; i<5;i++)
 		{
 			let car=new Car(this,0,-1000);

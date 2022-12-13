@@ -35,17 +35,8 @@ export default class Inicio extends Phaser.Scene {
 		this.load.spritesheet('road', 'carretera.png', {frameWidth: 700, frameHeight:490});
 		//arboles
 		this.load.spritesheet('FondoMove', 'arbol.png', {frameWidth:128 , frameHeight:	120	});	
-		//moto
-		this.load.spritesheet('Bike','Moto.png',{frameWidth:166 , frameHeight:490});
-		this.load.spritesheet('Bike_amarilla','Moto_amarilla.png',{frameWidth:166 , frameHeight:490});
-		this.load.spritesheet('Bike_roja','Moto_roja.png',{frameWidth:166 , frameHeight:490});
-		this.load.spritesheet('Bike_verde','Moto_fantastic.png',{frameWidth:166 , frameHeight:490});
-		//coche
-		this.load.spritesheet('Car', 'BlueCar.png', {frameWidth:200 , frameHeight:280});
-		//Van
-		this.load.spritesheet('Van', 'WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
-		//ambulacia
-		this.load.spritesheet('Ambulance','ambulance.png',{frameWidth:160 , frameHeight:	233	});
+		
+		
 		//aviso
 		this.load.image('danger','danger.png');
 		//explosiones
@@ -63,7 +54,6 @@ export default class Inicio extends Phaser.Scene {
         //guardas la imagen
         this.load.image('boton',"boton.png");
         this.load.image('shop_button','shop.jpg');
-		
 		this.load.image("cajita","cajastexto/guardate.png");
 		this.load.image("fondo_soleado","Daytime_Background_1024x800.png");
 		this.load.image("fondo_noche","dark background.png");
@@ -79,7 +69,8 @@ export default class Inicio extends Phaser.Scene {
 		//creas la mascara
 		this.load.image('mask', 'mask.png');
 		this.load.image('noche', 'noche.png');
-		//ESCENA FINAL
+
+	//ESCENA FINAL
 		this.load.setPath('assets/escena_fin/');
 		this.load.image("pregunta","darle_la_manzanilla.png");
         this.load.image("SI","SI.png");
@@ -93,6 +84,7 @@ export default class Inicio extends Phaser.Scene {
 		this.load.spritesheet('Wenge_motomami', 'wengeSprite_motomami.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_daltonismo', 'wengeSprite_daltonica.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_nuevacoleccion', 'wengeSprite_nuevacoleccion.png', {frameWidth: 633, frameHeight:394});
+
 		this.load.image("cuadrado_tienda","TIENDA_BONITO.png")
 		this.load.image("fondo_shop","tienda.png");
 		this.load.image("salida_button","salida_button.png");
@@ -137,13 +129,23 @@ export default class Inicio extends Phaser.Scene {
 		this.load.audio("talking6",'talking6.mp3');
 		this.load.audio("talking7",'talking7.mp3');
 
+	//vida
 		this.load.setPath('assets/Vidas/')
-		//imagen de vida
 		this.load.image('l_macarrones', 'macarrones.png');
 		this.load.image('l_manzanilla','manzanilla.png');
 		this.load.image('l_aceite','aceite.png');
 		this.load.image('l_croqueta','croqueta.png');
 		this.load.image('l_veneno','veneno.png');
+
+	//vehiculos
+		this.load.setPath('assets/Vehiculos/')
+		this.load.spritesheet('Bike','Moto.png',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike_amarilla','Moto_amarilla.png',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike_roja','Moto_roja.png',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Bike_verde','Moto_fantastic.png',{frameWidth:166 , frameHeight:490});
+		this.load.spritesheet('Car', 'BlueCar.png', {frameWidth:200 , frameHeight:280});
+		this.load.spritesheet('Van', 'WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
+		this.load.spritesheet('Ambulance','ambulance.png',{frameWidth:160 , frameHeight:	233	});
 
 
 		var width = this.cameras.main.width;
