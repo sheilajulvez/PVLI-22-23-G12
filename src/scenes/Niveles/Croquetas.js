@@ -95,7 +95,11 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		
 		super.update();
 		this.collision();
-		
+		if (this.player.life.lifes <= 0){
+			
+			this.player.alive=false;
+			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
+		}
 		this.timeDelta= this.timeDelta+dt;
 		if(this.Barra.fin()){
 			this.money.AddMoney(200);

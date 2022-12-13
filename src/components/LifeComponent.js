@@ -26,7 +26,7 @@ export default class LifeComponent {
 		this.sprt.pop();
 		this.puedeRestar=false
 		}
-		if (this.lifes == 0) this.scene.scene.start("gameover");
+		
 	}
 	AddVida(){
 		this.lifes++;

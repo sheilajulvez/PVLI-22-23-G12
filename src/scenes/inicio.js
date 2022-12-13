@@ -49,10 +49,17 @@ export default class Inicio extends Phaser.Scene {
 		this.load.spritesheet('Explosion','explosion.png',{frameWidth:650, frameHeight:	600});
 		// dialogos
 		this.load.image("Wengecara", 'wengeCara.png');
+		this.load.image("Pause","gameOver.png" );
 		//rosi 
 		this.load.image("Rosi",'rosalia.png');
 		this.load.image("Presi","presi.png");
 		this.load.image("PatryRuncha","PatryRuncha.png");
+		this.load.image("GameOverImage","gameOver.png" );
+		this.load.image('quit_buttom',"exit1.jpg");
+        this.load.image("mapaciudad","mapaciudad.png");
+        //guardas la imagen
+        this.load.image('boton',"boton.png");
+        this.load.image('shop_button','shop.jpg');
 		
 		this.load.image("cajita","cajastexto/guardate.png");
 		this.load.image("fondo_soleado","Daytime_Background_1024x800.png");
@@ -64,6 +71,8 @@ export default class Inicio extends Phaser.Scene {
 		this.load.image("texto_wenge_1","cajastexto/texto_wenge1.png");
 		this.load.image("texto_wenge_2","cajastexto/texto_wenge2.png");
 		this.load.image("texto_wenge_3","cajastexto/fondo-verde.png");
+	
+		
 		//creas la mascara
 		this.load.image('mask', 'mask.png');
 		this.load.image('noche', 'noche.png');
@@ -81,9 +90,27 @@ export default class Inicio extends Phaser.Scene {
 		this.load.spritesheet('Wenge_motomami', 'wengeSprite_motomami.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_daltonismo', 'wengeSprite_daltonica.png', {frameWidth: 633, frameHeight:394});
 		this.load.spritesheet('Wenge_nuevacoleccion', 'wengeSprite_nuevacoleccion.png', {frameWidth: 633, frameHeight:394});
+		this.load.image("cuadrado_tienda","TIENDA_BONITO.png")
+		this.load.image("fondo_shop","tienda.png");
+		this.load.image("salida_button","salida_button.png");
+	//	this.load.image("velocity_button","assets/tienda/velocity_button.png");
+		this.load.image("velocity_explanation","velocity_explicacion.png");
+		this.load.image("motomami","motomami_button.png");
+		this.load.image("motomami_explanation","motomami_outfit_explicacion.png");
+		this.load.image("daltonismo","daltonismo_button.png");
+		this.load.image("daltonismo_explicacion","daltonismo_outfit_explicacion.png");
+		this.load.image("nueva_coleccion","nueva_coleccion_button.png");
+		this.load.image("nuevacoleccion_explicacion","nuevacoleccion_outfit_explicacion.png");
+		this.load.image("velocity","velocity_button.png");
+		this.load.image("extra_life","life_button.png");
+		this.load.image("extra_life_explanation","life_explicacion.png");
+		this.load.image("dash_image","dash_button.png");
+		this.load.image("dash_explicacion","dash_explicacion.png");
 	
 	  //AUDIO
 		this.load.setPath('assets/sounds/');
+		this.load.audio("music","shopMusic1.mp3");
+		this.load.audio("buy","buy.mp3");
 		this.load.audio('dash', 'fium.mp3');
 		this.load.audio('skate1','skate1.mp3');
 		this.load.audio('skate2','skate2.mp3');

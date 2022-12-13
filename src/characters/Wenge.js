@@ -20,6 +20,7 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 		this.outfits=[["Wenge_motomami",false],["Wenge_daltonismo",false],["Wenge_nuevacoleccion",false]];
 		this.outfits.lenght=3;		
 		this.play(this.anim);
+		this.alive=true;
 		const config =
 		{
 			mute: false,
