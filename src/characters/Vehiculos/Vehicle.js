@@ -37,7 +37,7 @@ export default class Vehicle extends Phaser.GameObjects.Sprite { //exportamos la
 		if(this.y>540)
 		{
 			if(this.body.checkCollision.none)
-				this.body.checkCollision.none=false;
+				this.body.checkCollision.none=true;
 		}	
 	}
 
@@ -46,7 +46,7 @@ export default class Vehicle extends Phaser.GameObjects.Sprite { //exportamos la
 		this.collision();
         this.respawn();
         //this.pipi();
-		if(this.body.checkCollision.none)
-				this.body.checkCollision.none=false;
+		/*if(this.body.checkCollision.none)
+				this.body.checkCollision.none=false;*/
 	}
 }

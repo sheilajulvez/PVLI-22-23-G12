@@ -82,6 +82,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
+			
 			});
 
 	
@@ -101,31 +102,31 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
             x: 400,
             y: 300,
             key: 'mask',
-            add: false
+            add: false,
         });
 		this.carmask1 = this.make.sprite({
             x: 400,
             y: 300,
             key: 'mask',
-            add: false
+            add: false,
         });
 		this.carmask2 = this.make.sprite({
             x: 400,
             y: 300,
             key: 'mask',
-            add: false
+            add: false,
         });
 		this.carmask3 = this.make.sprite({
             x: 400,
             y: 300,
             key: 'mask',
-            add: false
+            add: false,
         });
 		this.carmask4 = this.make.sprite({
             x: 400,
             y: 300,
             key: 'mask',
-            add: false
+            add: false,
         });
 
         // campfire mask
@@ -202,18 +203,13 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 	{
 		
 		super.update();
-		if (this.player.life.lifes <= 0){
-			
-			this.player.alive=false;
-			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
-		}
 		if(this.Barra.fin()){
 			this.music.stop();
 			this.money.AddMoney(200);
 			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		this.timeDelta= this.timeDelta+dt;
-		if(this.timeDelta>400)
+		if(this.timeDelta>4000)
 		{
 			if(this.exp){this.explosion.destroy();}
 			var rand=random(0,1);
@@ -272,6 +268,8 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		
 		
 			this.carmask0.y =this.arrayCoches[0].y+60;
+			console.log(this.arrayCoches[0].y+60);
+			//this.carmask0.y=this.poolCar._group.children.entries[0].
 			this.carmask0.x =this.arrayCoches[0].x-40;
 			this.carmask1.y =this.arrayCoches[1].y+60;
 			this.carmask1.x =this.arrayCoches[1].x-40;
