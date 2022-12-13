@@ -49,7 +49,17 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.van=new Van(this,0,-1000);
 		this.physics.add.existing(this.van);
 
-		
+		const config =
+		{
+			 mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
+		this.explosionSound = this.sound.add('explosionSound',config);
 
 		this.music=this.sound.add('musica4');
 		this.music.play();

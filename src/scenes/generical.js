@@ -55,7 +55,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	}
 	Explosiones(obj1,obj2){
 		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
-		console.log(this.explosionSound);
 		if(this.explosionSound!=null|| this.explosionSound!=undefined) 	this.explosionSound.play();
 	
 	}	
