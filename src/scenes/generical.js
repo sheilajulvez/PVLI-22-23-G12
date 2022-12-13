@@ -27,7 +27,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 	}
 
 	create(){
-	
 		const config =
 		{
 			mute: false,
@@ -38,7 +37,6 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
  			loop: false,
  			delay: 0,
 		}
-
 		//añadimos los graficos para la barra
 		this.add.image(500,350,'fondo');
 		
@@ -56,11 +54,10 @@ export default class Generical extends Phaser.Scene { //creamos la escena export
 		
 	}
 	Explosiones(obj1,obj2){
-	
 		this.createExplosion(obj1.body.center.x,obj2.body.center.y);
 		this.explosionSound.play();
-		obj1.destroy();
-		obj2.destroy();
+		//obj1.destroy();
+		//obj2.destroy();
 			
 	}	
 	createExplosion(x,y){

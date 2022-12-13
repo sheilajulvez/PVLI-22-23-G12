@@ -66,9 +66,23 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.arrayVan[i]=(new Van(this,0,-1000 - i*100));
 		}
 		this.poolVan=new Pool(this,this.arrayVan);
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{this.Explosiones(obj1,obj2)});
-		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>
+		{
+			if (obj1.body.checkCollision.none == true) this.Explosiones(obj1,obj2)
+			 this.poolCar.release(obj1);
+			 this.poolCar.release(obj2);
+		});
+		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
+			if (obj1.body.checkCollision.none == true) this.Explosiones(obj1,obj2)
+			this.poolCar.release(obj1);
+			this.poolVan.release(obj2);
+
+		});
+		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
+			if (obj1.body.checkCollision.none == true) this.Explosiones(obj1,obj2)
+			this.poolVan.release(obj1);
+			this.poolVan.release(obj2);
+			});
 
 	
 
@@ -194,7 +208,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 			this.scene.start("EscenaHablar",{name:"Manzanilla_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 		this.timeDelta= this.timeDelta+dt;
-		if(this.timeDelta>4000)
+		if(this.timeDelta>400)
 		{
 			if(this.exp){this.explosion.destroy();}
 			var rand=random(0,1);
@@ -250,7 +264,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 				this.vanmask.y=this.poolVan.devuelvey()+60;
 			}
 		}
-	
+		
 		
 			/*this.carmask0.y =this.arrayCoches[0].y+60;
 			this.carmask0.x =this.arrayCoches[0].x-40;

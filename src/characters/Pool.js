@@ -26,22 +26,21 @@ export default class Pool {
 		  entity.play(animationKey);
 		  entity.setActive(true);
 		  entity.setVisible(true);
+		  //entity.body.checkCollision.none = true;
 		}
 		
 		return entity;
 	}
 	devuelvey(){
 		var entity= this._group.getFirstDead();
-		console.log(entity.y);
 		if(entity)return entity.y;
 
 	}
 
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
-		entity.body.checkCollision.none = false;
+		entity.body.checkCollision.none = true;
 		this._group.killAndHide(entity);
-		
 	}
 	getPhaserGroup(){
 		return this._group;
