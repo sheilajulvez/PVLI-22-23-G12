@@ -161,8 +161,4 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		}
 		this.player.life.Update();
 	}
-	GameOver()
-	{
-		this.scene.start('gameover');
-	}
 }
