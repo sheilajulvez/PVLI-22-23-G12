@@ -4,8 +4,8 @@ export default class Moto extends Vehicle { //exportamos la clase extendida de P
 
 	constructor(scene, x, y,anim) {
 		super(scene, x, y, 'Moto');
-		this.body.setSize(90,180);
-		this.body.setOffset(10,35);
+		this.body.setSize(120,480);
+		this.body.setOffset(20,15);
 		this.anim=anim;
 		this.play(this.anim); //activa la animacion*/
 		this.setScale(0.5,0.5);
