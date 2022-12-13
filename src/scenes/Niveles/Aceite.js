@@ -66,21 +66,12 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 	
 
 		let arrayBike=[];
-		for(let i=0;i<3;i++)
+		for(let i=0;i<12;i+4)
 		{
 			arrayBike[i]=(new Moto(this,0,-1000+i*100,"idle_Moto"));
-		}
-		for(let i=0;i<3;i++)
-		{
-			arrayBike[i]=(new Moto(this,0,-1000+i*100,"idle_Moto_amarilla"));
-		}
-		for(let i=0;i<3;i++)
-		{
-			arrayBike[i]=(new Moto(this,0,-1000+i*100,"idle_Moto_roja"));
-		}
-		for(let i=0;i<3;i++)
-		{
-			arrayBike[i]=(new Moto(this,0,-1000+i*100,"idle_Moto_verde"));
+			arrayBike[i+1]=(new Moto(this,0,-1000+i*100,"idle_Moto_verde"));
+			arrayBike[i+2]=(new Moto(this,0,-1000+i*100,"idle_Moto_roja"));
+			arrayBike[i+3]=(new Moto(this,0,-1000+i*100,"idle_Moto_amarilla"));
 		}
 		this.poolBike=new Pool(this,arrayBike);
 
@@ -195,7 +186,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 								
 						}
 					
-					this.poolBike.spawn(vehicleX,0,'idle_bike');
+					this.poolBike.spawn(vehicleX,0,vehicleX.anim);
 
 				
 			}
