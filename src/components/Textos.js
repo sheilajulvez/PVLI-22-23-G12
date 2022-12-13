@@ -50,7 +50,7 @@ export default {
     Croquetas_fin_a:["Sí, claro","Malawi es\nrepublicana...","Me encanta\nesa serie","Sí"],
     Croquetas_fin_b:["No...","Sí soy","¿Ein?","No"],
     Croquetas_fin_comprueba_a:[false,true,false,true],
-    Croquestas_fin_comprueba_b:[true,false,true,false],
+    Croquetas_fin_comprueba_b:[true,false,true,false],
     Arsenico:["Buenas yo soy Patry Runcha, líder del \npartido comunista, nos hemos dado cuenta que\n tienes una relación muy cercana  con el\n presidente",
     "Eres su repartidora de Ploboo,\nWenge, vengo a pedirte algo muy serio,\nsi estas cansada de ser tu propia jefa\neste es el momento",
     "El Presi te ha pedido su típica manzanilla pero\nesta vez, si quieres,\nsólo si tu quieres,\nla podemos aliñar",
