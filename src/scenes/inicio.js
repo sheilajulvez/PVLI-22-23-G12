@@ -151,8 +151,8 @@ export default class Inicio extends Phaser.Scene {
 		var width = this.cameras.main.width;
 		var height = this.cameras.main.height;
 		var loadingText = this.make.text({
-			x: width / 2 - 75,
-			y: height / 2 - 50,
+			x: width / 2 - 40,
+			y: height / 2 - 65,
 			text: 'Cargando',
 			style: {
 			  font: '20px monospace',
