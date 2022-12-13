@@ -6,7 +6,7 @@ export default class Pause extends Phaser.Scene{
 		this.Botones =[ ];
 	}
 	preload(){
-		this.load.image("Pause","assets/gameOver.png" );
+		
 	}
 	create(){
 	let button = this.add.image(500,350,'Pause');
