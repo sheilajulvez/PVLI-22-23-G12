@@ -16,15 +16,13 @@ export default class Economy{
         return false;
     }
     ShowMoney(){
-       
-        let a="DINERO:"+this.money;
-        this.text=this.scene.add.text(700,50,a);
+        this.i_dinero=this.scene.add.image(900,50,'Dinero');
+        this.i_dinero.setScale(0.5,0.5);
+        let a=+this.money;
+        this.text=this.scene.add.text(870,40,a);
         this.text.setTint(0x00000);
-       // this.text.backgroundColor(0xFFFF00);
-        this.text.setScale(2,2);
-
-     
-
+        this.text.setScale(1.5,1.5);
+      
     }
     SetText(){
 
