@@ -63,7 +63,7 @@ export default class EscenaHablar extends Phaser.Scene{
         }
         //personajes y fotos
        
-        this.add.image(800,300,'Wengecara').setScale(0.8,0.8);
+        this.add.image(800,400,'Wengecara').setScale(0.8,0.8);
         if(this.scenekey=="tomatico"||this.scenekey=="Aceite"||this.scenekey=="Croquetas"
         ||this.scenekey=="Manzanilla"){
             
