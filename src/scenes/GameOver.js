@@ -15,7 +15,7 @@ export default class GameOver extends Phaser.Scene{
 	{
 		
 		this.nivel=datos.name;
-        this.stay = datos.stay; 
+        this.stay = 0; 
 		this.money=datos.dinero;
 		this.wenge=datos.wenge;
 		this.wenge.life.AddVida();
