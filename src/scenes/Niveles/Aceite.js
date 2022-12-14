@@ -58,7 +58,11 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 		}
 		this.poolBike=new Pool(this,this.arrayBike);
 
-		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
+		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{
+			 if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+			 this.poolBike.release(obj1);
+			 this.poolBike.release(obj2);
+			});
 //creación de la textura de renderizado para efecto de noche
 		const rt = this.make.renderTexture({
 			width:1000,
@@ -136,7 +140,7 @@ export default class Aceite extends Generical { //creamos la escena exportada/ex
 			this.scene.start("EscenaHablar",{name:"Aceite_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
 
-		if(this.timeDelta>2000)
+		if(this.timeDelta>1000)
 		{
 			if(this.exp){this.explosion.destroy();}
 			let pos=random(0,5);
