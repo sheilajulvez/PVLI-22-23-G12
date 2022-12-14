@@ -37,10 +37,9 @@ export default class Pool {
 		else{
 				entity.play(animationKey);
 			}
-		
+			entity.body.setEnable(true);
 		
 		}
-		
 		return entity;
 	}
 	devuelvey(){
@@ -52,7 +51,9 @@ export default class Pool {
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
 		entity.body.checkCollision.none = true;
+		entity.body.setEnable(false);
 		this._group.killAndHide(entity);
+
 	
 	}
 	getPhaserGroup(){
