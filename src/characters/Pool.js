@@ -5,10 +5,10 @@ export default class Pool {
     constructor (scene, entities) 
 	{
       this._group=scene.add.group();	//creamos un grupo y lo añadimos a la escena
-	  this._group.addMultiple(entities);	//
-	  entities.forEach(element => {
+	  this._group.addMultiple(entities);	//añades entidades al grupo
+	  entities.forEach(element => {			//primero queremos lo elementos desactivados
 		this._group.killAndHide(element);
-		element.body.checkCollision.none = false;
+		element.body.checkCollision.none = false;		//el checkCollision a false, porque inicialmente no detecta las colisiones
 	  });
 	 
 	  this.scene=scene;
@@ -16,7 +16,7 @@ export default class Pool {
 	}
 	//mostrar un objeto en escena
 	
-	
+	//Recuperamos una entidad del pool utilizando el método spawn() que recibe las nuevas coordenadas del sprite x e y
 	spawn (x, y,animationKey) {
 		var entity = this._group.getFirstDead();
 			//Nunca deberían existir grupos sin elementos activo
@@ -26,37 +26,32 @@ export default class Pool {
 		  entity.x = x;
 		  entity.y = y;
 		  
-		  entity.setActive(true);
-		  entity.setVisible(true);
-		  entity.body.checkCollision.none = false;
-		  console.log(this._group.getLength());
-		  if(entity.move==Moto.prototype.move){
+		  entity.setActive(true);//activas la entidad
+		  entity.setVisible(true);//y la piones visible en el canvas
+		  if(entity.move==Moto.prototype.move){	//en el caso de que la entidad sea de tipo moto, le pasas su propia animacion
 				entity.play(entity.anim);
 			}
 			
 		else{
-				entity.play(animationKey);
+				entity.play(animationKey);	//el resto le pasas la animacion
 			}
 			entity.body.setEnable(true);
 		
 		}
 		return entity;
 	}
-	devuelvey(){
-		var entity= this._group.getFirstDead();
-		if(entity)return entity.y;
 
-	}
 
 	//quitarlo de escena (tambien se puede hacer con el setActive y el Visible)
 	release (entity) {
-		entity.body.checkCollision.none = true;
-		entity.body.setEnable(false);
-		this._group.killAndHide(entity);
+		entity.body.checkCollision.none = true;	//ahora si detectas las colisiones
+		entity.body.setEnable(false);	//lo desactivas para que sus posiciones no continuen
+		this._group.killAndHide(entity);	//y lo eliminas/ocultas de la escena
 
 	
 	}
+	//funcion que devuelve el grupo de la pool
 	getPhaserGroup(){
-		return this._group;
+		return this._group;	
 	}
 }
