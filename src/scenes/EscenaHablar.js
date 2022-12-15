@@ -1,9 +1,4 @@
 import Textos from "../components/Textos.js"
-import Macarrones from "./Niveles/macarrones.js";
-import Aceite from './Niveles/Aceite.js';
-import Arsenico from './Niveles/Arsenico.js';
-import Croquetas from './Niveles/Croquetas.js';
-import Manzanilla from './Niveles/Manzanilla.js';
 
 function random(min, max) {
     return Math.floor((Math.random() * (max - min + 1)) + min);
