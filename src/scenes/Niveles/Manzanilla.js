@@ -166,6 +166,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
         rt.mask.invertAlpha = true
 
 	}
+	//cuando un coche sale escena
 	CarisOut(vehicles)
 	{
 		this.poolCar.release(vehicles);
@@ -174,20 +175,24 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 	{
 		this.poolVan.release(vehicles);
 	}
+	//metodo que se ejecuta al init la escena
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
 		this.player_b=datos.wenge;        
     }
+	//bucle del juego
 	update(t,dt)
 	{
 		super.update();
 		this.timeDelta= this.timeDelta+dt;
-			if (this.player.life.lifes <= 0){
-			this.music.stop();
-			this.player.alive=false;
-			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
+		//si ha pierdido
+		if (this.player.life.lifes <= 0){
+		this.music.stop();
+		this.player.alive=false;
+		this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
+		//si ganas 
 		if(this.Barra.fin()){
 			this.music.stop();
 			this.money.AddMoney(200);
@@ -263,6 +268,7 @@ export default class Manzanilla extends Generical { //creamos la escena exportad
 		this.vanmask3.x =this.arrayVan[3].x-40;
 		this.vanmask4.y =this.arrayVan[4].y+60;
 		this.vanmask4.x =this.arrayVan[4].x-40;
+		//actualizacion de wenge
 		this.player.life.Update();
 	}
 

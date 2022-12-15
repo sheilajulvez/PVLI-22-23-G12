@@ -76,6 +76,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		});
 		
 	}
+	//cuando sale un chche
 	CarisOut(vehicles)
 	{
 		this.poolCar.release(vehicles);
@@ -84,7 +85,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 	{
 		this.poolVan.release(vehicles);
 	}
-
+	//metodo que se ejecuta al cargar la escena
 	init(datos)
 	{
         this.stay = datos.stay; 
@@ -92,6 +93,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 		this.player_b=datos.wenge;
 		
     }
+	//bucle del juego
 	update(t,dt)
 	{	
 		super.update();
@@ -160,6 +162,7 @@ export default class Macarrones extends Generical { //creamos la escena exportad
 				this.poolVan.spawn(vehicleX,0,'idle_WhiteCar');
 			}
 		}
+		//update de wenge
 		this.player.life.Update();
 	}
 }

@@ -15,11 +15,13 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 	constructor(){
 		super('Croquetas');	
 	}
+	//metodo al iniciar
 	init(datos){
         this.stay = datos.stay;
 		this.money=datos.dinero;
 		this.player_b=datos.wenge;
     }
+	//creacion de los objetos
 	create(){
 		//create del padre
 		super.create();
@@ -81,22 +83,21 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
 			
+		});	
+		this.physics.add.overlap(this.ambulance,this.poolCar.getPhaserGroup(),(obj1,obj2)=>
+		{
+			
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+				this.poolCar.release(obj2);
+		});
+		this.physics.add.overlap(this.ambulance,this.poolVan.getPhaserGroup(),(obj1,obj2)=>
+		{
+			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
+				this.poolVan.release(obj2);
 		});
 		
-			
-			this.physics.add.overlap(this.ambulance,this.poolCar.getPhaserGroup(),(obj1,obj2)=>
-			{
-				
-				if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
-				 this.poolCar.release(obj2);
-			});
-			this.physics.add.overlap(this.ambulance,this.poolVan.getPhaserGroup(),(obj1,obj2)=>
-			{
-				if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
-				 this.poolVan.release(obj2);
-			});
-		
 	}
+	//metodo para cuando un  coche sale
 	CarisOut(vehicles)
 	{
 		this.poolCar.release(vehicles);
@@ -106,16 +107,18 @@ export default class Croquetas extends Generical { //creamos la escena exportada
 		this.poolVan.release(vehicles);
 	}
 
-	
+	//bucle del juego
 	update(t,dt)
 	{
 		super.update();
 		this.timeDelta= this.timeDelta+dt;
+		//si pierdes
 		if (this.player.life.lifes <= 0){
 			this.music.stop();
 			this.player.alive=false;
 			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
+		//si te pasas el nnivel
 		if(this.Barra.fin()){
 			this.music.stop();
 			this.scene.start("EscenaHablar",{name:"Croquetas_fin",stay:this.stay,dinero:this.money,wenge:this.player} )

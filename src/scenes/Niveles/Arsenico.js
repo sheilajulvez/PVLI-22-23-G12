@@ -1,4 +1,4 @@
-
+//importamos todas las clases necesarias el nivel
 import Car from '../../characters/Vehiculos/Car.js';//importamos a los Coches
 import Generical from '../../scenes/generical.js';
 import Van from '../../characters/Vehiculos/Van.js';
@@ -14,17 +14,23 @@ function random(min, max) {
 //clase nivel 5
 export default class Arsenico extends Generical { //creamos la escena exportada/extendida de Phaser
 	constructor(){
+		//creamos el nombre con el que llamar a la escena
 		super('Arsenico');
 	}
+//metodo que se ejecuta al crear la escena
 	init(datos){
+		//valor del nivel en el que estás
         this.stay = datos.stay;
+		//cantidad de dinero que tienes
 		this.money=datos.dinero;
+		//wenge (para asignar las imagenes, valores... propios de wenge)
 		this.player_b=datos.wenge;
     }
 
 	create(){
 		//create del padre
 		super.create();
+		//inicializamos el tiempo a 0 para la barra
 		this.timeDelta=0;
 		this.Inicia(this);
 		//configuración del sonido
@@ -38,6 +44,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
  			 loop: false,
  			 delay: 0,
 		}
+		//sonnido de explosion 
 		this.explosionSound = this.sound.add('explosionSound',config);
 		this.music = this.sound.add("musica4",config);
 		this.music.play();
@@ -56,14 +63,15 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		{
 			arrayCoches[i]=(new Car(this,0,-1000-i*200));
 		}
+		//lo añadimos a la pool de coches
 		this.poolCar=new Pool(this,arrayCoches);
-
 		this.explosionSound = this.sound.add('explosionSound',config);
 		let arrayVan=[];
 		for(let i=0; i<5;i++)
 		{
 			arrayVan[i]=(new Van(this,0,1000 + i*200));
 		}
+		//lo añadimos a la pool de van 
 		this.poolVan=new Pool(this,arrayVan);
 
 		this.arrayBike=[];
@@ -78,54 +86,62 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		this.poolBike=new Pool(this,this.arrayBike);
 		this.physics.add.overlap(this.poolBike.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{ this.Explosiones(obj1,obj2)});
 
-		//colisiones	
+		//colisiones coche-coche
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolCar.getPhaserGroup(),(obj1,obj2)=>
 		{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			 this.poolCar.release(obj1);
 			 this.poolCar.release(obj2);
 		});
+		//colisiones coche-moto
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>
 		{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			 this.poolCar.release(obj1);
 			 this.poolBike.release(obj2);
 		});
+		//colisiones coche-van
 		this.physics.add.overlap(this.poolCar.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolCar.release(obj1);
 			this.poolVan.release(obj2);
 
 		});
+		//colisiones van-van
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolVan.getPhaserGroup(),(obj1,obj2)=>{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolVan.release(obj1);
 			this.poolVan.release(obj2);
 			
-		});		
+		});
+		//colisiones van-moto
 		this.physics.add.overlap(this.poolVan.getPhaserGroup(),this.poolBike.getPhaserGroup(),(obj1,obj2)=>{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			this.poolVan.release(obj1);
 			this.poolBike.release(obj2);
 			
-		});		
+		});	
+		//colisiones ambulancia-coche
 		this.physics.add.overlap(this.ambulance,this.poolCar.getPhaserGroup(),(obj1,obj2)=>
 		{
 			
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			 this.poolCar.release(obj2);
 		});
+		//colisiones ambulancia-van
 		this.physics.add.overlap(this.ambulance,this.poolVan.getPhaserGroup(),(obj1,obj2)=>
 		{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			 this.poolVan.release(obj2);
 		});
+		//colisiones ambulance-moto
 		this.physics.add.overlap(this.ambulance,this.poolBike.getPhaserGroup(),(obj1,obj2)=>
 		{
 			if (obj1.body.checkCollision.none == false) this.Explosiones(obj1,obj2)
 			 this.poolBike.release(obj2);
 		});
 	}
+	//cuando sale un coche de la pantalla
 	CarisOut(vehicles)
 	{
 		this.poolCar.release(vehicles);
@@ -136,14 +152,16 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 	}
 	update(t,dt)
 	{
-		
+		//update del padre
 		super.update();
 		this.timeDelta= this.timeDelta+dt;
+		//si no te quedan vidas
 		if (this.player.life.lifes <= 0){
 			this.music.stop();
 			this.player.alive=false;
 			this.scene.start("gameover",{name:"tomatico",stay:this.stay,dinero:this.money,wenge:this.player} )
 		}
+		//si te has pasado el nivel
 		if(this.Barra.fin()){
 			this.music.stop();
 			this.scene.start("EscenaHablar",{name:"Arsenico_fin",stay:this.stay,dinero:this.money,wenge:this.player} )
@@ -152,37 +170,36 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 		{
 			if(this.exp){this.explosion.destroy();}
 			//AMBULANCIA
-		if(this.ambulanceCont===5)
-		{   let pos=random(0,5);
-			let vehicleX=0;
-			this.ambulanceCont=0;
-			this.timeDelta=0;
-			switch(pos)
-			{
-				case 0:
-					vehicleX=210;
-					break;
-				case 1:
-					vehicleX=350;
-					break;
-				case 2:
-				vehicleX=480;
-					break;
-				case 3:
-					vehicleX=610;
-					break;
-				case 4:
-				vehicleX=740;
-					break;
-				case 5:
-				vehicleX=870;
-					break;
-			}
-
+			if(this.ambulanceCont===5)
+			{   let pos=random(0,5);
+				let vehicleX=0;
+				this.ambulanceCont=0;
+				this.timeDelta=0;
+				switch(pos)
+				{
+					case 0:
+						vehicleX=210;
+						break;
+					case 1:
+						vehicleX=350;
+						break;
+					case 2:
+					vehicleX=480;
+						break;
+					case 3:
+						vehicleX=610;
+						break;
+					case 4:
+					vehicleX=740;
+						break;
+					case 5:
+					vehicleX=870;
+						break;
+				}
 			this.newdanger(this,vehicleX);
 			this.ambulance.setX(vehicleX);
 			this.ambulance.setY(-335);
-		}
+			}
 			var rand=random(0,2);
 			//rando coche
 			if (rand===0)
@@ -266,6 +283,7 @@ export default class Arsenico extends Generical { //creamos la escena exportada/
 			this.poolBike.spawn(vehicleX,0,"outita");
 			}
 		}
+		//update del padre
 		this.player.life.Update();
 	}
 }
