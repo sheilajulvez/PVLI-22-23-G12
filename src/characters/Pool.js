@@ -28,6 +28,7 @@ export default class Pool {
 		  
 		  entity.setActive(true);//activas la entidad
 		  entity.setVisible(true);//y la piones visible en el canvas
+		  entity.body.checkCollision.none = false;
 		  if(entity.move==Moto.prototype.move){	//en el caso de que la entidad sea de tipo moto, le pasas su propia animacion
 				entity.play(entity.anim);
 			}
