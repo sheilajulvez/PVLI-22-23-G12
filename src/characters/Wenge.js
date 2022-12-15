@@ -72,7 +72,6 @@ export default class Wenge extends Phaser.GameObjects.Sprite { //exportamos la c
 	}
 
 	update(){
-		this.collision();
 		this.timeDelta+=1;	
 		if(this.coolDown>=0) 
 		{
