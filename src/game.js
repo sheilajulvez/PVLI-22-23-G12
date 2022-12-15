@@ -37,7 +37,7 @@ let config= {                                        //configuramos el juego
       arcade:
       {
         gravity:{y:0},                                //seteamos la gravedad en y=0
-        debug:true,
+        debug:false,
         debugShowBody:true,
         debugBodyColor:0x0000ff
       }
