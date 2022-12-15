@@ -5,7 +5,7 @@ export default class Pool {
     constructor (scene, entities) 
 	{
       this._group=scene.add.group();	//creamos un grupo y lo añadimos a la escena
-	  this._group.addMultiple(entities);	//
+	  this._group.addMultiple(entities);	
 	  entities.forEach(element => {
 		this._group.killAndHide(element);
 		element.body.checkCollision.none = false;

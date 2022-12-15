@@ -6,7 +6,8 @@ export default class Niveles extends Phaser.Scene {
         super({ key: 'MapNiveles'});
         //creacion de arrays de los niveles 
         this.Nivel =[ ];
-           this.stay=0;
+        this.Botones =[ ];
+         this.stay=0;
     }
     create(){
         //configuracion de la música
