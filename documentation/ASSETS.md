@@ -15,4 +15,6 @@ vienen de;
 https://ar.pinterest.com/pin/355714070569228050/ (Rosalia).
 https://puntorojolibros.com/img/pedro-sanchez/foto-de-Pedro-Sanchez.jpg (presidente).
 https://www.pinterest.es/pin/11610911535582032/ (Wenge).
+
+Canciones como la banda sonora de Plants vs Zombies, Rosalia etc...
 Los pngs que faltan se deben a que aún no los hemos desarrollado.
