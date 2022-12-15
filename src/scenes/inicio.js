@@ -71,7 +71,7 @@ export default class Inicio extends Phaser.Scene {
 		this.load.image('mask', 'mask.png');
 		this.load.image('noche', 'noche.png');
 
-	//ESCENA FINAL
+		//ESCENA FINAL
 		this.load.setPath('assets/escena_fin/');
 		this.load.image("pregunta","darle_la_manzanilla.png");
         this.load.image("SI","SI.png");
@@ -89,7 +89,7 @@ export default class Inicio extends Phaser.Scene {
 		this.load.image("cuadrado_tienda","TIENDA_BONITO.png")
 		this.load.image("fondo_shop","tienda.png");
 		this.load.image("salida_button","salida_button.png");
-	//	this.load.image("velocity_button","assets/tienda/velocity_button.png");
+	  //this.load.image("velocity_button","assets/tienda/velocity_button.png");
 		this.load.image("velocity_explanation","velocity_explicacion.png");
 		this.load.image("motomami","motomami_button.png");
 		this.load.image("motomami_explanation","motomami_outfit_explicacion.png");
@@ -149,7 +149,6 @@ export default class Inicio extends Phaser.Scene {
 		this.load.spritesheet('Car', 'BlueCar.png', {frameWidth:200 , frameHeight:280});
 		this.load.spritesheet('Van', 'WhiteCar.png', {frameWidth:166 , frameHeight:	233	});
 		this.load.spritesheet('Ambulance','ambulance.png',{frameWidth:160 , frameHeight:	233	});
-
 
 		var width = this.cameras.main.width;
 		var height = this.cameras.main.height;
