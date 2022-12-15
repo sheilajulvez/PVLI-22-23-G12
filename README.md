@@ -17,7 +17,7 @@ Cuenta con 5 niveles distintos, cada uno de ellos se supera tras cumplir con una
 A continuación pondremos fotos del menú inicial del juego y de lo que se vería en una partida
 
 
-<image src="/images/inicio.png">
+<image src="/images/plobo.png">
   
   
   
@@ -31,5 +31,5 @@ A continuación pondremos fotos del menú inicial del juego y de lo que se verí
   
 
 
-<image src="/images/partidaPrototipo.png">
+<image src="/images/boom.png">
  
