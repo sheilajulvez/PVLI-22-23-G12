@@ -1,11 +1,11 @@
-//clase pool
-import Moto from "../characters/Vehiculos/Moto.js"
+//clase Pool
+import Moto from "../characters/Vehiculos/Moto.js"		//importamos las Moto
 export default class Pool {
 	//constructor de la clase 
     constructor (scene, entities) 
 	{
-      this._group=scene.add.group();
-	  this._group.addMultiple(entities);
+      this._group=scene.add.group();	//creamos un grupo y lo añadimos a la escena
+	  this._group.addMultiple(entities);	//
 	  entities.forEach(element => {
 		this._group.killAndHide(element);
 		element.body.checkCollision.none = false;
