@@ -1,10 +1,11 @@
+//sprite de la carretera (el fondo de todos los niveles)
 export default class road extends Phaser.GameObjects.Sprite { //exportamos la clase extendida de Phaser
 
 	constructor(scene, x, y) {
 		super(scene, x, y, 'road');
 
 		this.scene.add.existing(this);
-
+		//añades la animacion de la carretera
 		this.scene.anims.create({ //animación
 			key: 'idle', //identificador de la animación
 			frames: scene.anims.generateFrameNumbers('road', 

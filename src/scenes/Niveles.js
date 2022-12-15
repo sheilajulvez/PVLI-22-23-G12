@@ -4,68 +4,48 @@ import Button from '../components/Buttom.js';
 export default class Niveles extends Phaser.Scene {
     constructor(){
         super({ key: 'MapNiveles'});
-        
+        //creacion de arrays de los niveles 
         this.Nivel =[ ];
-           
-         //posicion + nombre de la imagen
-       // this.NivButton= this.relatedScene.add.image(500,200,'next_level');
-      //  this.add.image(500,100, 'boton');
-        // for (let i=0; i<5; i++) Nivel.push(this.NivButton);
-    }
-    preload(){
-        this.load.image("mapaciudad","assets/mapaciudad.png");
-        //guardas la imagen
-        this.load.image('boton',"assets/boton.png");
+        this.Botones =[ ];
+         this.stay=0;
     }
     create(){
-        
-        
-        //Nivel[0];
+        //configuracion de la música
+        const config =
+		{
+			mute: false,
+ 			 volume: 0.1,
+ 		 	 rate: 1,
+			 detune: 0,
+ 			 seek: 0,
+ 			 loop: false,
+ 			 delay: 0,
+		}
+		//añades los sonidos
+		this.music = this.sound.add('musica6',config);
+        this.music.play();
+        //creas la imagen del fondo
         this.add.image(500,350,'mapaciudad');
-
-        this.Nivel.push(new Button(this, 135,485, 'boton', 'EscenaHablar','tomatico')) 
-        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla')) 
-        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite')) 
-        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas')) 
-        this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico'))  
-        
-        // primBot =this.add.image(500,350,'boton').setInteractive();
-       // boton =this.add.image(500,350,'boton');
-       // this.image.on('pointerdown',()=>{
-       //     console.log("fg");
-			//this.relatedScene.scene.start('MapNiveles');
-		//});
-        //this.add.image(500,350,'boton');
-        
-
+        //añades los cinco niveles
+        this.Nivel.push(new Button(this, 135,485, 'boton', 'EscenaHablar','tomatico',this.stay, 1,this.wenge,this.money,this.music )) 
+        this.Nivel.push(new Button(this, 317,280, 'boton', 'EscenaHablar','Manzanilla', this.stay,2,this.wenge,this.money,this.music)) 
+        this.Nivel.push(new Button(this, 720,545, 'boton', 'EscenaHablar','Aceite',this.stay,3,this.wenge,this.money,this.music)) 
+        this.Nivel.push(new Button(this, 750,140, 'boton', 'EscenaHablar','Croquetas',this.stay,4,this.wenge,this.money,this.music)) 
+        this.Nivel.push(new Button(this, 925,265, 'boton', 'EscenaHablar','Arsenico',this.stay,5,this.wenge,this.money,this.music))  
+        //mostramos el dinero disponible
+        this.money.SetScene(this);
+        this.money.ShowMoney();
+        //boton para la tienda y para salir
+        this.Botones.push(new Button(this, 150,70, 'shop_button', 'shop',"Niveles", this.stay,this.stay-1,this.wenge,this.money,this.music)); 
+        this.Botones.push(new Button(this, 950,650, 'quit_buttom', 'menu',null, 0,0,0,0,this.music)) ;
+    }
+    //metodo que se ejecuta al iniciar la escena
+    init(datos){
+        this.money=datos.dinero;
+        this.wenge=datos.wenge;
+        if (datos.stay == this.stay&&this.wenge.alive){
+            this.stay = this.stay +1;
+        }
+        this.wenge.alive=true;       
     }
 }
-
-
-
-
-/*
-//crea un var de reiniciarbutton en game
-
-	
-	* Creación de los elementos de la escena principal de juego
-	
-
-		// Para seleccionar botones con teclas, creamos el objeto tecla y un int al que se apunta actualmente
-		var self=this;
-    	let i = 0;
-		var buttons = [];
-		levels.forEach(level => {
-			level.setScene(this, function(){self._keyboard.setBeingUsed(i)});
-			buttons[i] = level.button;
-      		i++;
-		});
-		//console.log(this.buttons);
-		
-		this._keyboard.loadButtonArray(buttons);
-		
-        // .setOrigin(0.5);
-		this.input.keyboard.once('keydown-SPACE', () => {
-            this.scene.start('battleScene');
-        });
-	}*/

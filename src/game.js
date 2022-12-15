@@ -9,21 +9,20 @@ import Croquetas from './scenes/Niveles/Croquetas.js';
 import Manzanilla from './scenes/Niveles/Manzanilla.js';
 import EscenaHablar from './scenes/EscenaHablar.js'
 import Niveles from './scenes/Niveles.js'
+import GameOver from './scenes/GameOver.js';
+import Escena_fin from "./scenes/Escena_final.js";
 
- //importamos la escena macarrones que vamos a usar
-
-let config= { //configuramos canvas
-  type: Phaser.AUTO,
-  parent:'Juego',  //crea el canvas dentro del index
-  //ancho y alto de pantalla como window, ya se ira viendo
-  width:1000,
+let config= {                                        //configuramos el juego
+  type: Phaser.WEBGL,                                //WEBGl
+   parent:'Juego',                                   //crea el canvas dentro del index
+  width:1000,                                        //ancho y alto del canvas
   height: 700,
   PixelArt:true,
-  scale:{ //para escalar el canvas en la pantalla con minimo y maximo
-    autoCenter: Phaser.Scale.CENTER_HORIZONTALLY, 
+  scale:{                                            //para escalar el canvas en la pantalla con minimo y maximo
+    autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,    //centramos el canvas
     mode: Phaser.Scale.FIT,
     min: {
-            width: 1000, //esto se ira viendo
+            width: 1000, 
             height: 700,
         },
     max: {
@@ -32,22 +31,23 @@ let config= { //configuramos canvas
         },
     zoom: 1
   },
-    physics:
+    physics:                                         //añadimos las físicas al proyecto                   
     {
       default:'arcade',
       arcade:
       {
-        gravity:{y:0},
-        debug:false
+        gravity:{y:0},                                //seteamos la gravedad en y=0
+        debug:true,
+        debugShowBody:true,
+        debugBodyColor:0x0000ff
       }
     },
-   // scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles , Aceite],
-    scene:[Inicio,Menu,Shop, Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla],
-    title: "WENGEEEEEEEEEEEEEEEEEEEEEE",
-    version: "1.0.0"   
+    scene:[Inicio,Menu,Shop, Escena_fin,Macarrones,EscenaHablar,Niveles, Arsenico , Aceite,Croquetas,Manzanilla, GameOver],     //añadimos todas nuestras escenas
+    title: "WENGEEEEEEEEEEEEEEEEEEEEEE",                                                                                        //título
+    version: "1.0.0"                                                                                                            //versión
   
 };
-new Phaser.Game(config);
+new Phaser.Game(config);                //creamos el game con su configuración
 
 
 

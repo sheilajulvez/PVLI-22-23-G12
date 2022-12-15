@@ -1,21 +1,19 @@
-
+//importas los elementos
 import Button from '../components/Buttom.js';
+import Economy from "../components/Economy.js"
+import Wenge from '../characters/Wenge.js'; //importamos al caracter de Wenge
+
 export default class menu extends Phaser.Scene{
 	constructor(){
 		super({key:'menu'});
 		this.Botones =[ ];
 	}
-	preload(){
-		this.load.image("fondoMenu","assets/menu_fondo2.jpg");
-		this.load.image("next_level","assets/next_level.jpg");
-		this.load.image('quit_buttom',"assets/exit1.jpg");
-		this.load.image('shop_button','assets/shop.jpg');
-
-	}
 	create(){
-		this.add.image(500,350,'fondoMenu');
-		this.Botones.push(new Button(this, 400,200, 'next_level', 'MapNiveles')) 
-        this.Botones.push(new Button(this, 400,600, 'quit_buttom', 'inicio')) 
-        this.Botones.push(new Button(this, 400,400, 'shop_button', 'shop')) 
+		//creas la imagen de fondo, el dinero y a wenge
+		this.add.image(500,350,'fondoIni');
+		this.money=new Economy(this);
+		this.player=new Wenge(this, 800, 800,"idle_Wenge"); //creamos a nuestro personaje, nuestra Wenge
+		this.Botones.push(new Button(this, 550,500, 'start_button', 'MapNiveles',null, 0,0,this.player,this.money)) 
+        this.player.life.free();
 	}
 }
