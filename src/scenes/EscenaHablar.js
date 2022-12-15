@@ -12,9 +12,8 @@ function random(min, max) {
 export default class EscenaHablar extends Phaser.Scene{
     constructor(scenekey){
 		super({key: "EscenaHablar"});
-      
-
 	}
+    //metodo que se ejecuta al principio
     init(datos){
         this.stay= datos.stay;
         this.scenekey=datos.name;
@@ -22,26 +21,17 @@ export default class EscenaHablar extends Phaser.Scene{
         this.player=datos.wenge;
         this.arrayHablar=[];
         this.hablarAct;
-        
     }
-    
+    //indica el dinero al principio
 	preload(){
-		
-	
-   
-    if(this.stay>1){
-        this.money.SetScene(this);
-        this.money.ShowMoney();
-       
-    }
-   
-   
-		
+        if(this.stay>1){
+            this.money.SetScene(this);
+            this.money.ShowMoney();
+        }
 	}
-
-
     create(){
-        //ponemos el fondo que toca
+
+        //ponemos el sonido
         this.clickSound= this.sound.add("click");
         
 
@@ -51,7 +41,7 @@ export default class EscenaHablar extends Phaser.Scene{
         }
         
 
-
+        //indicamos el fondo que le toca por cada escena
         if(this.scenekey=="tomatico"
         ||this.scenekey=="Arsenico"||this.scenekey=="tomatico_fin"||this.scenekey=="Manzanilla"
         ||this.scenekey=="Manzanilla_fin"){
@@ -61,8 +51,8 @@ export default class EscenaHablar extends Phaser.Scene{
         ||this.scenekey=="Croquetas_fin"){
             this.add.image(0,0,"fondo_noche").setScale(2,2);
         }
+
         //personajes y fotos
-       
         this.add.image(800,400,'Wengecara').setScale(0.8,0.8);
         if(this.scenekey=="tomatico"||this.scenekey=="Aceite"||this.scenekey=="Croquetas"
         ||this.scenekey=="Manzanilla"){
@@ -82,14 +72,12 @@ export default class EscenaHablar extends Phaser.Scene{
         if(this.scenekey=="Croquetas_fin"){
             this.add.image(300,300,"Sheila").setScale(1,0.8);
         }
-
-
         if(this.scenekey=="Arsenico_fin"||this.scenekey=="Manzanilla_fin"){
             this.add.image(300,270,"Presi").setScale(1,1);
         }
-      
+        //imagen del bocadillo
        this.cajita= this.add.image(340,830,"cajita").setScale(1.7,1.3);
-       
+       //para las decisiones
        this.nombre=this.scenekey+"_a";
        this.nombre2=this.scenekey+"_b";
        this.comprueba=this.scenekey+"_comprueba_a";
@@ -112,6 +100,7 @@ export default class EscenaHablar extends Phaser.Scene{
             this.add.image(900,900,"texto_wenge_1").setScale(4,4);
             this.opcion2=this.add.image(680,565,"texto_wenge_3").setInteractive().setScale(0.6,0.6)
             this.opcion1= this.add.image(820,630,"texto_wenge_3").setInteractive().setScale(0.6,0.6)
+            //si elije la primera opción
             this.opcion_a={
             
                 a:0,
@@ -120,6 +109,7 @@ export default class EscenaHablar extends Phaser.Scene{
                
                 b:this.textButton(600,550,Textos[this.nombre][0],this.nombre),
             };
+            //si elije la segunda
             this.opcion_b={
                 
                 a:0,
@@ -137,7 +127,6 @@ export default class EscenaHablar extends Phaser.Scene{
                 this.arrayHablar[rand].play();
                 this.hablarAct= this.arrayHablar[rand];
                  
-                console.log("entraaa");
                 this.opcion1.scene.tweens.add(
                     {
                         targets: this.opcion1,
@@ -266,21 +255,9 @@ export default class EscenaHablar extends Phaser.Scene{
 
     }
     textButton(x, y, message,name){
-       
-       
 		let text = this.add.text(x, y, message);
-       
-		
-		//text.setOrigin(0.5,0.0);
-		//text.setAlign('center');
         text.setTint(0x000000);
-		
-
-        
-      
-		
         return text;
-
     }
 
 }

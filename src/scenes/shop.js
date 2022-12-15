@@ -1,4 +1,4 @@
-
+//añadimos los scripst necesarios
 	import Extra_life from "../components/Extra_life_button.js"
 	import Dash_button from "../components/Dash_button.js"
 	import outfits_button from "../components/outfits_button.js";
@@ -9,16 +9,15 @@
 			super({key: "shop"});
 	
 		}
+		//metodo que se ejecuta al cargar la shop
 		init(datos){
 			this.money=datos.dinero;
 			this.wenge=datos.wenge;
 			this.stay=datos.stay;
 		}
-		preload(){
-
-		}
-		create()
-		{const config=
+		create(){
+			//configuracion del sonido
+			const config=
 			{
 				mute: false,
 				volume: 0.1,
@@ -28,14 +27,12 @@
 				loop: true,
 				delay: 0,
 			}
-		
-			
 			this.music=this.sound.add("music",config);
 			this.music.play();
+			//añadimos la imagen de fondo
 			this.add.image(0,0,"fondo_shop").setOrigin(0,0).setScale(0.5,0.7);
-			//this.add.image("velocity_button",300,300);
-			//this.add.sprite("velocity_button",600,600);
 			this.add.image(-35,0,"cuadrado_tienda").setScale(0.36,0.53).setOrigin(0,0);
+			//boton de salida
 			let a=this.add.image(100,100,"salida_button").setInteractive().setScale(1.5,1.5);
 			a.on("pointerdown",()=>{
 				this.music.stop();
@@ -64,8 +61,6 @@
 			}
 			
 			this.add.image(835,300,"dash_explicacion").setScale(0.5,0.5);
-			//this.extra_life_button.preload();
-			//this.ShowMoney();
 			this.nueva_coleccion.create();
 			this.motomami.create();
 			this.daltonismo.create();
@@ -77,11 +72,5 @@
 			this.money.SetScene(this);
 			this.money.ShowMoney();
 
-
 		}   
-		
-	
-		
-
-
 	}

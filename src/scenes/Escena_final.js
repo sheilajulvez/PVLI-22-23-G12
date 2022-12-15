@@ -1,9 +1,11 @@
+//escena final,despues de pasarte todos los niveles
 export default class Escena_final extends Phaser.Scene{
     constructor(scenekey){
         super({key:"Escena_final"});
 
     }
     create(){
+        //configuracion del sonido
         const config =
 		{
 			 mute: false,
@@ -15,7 +17,7 @@ export default class Escena_final extends Phaser.Scene{
  			 delay: 0,
 		}
 		this.music = this.sound.add('musica7',config);
-       
+       //creas dos botones que te permiten elegir que final quieres hacer
         let text=this.add.image(500,300,"pregunta");
         let si=this.add.image(300,400,"SI").setInteractive();
         let no=this.add.image(600,400,"NO").setInteractive();
@@ -49,6 +51,7 @@ export default class Escena_final extends Phaser.Scene{
                repeat: false
            }); 
         })
+        //creas el tween de la imagen decision si
         si.on("pointerover",()=>{
             this.tweens.add(
                 {
@@ -61,6 +64,7 @@ export default class Escena_final extends Phaser.Scene{
             );
 
         })
+        //creas el tween de la imagen decision no
         no.on("pointerover",()=>{   
             this.tweens.add(
                 {
